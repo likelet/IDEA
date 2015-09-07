@@ -54,7 +54,7 @@ Developer Information
 -------------
 FAQ
 -------------
-During the analysis process you may encounter the following question due to software or enviroment bugs; We summarized those questions and give some solution for bug fixing:
+During the analysis procedure,  you may encounter the following question due to software or enviroment bugs; We summarized those questions and give some solution for bug fixing:
 
 1. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button:
 Answer: This error is mainly caused by Rstudio version; you can fixed it by upgrading your RStudio to the latest version.

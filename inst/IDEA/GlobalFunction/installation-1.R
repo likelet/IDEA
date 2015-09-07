@@ -35,7 +35,7 @@ cDep <- c("abind", "stats4","RobustRankAggreg","shiny","rmarkdown")
 
 bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges")
 #target from CRAN
-cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram")
+# cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram")
 #target from BIOCONDUCTOR
 bcTgt <- c("edgeR", "DESeq2")
 

@@ -58,6 +58,7 @@ During the analysis process you may encounter the following question due to soft
 
 1. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button:
 Answer: This error is mainly caused by Rstudio version; you can fixed it by upgrading your RStudio to the latest version.
+
 ### Developers:
 Qi Zhao, zhaoqi3@mail2.sysu.edu.cn <br/>
 Peng Nie, niepeng@mail2.sysu.edu.cn <br/>

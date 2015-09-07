@@ -1,0 +1,342 @@
+<div class="none" id="methodIntro3">
+  <br>
+  <div class="panel panel-default">
+    <h2  style="text-align:center">NOISeq</h2>
+  </div>
+  <div class="panel panel-default"><div class="panel-body">
+    <p>
+    <a href="http://www.bioconductor.org/packages/release/bioc/html/NOISeq.html" target=" blank">NOISeq</a>
+    takes both the log fold change and absolute difference of reads count into consideration when comparing two conditions. All pairs of replicates are calculated to determine empirical distribution functions. Differentially expressed genes is identified by a small P-value in both the log fold change and the absolute difference in reads count.
+    </p>
+    <p>
+    <button type="button" class="toMathod-analysis btn btn-lg btn-primary" id="btn--toMathod1-analysis" onmousedown="toMethod(3);FreassActive(method_3)">> > > START < < <</button>
+    <h4>
+    Features:
+    </h4>
+    <table class="bg-info" style="width: 100%" border=0>
+      <td>
+        <ul>
+          <li>
+            <em>Normalization:</em>
+          </li>
+          <li>
+            <em>Reads Count Distribution Model:</em>
+          </li>
+          <li>
+            <em>Differential Expression Test:</em>
+          </li>
+          <li>
+            <em>FDR Control:</em>
+          </li>
+          <li>
+            <em>Experiment Design:</em>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <strong> RPKM (default), TMM, UQ</strong>
+        <br>
+        <strong> Nonparametric method</strong>
+        <br>
+        <strong> <em>P</em>-value for empirical distributions</strong>
+        <br>
+        <strong> Not applicable(Probabilities in NOISeq are not equivalent to <em>p</em>-values)</strong>
+        <br>
+        <strong> Standard Comparison, Without replicates</strong>
+      </td>
+    </table>
+    <br>
+    <table class="table-condensed" cellspacing="0" cellpadding="0" border="1" frame=hsides rules=all>
+      <tbody style="border-color: #000000">
+        <tr class="firstRow">
+          <td width="48" style="border-width: medium medium medium 0px">
+            <p style="text-align:center">
+            Package
+            </p>
+          </td>
+          <td width="50" style="border-width: medium 0 medium 0">
+            <p style="text-align:center">
+            Version
+            </p>
+          </td>
+          <td style="border-width: medium 0 medium 0">
+            <p style="text-align:center">
+            Normalization (default)
+            </p>
+          </td>
+          <td style="border-width: medium 0 medium 0">
+            <p style="text-align:center">
+            Model of Reads Count Distribution
+            </p>
+          </td>
+          <td style="border-width: medium 0 medium 0">
+            <p style="text-align:center">
+            Differential Expression Test
+            </p>
+          </td>
+          <td style="border-width: medium 0 medium 0">
+            <p style="text-align:center">
+            FDR Control
+            </p>
+          </td>
+          <td style="border-width: medium 0 medium 0">
+            <p style="text-align:center">
+            Standard Comparison
+            </p>
+          </td>
+          <td style="border-width: medium 0 medium 0">
+            <p style="text-align:center">
+            Multi-factor Design
+            </p>
+          </td>
+          <td style="border-width: medium 0 medium 0">
+            <p style="text-align:center">
+            Without Replicates
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-width: 0 medium 0 0">
+            <p style="text-align:center">
+            DESeq2
+            </p>
+          </td>
+          <td style="border-width: 0 0 0 0">
+            <p style="text-align:center">
+            1.6.2
+            </p>
+          </td>
+          <td style="border-width: 0 0 0 0">
+            <p style="text-align:center">
+            sizeFactors
+            </p>
+          </td>
+          <td style="border-width: 0 0 0 0">
+            <p style="text-align:center">
+            Negative binomial distribution
+            </p>
+          </td>
+          <td style="border-width: 0 0 0 0">
+            <p style="text-align:center">
+            Wald test, LRT
+            </p>
+          </td>
+          <td style="border-width: 0 0 0 0">
+            <p style="text-align:center">
+            Benjamini-Hochberg procedure
+            </p>
+          </td>
+          <td style="border-width: 0 0 0 0">
+            <p style="text-align:center">
+            <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+            </p>
+          </td>
+          <td style="border-width: 0 0 0 0">
+            <p style="text-align:center">
+            <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+            </p>
+          </td>
+          <td style="border-width: 0 0 0 0">
+            <p style="text-align:center">
+            <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <tr>
+            <td style="border-width: 0 medium 0 0">
+              <p style="text-align:center">
+              edgeR
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              3.8.3
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              TMM
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              Negative binomial distribution
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              Fisher's exact test
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              Benjamini-Hochberg procedure
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+              </p>
+            </td>
+          </tr>
+          <tr style="background-color: #3498DB">
+            <td style="border-width: 0 medium 0 0">
+              <p style="text-align:center">
+              NOISeq
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              2.8.0
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              RPKM
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              Nonparametric method
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              <em>P</em>-value for empirical distributions
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              Not applicatable
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-remove"></span>
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="border-width: 0 medium 0 0">
+              <p style="text-align:center">
+              PoissonSeq
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              1.1.2
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              Goodness-of-fit estimate
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              Poisson distribution
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              Score statistics
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              A permutation plug-in approach
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-remove"></span>
+              </p>
+            </td>
+            <td style="border-width: 0 0 0 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-remove"></span>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="border-width: 0 medium medium 0">
+              <p style="text-align:center">
+              SAMseq
+              <br>(samr)
+              </p>
+            </td>
+            <td style="border-width: 0 0 medium 0">
+              <p style="text-align:center">
+              2.0
+              </p>
+            </td>
+            <td style="border-width: 0 0 medium 0">
+              <p style="text-align:center">
+              Subsampling method
+              </p>
+            </td>
+            <td style="border-width: 0 0 medium 0">
+              <p style="text-align:center">
+              Nonparametric method
+              </p>
+            </td>
+            <td style="border-width: 0 0 medium 0">
+              <p style="text-align:center">
+              Wilcoxon test
+              </p>
+            </td>
+            <td style="border-width: 0 0 medium 0">
+              <p style="text-align:center">
+              A permutation plug-in approach
+              </p>
+            </td>
+            <td style="border-width: 0 0 medium 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+              </p>
+            </td>
+            <td style="border-width: 0 0 medium 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-remove"></span>
+              </p>
+            </td>
+            <td style="border-width: 0 0 medium 0">
+              <p style="text-align:center">
+              <span class="glyphicon glyphicon-remove"></span>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </p>
+      <div align="center"><strong>Table 2: Software packages in Analysis Module</strong>
+      </div>
+    </div>
+  </div>
+</div>

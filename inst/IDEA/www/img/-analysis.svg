@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="128px" height="128px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve">
+<rect x="6" fill="#FFFFFF" width="6" height="128"/>
+<rect y="16" fill="#FFFFFF" width="7" height="4"/>
+<rect y="36" fill="#FFFFFF" width="7" height="4"/>
+<rect y="56" fill="#FFFFFF" width="7" height="4"/>
+<rect y="76" fill="#FFFFFF" width="7" height="4"/>
+<rect y="96" fill="#FFFFFF" width="7" height="4"/>
+<rect y="116" fill="#FFFFFF" width="128" height="6"/>
+<rect x="28" y="121" fill="#FFFFFF" width="4" height="7"/>
+<rect x="48" y="120" fill="#FFFFFF" width="4" height="8"/>
+<rect x="68" y="120" fill="#FFFFFF" width="4" height="8"/>
+<rect x="88" y="119" fill="#FFFFFF" width="4" height="9"/>
+<rect x="108" y="120" fill="#FFFFFF" width="4" height="8"/>
+<path fill="#FFFFFF" d="M50.166,20.05c-0.183,0.234-0.38,0.459-0.602,0.666c-0.012,0.023-0.029,0.042-0.04,0.065
+	c0.014-0.011,0.028-0.022,0.042-0.033c-0.02,0.016-0.035,0.036-0.054,0.052c-0.431,0.852-1.02,1.558-1.909,2.08
+	c-0.712,0.417-1.522,0.622-2.339,0.654l23.778,38.833l4.028-4.912L50.166,20.05z"/>
+<path fill="#FFFFFF" d="M94.773,91.646L81.275,69.602l-4.028,4.912l11.486,18.758C90.374,91.857,92.568,91.535,94.773,91.646z"/>
+<ellipse fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" cx="45.751" cy="18.684" rx="5.74" ry="5.536"/>
+<ellipse fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" cx="42.496" cy="66.677" rx="5.486" ry="5.543"/>
+<ellipse fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" cx="60.224" cy="80.603" rx="5.758" ry="5.469"/>
+<ellipse fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" cx="104.54" cy="35.37" rx="5.529" ry="5.222"/>
+<ellipse fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" cx="93.991" cy="96.002" rx="5.98" ry="5.854"/>
+<ellipse fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" cx="110.54" cy="77.37" rx="5.529" ry="5.222"/>
+<polygon fill="#FFFFFF" points="18.004,32.207 40.886,23.255 38.649,17.539 18.004,25.615 "/>
+<polygon fill="#FFFFFF" points="17.823,94.619 39.136,72.325 35.063,68.432 17.823,86.465 "/>
+<rect x="49" y="68" transform="matrix(0.6855 -0.7281 0.7281 0.6855 -37.5231 61.1307)" fill="#FFFFFF" width="6" height="12"/>
+<rect x="79.464" y="30.168" transform="matrix(0.7285 0.6851 -0.6851 0.7285 61.7011 -40.9141)" fill="#FFFFFF" width="6" height="54.423"/>
+<polygon fill="#FFFFFF" points="127.931,29.059 107.727,31.555 108.462,37.51 127.931,35.105 "/>
+<rect x="100" y="79" transform="matrix(0.7755 0.6313 -0.6313 0.7755 77.4101 -45.72)" fill="#FFFFFF" width="6" height="14"/>
+<polygon fill="#FFFFFF" points="128.112,62.612 113.424,71.222 116.459,76.398 128.112,69.567 "/>
+</svg>

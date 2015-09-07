@@ -1,0 +1,879 @@
+<!DOCTYPE html  >
+<html>
+  <body>
+    <head>
+      <!-- jQuery -->
+      <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+      <!-- meta -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!--CSS -->
+      <link href="css/main.css" rel="stylesheet" type="text/css">
+      <link href="css/layout.css" rel="stylesheet" type="text/css">
+      <link href="css/bootstrap.css" rel="stylesheet">
+      <link href="css/bootstrap-switch.css" rel="stylesheet">
+      <!-- <link href="css/bootstrap-lightbox.css" rel="stylesheet"> -->
+      <!-- <link rel="stylesheet" type="text/css" href="http://fonts.useso.com/css?family=Lobster"> -->
+      <!-- <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
+      <!-- <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300|Titillium+Web|Dosis|Abel' rel='stylesheet' type='text/css'> -->
+      <!--JavaScript-->
+      <script type="text/javascript" src="js/main.js"></script>
+      <script type="text/javascript" src="js/debug.js"></script>
+      <script type="text/javascript" src="js/loadHtml.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap-switch.js"></script>
+      <!--image popup-->
+      <link rel="stylesheet" type="text/css" href="css/lightcase.css" media="screen">
+      <script type="text/javascript" src="js/jquery.events.touch.js"></script>
+      <script type="text/javascript" src="js/lightcase.js"></script>
+      <link hrel="stylesheet" type="text/css" href="css/bootstrap-tour.min.css"/>
+      <script type="text/javascript" src="js/bootstrap-tour.min.js"></script>
+      <!--title-->
+      <title>IDEA</title>
+      <script>
+      </script>
+      <script type="text/javascript">
+      // $(document).ready(function () {
+      //   $(".def-nav,.info-i").hover(function () {
+      //     $(this).find(".pulldown-nav").addClass("hover");
+      //     $(this).find(".pulldown").show();
+      //   }, function () {
+      //     $(this).find(".pulldown").hide();
+      //     $(this).find(".pulldown-nav").removeClass("hover");
+      //   });
+      // });
+      </script>
+    </head>
+    <!--heder and main-nva-->
+    <div id="frame"></div>
+    <!--main panel-->
+    <div class="mainpanel">
+      <!--Part 1-->
+      <!--    <div class="block" id="s1">-->
+      <div class="block" id="s1"></div>
+      <!--Part 2-->
+      <div class="none" id="s2">
+        <div class="wrapper--noscroll-panel">
+          <div class="wrapper-experitment">
+            <div class="header-page header-page-new">
+              <h5 class="title--small-home">new analysis job</h5>
+              <h3 class="title--big--home">Select Experiment type</h3>
+            </div>
+            <ul class="lis-experiment">
+              <li class="item-experiment" id="item1">
+                <div class="bolck-experiment btn-default">
+                  <div class="icon-experiment bg-standard">
+                    <!--                  <img class="img-icon-experiment" src="img/standard-darkblue.png" alt="">-->
+                  </div>
+                  <div class="wrapper--text-block-experiment">
+                    <div class="title-experiment">Standard Comparison</div>
+                    <!-- <div class="discr-experiment">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div> -->
+                    <div class="button-experiment">
+                      <button id="scExampleButton" type="button" class="btn btn-primary action-button button-example" onmousedown="toStep(1)">Example</button>
+                      <button id="scNewButton" type="button" class="btn btn-default action-button button-new" onmousedown="toStep(1)">New</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="item-experiment" id="item2">
+                <div class="bolck-experiment btn-default">
+                  <div class="icon-experiment bg--multi-factor">
+                    <!--                  <img class="img-icon-experiment" src="img/multi-factor.png" alt="">-->
+                  </div>
+                  <div class="wrapper--text-block-experiment">
+                    <div class="title-experiment">Multi-factor Design</div>
+                    <!-- <div class="discr-experiment">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div> -->
+                    <div class="button-experiment">
+                      <button id="mfExampleButton" type="button" class="btn btn-primary action-button button-example" onmousedown="toStep(1)">Example</button>
+                      <button id="mfNewButton" type="button" class="btn btn-default action-button button-new" onmousedown="toStep(1)">New</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="item-experiment" id="item3">
+                <div class="bolck-experiment btn-default">
+                  <div class="icon-experiment bg-nonreplicate">
+                    <!--                  <img class="img-icon-experiment" src="img/non-replicate-pink.png" alt="">-->
+                  </div>
+                  <div class="wrapper--text-block-experiment">
+                    <div class="title-experiment">Without Replicates</div>
+                    <!-- <div class="discr-experiment">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div> -->
+                    <div class="button-experiment">
+                      <button id="wrExampleButton" type="button" class="btn btn-primary action-button button-example" onmousedown="toStep(1)">Example</button>
+                      <button id="wrNewButton" type="button" class="btn btn-default action-button button-new" onmousedown="toStep(1)">New</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="uploadsteps">
+            <div class="block" id="step0"></div>
+            <div class="none" id="step1">
+              <div class="hd-option-upload">
+                <button type="button" class="back-nav-upload glyphicon glyphicon-chevron-left btn btn-lg" id="btn--back3-nav-upload" onmousedown="toStep(0)"></button>
+                <div class="title-hd-option-upload">Upload Data</div>
+                <button type="button" class="next-nav-upload glyphicon glyphicon-chevron-right btn btn-lg" id="btn--next3-nav-upload" onmousedown="toStep(2)"></button>
+              </div>
+              <div class="panel panel-default upload-upload">
+                <div class="panel-body">
+                  <h4 class="text-upload-upload">Please upload your readscount matrix.</h4>
+                  <button type="button" class="button-upload btn">Upload</button>
+                </div>
+              </div>
+              <div class="panel panel-default ">
+                <div class="panel-heading">File Format</div>
+                <div class="panel-body format-upload">
+                  <div class="panel-upload panel panel-default " >
+                    <div class="panel-heading" style="text-align: center">Header</div>
+                    <div class="panel-body">
+                      Panel content
+                    </div>
+                  </div>
+                  <div class="panel-upload panel panel-default " id="panel-upload2">
+                    <div class="panel-heading" style="text-align: center">Seperator</div>
+                    <div class="panel-body">
+                      Panel content
+                    </div>
+                  </div>
+                  <div class="panel-upload panel panel-default ">
+                    <div class="panel-heading" style="text-align: center">Quote</div>
+                    <div class="panel-body">
+                      Panel content
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default advanced-upload">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h2 class="panel-title" style="text-align: center">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Advanced
+                  </a>
+                  </h2>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+              <div class="bg-checkout-wrap"></div>
+              <div class="checkout-wrap">
+                <ul class="checkout-bar">
+                  <li class="active" onmousedown="toStep(1)"></li>
+                  <li class="next" onmousedown="toStep(2)"></li>
+                  <li class="" onmousedown="toStep(3)"></li>
+                </ul>
+              </div>
+            </div>
+            <div class="step2 none" id="step2">
+              <div class="hd-option-upload">
+                <button type="button" class="back-nav-upload glyphicon glyphicon-chevron-left btn btn-lg" id="btn--back3-nav-upload" onmousedown="toStep(1)"></button>
+                <button type="button" class="next-nav-upload glyphicon glyphicon-chevron-right btn btn-lg" id="btn--next3-nav-upload" onmousedown="toStep(3)"></button>
+              </div>
+              <div class="checkout-wrap">
+                <ul class="checkout-bar">
+                  <li class="previous visited" onmousedown="toStep(1)">
+                    <a href="#"></a>
+                  </li>
+                  <li class="active" onmousedown="toStep(2)"></li>
+                  <li class="" onmousedown="toStep(3)"></li>
+                </ul>
+              </div>
+            </div>
+            <div class="step3 none" id="step3">
+              <div class="hd-option-upload">
+                <button type="button" class="back-nav-upload glyphicon glyphicon-chevron-left btn btn-lg" id="btn--back3-nav-upload" onmousedown="toStep(2)"></button>
+                <button type="button" class="next-nav-upload glyphicon glyphicon-chevron-right btn btn-lg" id="btn--next3-nav-upload" onmousedown="startAnalysis()"></button>
+              </div>
+              <!-- <div class="nav-upload"> -->
+              <!--
+              <div class="progress-upload progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  <span class="sr-only">25% Complete</span>
+                </div>
+              </div>
+              -->
+              <div class="checkout-wrap">
+                <ul class="checkout-bar">
+                  <li class="previous visited" onmousedown="toStep(1)">
+                    <a href="#"></a>
+                  </li>
+                  <li class="previous visited" onmousedown="toStep(2)"></li>
+                  <li class="active" onmousedown="toStep(3)"></li>
+                </ul>
+              </div>
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Part 3-->
+      <!--    <div class="none" id="s3">-->
+      <div class="none" id="s3">
+        <div class="wrapper--scroll-panel">
+          <div class="content-report-data">
+            <!-- <div class="header-page-s3">
+              <h5 class="title--small-home">Data examination</h5>
+              <h3 class="title--big--home">Check data distribution and compositon</h3>
+            </div> -->
+            <div class="hd-data clearfix" id="header"></div>
+            <div class="fig-data boxplot-data none" id="datafig1">
+              111111111111111111111111111111111111
+              <div>
+                <!-- <img src="../img/analysis.png" alt=""> -->
+              </div>
+              <div>
+                <img src="../img/DE.jpg" alt="">
+              </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>111111111111111111111111111111111
+            </div>
+            <div class="densityplot-data fig-data none" id="datafig2">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>222222222222222222222222222222222
+            </div>
+            <div class="raiobarplot-data fig-data none" id="datafig3">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>333333333333333333333333333333333
+            </div>
+            <div class="scatterplot-data fig-data none" id="datafig4">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>444444444444444444444444444
+            </div>
+            <div class="heatmap-data fig-data none" id="datafig5">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>55555555555555555555555
+            </div>
+            <div class="Boxplot-data fig-data none" id="datafig6">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>66666666666666666666666666666
+            </div>
+            <div class="Boxplot-data fig-data none" id="datafig7">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>77777777777777777777777777777
+            </div>
+            <!--
+            <div class="heatmap--countTable-data">
+              <div class="img-fig-data"></div>
+              <div class="dicr-fig-data"></div>
+              <div class="option-data"></div>
+              <div class="option-analysis">
+                <div class="header-option-analysis">Options</div>
+                <div class="button-donwnload-DESeq">Download
+                </div>
+              </div>
+            </div>
+            <div class="heatmap--distance-data">
+              <div class="img-fig-data"></div>
+              <div class="dicr-fig-data"></div>
+              <div class="option-data"></div>
+            </div>
+            <div class="PCA-data">
+              <div class="img-fig-data"></div>
+              <div class="dicr-fig-data"></div>
+              <div class="option-data"></div>
+            </div>
+            <div class="geneQuery">
+              <div class="option-data">2222</div>
+              <div class="option-data"></div>
+            </div>
+            -->
+          </div>
+        </div>
+      </div>
+      <!--Part 4-->
+      <div class="none" id="s4">
+        <div class="wrapper--scroll-panel">
+          <!--method0-->
+          <div class="wrapper--nav--method-analysis" id="method0">
+            <div class="nav--method-analysis">
+              <div class="header-page header-page-partWidth">
+                <h5 class="title--small-home">start analysis</h5>
+                <h3 class="title--big--home">Select an Analysis Method</h3>
+              </div>
+              <ul class="lis-method">
+                <li class="link-method btn-default active" id="methodlink1" onmousedown="toMethodIntro(1)">
+                  <div class="bolck-method">
+                    <div class="icon-method bg-deseq">
+                      <!--                    <img class="img-icon-method" src="img/DESeq.png" alt="">-->
+                    </div>
+                  </div>
+                </li>
+                <li class="link-method btn-default" id="methodlink2" onmousedown="toMethodIntro(2)">
+                  <div class="bolck-method">
+                    <div class="icon-method bg-edger">
+                      <!--                    <img class="img-icon-method" src="img/edgeR.png" alt="">-->
+                    </div>
+                  </div>
+                </li>
+                <li class="link-method btn-default" id="methodlink3" onmousedown="toMethodIntro(3)">
+                  <div class="bolck-method">
+                    <div class="icon-method bg-noiseq">
+                      <!--                                        <img class="img-icon-method" src="img/SAMseq.png" alt="">-->
+                    </div>
+                  </div>
+                </li>
+                <li class="link-method btn-default" id="methodlink4" onmousedown="toMethodIntro(4)">
+                  <div class="bolck-method">
+                    <div class="icon-method bg-poissonseq">
+                      <!--                    <img class="img-icon-method" src="img/PoissonSeq.png" alt="">-->
+                    </div>
+                  </div>
+                </li>
+                <li class="link-method btn-default" id="methodlink5" onmousedown="toMethodIntro(5)">
+                  <div class="bolck-method">
+                    <div class="icon-method bg-samseq ">
+                      <!--                    <img class="img-icon-method" src="img/NOISeq.png" alt="">-->
+                    </div>
+                    <div class="wrapper--text-block-method">
+                      <div class="title-analysis">NOISeq</div>
+                    </div>
+                  </div>
+                </li>
+                <li class="link-method btn-default" id="methodlink6" onmousedown="aa(5)">
+                  <div class="bolck-method">
+                    <div class="icon-method bg-degseq">
+                      <!--                    <img class="img-icon-method" src="img/DEGseq.png" alt="">-->
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!--methodIntro1-->
+            <div class="wrapper--methodIntro-analysis">
+              <div class="block" id="methodIntro1"></div>
+              <div class="none" id="methodIntro2"></div>
+              <div class="none" id="methodIntro3"></div>
+              <div class="none" id="methodIntro4"></div>
+              <div class="none" id="methodIntro5"></div>
+              <div class="none" id="methodIntro6">DEGseq
+                <button type="button" class="toMathod-analysis btn btn-lg btn-danger" id="btn--toMathod1-analysis" onmousedown="toMethod(6)">> > > START < < <</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--DESeq-->
+      <div class="DESeq report-analysis none" id="method1">
+        <div class="title-report-anlysis">DESeq Analysis Report</div>
+        <ul class="content-report-anlysis">
+          <li>
+            <div class="figure-analysis table--DEgene-analysis">
+              <!--                <span class="glyphicon glyphicon-search icon--fullView" onmousedown="popview()"></span>-->
+              <div class="title-fig-analysis">Differential Genes Table</div>
+              <div class="img-fig-analysis">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <br>test</div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis plot--varianceEstimation-analysis">
+              <a class="glyphicon glyphicon-search icon--fullView"></a>
+              <!--                <a class="glyphicon glyphicon-search icon--fullView " onmousedown="popview()"></a>-->
+              <div class="title-fig-analysis">Variance estimation</div>
+              <div class="wrapper-img-fig-analysis shiny-plot-output">
+                <!--                  <button onmousedown="popview()">2</button>-->
+                <img class="img-fig-analysis" src="img/DE.jpg" alt="">
+              </div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">MA plot of Differential Expression genes</div>
+              <div class="img-fig-analysis"></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Normalized SizeFactors</div>
+              <div></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+        </ul>
+        <div class="option-analysis">
+          <div class="header-option-analysis">Options</div>
+          <h4 class="normData-option-analysis">Show normalized data&nbsp;
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="dispersionPlot-option-analysis">Show dispersion plot&nbsp&nbsp&nbsp
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="filter-option-analysis">Filter your dataset by</h4>
+          <hr>
+          <h4 class="condition-option-analysis">Select conditions to call DE genes</h4>
+          <div class="button-donwnload-DESeq ">Download
+          </div>
+        </div>
+      </div>
+      <!--edgeR-->
+      <div class="edgeR report-analysis none" id="method2">
+        <div class="title-report-anlysis">edgeR Analysis Report</div>
+        <ul class="content-report-anlysis">
+          <li>
+            <div class="figure-analysis table--DEgene-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Differential Genes Table</div>
+              <div class="img-fig-analysis">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <br>123</div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis plot--varianceEstimation-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Variance estimation</div>
+              <div class="wrapper-img-fig-analysis">
+                <!--                  <img class="img-fig-analysis" src="img/wN7nNUDhwUyggAAAABJRU5ErkJggg==.jpg" alt="">-->
+              </div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">MA plot of Differential Expression genes</div>
+              <div class="img-fig-analysis"></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Normalized SizeFactors</div>
+              <div></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+        </ul>
+        <div class="option-analysis">
+          <div class="header-option-analysis">Options</div>
+          <h4 class="normData-option-analysis">Show normalized data&nbsp;
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="dispersionPlot-option-analysis">Show dispersion plot&nbsp&nbsp&nbsp
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="filter-option-analysis">Filter your dataset by</h4>
+          <hr>
+          <h4 class="condition-option-analysis">Select conditions to call DE genes</h4>
+          <div class="button-donwnload-DESeq ">Download
+          </div>
+        </div>
+      </div>
+      <!--SAMseq-->
+      <div class="SAMseq report-analysis none" id="method3">
+        <div class="title-report-anlysis">SAMseq Analysis Report</div>
+        <ul class="content-report-anlysis">
+          <li>
+            <div class="figure-analysis table--DEgene-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Differential Genes Table</div>
+              <div class="img-fig-analysis">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <br>123</div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis plot--varianceEstimation-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Variance estimation</div>
+              <div class="wrapper-img-fig-analysis">
+                <!-- <img class="img-fig-analysis" src="img/wN7nNUDhwUyggAAAABJRU5ErkJggg==.jpg" alt=""> -->
+              </div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">MA plot of Differential Expression genes</div>
+              <div class="img-fig-analysis"></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Normalized SizeFactors</div>
+              <div></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+        </ul>
+        <div class="option-analysis">
+          <div class="header-option-analysis">Options</div>
+          <h4 class="normData-option-analysis">Show normalized data&nbsp;
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="dispersionPlot-option-analysis">Show dispersion plot&nbsp&nbsp&nbsp
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="filter-option-analysis">Filter your dataset by</h4>
+          <hr>
+          <h4 class="condition-option-analysis">Select conditions to call DE genes</h4>
+          <div class="button-donwnload-DESeq ">Download
+          </div>
+        </div>
+      </div>
+      <!--Poissonseq-->
+      <div class="Poissonseq report-analysis none" id="method4">
+        <div class="title-report-anlysis">Poissonseq Analysis Report</div>
+        <ul class="content-report-anlysis">
+          <li>
+            <div class="figure-analysis table--DEgene-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Differential Genes Table</div>
+              <div class="img-fig-analysis">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <br>123</div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis plot--varianceEstimation-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Variance estimation</div>
+              <div class="wrapper-img-fig-analysis">
+                <!-- <img class="img-fig-analysis" src="img/wN7nNUDhwUyggAAAABJRU5ErkJggg==.jpg" alt=""> -->
+              </div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">MA plot of Differential Expression genes</div>
+              <div class="img-fig-analysis"></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Normalized SizeFactors</div>
+              <div></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+        </ul>
+        <div class="option-analysis">
+          <div class="header-option-analysis">Options</div>
+          <h4 class="normData-option-analysis">Show normalized data&nbsp;
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="dispersionPlot-option-analysis">Show dispersion plot&nbsp&nbsp&nbsp
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="filter-option-analysis">Filter your dataset by</h4>
+          <hr>
+          <h4 class="condition-option-analysis">Select conditions to call DE genes</h4>
+          <div class="button-donwnload-DESeq ">Download
+          </div>
+        </div>
+      </div>
+      <!--NOISeq-->
+      <div class="NOISeq report-analysis none" id="method5">
+        <div class="title-report-anlysis">NOISeq Analysis Report</div>
+        <ul class="content-report-anlysis">
+          <li>
+            <div class="figure-analysis table--DEgene-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Differential Genes Table</div>
+              <div class="img-fig-analysis">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <br>123</div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis plot--varianceEstimation-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Variance estimation</div>
+              <div class="wrapper-img-fig-analysis">
+                <!-- <img class="img-fig-analysis" src="img/wN7nNUDhwUyggAAAABJRU5ErkJggg==.jpg" alt=""> -->
+              </div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">MA plot of Differential Expression genes</div>
+              <div class="img-fig-analysis"></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Normalized SizeFactors</div>
+              <div></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+        </ul>
+        <div class="option-analysis">
+          <div class="header-option-analysis">Options</div>
+          <h4 class="normData-option-analysis">Show normalized data&nbsp;
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="dispersionPlot-option-analysis">Show dispersion plot&nbsp&nbsp&nbsp
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="filter-option-analysis">Filter your dataset by</h4>
+          <hr>
+          <h4 class="condition-option-analysis">Select conditions to call DE genes</h4>
+          <div class="button-donwnload-DESeq ">Download
+          </div>
+        </div>
+      </div>
+      <!--DEGseq-->
+      <div class="DEGseq report-analysis none" id="method6">
+        <div class="title-report-anlysis">DEGseq Analysis Report</div>
+        <ul class="content-report-anlysis">
+          <li>
+            <div class="figure-analysis table--DEgene-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Differential Genes Table</div>
+              <div class="img-fig-analysis">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <br>123</div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis plot--varianceEstimation-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Variance estimation</div>
+              <div class="wrapper-img-fig-analysis">
+                <!-- <img class="img-fig-analysis" src="img/wN7nNUDhwUyggAAAABJRU5ErkJggg==.jpg" alt=""> -->
+              </div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">MA plot of Differential Expression genes</div>
+              <div class="img-fig-analysis"></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+          <li>
+            <div class="figure-analysis table--normalizedSizeFactor-analysis">
+              <span class="glyphicon glyphicon-search icon--fullView"></span>
+              <div class="title-fig-analysis">Normalized SizeFactors</div>
+              <div></div>
+              <div class="dicr-fig-analysis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum</div>
+            </div>
+          </li>
+        </ul>
+        <div class="option-analysis">
+          <div class="header-option-analysis">Options</div>
+          <h4 class="normData-option-analysis">Show normalized data&nbsp;
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="dispersionPlot-option-analysis">Show dispersion plot&nbsp&nbsp&nbsp
+          <input type="checkbox" name="my-checkbox" checked data-size=mini>
+          </h4>
+          <hr>
+          <h4 class="filter-option-analysis">Filter your dataset by</h4>
+          <hr>
+          <h4 class="condition-option-analysis">Select conditions to call DE genes</h4>
+          <div class="button-donwnload-DESeq ">Download
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Part 5-->
+  <div class="none" id="s5">
+    <div class="wrapper--scroll-panel">
+      <div>第五部分
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog test">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--lightbox-->
+        <!--
+        <a data-toggle="lightbox" href="#demoLightbox">Open Lightbox</a>
+        <div id="demoLightbox" class="lightbox fade" tabindex="-1" role="dialog" aria-hidden="true" resizeToFit="true" keyboard="true" backdrop="true">
+          <div class='lightbox-dialog'>
+            <div class='lightbox-content'>
+              <img src="/img/B)Z)~J%60_I5T0WAE9~~T@A$U.png">
+              <div class='lightbox-caption'>
+                Your caption here~~~
+              </div>
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+    </div>
+  </div>
+  <!--Part 6-->
+  <div class="none" id="s6">
+    <div class="wrapper--scroll-panel">
+      <div>第六部分
+        <a id="example6" data-rel="lightcase" title="test image popup">
+          <img src="../img/pic.gif" alt="hello">
+        </a>
+        <div id="timer" class="none">
+          <form>
+            <input type="button" value="开始计时！" onClick="timedCount()">
+            <input type="text" id="text-timer">
+          </form>
+        </div>
+        <a href="#timer" data-rel="lightcase" id="link-timer">22222222</a>
+        <div class="shiny-busy" id="testme">222</div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!-- <button type="button" id="">222</button> -->
+      </div>
+    </div>
+  </div>
+  <div class="none" id="s7"></div>
+  <div class="none" id="s8"></div>
+</body>
+</html>

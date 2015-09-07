@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Experiment Design</title>
+    </head>
+    <body>
+        <div id="step0">
+            <!-- <h1 class="page-header">
+            Introduction of Experiment Type
+            </h1> -->
+            <!-- <h3 class="page-header">
+            Before uploading the data, you should select the experiment type as
+            <strong>standard comparison</strong>, <strong>multi-factor designs</strong>, or <strong>without replicates</strong>
+            . You can try with the EXAMPLE data first.
+            </h3> -->
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-heading title-experiment">Standard Comparison</div>
+                <div class="panel-body">
+                    <p>
+                    The experiment with only one factor, several conditions and several replicates (example shown in Table 1-1).
+                    </p>
+                    <div align="center">
+                        <p>
+                        Table 1-1: Example of Standard Comparison
+                        </p>
+                        <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all>
+                            <tr style="border-color: #000000" align="center">
+                                <td width=100px height="20px" style="border-width: medium medium medium 0">
+                                </td>
+                                <td width=100px style="border-width: medium thin medium 0">
+                                    Conditions
+                                </td>
+                                <td colspan=2 width=150px style="border-width: medium thin medium 0">
+                                    Replication 1
+                                </td>
+                                <td colspan=2 width=150px style="border-width: medium thin medium 0">
+                                    Replication 2
+                                </td>
+                            </tr>
+                            <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                                <td style="border-width: 0 medium medium 0">
+                                    Factors
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    Viscera
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    Kidney
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    Liver
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    Kidney
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    Liver
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading title-experiment">
+
+                    Multi-factor Design
+                </div>
+                <div class="panel-body">
+                    <p>
+                    The experiment with several factors, conditions and replicates (example shown in Table 1-2).
+                    </p>
+                    <div align="center">
+                        <p>
+                        Table 1-2: Example of Multi-factor Design
+                        </p>
+                        <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all>
+                            <tr style="border-color: #000000" align="center">
+                                <td width=100px height="20px" style="border-width: medium medium medium 0">
+                                </td>
+                                <td width=100px style="border-width: medium thin medium 0">
+                                    Factors
+                                </td>
+                                <td colspan=2 width=150px style="border-width: medium thin medium 0">
+                                    Replication 1
+                                </td>
+                                <td colspan=2 width=150px style="border-width: medium thin medium 0">
+                                    Replication 2
+                                </td>
+                            </tr>
+                            <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                                <td rowspan=2 style="border-width: 0 medium medium 0">
+                                    Conditions
+                                </td>
+                                <td style="border-width: 0 thin thin 0">
+                                    Viscera
+                                </td>
+                                <td style="border-width: 0 thin thin 0">
+                                    Kidney
+                                </td>
+                                <td style="border-width: 0 thin thin 0">
+                                    Liver
+                                </td>
+                                <td style="border-width: 0 thin thin 0">
+                                    Kidney
+                                </td>
+                                <td style="border-width: 0 thin thin 0">
+                                    Liver
+                                </td>
+                            </tr>
+                            <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                                <td style="border-width: 0 thin medium 0">
+                                    Sex
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    Female
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    Male
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    Female
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    Male
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading title-experiment">
+                    Without Replicates (Not Recommended)
+                </div>
+                <div class="panel-body">
+                    <p>
+                    The experiment with no replicates (example shown in Table 1-3). Only some methods can be used to analyze the data without replicates, since it is necessary to assume the distribution form (negative binomial distribution or Poisson distribution) and the parameters based on empirical distribution.
+                    </p>
+                    <div align="center">
+                        <p>
+                        Table 1-3: Example of Without Replicates
+                        </p>
+                        <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all>
+                            <tr style="border-color: #000000" align="center">
+                                <td width=100px height="20px" style="border-width: medium medium medium 0">
+                                </td>
+                                <td width=100px style="border-width: medium thin medium 0">
+                                    Factors
+                                </td>
+                                <td colspan=2 width=150px style="border-width: medium thin medium 0">
+                                    Replication 1
+                                </td>
+                                
+                            </tr>
+                            <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                                <td rowspan=2 style="border-width: 0 medium medium 0">
+                                    Conditions
+                                </td>
+                                <td style="border-width: 0 thin thin 0">
+                                    Viscera
+                                </td>
+                                <td style="border-width: 0 thin thin 0">
+                                    Kidney
+                                </td>
+                                <td style="border-width: 0 thin thin 0">
+                                    Liver
+                                </td>
+                                
+                            </tr>
+                            <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                                <td style="border-width: 0 thin medium 0">
+                                    Sex
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    Female
+                                </td>
+                                <td style="border-width: 0 thin medium 0">
+                                    &nbspMale&nbsp
+                                </td>
+                                
+                            </tr>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+            <h3>
+            </h3>
+            
+            <!--  <h2>
+            File Format
+            </h2>
+            <p>
+            <ul>
+                <li>The format of the data file should be <strong>.csv</strong> or <strong>.txt</strong>. </li>
+                <li>Put <strong>Features</strong> as row and <strong>Samples</strong> column. </li>
+                <li><strong>Separator</strong> can be comma(,), semicolon(;) or tab</li>
+                <li>Use <strong>raw counts</strong> only</li>
+                <li>Each column should be an independent <strong>biological replicate</strong>. </li>
+                <li>See more details in <strong>example</strong> files.</li>
+            </ul>
+            </p> -->
+            <div class="panel panel-default">
+                <div class="panel-heading title-experiment">
+                    Package Availability
+                </div>
+                <div class="panel-body">
+                    <div align="center">
+                        <p>
+                            Table 1-4: Pacakge availability in three types of experiment designs
+                        </p>
+                        <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all>
+                            <tr align="center" style="border-color: #000000">
+                                <td style="border-width: medium medium medium 0"></td>
+                                <td style="border-width: medium thin medium 0">&nbsp;Single Comparison&nbsp;</td>
+                                <td style="border-width: medium thin medium 0">&nbsp;Multi-factor Design&nbsp;</td>
+                                <td style="border-width: medium thin medium 0">&nbsp;Without Replicate&nbsp;</td>
+                            </tr>
+                            <tr align="center" style="border-color: #000000">
+                                <td style="border-width: 0 medium thin 0">DESeq</td>
+                                <td style="border-width: 0 thin thin 0"><span class="glyphicon glyphicon-ok"></span></td>
+                                <td style="border-width: 0 thin thin 0"><span class="glyphicon glyphicon-ok"></span></td>
+                                <td style="border-width: 0 0 thin 0"><span class="glyphicon glyphicon-ok"></span></td>
+                            </tr>
+                            <tr align="center" style="border-color: #000000">
+                                <td style="border-width: 0 medium thin 0">edgeR</td>
+                                <td style="border-width: 0 thin thin 0"><span class="glyphicon glyphicon-ok"></span></td>
+                                <td style="border-width: 0 thin thin 0"><span class="glyphicon glyphicon-ok"></span></td>
+                                <td style="border-width: 0 0 thin 0"><span class="glyphicon glyphicon-ok"></span></td>
+                            </tr>
+                            <tr align="center" style="border-color: #000000">
+                                <td style="border-width: 0 medium thin 0">NOISeq</td>
+                                <td style="border-width: 0 thin thin 0"><span class="glyphicon glyphicon-ok"></span></td>
+                                <td style="border-width: 0 thin thin 0"><span class="glyphicon glyphicon-remove"></span></td>
+                                <td style="border-width: 0 0 thin 0"><span class="glyphicon glyphicon-ok"></span></td>
+                            </tr>
+                        </tr>
+                        <tr align="center" style="border-color: #000000">
+                            <td style="border-width: 0 medium thin 0">PoissonSeq</td>
+                            <td style="border-width: 0 thin thin 0"><span class="glyphicon glyphicon-ok"></span></td>
+                            <td style="border-width: 0 thin thin 0"><span class="glyphicon glyphicon-remove"></span></td>
+                            <td style="border-width: 0 0 thin 0"><span class="glyphicon glyphicon-remove"></span></td>
+                        </tr>
+                        <tr align="center" style="border-color: #000000">
+                            <td style="border-width: 0 medium medium 0">SAMseq (samr)</td>
+                            <td style="border-width: 0 thin medium 0"><span class="glyphicon glyphicon-ok"></span></td>
+                            <td style="border-width: 0 thin medium 0"><span class="glyphicon glyphicon-remove"></span></td>
+                            <td style="border-width: 0 0 medium 0"><span class="glyphicon glyphicon-remove"></span></td>
+                        </tr>
+                    </div>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+Sample,condition
+R1L1Kidney,condition_1
+R1L2Liver,condition_2
+R1L3Kidney,condition_3
+R1L4Liver,condition_4
+R1L6Liver,condition_5
+R1L7Kidney,condition_6
+R1L8Liver,condition_7
+R2L2Kidney,condition_8
+R2L3Liver,condition_9
+R2L6Kidney,condition_10

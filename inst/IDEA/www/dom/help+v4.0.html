@@ -1,0 +1,1158 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+   <!-- jQuery  -->
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <!-- meta -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!--CSS -->
+   <link href="css/main.css" rel="stylesheet" type="text/css">
+   <link href="css/layout.css" rel="stylesheet" type="text/css">
+   <link href="css/bootstrap.css" rel="stylesheet">
+   <link href="css/bootstrap-switch.css" rel="stylesheet">
+   <!-- <link href="css/bootstrap-lightbox.css" rel="stylesheet"> -->
+   <link rel="stylesheet" type="text/css" href="http://fonts.useso.com/css?family=Lobster">
+   <!-- <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
+   <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300|Titillium+Web|Dosis|Abel' rel='stylesheet' type='text/css'>
+   <!--JavaScript-->
+   <script type="text/javascript" src="js/main.js"></script>
+   <script type="text/javascript" src="js/debug.js"></script>
+   <script type="text/javascript" src="js/loadHtml.js"></script>
+
+   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="js/bootstrap-switch.js"></script>
+
+   <!--image popup-->
+   <link rel="stylesheet" type="text/css" href="css/lightcase.css" media="screen">
+   <script type="text/javascript" src="js/jquery.events.touch.js"></script>
+   <script type="text/javascript" src="js/lightcase.js"></script>
+   <!--title-->
+   <title>Help_v4.0</title>
+   <script>
+   </script>
+   <script type="text/javascript">
+      // $(document).ready(function () {
+
+       //   $(".def-nav,.info-i").hover(function () {
+       //     $(this).find(".pulldown-nav").addClass("hover");
+       //     $(this).find(".pulldown").show();
+       //   }, function () {
+       //     $(this).find(".pulldown").hide();
+       //     $(this).find(".pulldown-nav").removeClass("hover");
+       //   });
+
+       // });
+</script>
+<style type="text/css">
+/* Custom Styles */
+ul.nav-tabs{
+    width: 140px;
+    margin-top: 20px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+}
+ul.nav-tabs li{
+    margin: 0;
+    border-top: 1px solid #ddd;
+}
+ul.nav-tabs li:first-child{
+    border-top: none;
+}
+ul.nav-tabs li a{
+    margin: 0;
+    padding: 8px 16px;
+    border-radius: 0;
+}
+ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+    color: #fff;
+    background: #0088cc;
+    border: 1px solid #0088cc;
+}
+ul.nav-tabs li:first-child a{
+    border-radius: 4px 4px 0 0;
+}
+ul.nav-tabs li:last-child a{
+    border-radius: 0 0 4px 4px;
+}
+ul.nav-tabs.affix{
+    top: 30px; /* Set the top position of pinned element */
+}
+</style>
+</head>
+<body>
+    <h1>HELP!</h1>
+    <div id="hello">
+        <ul id="index" class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+            <li><a href="#0.intro">0.Introduction</a><br></li>
+            <li>
+                <a href="#1.new">1.Starting a New Analysis - "New"</a>
+                <ul>
+                    <li><a href="#1.1.introNew">1.1.Counts Data and Experiment Type</a></li>
+                    <li><a href="#1.2.upload">1.2.Uploading Data</a></li>
+                </ul></li>
+                <li><a href="#2.dataExp">2.Quality Control of Data - "Data"</a><ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul></li>
+                <li><a href="#3.analysis">3.Differential Expression Gene Analysis - "Analysis</a><ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul></li>
+                <li><a href="#4.inte">4.Integrative Analysis - "Integrate"</a><ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul></li>
+            </ul>
+            <p>
+                <a href="#0.intro">0.Introduction</a><br>
+                <a href="#1.new">1.Starting a New Analysis - "New"</a><br>
+                <a href="#1.1.introNew">1.1.Counts Data and Experiment Type</a><br>
+                <a href="#1.2.upload">1.2.Uploading Data</a><br>
+                <a href="#1.2.1.loadTable">1.2.1.Loading Read Counts Table</a><br>
+                <a href="#1.2.2.expType">1.2.2.Setting Experiment Design</a><br>
+                <a href="#1.2.3.preview">1.2.3.Previewing Data Information</a><br>
+                <a href="#2.dataExp">2.Quality Control of Data - "Data"</a><br>
+                <a href="#2.1.introData">2.1.Introduction to Normalization, Data Exploration and Quality Control</a><br>
+                <a href="#2.2.setData">2.2.Setting up</a><br>
+                <a href="#2.2.1.setNorm">2.2.1.Setting Normalization Parameters</a><br>
+                <a href="#2.2.2.setFig">2.2.2.Customizing Visualization Figures and Tables</a><br>
+                <a href="#2.3.resultData">2.3.Interpreting Figures and Tables</a><br>
+                <a href="#2.3.1.distribution">2.3.1.Data Distribution</a><br>
+                <a href="#2.3.1.1.box">2.3.1.1.Sample Boxplot</a><br>
+                <a href="#2.3.1.2.density">2.3.1.2.Stacked Density Plot</a><br>
+                <a href="#2.3.1.3.bar">2.3.1.3.Ratio Bar Plot</a><br>
+                <a href="#2.3.2.distance">2.3.2.Sample Distance</a><br>
+                <a href="#2.3.2.1.heatmap">2.3.2.1.Heatmap of Sample Distance</a><br>
+                <a href="#2.3.2.2.pca">2.3.2.2Principal Component Analysis</a><br>
+                <a href="#2.3.2.3.correlation">2.3.2.3.Corrrelation Analysis</a><br>
+                <a href="#2.3.3.query">2.3.3.Gene Query</a><br>
+                <a href="#3.analysis">3.Differential Expression Gene Analysis - "Analysis</a><br>
+                <a href="#3.1.introAnalysis">3.1.Introduction to Differential Expression Analysis</a><br>
+                <a href="#3.1.a">3.1.a.Class A: Negative Binomial Distribution</a><br>
+                <a href="#3.1.a.1.edger">3.1.a.1.edgeR</a><br>
+                <a href="#3.2.a.2.deseq">3.1.a.2.deseq</a><br>
+                <a href="#3.1.b">3.1.b.Class B: Non Negative Biomial Distribution</a><br>
+                <a href="#3.1.b.1.noiseq">3.1.b.1.NOISeq</a><br>
+                <a href="#3.1.b.2.samseq">3.1.b.2.SAMseq</a><br>
+                <a href="#3.1.b.3.poissonseq">3.1.b.3.PoissonSeq</a><br>
+                <a href="#3.2.setAnalysis">3.2.Setting up</a><br>
+                <a href="#3.2.1.setPkg">3.2.1.Selecting Package</a><br>
+                <a href="#3.2.2.setAdv">3.2.2.Advanced Settings</a><br>
+                <a href="#3.3.resultAnalysis">3.3.Interpreting Figures and Tables</a><br>
+                <a href="#3.3.1.common">3.3.1.Common Visualization</a><br>
+                <a href="#3.3.1.1.ma">3.3.1.1.MA-Plot</a><br>
+                <a href="#3.3.1.2.normSizeFactor">3.3.1.2.Normalized Size Factors</a><br>
+                <a href="#3.3.1.3.vol">3.3.1.3.Volcano Plot</a><br>
+                <a href="#3.3.1.4.heatmap">3.3.1.4.Heatmap of Differential Expressed Genes</a><br>
+                <a href="#3.3.1.5.fdr">3.3.1.5.FDR Distribution Plot</a><br>
+                <a href="#3.3.2.spec">3.3.2.Package specified Visualization</a><br>
+                <a href="#3.3.2.1.deseqDE">3.3.2.1.Differential Genes Table (DESeq)</a><br>
+                <a href="#3.3.2.2.deseqVarEst">3.3.2.1.Variance Estimation (DESeq)</a><br>
+                <a href="#3.3.2.3.edgerDE">3.3.2.3.Differential Genes Table (edgeR)</a><br>
+                <a href="#3.3.2.4.edgerVarEst">3.3.2.4.Variance estimation (edgeR)</a><br>
+                <a href="#3.3.2.5.noiseqDE">3.3.2.5.Differential Expression Analysis Result (NOISeq)</a><br>
+                <a href="#3.3.2.6.poissonseqDE">3.3.2.6.Differential Expression Analysis Result (PoissonSeq)</a><br>
+                <a href="#3.3.2.7.poissonseqPower">3.3.2.7.Power Curve (PoissonSeq)</a><br>
+                <a href="#3.3.2.8.samseqDE">3.3.2.8.Differential Expression Analysis Result (SAMSeq)</a><br>
+                <a href="#3.3.2.9.samseqFit">3.3.2.9.Fit Plots (SAMSeq)</a><br>
+                <a href="#3.4.downAnalysis">3.4.Downloading Analysis Report</a><br>
+                <a href="#4.inte">4.Integrative Analysis - "Integrate"</a><br>
+                <a href="#4.1.introInte">4.1.Introduction to Integrative Analysis of Genes</a><br>
+                <a href="4.2.setInte">4.2.Setting up</a><br>
+                <a href="#4.2.1.setPkg">4.2.1.Choosing Packages for Integrative Analysis</a><br>
+                <a href="#4.2.2.setFig">4.2.2.Customizing Visualization Figures and Tables</a><br>
+                <a href="#4.3.resultInte">4.3.Interpreting Figures and Tables</a><br>
+                <a href="#4.3.1.bar">4.3.1.Bar Plot of Feature Counts</a><br>
+                <a href="#4.3.2.venn">4.3.2.Venn Plot of Differential Expression Genes</a><br>
+                <a href="#4.3.3.table">4.3.3.Feature Weight Table</a><br>
+                <a href="#4.4.downInte">4.4.Downloading Integrative Analysis Report</a><br>
+
+            </p>
+            <h2><a name="0.intro">Introduction</a> </h2>
+            <div>
+                <p>
+                    IDEA, full name as "Interactive Differential Expression Analyzer", is an online analysis and visualization platform for differential gene expression analysis of reads count data on foundation of R, Shiny and JavaScript. In IDEA, five R packages, DESeq, EdgeR, SAMSeq, PoissonSeq and NOISeq are provided for counts data analysis.
+                </p>
+                <p>
+                    The function of this app is divided into "Data Exploration", "Analysis" and "Integrative Analysis" three modules. In "Data Exploration", the input data can be normalized, and several figures, such as PCA and Boxplot, are provided to reveal the characteristic of the data. These analyses can help to estimate the data quality. For "Analysis", the five packages are provided to estimate the differential expression of features. Certain tables and figures of each package can give a clear and visual result of the estimation. The last part "Integrative Analysis" synthesizes the results of each package and makes a comparison, providing an easier way to obtain the result of differential expression features.
+                </p>
+                <p>
+                    This document is a step-by-step guidance and instruction of IDEA, and follows the order of operations.
+                </p>
+            </div>
+            <h2><a name="1.new">Starting a New Analysis - "New"</a></h2>
+            <h3><a name="1.1.introNew">Counts Data and Experiment Type</a></h3>
+            <div>
+                <p>
+                    In this module, users need to choose the experiment type and upload the data in specific format. Here we provide an example dataset. By clicking <strong>Example</strong>, you will see the data information of the example. The design matrix and count matrix data of the example is available for download on the second and third page in this module respectively.
+                </p>
+                <div align="center">
+                    <img src="1.2.1-1expType" />
+                    <p>
+                        Figure 1.1 Experiment Type Select Panel
+                    </p>
+                </div>
+                <p>
+                    For experiment types, IDEA can work with 3 kinds of experiment types: experiment with standard comparison, experiment of multi-factor design and experiment with no replicates (NOT RECOMMANED).
+                </p>
+            </div>
+            <!--Standard Comprison-->
+            <div>
+                <p>
+                    <strong>"Standard Comparison"</strong> supports experiments with only one factor, several conditions and several replicates (example shown in Table 2.1-1).
+                </p>
+                <!----Table of SC-->
+                <div align="center">
+                    <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all>
+                        <tr style="border-color: #000000" align="center">
+                            <td width=100px height="20px" style="border-width: medium medium medium 0">
+                            </td>
+                            <td width=100px style="border-width: medium thin medium 0">
+                                Conditions
+                            </td>
+                            <td colspan=2 width=150px style="border-width: medium thin medium 0">
+                                Replication 1
+                            </td>
+                            <td colspan=2 width=150px style="border-width: medium thin medium 0">
+                                Replication 2
+                            </td>
+                        </tr>
+                        <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                            <td style="border-width: 0 medium medium 0">
+                                Factors
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Viscera
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Kidney
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Liver
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Kidney
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Liver
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        Table 2.1-1 Example of Standard Comparison
+                    </p>
+                </div>
+            </div>
+            <!--Multi-factors Design-->
+            <div>
+                <p>
+                    <strong>"Multi-factors Design"</strong> supports experiments with several factors, conditions and replicates (example shown in Table 2.1-2).
+                </p>
+                <!----Table of MfD-->
+                <div align="center">
+                    <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all>
+                        <tr style="border-color: #000000" align="center">
+                            <td width=100px height="20px" style="border-width: medium medium medium 0">
+                            </td>
+                            <td width=100px style="border-width: medium thin medium 0">
+                                Factors
+                            </td>
+                            <td colspan=2 width=150px style="border-width: medium thin medium 0">
+                                Replication 1
+                            </td>
+                            <td colspan=2 width=150px style="border-width: medium thin medium 0">
+                                Replication 2
+                            </td>
+                        </tr>
+                        <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                            <td rowspan=2 style="border-width: 0 medium medium 0">
+                                Conditions
+                            </td>
+                            <td style="border-width: 0 thin thin 0">
+                                Viscera
+                            </td>
+                            <td style="border-width: 0 thin thin 0">
+                                Kidney
+                            </td>
+                            <td style="border-width: 0 thin thin 0">
+                                Liver
+                            </td>
+                            <td style="border-width: 0 thin thin 0">
+                                Kidney
+                            </td>
+                            <td style="border-width: 0 thin thin 0">
+                                Liver
+                            </td>
+                        </tr>
+                        <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                            <td style="border-width: 0 thin medium 0">
+                                Sex
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Female
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Male
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Female
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Male
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        Table 2.1-2 Example of Multi-Factors Design
+                    </p>
+                </div>
+            </div>
+            <!--Withou Replicate-->
+            <div>
+                <p>
+                    <strong>Without Replicates</strong> supports experiments with no biological replicates (example shown in Table 2.1-3). Not all methods are applicable to analyze the data without replicates, since it is necessary to assume the distribution form (negative binomial distribution or Poisson distribution) and the parameters based on empirical.
+                </p>
+                <!----Table of WR-->
+                <div align="center">
+                    <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all>
+                        <tr style="border-color: #000000" align="center">
+                            <td width=100px height="20px" style="border-width: medium medium medium 0">
+                            </td>
+                            <td width=100px style="border-width: medium thin medium 0">
+                                Factors
+                            </td>
+                            <td colspan=2 width=150px style="border-width: medium thin medium 0">
+                                Replication 1
+                            </td>
+                        </tr>
+                        <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                            <td rowspan=2 style="border-width: 0 medium medium 0">
+                                Conditions
+                            </td>
+                            <td style="border-width: 0 thin thin 0">
+                                Viscera
+                            </td>
+                            <td style="border-width: 0 thin thin 0">
+                                Kidney
+                            </td>
+                            <td style="border-width: 0 thin thin 0">
+                                Liver 
+                            </td>                
+                        </tr>
+                        <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                            <td style="border-width: 0 thin medium 0">
+                                Sex
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Female
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                &nbspMale&nbsp
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        Table 1-3 Example of Without Replicates
+                    </p>
+                </div>
+            </div>    
+            <h3><a name="1.2.upload">Uploading Data</a></h3>
+            <h4><a name="1.2.1.loadTable">Loading Read Counts Table</a></h4>
+            <div>
+                <p>
+                    The data matrix should be in <strong>.csv</strong> or <strong>.txt</strong> format, with genes as row and samples as column, and upload <strong>raw counts</strong> only. 
+                </p>
+                <p>
+                    If you check the "Header" box, the first row and column of the matrix will be considered the header by default. For "Separator", it is accessible to use either comma (,), semicolon (;) or tab (tabular). If your data has quote, choose the "Quote" option precisely, otherwise, choose "None". 
+                </p>
+                <p>
+                    Also, it is optional to input the "gene length file" with features names as column1 and the length as column2, the header and separator should be the same as the countable.
+                </p>
+                <div align="center">
+                    <img src="1.2.expTypeExample" />
+                    <p>
+                        Figure 1.2.1-2 Data Uploading Panel
+                    </p>
+                </div>
+            </div>
+            <h4><a name="1.2.2.expType">Setting Experiment Design</a></h4>
+            <div>
+                The conditions of the experiment should also be uploaded as .csv or .txt format, and the input matrix will automatically appear on the page. For multi-condition experiment, choose only two compared conditions to call differential expression genes, or by default, the first two conditions will be chosen as the compared conditions. In Multi-factor Design, select one factor as the variable of interest.
+                <div align="center">
+                    <img src="1.2.2.interestFactor" />
+                    <p>
+                        Figure 1.2.2 Interest Factor
+                    </p>
+                </div>
+            </div>
+            <h4><a name="1.2.3.preview">Previewing Data Information</a></h4>
+            <div>
+                <p>
+                    The Data Information Table shows the read counts table uploaded earlier. The order of the table can be changed by clicking the  header of the column. The number of the features shown on each page is also changeable on the top left.    
+                </p>
+                <div align="center">
+                    <img src="1.2.3.dataInfoTable" />
+                    <p>
+                        Figure 1.2.3 Data Information Table
+                    </p>    
+                </div>
+            </div>
+            <h2><a name="2.dataExp">Data Exploration - "Data"</a></h2>
+            <h3><a name="2.1.introData">Introduction to Normalization, Data Exploration and Quality Control</a></h3>
+            <div>
+                <p>
+                    The "Data" module does the job of data normalization, data exploration and quality control. 
+                </p>
+                <p>
+                    The process of normalization attempts to settle the problem of various factors (nucleotide composition of genes, library preparation and sequencing platform etc.) which can bring bias into number of reads in RNA-Seq data.  3 methods are provided to normalize sample data (Table 2-1). 
+                </p>
+                <div align="center">
+                    <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all>
+                        <tr style="border-color: #000000" align="center">
+                            <td style="border-width: medium medium medium 0">
+                                Abbreviation
+                            </td>
+                            <td width=200px style="border-width: medium thin medium 0">
+                                Full Name
+                            </td>
+                            <td width=500px style="border-width: medium thin medium 0">
+                                Method Details
+                            </td>
+                        </tr>
+                        <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                            <td style="border-width: 0 medium thin 0">
+                                RPKM
+                            </td>
+                            <td style="border-width: 0 thin thin 0">
+                                Reads Per Kilo Base per Million Reads
+                            </td>
+                            <td align="left" style="border-width: 0 thin thin 0">
+                                Divide gene count by the total number of reads in each library or mapped reads
+                            </td>
+                        </tr>
+                        <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                            <td style="border-width: 0 medium thin 0">
+                                UQ
+                            </td>
+                            <td style="border-width: 0 thin thin 0">
+                                Upper Quartile
+                            </td>
+                            <td align="left" style="border-width: 0 thin thin 0">
+                                Sum gene counts up to the upper 25% quartile to normalize
+                            </td>
+                        </tr>
+                        <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                            <td style="border-width: 0 medium medium 0">
+                                TMM
+                            </td>
+                            <td style="border-width: 0 thin medium 0">
+                                Trimmed Mean of M
+                            </td>
+                            <td align="left" style="border-width: 0 thin medium 0">
+                                Compute a scaling factor as weighted means of log ratios between two experiments after excluding most expressed and genes that have large log ratios  in expression
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        Table 2.1 Abbreviation, full name and method details of normalization methods
+                    </p>
+                </div>
+                <p>
+                    In "Data", we provide 7 figures helping users analyze the quality of data, and the data distribution as well as sample distance can easily be seen through these figures. The detail of every figure is given below and a corresponding short tip is also provided on the app webpage.
+                </p>
+            </div>
+            <h3><a name="2.2.setData">Setting up</a></h3>
+            <h4><a name="2.2.1.setNorm">Setting Normalization Parameters</a></h4>
+            <div>
+                <p>
+                    hoose the normalization method on the panel before doing anything else. If normalization is unnecessary, choose "None".
+                </p>
+                <div align="center">
+                    <img src="2.2.1.normPanel" />
+                    <p>
+                        Figure 2.1 Normalization Panel
+                    </p>
+                </div>
+            </div>
+            <h4><a name="2.2.2.setFig">Customizing Visualization Figures and Tables</a></h4>
+            <div>
+                <p>
+                    Different figures and tables may have specific settings. See more options and instructions in particular charts.
+                </p>
+            </div>
+            <h3><a name="2.3.resultData">Interpreting Figures and Tables</a></h3>
+            <h4><a name="2.3.1.distribution">Data Distribution</a></h4>
+            <h5><a name="2.3.1.1.box">Sample Boxplot</a></h5>
+            <div>
+                <p>
+                    Samples boxplot visualizes count distribution for all samples, showing features in expression distribution in each sample. It uses expression values as y-axis and samples as x-axis. 
+                </p>
+                <div align="center">
+                    <img src="2.3.1.1.box" />
+                    <p>
+                        Figure 2.3.1.1 Expression distribution of all samples
+                    </p>
+                </div>
+            </div>
+            <h5><a name="2.3.1.2.density">Stacked Density Plot</a></h5>
+            <div>
+                <p>
+                    Stacked density plot visualizes density distribution of genes with different reads count, showing overall condition of RNA-Seq data normalized (or not, as selected by user) expression value. It also enables interactive comparison of density distribution between groups. The x-axis is defined as logarithmic scale (base 10) of (normalized reads count + 1) to avoid NA values, and the y-axis is defined as density of calculated logarithm.  Click the input box and all the samples will show for option. 
+                </p>
+                <div align="center">
+                    <img src="2.3.1.2.stackedDensity" />
+                    <p>
+                        Figure 2.3.1.2 Normalized expression level distribution for genes in selected samples
+                    </p>
+                </div>
+            </div>
+            <h5><a name="2.3.1.3.bar">Ratio Bar Plot</a></h5>
+            <div>
+                <p>
+                    Ratio bar plot visualizes distribution of counts in each samples using stacked bar. Low counts may introduce noise and interfere extraction of differential expression of features. This plot groups genes in each sample by having more than 0 reads, or more than 1, 2, 5, 10 reads, and uses samples as x-axis, sensitivity (proportion of groups in each sample) as y-axis.
+                </p>
+                <div align"center">
+                    <img src="2.3.1.3.ratioBar" />
+                    <p>
+                        Figure 2.3.1.3 Ratio of genes with low counts for each sample
+                    </p>
+                </div>
+            </div>
+            <h4><a name="2.3.2.distance">Sample Distance</a></h4>
+            <h5><a name="2.3.2.1.heatmap">Heatmap of Sample Distance</a></h5>
+            <div>
+                <p>
+                    The heatmap of sample distance visualizes the Euclidean distance (see the formula below) between the samples which are calculated from the "regularized log transformation", and an overview of similarities between samples is given by this heatmap. In addition, the samples are hierarchically clustered represented with a dendrogram. The heatmap color can be changed on the panel.
+                </p>
+                <p>
+                    The Euclidean distance is as:
+                    <div align="center">
+                        <img src="2.3.2.1.eqSampleDistance" />
+                    </div>
+                    , where qi and pi means the normalized counts of the two samples.
+                    <div align="center">
+                        <img src="2.3.2.1.heat" />
+                        <p>
+                            Figure 2.3.2.1 Heatmap of sample distance
+                        </p>
+                    </div>
+                </p>
+            </div>
+            <h5><a name="2.3.2.2.pca">Principal Component Analysis</a></h5>
+            <div>
+                <p>
+                    A principal component analysis (PCA) plot visualizes the affection of the first two principal components. It is drawn by scatter plot showing samples as dots, which are colored by their groups/conditions. Basically, PCA is for reducing the dimension of data. Here a 2-dimension eigenvector is generated using package FactoMineR. In the plot, x-axis and y-axis represent the first two principal components separately.
+                </p>
+                <div align="center">
+                    <img src="2.3.2.2.pcaFigure" />
+                    <p>
+                        Figure 2.3.2.1 Principal Component Analysis (PCA) plot
+                    </p>
+                </div>
+            </div>
+            <h5><a name="2.3.2.3.correlation">Corrrelation Analysis</a></h5>
+            <div>
+                <p>
+                    With scatter plot, the correlation analysis visualizes feature expression correlation between two selected samples. Generally, samples from biological/technical replicates are likely to display high correlation, and samples from different conditions in experiment design usually give a poor correlation. Thus examining correlation between samples can give a hint of their relationship. To avoid NA, x-axis and y-axis are defined as: log10(NormalizedReadsCount+1)"Normalized Reads Count" stands for the normalized data of the uploaded data(or not, as selected by user).
+                </p>
+                <p>
+                    Spearman&#39s correlation is calculated by function <em>cor</em> in package stats. Each feature is visualized as a single black dot in figure. For selected two samples, Spearman correlation coefficient is calculated as:
+
+                    <div align="center">
+                        <img src="2.3.2.3.eqSpearman" />
+                    </div>
+                    , where <em>p</em> and <em>q</em> stand for the two samples, <img src="2.3.2.3.eqSpearmanPi" /> and <img src="2.3.2.3.eqSpearmanQi" /> represent converted ranks of <img src="2.3.2.3.eqSpearmanpi" /> and <img src="2.3.2.3.eqSpearmanpi" />, <img src="2.3.2.3.eqSpearmanPbar" /> and <img src="2.3.2.3.eqSpearmanQbar" /> is the average value of <img src="2.3.2.3.eqSpearmanPi" /> and <img src="2.3.2.3.eqSpearmanQi" />.
+                </p>
+                <p>
+                    Spearman&#39s correlation coefficient is shown as digits on webpage in module of correlation analysis. 
+                </p>
+                <div align="center">
+                    <img src="2.3.2.3.corScatter" />
+                    <p>
+                        Figure 2-7 Scatter plot and correlation analysis between gene expression levels in R1L1Kidney and R1L2Liver
+                    </p>
+                </div>
+            </div>
+            <h4><a name="2.3.3.query">Gene Query</a></h4>
+            <div>
+                <p>
+                    A histogram with error bar visualizes the comparison result of expression level of a certain gene, selected by user, in different condition. The x-axis stands for applicable conditions and y-axis stands for normalized reads (or not).
+                </p>
+                <div align="center">
+                    <img src="2.3.3.queryHisto" />
+                    <p>
+                        Figure 2.3.3 Expression level comparison of feature ENSG00000177757
+                    </p>
+                </div>
+            </div>
+            <h3><a name="2.4.downData">Downloading Data Exploration Report</a></h3>
+            <div>
+                <p>
+                    The whole report of data and every chart can be downloaded on the panel.
+                </p>
+            </div>
+            <h2><a name="3.analysis">Differential Expression Gene Analysis - "Analysis"</a></h2>
+            <h3><a name="3.1.introAnalysis">Introduction to Differential Expression Analysis</a></h3>
+            <div>
+                <p>
+                    In IDEA, we provide five methods for analyzing differential expression of genes. Here we simply introduce the basic feature of every method. Class A are the packages using negative binomial distribution as models and Class B are the packages using nonparametric method. The summary table is given below (Table 3-1).
+                </p>
+            </div>
+            <h4><a name="3.1.a">Class A: Negative Binomial Distribution</a></h4>
+            <h5><a name="3.1.a.1.edger">edgeR</a></h5>
+            <div>
+                <p>
+                    edgeR adopts a quartile-adjusted conditional maximum likelihood estimator to determine overdispersion parameters in negative binomial distribution, which has improved performance than standard maximum likelihood estimator, especially when there are few replicates per condition. Dispersion parameters are later refined by adjusting towards a consensus value using cross-transcript information via empirical Bayes procedure. Differentially expressed genes are validated by an exact test to determine if read counts under different conditions fit the same negative binomial distribution.
+                </p>
+            </div>
+            <h5><a name="3.2.a.2.deseq">DESeq</a></h5>
+            <div>
+                <p>
+                    DESeq takes all transcripts with similar expression values into consideration to determine overdispersion parameters in different conditions, assuming that overdispersion is related to mean read count. Differentially expressed genes are validated by an exact test between means of distribution parameters in two conditions for equality. In IDEA, DESeq has last updated to DESeq2 (1.6.2).
+                </p>
+            </div>
+            <h4><a name="3.1.b">Class B: Non Negative Binomial Distribution</a></h4>
+            <h5><a name="3.1.b.1.noiseq">NOISeq</a></h5>
+            <div>
+                <p>
+                    NOISeq takes both the log fold change and absolute difference of read counts between two conditions into consideration. All pairs of replicates are calculated to determine empirical distribution functions. Differentially expressed genes are identified by a small P-value in both the log fold change and the absolute difference in read counts.
+                </p>
+            </div>
+            <h5><a name="3.1.b.2.samseq">SAMseq</a></h5>
+            <div>
+                <p>
+                    SAMSeq carries out Wilcoxon test between transcript counts under two different conditions, followed by subsampling for normalization. To obtain significant differential expression, higher number of samples per condition is required.
+                </p>
+            </div>
+            <h5><a name="3.1.b.3.poissonseq">PoissonSeq</a></h5>
+            <div>
+                <p>
+                    PoissonSeq transforms read counts to fit into Poisson log-linear model, and then calculates the significance of differential expression between different conditions using a score statistic on model parameters.
+                </p>
+            </div>
+            <div align="center">
+                <table cellspacing="0" cellpadding="5" border="1" frame=hsides rules=all>
+                    <tbody style="border-color: #000000">
+                        <tr class="firstRow" align="center">
+                            <td width="50" style="border-width: medium medium medium 0px">Package</td>
+                            <td width="50" style="border-width: medium thin medium 0">Version</td>
+                            <td width="150" style="border-width: medium thin medium 0">Normalization (default)</td>
+                            <td width="200" style="border-width: medium thin medium 0">Model of Reads Count Distribution</td>
+                            <td width="200" style="border-width: medium thin medium 0">Differential Expression Test</td>
+                            <td width="200" style="border-width: medium thin medium 0">FDR Control</td>
+                            <td width="100" style="border-width: medium thin medium 0">Standard Comparison</td>
+                            <td width="100" style="border-width: medium thin medium 0">Multi-factor Design</td>
+                            <td width="100" style="border-width: medium thin medium 0">Without Replicates</td>
+                        </tr>            
+                        <tr align="center">
+                            <td style="border-width: 0 medium thin 0">DESeq2</td>
+                            <td style="border-width: 0 thin thin 0">1.6.2</td>
+                            <td style="border-width: 0 thin thin 0">sizeFactors</td>
+                            <td rowspan="2" style="border-width: 0 thin medium 0">Negative binomial distribution</td>
+                            <td style="border-width: 0 thin thin 0">Wald test, LRT</td>
+                            <td rowspan="2" style="border-width: 0 thin medium 0">Benjamini-Hochberg procedure</td>
+                            <td style="border-width: 0 thin thin 0">1</td>
+                            <td style="border-width: 0 thin thin 0">1</td>
+                            <td style="border-width: 0 0 thin 0">1</td>
+                        </tr>
+                        <tr align="center">
+                            <td style="border-width: 0 medium medium 0">edgeR</td>
+                            <td style="border-width: 0 thin medium 0">3.8.3</td>
+                            <td style="border-width: 0 thin medium 0">TMM</td>                               
+                            <td style="border-width: 0 thin medium 0">Fisher's exact test</td>
+                            <td style="border-width: 0 thin medium 0">1</td>
+                            <td style="border-width: 0 thin medium 0">1</td>
+                            <td style="border-width: 0 0 medium 0">1</td>
+                        </tr>
+                        <tr align="center">
+                            <td style="border-width: 0 medium thin 0">NOISeq</td>
+                            <td style="border-width: 0 thin thin 0">2.8.0</td>
+                            <td style="border-width: 0 thin thin 0">RPKM</td>
+                            <td style="border-width: 0 thin thin 0">Nonparametric method</td>
+                            <td style="border-width: 0 thin thin 0"><em>P</em>-value for empirical distributions</td>
+                            <td style="border-width: 0 thin thin 0">Not applicatable</td>
+                            <td style="border-width: 0 thin thin 0">1</td>
+                            <td style="border-width: 0 thin thin 0">0</td>
+                            <td style="border-width: 0 0 thin 0">1</td>
+                        </tr>
+                        <tr align="center">
+                            <td style="border-width: 0 medium thin 0">PoissonSeq</td>
+                            <td style="border-width: 0 thin thin 0">1.1.2</td>
+                            <td style="border-width: 0 thin thin 0">Goodness-of-fit estimate</td>
+                            <td style="border-width: 0 thin thin 0">Poisson distribution</td>
+                            <td style="border-width: 0 thin thin 0">Score statistics</td>
+                            <td rowspan="2" style="border-width: 0 thin medium 0">A permutation plug-in approach</td>
+                            <td style="border-width: 0 thin thin 0">1</td>
+                            <td style="border-width: 0 thin thin 0">0</td>
+                            <td style="border-width: 0 0 thin 0">0</td>
+                        </tr>
+                        <tr align="center">
+                            <td style="border-width: 0 medium medium 0">SAMseq<br>(samr)</td>
+                            <td style="border-width: 0 thin medium 0">2.0</td>
+                            <td style="border-width: 0 thin medium 0">Subsampling method</td>
+                            <td style="border-width: 0 thin medium 0">Nonparametric method</td>
+                            <td style="border-width: 0 thin medium 0">Wilcoxon test</td>
+                            <td style="border-width: 0 thin medium 0">1</td>
+                            <td style="border-width: 0 thin medium 0">0</td>
+                            <td style="border-width: 0 0 medium 0">0</p></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    Table 3-1 Summary of package<br>
+                    [1] TMM: Trimmed Mean of M values<br>
+                    [2] RPKM: reads per kilo base per million mapped reads
+                </p>
+            </div>
+            <h3><a name="3.2.setAnalysis">Setting up</a></h3>
+            <h4><a name="3.2.1.setPkg">Selecting Package</a></h4>
+            <div>
+                <p>
+                   Confirm your experiment type. The multi-factors design can only use DESeq2 and edger packages, the PoissonSeq or SAMseq is not available for experiment with no replicates. 
+               </p>
+               <p>
+                Click the icon of one package and click <img src="3.2.goButton" />, the charts of this package will show on the page. 
+            </p>
+            <div align="center">
+                <img src="3.2.methods" />
+                <p>
+                    Figure 3.2 Method Select Panel
+                </p>
+            </div>
+        </div>
+        <h4><a name="3.2.2.setAdv">Advanced Settings</a></h4>
+        <div>
+
+        </div>
+        <h3><a name="3.3.resultAnalysis">Interpreting Figures and Tables</a></h3>
+        <h4><a name="3.3.1.common">Common Visualization</a></h4>
+        <div>
+            <p>
+                The figures and tables lay out below are available in all the packages.
+            </p>
+        </div>
+        <h5><a name="3.3.1.1.ma">MA-Plot</a></h5>
+        <div>
+            <p>
+                In MA-Plot, the data is been transformed onto the M (fold change or log ratio) and A (average expression of a gene) scale, which can give users a quick overview of the distribution of data. In IDEA, the log2–transformed fold change is plotted on the y-axis and the average count (normalized by size factors) is on the x-axis. The false discovery rate (FDR) threshold can be changed, and the genes are colored red if the adjusted p-value is less than the FDR, while other genes are colored blue.
+            </p>
+            <div>
+                <img src="3.3.1.1.maFig" />
+                <p>
+                    Figure 3.3.1.1 MA-plot
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.1.2.normSizeFactor">Normalized Size Factors</a></h5>
+        <div>
+            <p>
+                Since different samples may have different sequencing depth, it is necessary to put every count value to a common scale in order to make them comparable. This work is done by estimating the relative size factors of each sample, then divide the samples by the size factors separately.
+            </p>
+            <p>
+                In the table, group represents conditions, lib.size represents size of the library, norm.factors is the normalized size factors. The number of rows of genes to view is changeable.
+            </p>
+            <div align="center">
+                <img src="3.3.1.2.normSizeFactorTable" />
+                <p>
+                    Table 3.3.1.2 Table of Normalized Size Factors
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.1.3.vol">Volcano Plot</a></h5>
+        <div>
+            <p>
+                An overview of the number of differential expression genes can be shown in the volcano plot. Volcano plot is a scatter plot with log2-transformed fold change  on the x-axis, and the y-axis represents the–log10-transformed p-value. The threshold of both axes can be changed. Highly differential expressed genes are colored blue, while others are in red.
+            </p>
+            <div align="center">
+                <img src="3.3.1.3.volFig" />
+                <p>
+                    Figure 3.3.1.3 Volcano Plot
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.1.4.heatmap">Heatmap of Differential Expressed Genes</a></h5>
+        <div>
+            <p>
+                By using a color scale, heatmap can display the expression values of the genes, and every rectangle represents one gene – sample pair. By default, we display the 30 most highly expressed genes and his number is changeable. In this heatmap, features are arranged in columns (samples) and rows (genes) as in the original data matrix. The color represents the log2-transformed RPKM+1.
+            </p>
+            <div align="center">
+                <img src="3.3.1.4.heatmapFig" />
+                <p>
+                    Figure 3.3.1.4 Heatmap of differential expression genes
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.1.5.fdr">FDR Distribution Plot</a></h5>
+        <div>
+            <p>
+                FDR distribution plot visualizes distribution of FDR or P-value in differential expression test provided in analysis packages using histogram plot. It uses FDR or P-value as x-axis and percentage of different groups of x value as y-axis, and colors significant and not significant groups differently. Additionally, NOISeq doesn&#39t have FDR distribution plot.
+            </p>
+            <div align="center">
+                <img src="3.3.1.5.fdrFig" />
+                <p>
+                    Figure 3.3.1.5 FDR Distribution Plot
+                </p>
+            </div>
+        </div>
+        <h4><a name="3.3.2.spec">Package specified Visualization</a></h4>
+        <h5><a name="3.3.2.1.deseqDE">Differential Genes Table (DESeq)</a></h5>
+        <div>
+            <p>
+                The interpretation of the columns is shown in the table.
+            </p>
+            <div align="center">
+                <table cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
+                    <tr>
+                        <td style="border-width: medium thin medium 0">Headers</td>
+                        <td style="border-width: medium thin medium 0">Implication</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">GeneID</td>
+                        <td style="border-width: 0 thin thin 0">Gene identifier</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">baseMean</td>
+                        <td style="border-width: 0 thin thin 0">Mean over all rows</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">log2FoldChange</td>
+                        <td style="border-width: 0 thin thin 0">Logarithm (to basis 2) of the fold change</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">lfcSE</td>
+                        <td style="border-width: 0 thin thin 0">Standard Error of log2foldchange</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">stat</td>
+                        <td style="border-width: 0 thin thin 0">Wald statistic[1] / LRT statistic [2]</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">pvalue</td>
+                        <td style="border-width: 0 thin thin 0">Wald test p-value</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin medium 0">padj</td>
+                        <td style="border-width: 0 thin medium 0">p value adjusted for multiple testing with the Benjamini-Hochberg procedure</td>
+                    </tr>
+                </table>
+                <p>
+                    Table 3-3 Interpretation of Differential Genes Table in DESeq<br>
+                    [1] Wald test: a parametric test which can be used to test the veracity of the parameter in an estimated model<br>
+                    [2] LRT (Likelihood Ratio Test): a statistical test based on likelihood ratio, and can be used to find an appropriate model.
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.2.2.deseqVarEst">Variance Estimation (DESeq)</a></h5>
+        <div>
+            <p>
+                The variance estimation is a very important step of quality assessment. Usually this estimation has 3 steps: estimating the gene dispersion value; using the value to fit a curve; giving a dispersion value to each gene from either estimation or fitted value.
+            </p>
+            <p>
+                The dispersion estimates plot is for checking the result of dispersion estimates adjustment. The gene-wise estimates are in black, the fitted estimates are in red, and the final estimates are in blue. The outliers of gene-wise estimates are marked with blue circles. The points lying on the bottom indicates they have a dispersion of practically zero or exactly zero. This plot has mean of normalized counts as x-axis and dispersion as y-axis. 
+            </p>
+            <div align="center">
+                <img src="3.3.2.2desVarEstFig" />
+                <p>
+                    Figure 3.3.2.2 Dispersion estimates plot in DESeq2 analysis
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.2.3.edgerDE">Differential Genes Table (edgeR)</a></h5>
+        <div>
+            <p>
+                The interpretation of the columns is shown in the table.
+            </p>
+            <div align="center">
+                <table cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
+                    <tr>
+                        <td style="border-width: medium thin medium 0">Headers</td>
+                        <td style="border-width: medium thin medium 0">Implication</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">GeneID</td>
+                        <td style="border-width: 0 thin thin 0">Gene identifier</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">logFC</td>
+                        <td style="border-width: 0 thin thin 0">Logarithm (to basis 2) of the fold change</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">logCPM</td>
+                        <td style="border-width: 0 thin thin 0">Average log2-counts-per-million</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Pvalue</td>
+                        <td style="border-width: 0 thin thin 0">Two sided P-value</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin medium 0">FDR</td>
+                        <td style="border-width: 0 thin medium 0">False discovery rate</td>
+                    </tr>
+                </table>
+                <p>
+                    Table 3.3.2.3 Interpretation of Differential Genes Table in edgeR
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.2.4.edgerVarEst">Variance estimation (edgeR)</a></h5>
+        <div>
+            <p>
+                In edgeR, the qCML(quantile-adjusted conditional maximum likelihood) is used to estimate the dispersion of single factor experiment analysis, since it is suitable for the data with many small samples and a common dispersion. The tag-wise (gene-wise) negative binominal estimation is done by empirical Bayes and the common dispersion is estimated by conditional common likelihood.
+            </p>
+            <p>
+                The variance estimation plot has average log CPM (counts per million) as x-axis and biological coefficient variation as y-axis. The red dots represent the common dispersion and the black dots represent the tag-wise (gene-wise) dispersion.
+            </p>
+            <div align="center">
+                <img src="3.3.2.4.edgerVarEstFig" />
+                <p>
+                    Figure 3.3.2.4 Variance estimation plot in edgeR
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.2.5.noiseqDE">Differential Expression Analysis Result (NOISeq)</a></h5>
+        <div>
+            <p>
+                The interpretation of the columns is shown in the table.
+            </p>
+            <div align="center">
+                <table cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
+                    <tr>
+                        <td style="border-width: medium thin medium 0">Headers</td>
+                        <td style="border-width: medium thin medium 0">Implication</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Gename</td>
+                        <td style="border-width: 0 thin thin 0">Gene identifier</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Mean</td>
+                        <td style="border-width: 0 thin thin 0">Mean of this condition</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Theta</td>
+                        <td style="border-width: 0 thin thin 0">Differential expression statistics</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Prob</td>
+                        <td style="border-width: 0 thin thin 0">Probability of differential expression</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin medium 0">Log2FC</td>
+                        <td style="border-width: 0 thin medium 0">Logarithm (to basis 2) of the fold change</td>
+                    </tr>
+                </table>
+                <p>
+                    Table 3.3.2.5 Interpretation of Differential Expression Analysis Table in NOISeq
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.2.6.poissonseqDE">Differential Expression Analysis Result (PoissonSeq)</a></h5>
+        <div>
+            <p>
+                The interpretation of the columns is shown in the table.
+            </p>
+            <div align="center">
+                <table cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
+                    <tr>
+                        <td style="border-width: medium thin medium 0">Headers</td>
+                        <td style="border-width: medium thin medium 0">Implication</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">GeneNames</td>
+                        <td style="border-width: 0 thin thin 0">Gene names</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">tt</td>
+                        <td style="border-width: 0 thin thin 0">The score statistics of the genes</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Pvalue</td>
+                        <td style="border-width: 0 thin thin 0">Permutation-based p-values of the genes</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Padjust</td>
+                        <td style="border-width: 0 thin thin 0"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin medium 0">logFC</td>
+                        <td style="border-width: 0 thin medium 0">Estimated log fold change of the genes</td>
+                    </tr>
+                </table>
+                <p>
+                    Table 3.3.2.6 Interpretation of Differential Expression Analysis Table in PoissonSeq
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.2.7.poissonseqPower">Power Curve (PoissonSeq)</a></h5>
+        <div>
+            <p>
+
+            </p>
+            <div align="center">
+                <img src="3.3.2.7poissonseqPowerFig" />
+                <p>
+                    Figure 3-8 Power Curve of PoissonSeq
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.2.8.samseqDE">Differential Expression Analysis Result (SAMSeq)</a></h5>
+        <div>
+            <p>
+                The interpretation of the columns is shown in the table.
+            </p>
+            <div align="center">
+                <table cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
+                    <tr>
+                        <td style="border-width: medium thin medium 0">Headers</td>
+                        <td style="border-width: medium thin medium 0">Implication</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Gene.Name</td>
+                        <td style="border-width: 0 thin thin 0">Gene names</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Score.d</td>
+                        <td style="border-width: 0 thin thin 0">The T-statistic[1] value</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Fold.Change</td>
+                        <td style="border-width: 0 thin thin 0">The ratio of the two compared value</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin medium 0">q.value</td>
+                        <td style="border-width: 0 thin medium 0">the lowest FDR at which that gene is called significant</td>
+                    </tr>
+                </table>
+                <p>
+                    Table 3.3.2.8 Interpretation of Differential Expression Analysis Table in SAMSeq<br>
+                    [1] T-statistic: A method used to test coefficient, which is the ratio of the coefficient to the standard error.
+                </p>
+            </div>
+        </div>
+        <h5><a name="3.3.2.9.samseqFit">Fit Plots (SAMSeq)</a></h5>
+        <div>
+            <p>
+                The fit plot, also called the SAM plot in SAMSeq, is a scatter plot with dots representing genes. In SAM, the Cox model score test of every gene is counted. The positive significant genes, which means the genes has higher expression correlates with higher risk, are in red, and negative significant genes are in green, while others are in black. The expected score is plotted on the x-axis and observed score is on the y-axis.
+            </p>
+            <div align="center">
+                <img src="3.3.2.9.samseqFitFig" />
+                <p>
+                    Figure 3.3.2.9 Fit Plot in SAMSeq
+                </p>
+            </div>
+        </div>
+
+        <h3><a name="3.4.downAnalysis">Downloading Analysis Report</a></h3>
+        <div>
+            <p>
+                The markdown files of every package are provided as the analysis report and can be downloaded on the panel. Notice that each package will generate the specific report.
+            </p>
+            <p>
+                Also, the differential genes table (CSV format) can be downloaded separate from other charts by "Dwnload csv-file".
+            </p>
+            <div align="center">
+                <img src="3.4.downAnalysisButton" />
+                <p>
+                    Figure 3.4 Download Panel in Analysis Module
+                </p>
+            </div>
+        </div>
+        <h2><a name="4.inte">Integrative Analysis - "Integrate"</a></h2>
+        <h3><a name="4.1.introInte">Introduction to Integrative Analysis of Genes</a></h3>
+        <div>
+            <p>
+                "Integrate" module provides a collection and comparison of the prior using packages. Figures like Venn and bar plot give an intuitive impression of the different result made by each package. We also define a new argument called R-value to synthesis the results of differential expression features from these packages.
+            </p>
+        </div>
+        <h3><a name="4.2.setInte">Setting up</a></h3>
+        <h4><a name="4.2.1.setPkg">Choosing Packages for Integrative Analysis</a></h4>
+        <h4><a name="4.2.2.setFig">Customizing Visualization Figures and Tables</a></h4>
+        <h3><a name="4.3.resultInte">Interpreting Figures and Tables</a></h3>
+        <h4><a name="4.3.1.bar">Bar Plot of Feature Counts</a></h4>
+        <div>
+            <p>
+                This plot shows a comparison of the number of differential expression features identified by each package. The different of the results are caused the differences of the algorithm of these packages. The counts of features are plotted on the y-axis and each bar represents one package.
+            </p>
+            <div align="center">
+                <img src="4.3.1.barFig" />
+                <p>
+                    Figure 4.3.1 Bar Plot of Differential Expression Features by Each Package
+                </p>
+            </div>
+        </div>
+        <h4><a name="4.3.2.venn">Venn Plot of Differential Expression Genes</a></h4>
+        <div>
+            <p>
+                The Venn diagram visualizes the overlapping differential expression features identified by each package. In the diagram, each oval represents one package, and the number shown in the diagram means the number of differential expression features. The number situated at the overlapping part means this many features are identified by all the packages which forming the overlap. You may change the package number shown in the diagram on the advanced option panel and get a clear view.
+            </p>
+            <div align="center">
+                <img src="4.3.2.vennFig" />
+                <p>
+                    Figure 4.3.2 Venn Plot of Differential Expression Features Analysis by Each Packge
+                </p>
+            </div>
+        </div>
+        <h4><a name="4.3.3.table">Feature Weight Table</a></h4>
+        <div>
+            <p>
+                This table shows the identification details of every feature, and the order of the table may changed by clicking any names on the first line. The number of features shown in one page can be changed on top left.
+            </p>
+            <p>
+                The interpretation of some columns is shown in the table. 
+            </p>
+            <div align="center">
+                <table cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
+                    <tr>
+                        <td style="border-width: medium thin medium 0">Headers</td>
+                        <td style="border-width: medium thin medium 0">Implication</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">FeatureID</td>
+                        <td style="border-width: 0 thin thin 0">Feature identifier</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Mean</td>
+                        <td style="border-width: 0 thin thin 0">Mean of expression</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">LogFC</td>
+                        <td style="border-width: 0 thin thin 0">Logarithm of the fold change</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin thin 0">Rankmean</td>
+                        <td style="border-width: 0 thin thin 0">Mean rank of the five packages</td>
+                    </tr>
+                    <tr>
+                        <td style="border-width: 0 thin medium 0">Rvalue</td>
+                        <td style="border-width: 0 thin medium 0">=log(mean*abs(FoldChange)/rankmean+1)</td>
+                    </tr>
+                </table>
+                <p>
+                    Table 3.3.2.8 Interpretation of Differential Expression Analysis Table in SAMSeq<br>
+                </p>
+            </div>
+        </div>
+        <h3><a name="4.4.downInte">Downloading Integrative Analysis Report</a></h3>
+        <div>
+            <p>
+                As other modules, the report of "Integrate" is also available for download. The CSV format result is the result of the "Feature Weight Table".
+            </p>
+            <div align="center">
+                <img src="4.4.downInteButton" />
+                <p>
+                    Figure 4.4 Download Panel
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

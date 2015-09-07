@@ -1,0 +1,1214 @@
+<div id="s6">
+  <div class="wrapper--scroll-panel">
+    <div class="index-help" id="myScrollspy">
+      <ul id="index" class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125" role="tablist">
+        <li class="active"><a>Index</a>
+        </li>
+        <li>
+          <a href="#title0.">0.Introduction</a>
+        </li>
+        <li>
+          <a href="#title1.">1.Starting a New Analysis - "New"</a>
+          </li>
+          <ul>
+            <li>
+              <a href="#title1.1.">1.1.Counts Data and Experiment Type</a>
+            </li>
+            <li>
+              <a href="#title1.2.">1.2.Uploading Data</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#title2.">2.Data Exploration - "Data"</a>
+          <ul>
+            <li>
+              <a href="#title2.1.">2.1.Introduction</a>
+            </li>
+            <li>
+              <a href="#title2.2.">2.2.Charts and Plots</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#title3.">3.Differential Expression Feature Analysis - "Analysis</a>
+          <ul>
+            <li>
+              <a href="#title3.1.">3.1.Introduction</a>
+            </li>
+            <li>
+              <a href="#title3.2.">3.2.Setting up</a>
+            </li>
+            <li>
+              <a href="#title3.3.">3.3.Charts</a>
+            </li>
+            <li>
+              <a href="#title3.4.">3.4.Download Report</a>
+            </li>
+            <li>
+              <a href="#title3.5.">3.5.Integrative Analysis - "Combination"</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="content-help figure-analysis">
+      <div class="jumbotron">
+  <h1>&nbspUser Guide</h1>
+  <!-- <p>...</p> -->
+  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p> -->
+</div>
+      <h2 class="page-header"><a name="title0.">Introduction</a></h2>
+	<div>
+          <p>
+                IDEA, full name as "Interactive Differential Expression Analyzer", is an online analysis and visualization platform for differential feature expression analysis of read count data on foundation of R, Shiny and JavaScript. In IDEA, five R packages, DESeq, edgeR, NOISeq, PoissonSeq and SAMseq are provided for counts data analysis.
+          </p>
+          <p>
+                In "New" module, raw data is inputted. The function of this app is divided into two modules: "Data Exploration" and "Analysis". In "Analysis", both package-specific analysis and "Combination Analysis" are provided. In "Data Exploration", the input data can be normalized, and several figures, such as PCA and Boxplot, are provided to reveal the characteristic of the data. These analyses can help to estimate the data quality. For "Analysis", the five packages are provided to estimate the differential expression of features. Certain tables and figures of each package can give a clear and visual result of the estimation. The last part "Combination Analysis" synthesizes the results of each package and provides an easier way to obtain the result of differential expression features.
+          </p>
+          <p>
+                This document is a step-by-step guide and instruction of IDEA, and follows the order of operations.
+          </p>
+          <p>
+                The tips will be shown once the user moves the cursor to the charts, icons or question marks as shown in Figure 0-1 (upper) and Figure 0-2 (lower). For charts with interactive option, the option panel will appear with the chart by default, and it can be closed and reopened by clicking the gear icon as shown in Figure 0-2. Moreover, every figure shown in the page can be downloaded separately by clicking the download icon (Figure 0-2) on each figure.
+          </p>
+          <div align="center">
+            <img src="idea/../pic/0-1-a.png"><br>
+            <img src="idea/../pic/0-1-b.png" style="width:401px;margin-top:20px" />
+	    <p>
+	      Figure 0-1 Example of tips
+	    </p>
+	      <img src="idea/../pic/0-2.png" />
+	    <p>
+	      Figure 0-2 Example of interactive option
+	    </p>
+	  </div>
+        </div>
+      
+      <h2><a name="title1.">Starting a New Analysis - "New"</a></h2>
+      <h3><a name="tite1.1.">Counts Data and Experiment Type</a></h3>
+      <div>
+        <p>
+          In this module, users need to choose the experiment type and upload the data in specific format. 
+        </p>
+        <p>
+          Here we provide an example dataset. By clicking Example, you will see the data information of the example. The design matrix and count matrix data of the example is available for download respectively as shown in Figure 1-2.
+        </p>
+        <div align="center">
+          <img src="idea/../pic/1-1.png" />
+          <p>
+            Figure 1-1 Experiment Type Select Panel
+          </p>
+          <img src="idea/../pic/1-2.png" />
+          <p>
+            Figure 1-2 Download and view Example
+          </p>
+        </div>
+        <p>
+	  For experiment types, IDEA can work with 3 kinds of experiment types: experiment with standard comparison, experiment of multi-factor design and experiment with no replicates (NOT RECOMMANED).
+        </p>
+      </div>
+      <!--Standard Comprison-->
+      <div>
+        <p>
+          <strong>"Standard Comparison"</strong> supports experiments with only one factor, several conditions and several replicates (example shown in Table 1-1).
+        </p>
+<!----Table of SC-->
+        <div align="center">
+          <p>
+            Table 1-1 Example of Standard Comparison
+          </p>
+            <table cellpadding="3" cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
+              <tr style="border-color: #000000" align="center">
+                <td width=100px height="20px" style="border-width: medium medium medium 0"></td>
+                <td width=100px style="border-width: medium thin medium 0">Conditions
+                </td>
+                <td colspan=2 width=150px style="border-width: medium thin medium 0">Replication 1</td>
+                <td colspan=2 width=150px style="border-width: medium thin medium 0">Replication 2</td>
+              </tr>
+              <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+                <td style="border-width: 0 medium medium 0">Factors</td>
+                <td style="border-width: 0 thin medium 0">Viscera</td>
+                <td style="border-width: 0 thin medium 0">Kidney</td>
+                <td style="border-width: 0 thin medium 0">Liver</td>
+                <td style="border-width: 0 thin medium 0">Kidney</td>
+                <td style="border-width: 0 thin medium 0">Liver</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      <!--Multi-factors Design-->
+      <div>
+        <p>
+          <strong>"Multi-factor Design"</strong> supports experiments with several factors, conditions and replicates (example shown in Table 1-2).
+        </p>
+	<!----Table of MfD-->
+        <div align="center">
+          <p>
+            Table 1-2 Example of Multi-Factors Design
+          </p>
+          <table cellpadding="3" cellspacing="0" border="1" frame=hsides rules=all>
+            <tr style="border-color: #000000" align="center">
+              <td width=100px height="20px" style="border-width: medium medium medium 0"></td>
+              <td width=100px style="border-width: medium thin medium 0">Factors</td>
+              <td colspan=2 width=150px style="border-width: medium thin medium 0">Replication 1</td>
+	      <td colspan=2 width=150px style="border-width: medium thin medium 0">Replication 2</td>
+	    </tr>
+	    <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+	      <td rowspan=2 style="border-width: 0 medium medium 0">Conditions</td>
+	      <td style="border-width: 0 thin thin 0">Viscera</td>
+	      <td style="border-width: 0 thin thin 0">Kidney</td>
+	      <td style="border-width: 0 thin thin 0">Liver</td>
+	      <td style="border-width: 0 thin thin 0">Kidney</td>
+	      <td style="border-width: 0 thin thin 0">Liver</td>
+	    </tr>
+            <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+	      <td style="border-width: 0 thin medium 0">Sex</td>
+	      <td style="border-width: 0 thin medium 0">Female</td>
+	      <td style="border-width: 0 thin medium 0">Male</td>
+	      <td style="border-width: 0 thin medium 0">Female</td>
+	      <td style="border-width: 0 thin medium 0">Male</td>
+	    </tr>
+          </table>
+	</div>
+      </div>
+      <!--Withou Replicate-->
+      <div>
+        <p>
+          <strong>Without Replicates</strong> supports experiments with no biological replicates (example shown in Table 1-3). Not all methods are applicable to analyze the data without replicates, since it is necessary to assume the distribution form (negative binomial distribution or Poisson distribution) and the parameters based on empirical.
+        </p>
+	<!----Table of WR-->
+        <div align="center">
+          <p>
+            Table 1-3 Example of Without Replicates
+          </p>
+          <table cellpadding="3" cellspacing="0" border="1" frame=hsides rules=all>
+	    <tr style="border-color: #000000" align="center">
+	      <td width=100px height="20px" style="border-width: medium medium medium 0"></td>
+	      <td width=100px style="border-width: medium thin medium 0">Factors</td>
+	      <td colspan=2 width=150px style="border-width: medium thin medium 0">Replication 1</td>
+	    </tr>
+	    <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+	      <td rowspan=2 style="border-width: 0 medium medium 0">Conditions</td>
+	      <td style="border-width: 0 thin thin 0">Viscera</td>
+	      <td style="border-width: 0 thin thin 0">Kidney</td>
+	      <td style="border-width: 0 thin thin 0">Liver </td>
+	    </tr>
+	    <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+	      <td style="border-width: 0 thin medium 0">Sex</td>
+	      <td style="border-width: 0 thin medium 0">Female</td>
+	      <td style="border-width: 0 thin medium 0">Male</td>
+	    </tr>
+	  </table>
+	</div>
+      </div>    
+      
+      <h3><a name="title1.2.">Uploading Data</a></h3>
+	<h4><a name="title1.2.1.">Loading Read Counts Table</a></h4>
+	<div>
+	  <p>
+	    The data matrix should be in <strong>.csv</strong> or <strong>.txt</strong> format, with genes as row and samples as column, and upload <strong>raw counts</strong> only.
+	  </p>
+          <p>
+	    If you check the <strong>Header</strong> box, the first row and column of the matrix will be considered the header by default. For <strong>Separator</strong>, it is accessible to use either comma (,), semicolon (;) or tab (tabular). If your data has quote, choose the <strong>Quote</strong> option precisely, otherwise, choose "None".
+	  </p>
+	  <p>
+	    Also, it is optional to input the "gene length file" with features names as column1 and the length as column2, the header and separator should be the same as the countable.
+	  </p>
+          <p>
+	  </p>
+          <div align="center">
+            <img src="idea/../pic/1-3.png" />
+            <p>
+              Figure 1-3 Data uploading panel
+            </p>
+          </div>
+        </div>
+      <h4><a name="title1.2.2.">Setting Experiment Design</a></h4>
+      <div>
+	<p>
+	  The conditions of the experiment should also be inputted as .csv or .txt format, and the conditions will automatically appear on the page for chosen. For multi-condition experiment, choose only two compared conditions to call differential expression features, or by default, the first two conditions will be chosen as the compared conditions. In Multi-factor Design, factor of interest is set as the first column of your design matrix.
+	</p>
+         
+        <div align="center">
+          <img src="idea/../pic/1-4.png" />
+          <p>
+            Figure 1-4 Setting compare groups
+          </p>
+        </div>
+      </div>
+      <h4><a name="title1.2.3.">Previewing Data Information</a></h4>
+      <div>
+	<p>
+	  By clicking "View uploaded data", the "Data Information Table" will show the uploaded read counts table. The order of the table can be changed by clicking the header of the column. The number of the features shown on each page is also changeable on the top left.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/1-5.png" />
+	  <p>
+	    Figure 1-5 Data Information Table
+	  </p>
+	</div>
+      </div>
+      <h2><a name="title2.">Data Exploration - "Data"</a></h2>
+      <h3><a name="title2.1.">Introduction</a></h3>
+      <div>
+	<p>
+	  The "Data" module does the job of data normalization, data exploration and quality control.
+	</p>
+	<p>
+	  The process of normalization attempts to settle the problem of various factors (nucleotide composition of features, library preparation and sequencing platform etc.) which can bring bias into number of reads in read count data.  3 methods are provided to normalize sample data (Table 2-1).         
+	</p>
+	<div align="center">
+	  <p>
+	    Table 2-1 Normalization Method
+	  </p>
+	  <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all>
+	    <tr style="border-color: #000000" align="center">
+	      <td style="border-width: medium medium medium 0">Abbreviation</td>
+	      <td width=200px style="border-width: medium thin medium 0">Full Name</td>
+	      <td width=500px style="border-width: medium thin medium 0">Method Details</td>
+	    </tr>
+	    <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+	      <td style="border-width: 0 medium thin 0">RPKM</td>
+	      <td style="border-width: 0 thin thin 0">Reads Per Kilo Base per Million Reads</td>
+	      <td align="left" style="border-width: 0 thin thin 0">Divide gene count by the total number of reads in each library or mapped reads</td>
+	    </tr>
+	    <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+	      <td style="border-width: 0 medium thin 0">UQ</td>
+	      <td style="border-width: 0 thin thin 0">Upper Quartile</td>
+	      <td align="left" style="border-width: 0 thin thin 0">Sum gene counts up to the upper 25% quartile to normalize</td>
+	    </tr>
+	    <tr align="center" style="border-width: medium 0 medium 0; border-color: #000000">
+	      <td style="border-width: 0 medium medium 0">TMM</td>
+	      <td style="border-width: 0 thin medium 0">Trimmed Mean of M</td>
+	      <td align="left" style="border-width: 0 thin medium 0">Compute a scaling factor as weighted means of log ratios between two experiments after excluding most expressed and genes that have large log ratios  in expression</td>
+	    </tr>
+	  </table>
+	</div>
+	<p>
+	  In "Data", we provide 7 figures helping users analyze the quality of data, and the data distribution as well as sample distance can easily be seen through these figures. The detail of every figure is given below and a corresponding short tip is also provided on the app webpage.
+	</p>
+      </div>
+      <h4><a name="title2.1.1.">Parameter Settings</a></h4>
+      <div>
+	<p>
+	  Choose the normalization method on the panel before doing anything else. If normalization is unnecessary, choose "None".As default, the Upper Quartile method is chosen.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/2-1.png" />
+	  <p>
+	    Figure 2-1 Normalization Panel
+	  </p>
+	</div>
+      </div>
+      <h4><a name="title2.1.2.">Customizing Charts</a></h4>
+      <div>
+	<p>
+	  Different figures and tables may have specific settings. See more options and instructions in particular charts, such as Stacked Density Plot, Heat Map of Sample Distance or Correlation Analysis.
+	</p>
+      </div>
+      <h3><a name="title2.2.">Charts and Plots</a></h3>
+      <p>
+	See more instructions of charts and details in Report.
+      </p>
+      <h4><a name="title2.2.1.">Data Distribution</a></h4>
+      <h5><a name="title2.2.1.1.">Sample Boxplot</a></h5>
+      <div>
+        <p>
+	  Samples boxplot visualizes count distribution for all samples, showing features in expression distribution in each sample.
+	  
+	</p>
+	<div align="center">
+	  <img src="idea/../pic/2-2.png" />
+	  <p>
+	    Figure 2-2 Sample boxplot
+	  </p>
+	</div>
+      </div>
+      <h5><a name="title2.2.1.2.">Stacked Density Plot</a></h5>
+      <div>
+	<p>
+	  Stacked density plot visualizes density distribution of features with different read counts, showing overall condition of read counts data normalized counts. For interactive option, click the input box to add the samples and click Submit to plot, delete the samples by clicking the cross near the sample.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/2-3.png" /><img src="idea/../pic/2-3-2.png" />
+	  <p>
+	    Figure 2-3 Stacked density plot and interactive option
+	  </p>
+	</div>
+      </div>
+      <h5><a name="title2.2.1.3.">Ratio Bar Plot</a></h5>
+      <div>
+	<p>
+	  Ratio bar plot visualizes distribution of counts in each samples using stacked bar. Low counts may introduce noise and interfere extraction of differential expression of features.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/2-4.png" />
+	  <p>
+	    Figure 2-4 Ratio bar plot
+	  </p>
+	</div>
+      </div>
+      <h4><a name="title2.2.2.">Sample Distance</a></h4>
+      <h5><a name="title2.2.2.1.">Heatmap of Sample Distance</a></h5>
+      <div>
+	<p>
+	  The heat map of sample distance visualizes the Euclidean distance between the samples, giving an overview of similarities of sample heat map. The heat map color can be changed in interactive option. Attention, if the samples have a clear classification, this plot may only have two colors, as shown in Figure 2-5.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/2-5.png" /><img src="idea/../pic/2-5-2.png" />
+	  <p>
+	    Figure 2-5 Heat map of sample distance and interactive option
+	  </p>
+	</div>
+	</p>
+      </div>
+      <h5><a name="title2.2.2.2.">Principal Component Analysis</a></h5>
+      <div>
+	<p>
+	  A principal component analysis (PCA) plot visualizes the affection of the first two principal components. It is optional to show the labels of data in the figure on the interactive option panel.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/2-6.png" /><img src="idea/../pic/2-6-2.png" />
+	  <p>
+	    Figure2-6 Principal component analysis plot and interactive option
+	  </p>
+	</div>
+      </div>
+      <h5><a name="title2.2.2.3.">Corrrelation Analysis</a></h5>
+      <div>
+	<p>
+	  With scatter plot, the correlation analysis visualizes Spearman's correlation of feature expression between two selected samples. Spearman correlation coefficient is shown in the Interactive Option panel of correlation analysis. The sample plotted on the x and y axis can also be changed on the panel.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/2-7.png" />
+	  <p>
+	    Figure 2-7 Scatter plot and correlation analysis and interactive option
+	  </p>
+	</div>
+      </div>
+      
+      <h4><a name="title2.2.3.">Feature Query</a></h4>
+      <div>
+	<p>
+	  A histogram with error bar visualizes the comparison result of expression level of a certain feature, selected by user in interactive option, in different conditions. The mean, standard deviation and standard error of the chosen feature is also shown in interactive option panel. The Report will only show the figure of feature chosen here.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/2-8.png" />
+	  <p>
+	    Figure 2-8 Feature query and interactive option
+	  </p>
+	</div>
+      </div>
+      <h3><a name="title2.3.">Download Report</a></h3>
+      <div>
+	<p>
+	  The normalized data in .csv format and the report of all charts can be downloaded on the panel.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/2-9.png" />
+	  <p>
+	    Figure 2-9 Download panel in "Data" module
+	  </p>
+	</div>
+      </div>
+      
+      <h2><a name="title3.">Differential Expression Feature Analysis - "Analysis"</a></h2>
+      <h3><a name="title3.1.">Introduction of "Analysis"</a></h3>
+      <div>
+	<p>
+	  The "Analysis" module is divided into two parts: the packages analysis part and the combination part. In packages analysis part, we provide five methods for analyzing differential expression of features. Here we simply introduce the basic feature of every method. The summary table is given below (Table 3-1).
+	</p>
+	<div align="center">
+	  <p>
+	    Table 3-1 Summary of packages<br/>
+	  </p>
+	  <table cellspacing="0" cellpadding="0" border="1" frame=hsides rules=all>
+	    <tbody style="border-color: #000000">
+	      <tr class="firstRow">
+		<td width="48" style="border-width: medium medium medium 0px">Package</td>
+		<td width="50" style="border-width: medium 0 medium 0">Version</td>
+		<td style="border-width: medium 0 medium 0">Normalization (default)</td>
+		<td style="border-width: medium 0 medium 0">Model of Reads Count Distribution</td>
+		<td style="border-width: medium 0 medium 0">Differential Expression Test</td>
+		<td style="border-width: medium 0 medium 0">FDR Control</td>
+		<td style="border-width: medium 0 medium 0">Standard Comparison</td>
+		<td style="border-width: medium 0 medium 0">Multi-factor Design</td>
+		<td style="border-width: medium 0 medium 0">Without Replicates</td>
+	      </tr>
+	      <tr>
+	        <td style="border-width: 0 medium 0 0">DESeq2</td>
+	        <td style="border-width: 0 0 0 0">1.6.2</td>
+	        <td style="border-width: 0 0 0 0">sizeFactors</td>
+	        <td style="border-width: 0 0 0 0">Negative binomial distribution</td>
+	        <td style="border-width: 0 0 0 0">Wald test, LRT</td>
+	        <td style="border-width: 0 0 0 0">Benjamini-Hochberg procedure</td>
+	        <td style="border-width: 0 0 0 0">
+	          <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+	        </td>
+	        <td style="border-width: 0 0 0 0">
+	          <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+	        </td>
+	        <td style="border-width: 0 0 0 0">
+	          <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+	        </td>
+	      </tr>
+	      <tr>
+		<td style="border-width: 0 medium 0 0">edgeR</td>
+		<td style="border-width: 0 0 0 0">3.8.3</td>
+		<td style="border-width: 0 0 0 0">TMM</td>
+                <td style="border-width: 0 0 0 0">Negative binomial distribution</td>
+                <td style="border-width: 0 0 0 0">Fisher's exact test</td>
+                <td style="border-width: 0 0 0 0">Benjamini-Hochberg procedure</td>
+                <td style="border-width: 0 0 0 0">
+		  <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+		</td>
+		<td style="border-width: 0 0 0 0">
+		  <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+		</td>
+		<td style="border-width: 0 0 0 0">
+		  <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+		</td>
+	      </tr>
+	      <tr>
+	        <td style="border-width: 0 medium 0 0">NOISeq</td>
+	        <td style="border-width: 0 0 0 0">2.8.0</td>
+	        <td style="border-width: 0 0 0 0">RPKM</td>
+	        <td style="border-width: 0 0 0 0">Nonparametric method</td>
+	        <td style="border-width: 0 0 0 0"><em>P</em>-value for empirical distributions</td>
+	        <td style="border-width: 0 0 0 0">Not applicatable</td>
+	        <td style="border-width: 0 0 0 0">
+	          <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+	        </td>
+		<td style="border-width: 0 0 0 0">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 0 0">
+                  <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+                </td>
+              </tr>
+	      <tr>
+		<td style="border-width: 0 medium 0 0">PoissonSeq</td>
+		<td style="border-width: 0 0 0 0">1.1.2</td>
+		<td style="border-width: 0 0 0 0">Goodness-of-fit estimate</td>
+		<td style="border-width: 0 0 0 0">Poisson distribution</td>
+		<td style="border-width: 0 0 0 0">Score statistics</td>
+		<td style="border-width: 0 0 0 0">A permutation plug-in approach</td>
+		<td style="border-width: 0 0 0 0">
+	          <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+		</td>
+		<td style="border-width: 0 0 0 0">
+		  <span class="glyphicon glyphicon-remove"></span>
+		</td>
+		<td style="border-width: 0 0 0 0">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </td>
+              </tr>
+	      <tr>
+		<td style="border-width: 0 medium medium 0">SAMseq<br>(samr)</td>
+		<td style="border-width: 0 0 medium 0">2.0</td>
+		<td style="border-width: 0 0 medium 0">Subsampling method</td>
+		<td style="border-width: 0 0 medium 0">Nonparametric method</td>
+		<td style="border-width: 0 0 medium 0">Wilcoxon test</td>
+		<td style="border-width: 0 0 medium 0">A permutation plug-in approach</td>
+		<td style="border-width: 0 0 medium 0">
+                  <span class="glyphicon glyphicon-ok" style="text-align:center"></span>
+		</td>
+		<td style="border-width: 0 0 medium 0">
+                  <span class="glyphicon glyphicon-remove"></span>
+		</td>
+		<td style="border-width: 0 0 medium 0">
+                  <span class="glyphicon glyphicon-remove"></span>
+		</td>
+            </tr>
+	    </tbody>
+	  </table>
+	</div>
+	
+      </div>
+      <h3><a name="title3.2.">Setting up</a></h3>
+      <h4><a name="title3.2.1.">Selecting Package</a></h4>
+      <div>
+	<p>
+	  Be sure of your experiment type. The multi-factors design can only use DESeq2 and edger packages, the PoissonSeq or SAMseq is not available for experiment with no replicates.
+	</p>
+	<p>
+	  Click the icon of one package and click <Strong>START</Strong>, the charts of this package will show on the page.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-1.png" />
+	  <p>
+	    Figure 3-1 Method select panel
+	  </p>
+	</div>
+      </div>
+      <h4><a name="title3.2.2.">Advanced Settings</a></h4>
+      <div>
+	<ul>
+	  <li>The advanced option of each package is different and a simple instruction is given below.</li>
+	  <li>DEseq. The test method of differential expression features table is changeable.</li>
+	  <li>edgeR. Normalized method is changeable inside the package (see more details about these methods in "Data"-"Parameter Setting"). Two kinds of estimating dispersion methods are offer for chosen. The number of "Filter your dataset by" means only the feature reads above this number are counted in the analysis. FDR threshold is the false discovery rate threshold.</li>
+	  <li>NOISeq. Normalized method is changeable.</li>
+	  <li>PoissonSeq. None.</li>
+	  <li>SAMseq. The two advanced option in SAMseq are all for differential expression analysis table.</li>
+	</ul>
+      </div>
+      <h3><a name="title3.3.">Charts and Plots</a></h3>
+      <div>
+	<p>
+	  Different packages have different visualization. Table 3-2 is a summary of charts in different packages.
+	</p>
+	<div align="center">
+	  <p>
+	    Table 3-2 Summary of types of charts and plots in packages
+	  </p>
+	  <table cellspacing="0" cellpadding="3" border="1" frame=hsides rules=all>
+	    <tbody style="border-color: #000000" align="center">
+	      <tr class="firstRow" align="center">
+                <td width="250" style="border-width: medium medium medium 0">Chart/Plot Type</td>
+                <td width="100" style="border-width: medium 0 medium 0">DESeq</td>
+                <td width="100" style="border-width: medium 0 medium 0">edgeR</td>
+                <td width="100" style="border-width: medium 0 medium 0">NOISeq</td>
+                <td width="100" style="border-width: medium 0 medium 0">PoissonSeq</td>
+                <td width="100" style="border-width: medium 0 medium 0">SAMseq</td>
+	      </tr>
+	      <tr align="center">
+		<td style="border-width: 0 medium thin 0">Differerential Expression<br/>Features Table</td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+	      </tr>
+	      <tr>
+                <td style="border-width: 0 medium thin 0; border-color: #000000" align="center">
+                        MA-Plot
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+	      </tr>
+	      <tr>
+                <td style="border-width: 0 medium thin 0">
+                        Normalized SizeFactors
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+	      </tr>
+              <tr>
+                <td style="border-width: 0 medium thin 0">
+                        Volcano Plot
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+	      </tr>
+	      <tr>
+                <td style="border-width: 0 medium thin 0">
+                        Heat Map
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+	      </tr>
+	      <tr>
+                <td style="border-width: 0 medium thin 0">
+                        FDR/P-value/Probabiltiy<br/>Distribution
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+	      </tr>
+	      <tr>
+                <td style="border-width: 0 medium thin 0">
+                        Variance Estimation
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+	      </tr>
+	      <tr>
+                <td style="border-width: 0 medium thin 0">
+                       Power Transformation Curve
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td style="border-width: 0 0 thin 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+	      </tr>
+              <tr>
+                <td style="border-width: 0 medium medium 0">
+                        Q-Q Plot
+                </td>
+                <td style="border-width: 0 0 medium 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 medium 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 medium 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 medium 0">
+                        <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td style="border-width: 0 0 medium 0">
+                        <span class="glyphicon glyphicon-ok"></span>
+                </td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+	<p>
+	  See more instructions of charts and details in Report.
+	</p>
+      </div>
+      
+      
+      <h4><a name="title3.3.1.">Differential Features Table <strong>(All Packages)</strong></a></h4>
+      <div>
+	<p>
+	  The order of the table may changed by clicking any names on the first line. The number of features shown in one page can be changed on top left. The search function can search the data on either column.
+	</p>
+	<p>
+	  The interpretation of the columns in all packages is shown in the table below.
+	</p>
+	<div align="center">
+	  <p>
+            Table 3-3 Interpretation of differential features table in all packages
+	  </p>
+	  <table cellspacing="0" cellpadding="3" border="1" frame=hsides rules=all>
+	    <tbody style="border-color: #000000" align="center">
+              <tr class="firstRow" align="center">
+                <td width="100" style="border-width: medium medium medium 0">Package</td>
+                <td width="100" style="border-width: medium thin medium 0">Header</td>
+                <td             style="border-width: medium thin medium 0">Interpretation</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: medium medium medium 0" rowspan=7>DESeq</td>
+                <td width="100" style="border-width: 0 thin thin 0">FeatureID</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Feature identifier</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">baseMean</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Mean over all rows</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">log2FoldChange</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Logarithm (base 2) of the fold change</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">lfcSE</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Standard Error of log2(FoldChange)</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">stat</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Wald statistic / LRT statistic</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">pvalue</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Wald test/LRT <em>p</em>-value</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin medium 0">padj</td>
+                <td             style="border-width: 0 thin medium 0" align="left"><em>p</em>-value adjusted for multiple testing with the Benjamini-Hochberg procedure</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: medium medium medium 0" rowspan=5>edgeR</td>
+                <td width="100" style="border-width: 0 thin thin 0">FeatureID</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Feature identifier</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">logFC</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Logarithm (base 2) of the fold change</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">logCPM</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Average log2-counts-per-million</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">PValue</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Two sided <em>p</em>-value</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin medium 0">FDR</td>
+                <td             style="border-width: 0 thin medium 0" align="left">False discovery rate</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: medium medium medium 0" rowspan=5>NOISeq</td>
+                <td width="100" style="border-width: 0 thin thin 0">FeatureID</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Feature identifier</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">Mean</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Mean of this condition</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">Theta</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Differential expression statistics</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">Prob</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Probability of differential expression</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin medium 0">Log2FC</td>
+                <td             style="border-width: 0 thin medium 0" align="left">Logarithm (base 2) of the fold change</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: medium medium medium 0" rowspan=5>PoissonSeq</td>
+                <td width="100" style="border-width: 0 thin thin 0">FeatureID</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Feature identifier</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">tt</td>
+                <td             style="border-width: 0 thin thin 0" align="left">The score statistics of the features</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">P.value</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Permutation-based <em>p</em>-values of the features</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">FDR</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Estimated false discovery rate</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin medium 0">logFC</td>
+                <td             style="border-width: 0 thin medium 0" align="left">Estimated log (base 2) fold change of the features</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: medium medium medium 0" rowspan=4>SAMseq</td>
+                <td width="100" style="border-width: 0 thin thin 0">FeatureID</td>
+                <td             style="border-width: 0 thin thin 0" align="left">Feature identifier</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">Score.d</td>
+                <td             style="border-width: 0 thin thin 0" align="left">The T-statistic value</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin thin 0">Fold.Change</td>
+                <td             style="border-width: 0 thin thin 0" align="left">The ratio of the two compared value</td>
+              </tr>
+              <tr align="center">
+                <td width="100" style="border-width: 0 thin medium 0">q.value</td>
+                <td             style="border-width: 0 thin medium 0" align="left">the lowest FDR at which that feature is called significant</td>
+              </tr>
+	    </tbody>
+        
+
+	  </table>
+	</div>
+      </div>
+      <h4><a name="title3.3.2.">MA-Plot of Differential Expressed Features <strong>(DESeq, edgeR)</strong></a></h4>
+      <div>
+	<p>
+	  In MA-Plot, the data is been transformed onto the M (fold change or log ratio) and A (average expression of a feature) scale, which can give users a quick overview of the distribution of data. The false discovery rate (FDR) threshold can be changed, and the features are colored red if the adjusted p-value is less than the FDR, while other features are colored blue.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-2.png" /><img src="idea/../pic/3-2-2.png" />
+	  <p>
+	    Figure 3-2 MA-plot and interactive option
+	  </p>
+	</div>
+      </div>
+      <h4><a name="title3.3.3.">Normalized Size Factors <strong>(DESeq, edgeR)</strong></a></h4>
+      <div>
+	<p>
+	  Since different samples may have different sequencing depth, it is necessary to put every count value to a common scale in order to make them comparable.
+	</p>
+	<p>
+	  In edgeR table, group represents conditions, lib.size represents size of the library, norm.factors is the normalized size factors.
+	</p>
+	
+	<div align="center">
+	  <p>
+	    Table 3-2 Table of Normalized size factors in edgeR
+	  </p>
+	  <img src="idea/../pic/Table3-2.png" />
+	</div>
+      </div>
+      
+      <h4><a name="title3.3.4.">Volcano Plot of Differential Expressed Features <strong>(DESeq, edgeR)</strong></a></h4>
+      <div>
+	<p>
+	  An overview of the number of differential expression features can be shown in the volcano plot. The threshold of both axes can be changed on the Interactive Option panel. Highly differential expressed features are colored blue, while others are in red.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-3.png" /><img src="idea/../pic/3-3-2.png" />
+	  <p>
+	    Figure 3-3 Volcano plot and interactive option
+	  </p>
+	</div>
+      </div>
+      
+      <h4><a name="title3.3.5.">Heat Map of Differential Expressed Features <strong>(All Packages)</strong></a></h4>
+      <div>
+	<p>
+	  By using a color scale, heat map can display the expression values of the features, and every rectangle represents one feature – sample pair. By default, we display the 30 most highly expressed features and this number is changeable on the option panel. In addition, the scale method (normalize data in row or column), clusters of row /column and colorkey is also changeable on the panel.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-4.png" /><img src="idea/../pic/3-4-2.png" />
+	  <p>
+	    Figure 3-4 Heat map of differential expression features and interactive options
+	  </p>
+	  </div>
+      </div>
+      <h4><a name="title3.3.6.">FDR/P-value/Probability Distribution Plot <strong>(All Packages)</strong></a></h4>
+      <div>
+	<p>
+	  FDR/P-value distribution plot visualizes distribution of FDR or P-value in differential expression test provided in analysis packages using histogram plot. Specially, NOISeq uses the q-value (standard comparison) or prob(without replicates) to form the distribution plot.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-5.png" />
+	  <p>
+	    Figure 3-5 FDR distribution plot
+	  </p>
+	</div>
+      </div>
+      <h4><a name="title3.3.7.">Variance Estimation <strong>(DESeq)</strong></a></h4>
+      <div>
+	<p>
+	  The dispersion estimates plot is for checking the result of dispersion estimates adjustment. The feature-wise estimates are in black, the fitted estimates are in red, and the final estimates are in blue. The outliers of feature-wise estimates are marked with blue circles. The points lying on the bottom indicates they have a dispersion of practically zero or exactly zero.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-6.png" />
+	  <p>
+	    Figure 3-6 Dispersion estimates plot
+	  </p>
+	</div>
+      </div>
+      <h4><a name="title3.3.8.">Variance estimation <strong>(edgeR)</strong></a></h4>
+      <div>
+	<p>
+	  The variance estimation plot has average log CPM (counts per million) as x-axis and biological coefficient variation as y-axis. The red dots represent the common dispersion and the black dots represent the tag-wise (feature-wise) dispersion.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-7.png" />
+	  <p>
+	    Figure 3-7 Variance estimation plot
+	  </p>
+	</div>
+      </div>
+      <h4><a name="title3.3.9.">Power Transformation Curve <strong>(PoissonSeq)</strong></a></h4>
+      <div>
+	<p>
+	  Power transformation curve is for estimating the best parameter for minimizing overdispersion of data. It plotted one over theta on y-axis and mean log mu on x-axis. See more details on the Report.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-8.png" />
+	  <p>
+	    Figure 3-8 Power curve of PoissonSeq
+	  </p>
+	</div>
+      </div>
+      <h4><a name="title3.3.10.">Q-Q Plot <strong>(SAMSeq)</strong></a></h4>
+      <div>
+	<p>
+	  The Q-Q plot, also called the SAM plot in SAMseq, is a scatter plot with dots representing features. The positive significant features, which means the features has higher expression correlates with higher risk, are in red, and negative significant features are in green, while others are in black.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-9.png" />
+	  <p>
+	    Figure 3-9 Q-Q plot in SAMseq
+	  </p>
+	</div>
+      </div>
+      <h3><a name="title3.4.">Download Report</a></h3>
+      <div>
+	<p>
+	  The markdown files of every package are provided as the analysis report and can be downloaded on the panel. Notice that each package will generate the specific report.
+	</p>
+	<p>
+	  Also, the differential features table (.csv format) can be downloaded separate from other charts by "Download .csv file".
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-10.png" />
+	  <p>
+	    Figure 3-10 Download panel in "Analysis" Module
+	  </p>
+	</div>
+      </div>
+      <h3><a name="title3.5.">Combination Analysis - "Combination"</a></h3>
+      <h4><a name="title3.5.1."></a>"Introduction of "Combination"</a></h4>
+      <div>
+	<p>
+	  By clicking the icon in figure 3-11, the user will enter the "Combination" mode. "Combination" module provides a collection and comparison of the prior using packages. Figures like Venn and bar plot give an intuitive impression of the different result made by each package. We also define a new argument called R-value to synthesis the results of differential expression features from these packages.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-11.png" />
+	  <p>
+	    Figure 3-11 Combination mode
+	  </p>
+	</div>
+      </div>
+      <h4><a name="title3.5.2.">Setting up</a></h4>
+      <div>
+	<p>
+	  It is available for users to choose the packages needed to analysis on the "Advanced Option" panel.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-12.png" />
+	  <p>
+	    Figure 3-12 Advanced option
+	  </p>
+	</div>
+      </div>
+      <h4><a name="title3.5.3.">Charts Interpretation</a></h4>
+      <h5><a name="title3.5.3.1.">Differentially Expressed Features Identified by Packages</a></h5>
+      <div>
+	<p>
+	  This plot shows a comparison of the number of differential expression features identified by each package. The different of the results are caused the differences of the algorithm of these packages. The counts of features are plotted on the y-axis and each bar represents one package.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-13.png" />
+	  <p>
+	    Figure 3-13 Bar Plot of total counts of features by each package
+	  </p>
+	</div>
+      </div>
+      <h5><a name="title3.5.3.2.">Venn of DE Features Analyzed by Packages</a></h5>
+      <div>
+	<p>
+	  The Venn diagram visualizes the overlapping differential expression features identified by each package. In the diagram, each oval represents one package, and the number shown in the diagram means the number of differential expression features.
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-14.png" />
+	  <p>
+	    Figure 3-14 Venn plot of differential expression features analysis by each packge
+	  </p>
+	</div>
+      </div>
+      <h5><a name="title3.5.3.3.table">Feature Weight Table</a></h5>
+      <div>
+	<p>
+	  This table shows the identification details of every feature, and the order of the table may changed by clicking any names on the first line. The number of features shown in one page can be changed on top left.
+	</p>
+	<p>
+	  The interpretation of some columns is shown in the table.
+	</p>
+	<div align="center">
+	  <p>
+	    Table 4-1 Interpretation of feature weight table<br>
+	  </p>
+	  <table cellspacing="0" cellpadding="3" border="1" frame=hsides rules=all>
+	    <tbody style="border-color: #000000" align="center">
+              <tr class="firstRow" align="center">
+                  <td width="100" style="border-width: medium medium medium 0">
+		    Package
+		  </td>
+                  <td width="100" style="border-width: medium 0 medium 0">
+		    Header
+		  </td>
+	      </tr>
+	      <tr align="center">
+		<td width="100" style="border-width: 0 medium thin 0">
+		  FeatureID
+                </td>
+                <td width="100" style="border-width: 0 0 thin 0" align="left">
+                        Feature identifier
+                </td>
+	      </tr>
+	      <tr align="center">
+                <td width="100" style="border-width: 0 medium thin 0">
+                        Mean
+                </td>
+                <td width="100" style="border-width: 0 0 thin 0" align="left">
+                        Mean of expression
+                </td>
+	      </tr>
+	      <tr align="center">
+                <td width="100" style="border-width: 0 medium thin 0">
+                        LogFC
+                </td>
+                <td width="100" style="border-width: 0 0 thin 0" align="left">
+                        Logarithm of the fold change
+                </td>
+	      </tr>
+	      <tr align="center">
+                <td width="100" style="border-width: 0 medium thin 0">
+                        Rankmean
+                </td>
+                <td width="100" style="border-width: 0 0 thin 0" align="left">
+                        Mean rank of the five packages
+                </td>
+	      </tr>
+	      <tr align="center">
+                <td width="100" style="border-width: 0 medium medium 0">
+                        Score
+                </td>
+                <td width="100" style="border-width: 0 0 medium 0" align="left">
+                        Intergration score of rank lists of DE features by robust rank aggregation (RRA)
+                </td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+      </div>
+      <h4><a name="title3.5.4.">Download Report</a></h4>
+      <div>
+	<p>
+	  As other modules, the report of "Combination" is also available for download. The .csv format result is the result of the "Feature Weight Table".
+	</p>
+	
+	<div align="center">
+	  <img src="idea/../pic/3-15.png" />
+	  <p>
+	    Figure 3-15 Download Panel
+	  </p>
+	</div>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </div>
+    </div>
+    <br><br>
+  </div>

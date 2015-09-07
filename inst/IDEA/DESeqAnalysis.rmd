@@ -1,0 +1,161 @@
+---
+title: "Differential Analysis Report for DESeq (DESeq2)"
+author: "Cuckoo Group"
+date: '`r format(Sys.time(), format = "%H:%M:%S, %B %d %Y")`'
+output:
+  word_document: default
+  html_document:
+    mathjax: http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+---
+
+This is an R Markdown document for Data Exploration of [IDEA: Interactive Differential Expression Analyzer](http://idea.biocuckoo.org). Plots in Analysis module (plotted in R [1] with ggplot2 [2]) are presented in HTML file via rmarkdown [3].   
+Citation: **Update later?**  
+For any bugs or suggestions, please contact us: Qi Zhao(zhaoqi3@mail2.sysu.edu.cn), Rucheng Diao(diaorch@mail2.sysu.edu.cn), Licheng Sun(297495413@qq.com)  
+
+```{r global_options, include=FALSE, echo=FALSE, warning=FALSE}
+setwd(tempdir())
+load("DEseqAnalysis.RData")
+#load("/home//nemo13/Documents/201412/rmarkdown/DEseqAnalysis.RData")
+#p1 list(experimentaldesign, paired)
+#p2 getCdsData
+#p3 getDEseqMAplot()
+#p4 DEseqVolcanoPlot()
+#p5 DESeqHeatmapPlotfunction()
+#p6 p-value distribution
+library(ggplot2)
+library(RColorBrewer)
+library(scales)
+library(pheatmap)
+library(plyr)
+library(labeling)
+library(stringr)
+library(rmarkdown)
+#library(S4Vectors)
+library(DESeq2)
+```
+
+#Introduction
+Differential expression analysis
+Package Introduction
+
+#Basic Information
+In IDEA, a raw count table should be uploaded and experiment design be clarified. Optionally, experiment design can be one of Standard Comparison, Multi-factors Design and Without Replicates (not recommended). Then a pair of conditions should be selected to carry out differential expression analysis.   
+In these case, experiment design was stated as **`r plist[[1]][1]`**. And 
+**`r as.character(plist[[1]][[2]])[1]`** and **`r as.character(plist[[1]][[2]])[2]`**
+were selected for differential expression analysis.
+
+#Analysis Result
+##Differential Expression Table
+After analysis, a table containing information of all diffientially expressed genes is presented with interactive options. Implication of nouns in header is explained in Table 1.
+Note that in different packages, same noun in header can have different implication. For example, *p*-values in DESeq are obtained by Wald test, but in edgeR *p*-values are obtained by Fisher's exact test.
+
+<div align="center">
+<table cellpadding="10" cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
+        <tr>
+            <td style="border-width: medium thin medium 0">&nbsp;Headers</td>
+            <td style="border-width: medium thin medium 0">&nbsp;Implication</td>
+        </tr>
+        <tr>
+            <td style="border-width: 0 thin thin 0">&nbsp;FeatureID</td>
+            <td style="border-width: 0 thin thin 0">&nbsp;Feature identifier</td>
+        </tr>
+        <tr>
+            <td style="border-width: 0 thin thin 0">&nbsp;baseMean</td>
+            <td style="border-width: 0 thin thin 0">&nbsp;Mean over all rows</td>
+        </tr>
+        <tr>
+            <td style="border-width: 0 thin thin 0">&nbsp;log2FoldChange&nbsp;</td>
+            <td style="border-width: 0 thin thin 0">&nbsp;Logarithm (base 2) of the fold change</td>
+        </tr>
+        <tr>
+            <td style="border-width: 0 thin thin 0">&nbsp;lfcSE</td>
+            <td style="border-width: 0 thin thin 0">&nbsp;Standard Error of log2foldchange</td>
+        </tr>
+        <tr>
+            <td style="border-width: 0 thin thin 0">&nbsp;stat</td>
+            <td style="border-width: 0 thin thin 0">&nbsp;Wald statistic</td>
+        </tr>
+        <tr>
+            <td style="border-width: 0 thin thin 0">&nbsp;pvalue</td>
+            <td style="border-width: 0 thin thin 0">&nbsp;Wald test p-value</td>
+        </tr>
+        <tr>
+            <td style="border-width: 0 thin medium 0">&nbsp;padj</td>
+            <td style="border-width: 0 thin medium 0"> <em>&nbsp;p</em>-value adjusted for multiple testing with the Benjamini-Hochberg procedure&nbsp;</td>
+        </tr>
+</table>
+Table 1: Implication of headers of Differential Expression Table in DESeq2
+</div>
+
+##Variance Estimation
+The variance estimates plot is for checking the result of dispersion estimates adjustment. Specifically, in DESeq2, variance estimation is plotted by executing ```plotDispEsts()``` which is built-in in the package.
+The gene-wise estimates are in black, the fitted estimates are in red, and the final estimates are in blue. The outliers of gene-wise estimates are marked with blue circles and they are not shrunk towards the fitted value. The points lying on the bottom indicates they have a dispersion of practically zero or exactly zero.   
+<div align="center">
+```{r results="hide", echo=FALSE, warning=FALSE}
+#insert DESeq2 plotting code here!
+plotDispEsts(plist[[2]])
+```
+Figure 1: Variance Estimation Plot for DESeq2
+</div>
+
+##MA-Plot
+A MA-Plot can give a quick overview of the distribution of data. The log2–transformed fold change is plotted on the y-axis and the average count (normalized by size factors) is on the x-axis. The false discovery rate (FDR) threshold can be interactively changed, and the genes are colored red if the adjusted p-value is less than the FDR, while other genes are colored black.    
+In this case, FDR threshold was set as ```INPUT THRESHOLD HERE!```.
+<div align="center">
+```{r results="hide", echo=FALSE, warning=FALSE}
+print(plist[[3]])
+```
+  
+Figure 2: MA-Plot for DESeq2
+</div>
+
+##Normalized Size Factors
+Different samples may have different sequencing depth. In order to be comparable, it is necessary to estimate the relative size factors of each sample, and divide the samples by the size factors separately.    
+Table of normalized size factors shows the normalized size factors of each sample. In the header, *Group* represents conditions, *lib.size* represents size of the library, *norm.factors* is the normalized size factors.  
+<div align="center">
+<strong>TABLE HERE?</strong>
+Table 2: Normalized size factors calculated when normalizing via packages
+</div>
+ 
+
+##Volcano Plot
+
+An overview of the number of differential expression genes can be shown in the *volcano plot*. The log2-transformed fold change is on the x-axis, the y-axis represents the–log10-transformed *p*-value. The threshold of *p*-value is ```INPUT THRESHOLD HERE!```, and fold change threshold is ```INPUT THRESHOLD HERE!```. Highly differential expressed genes are colored blue, while others are in red.   
+<div align="center">
+```{r results="hide", echo=FALSE, warning=FALSE}
+print(plist[[4]])
+
+```
+  
+Figure 3  Volcano Plot
+</div>
+
+##Heatmap of Differential Expressed Genes
+
+Heatmap can display the expression values of the features, and every rectangle represents one gene-sample pair. Features are arranged in columns (samples) and rows (features) as in the original data matrix. The color represents $log_{10}(Normalized Reads Count + 1)$.   
+<div align="center">
+```{r results="hide", echo=FALSE, warning=FALSE}
+#heatmapO[[1]]  data
+#heatmapO[[2]] a logical vector with two elements 
+#heatmapO[[3]] scalling method
+#heatmapO[[3]] legend options
+heatmapO=plist[[5]]
+pheatmap(heatmapO[[1]], color=redgreen(75),border_color=NA,cluster_rows=heatmapO[[2]][1],cluster_cols= heatmapO[[2]][2],scale=heatmapO[[3]],legend=heatmapO[[4]])
+    
+```
+  
+Figure 4  The Heatmap of Differential Expressed Genes
+</div>
+
+##FDR Distribution Plot
+
+FDR distribution plot visualizes distribution of FDR in differential expression test. In DESeq2, **Wald test** is adopted. It uses FDR as x-axis and percentage of different groups of x value as y-axis, and colors significant and not significant groups differently.   
+Note that FDR distribution plot is not available in NOISeq package, since probabilities in NOISeq are not equivalent to *p*-values.
+<div align="center">
+```{r results="hide", echo=FALSE, warning=FALSE}
+print(plist[[6]])
+```
+  
+Figure 5  FDR Distribution Plot
+</div>
+#References

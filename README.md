@@ -110,7 +110,7 @@ then run in R under work directory of '/Document' : <br/>
 Also, after install IDEA pakcages with no error print,  users can simply input ```runIDEA()``` function to run application locally; Since there is only one function the packages, you can also print help massege in your R console;
 
 **For server or computer without GUI(Run IDEA on a sever)**<br/>
-Install shiny-server first and finish the configurations step refers to [http://rstudio.github.io/shiny-server/latest/](http://rstudio.github.io/shiny-server/latest/)<br\>
+Install shiny-server first and finish the configurations step refers to [http://rstudio.github.io/shiny-server/latest/](http://rstudio.github.io/shiny-server/latest/)<br/>
 Clone this package and install the dependencies mentioned above in your R environment; <br/>
 Copy _IDEA_ folder under _inst_ dir into /srv/shiny-sever/ (or orther app location you configured in shiny-sever)<br/>
 Configure the server network/firewall options like open the shiny port(3838 default), internal ip access (refers to shiny site);<br/>

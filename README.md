@@ -15,7 +15,7 @@ To check the dependencies, one can simply type
 ```
 library("Packages for check")
 ```
-To date, the current version(IDEA 1.0) is work well based on the following versions of dependencies<br/>
+To date, the current version(IDEA 1.0) works well based on the following versions of dependencies<br/>
     shiny (>= 0.12.2),<br/>
     DESeq2 (>= 1.6.2),<br/>
     shinyBS (<= 0.25),<br/>
@@ -33,7 +33,7 @@ To date, the current version(IDEA 1.0) is work well based on the following versi
 
 User should notice that , the latest **shinyBS**  is incompatible with IDEA; you should install the former version (0.25) before IDEA was imported. This is because current shinyBS removed the ```
 progressBar
-``` function used in IDEA. To install the certain version shinyBS, you can type
+``` function used in IDEA. To install the compatible shinyBS, you can type
 ```
 devtools::install_github( "ebailey78/shinyBS")
 ```

@@ -12,7 +12,7 @@ Installation
 -------------
 To run IDEA functionally in local machine, you must make sure that all the dependencies were well installed.
 To check the dependencies, one can simply type 
-```
+```R
 library("Packages for check")
 ```
 To date, the current version(IDEA 1.0) works well based on the following versions of dependencies<br/>
@@ -34,7 +34,7 @@ To date, the current version(IDEA 1.0) works well based on the following version
 User should notice that , the latest **shinyBS**  is incompatible with IDEA; you should install the former version (0.25) before IDEA was imported. This is because current shinyBS removed the ```
 progressBar
 ``` function used in IDEA. To install the compatible shinyBS, you can type
-```
+```R
 devtools::install_github( "ebailey78/shinyBS")
 ```
 We also list the command to install the related packages:
@@ -84,14 +84,14 @@ devtools::install_github( "ebailey78/shinyBS")
 ```
 To install the latest development builds directly from GitHub, run this:(For some reason, we did not release the current version on CRAN or BIOCONDUCTOR site):
 
-```
+```R
 if (!require("devtools"))
   install.packages("devtools")
 devtools::install_github("likelet/IDEA")
 ```
 The above command can automaticly install the several dependencies which allows users skippin some installation steps; However, the shinyBS package would be latest version which will result in incompatible with IDEA. User can remove it and reinstall the right version to avoid this;
 Alternately, if you have installed dependencies manually, you can then install IDEA pakcage alone with following command :
-```
+```R
 if (!require("devtools"))
   install.packages("devtools")
 devtools::install_github("likelet/IDEA",dependencies = FALSE))
@@ -104,12 +104,12 @@ Clone repository into local path and run as a Shiny App <br/>
 example:  <br/>
 Clone repository into local directory '/Document/IDEA' (so that ui.R locates as '/Document/IDEA/ui.R') <br/>
 then run in R under work directory of '/Document' : <br/>
-      ```
+      ```R
       runApp("IDEA")
 		```
 <br/>
 Also, after install IDEA pakcages with no error print,  users can simply input<br/>
-```
+```R
 runIDEA()
 ``` 
 function to run application locally; Since there is only one function in this package, you can also print help massege in your R console;

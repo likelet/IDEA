@@ -9,9 +9,9 @@ IDEA
 
 Installation IDEA locally
 -------------
-Web server is easily accessed and can finish analysis with small dataset(less than 5M). However, Limited to the server resouces, the web page offen stucked when multible user operated. To solve this, We thus released an R package that packed the whole application for users to run analysis locally without any resouce conflict.<br/>
+Web server is very easy to access and can finish analysis while small dataset(less than 5M) were submitted. However, Limited to remote server resouces, the web page usually stucked when multible user operated or with bigger dataset. To solve this, We thus released an R package that packed the whole application for users to run analysis in R environment locally .<br/>
 _Before install the IDEA package, please read this markdown file carefully;_<br/>
-First, to run IDEA functionally in local machine, you must make sure that all the dependencies were well installed.
+First, to run IDEA functionally in local machine, you must make sure that all the dependencies were well installed.***（We recommanded users using [Rstudio](https://www.rstudio.com/products/rstudio/download/) as their console to make installation procedure more easily)***<br/>
 To check the dependencies, one can simply type 
 ```R
 library("Packages for check")

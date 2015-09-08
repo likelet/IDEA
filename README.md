@@ -4,8 +4,8 @@ IDEA
 
 Installation
 -------------
-To run IDEA functionally at local machine, you must make sure that all the dependencies were well loaded;
-To check the packages, one can simply type 
+To run IDEA functionally in local machine, you must make sure that all the dependencies were well installed.
+To check the dependencies, one can simply type 
 ```
 library("Packages for check")
 ```
@@ -24,11 +24,19 @@ To date, the current version(IDEA 1.0) is work well based on the following versi
     rmarkdown (>= 0.2.53),<br/>
     RobustRankAggreg (>= 1.1)<br/>
 <br/>
+
 User should notice that , the latest **shinyBS**  is incompatible with IDEA; you should install the former version (0.25) before IDEA was imported. This is because current shinyBS removed the ```
 progressBar
 ``` function used in IDEA. To install the certain version shinyBS, you can type
 ```
 devtools::install_github( "ebailey78/shinyBS")
+```
+To install the latest development builds directly from GitHub, run this:(For some reason, we did not release the current version on CRAN or BIOCONDUCTOR site):
+
+```
+if (!require("devtools"))
+  install.packages("devtools")
+devtools::install_github("likelet/IDEA")
 ```
 
 Run Instruction

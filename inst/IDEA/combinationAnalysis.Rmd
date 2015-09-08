@@ -8,7 +8,7 @@ html_document:
   mathjax: http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 ---
 ```{r setup, echo=FALSE}
-knitr::opts_chunk$set(dev="CairoPNG", fig.width = 9, fig.height = 9, dpi = 72)
+knitr::opts_chunk$set( fig.width = 9, fig.height = 9, dpi = 72)
 ```
 This is an R Markdown document for Combination Analysis of [IDEA: Interactive Differential Expression Analyzer](http://idea.biocuckoo.org). The following plots are plotted in R [[1](#ref1)] with ggplot2[[2](#ref2)] (for histogram) and VennDiagram[[3](#ref3)] (for Venn diagram)). This analysis report is presented in HTML via rmarkdown [[4](#ref4)].   
 

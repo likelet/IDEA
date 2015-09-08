@@ -299,6 +299,7 @@ shinyServer(function(input,output,session){
                  h4("Matrix of experimental design (example)",DiaoTips(2,"Comma-separated file with header information is required ")),
                  NiePrettyDownloadButton("downloadExampleDesignFile",addclass="btn-warning","Download design matrix file"),
                  tags$button(class="btn btn-info","View Example data",onmousedown="toStep(2)")
+                
              )
            )
     )
@@ -396,6 +397,14 @@ shinyServer(function(input,output,session){
              )
            )
     )
+  })
+  
+  v <- reactiveValues(data = NULL)
+  observeEvent(input$test, {
+    v$data <- runif(100)
+  })
+  output$testplot <- renderPlot({
+    hist(v$data)
   })
   #interest variable
   output$interestvariablesUI<-renderUI({ 
@@ -2232,7 +2241,7 @@ getPowerCurve<-reactive({
     updateProgressBar(session,"intergretiveProgressbar", value=100,visible = FALSE, animate=TRUE)
     table
     
-  })
+  },escape = FALSE)
   ################################
   #Download Plot
   #BarPlot download

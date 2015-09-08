@@ -12,7 +12,7 @@ html_document:
 Citation: This work is in process of publishing, citation method will be post here as soon as possible. Check out the IDEA website above.    
 
 ```{r setup, echo=FALSE}
-knitr::opts_chunk$set(dev="CairoPNG", fig.width = 9, fig.height = 9, dpi = 72)
+knitr::opts_chunk$set(fig.width = 9, fig.height = 9, dpi = 72)
 ```
 
 ```{r global_options, include=FALSE, echo=FALSE, warning=FALSE}

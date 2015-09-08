@@ -192,6 +192,7 @@ shinyUI(bootstrapPage(theme = "css/bootstrap.min.css",
                                           
                                           
                                       ),
+                                      
                                       div(class="none",id="step2",
                                           div(class="hd-option-upload",
                                               tags$button(type="button",class="back-nav-upload glyphicon glyphicon-chevron-left btn btn-lg",id="btn--back2-nav-upload",onmousedown="toStep(1)"),
@@ -217,8 +218,10 @@ shinyUI(bootstrapPage(theme = "css/bootstrap.min.css",
                                               div(class="panel-data panel panel-default",
                                                   
                                                   div(class="panel-body",
-                                                      div(class="alert alert-success","The first 6 rows of count matrix are shown here. "),
+                                                      div(class="alert alert-success","The first 6 rows of count matrix are shown here. ")
+                                                      ,
                                                       dataTableOutput("rowdatashow")
+                                
                                                   )
                                               )
                                           )

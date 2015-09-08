@@ -8,7 +8,7 @@ html_document:
   mathjax: http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 ---
 ```{r setup, echo=FALSE}
-knitr::opts_chunk$set(dev="CairoPNG", fig.width = 9, fig.height = 9, dpi = 72)
+knitr::opts_chunk$set( fig.width = 9, fig.height = 9, dpi = 72)
 ```  
   This is an R Markdown document for SAMseq analysis of [IDEA: Interactive Differential Expression Analyzer](http://idea.biocuckoo.org). Plots in SAMseq analysis module (plotted in R [[1](#ref1)] with pheatmap[[2](#ref2)] (for heat map), `samr.plot` in SAMSeq (samr) [[3](#ref3)] (for Q-Q plot) and ggplot2[[4](#ref4)] (for FDR distribution plot)) are presented in HTML file via rmarkdown [[5](#ref5)]. For figures of higher resolution, please download from website directly.   
    

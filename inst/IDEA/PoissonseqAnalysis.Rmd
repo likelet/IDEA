@@ -9,7 +9,7 @@ html_document:
 ---
  
 ```{r setup, echo=FALSE}
-knitr::opts_chunk$set(dev="CairoPNG", fig.width = 9, fig.height = 9, dpi = 72)
+knitr::opts_chunk$set( fig.width = 9, fig.height = 9, dpi = 72)
 ``` 
  
   This is an R Markdown document for PoissonSeq analysis of [IDEA: Interactive Differential Expression Analyzer](http://idea.biocuckoo.org). Plots in PoissonSeq analysis module (plotted in R [[1](#ref1)] with pheatmap[[2](#ref2)] (for heat map), PoissonSeq[[3](#ref3)] (for power transformation curve) and ggplot2[[4](#ref4)] (for FDR distribution plot)) are presented in HTML file via rmarkdown [[5](#ref1)]. For figures of higher resolution, please download from website directly.    

@@ -49,12 +49,12 @@ function toStep(step_id) {
   // else{
     for (i = 0; i < 4; i++) {
       if (i == step_id) {
-        //      document.getElementById("step" + i).className = "block"; //内容的样式
-        $("div[id=step" + i + "]").show();
+             document.getElementById("step" + i).className = "block"; //内容的样式
+        //$("div[id=step" + i + "]").show();
         $("#refreshbutton").click();
       } else {
-        $("div[id=step" + i + "]").hide();
-        //      document.getElementById("step" + i).className = "none"; //内容不显示
+        //$("div[id=step" + i + "]").hide();
+             document.getElementById("step" + i).className = "none"; //内容不显示
       // }
     }
   }

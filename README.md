@@ -5,6 +5,9 @@ IDEA
 <p>    Here, we developed a web server called  "<strong>I</strong>nteractive <strong>D</strong>ifferential <strong>E</strong>xpression <strong>A</strong>nalyzer (<strong>IDEA</strong>)" for differential gene expression analysis of count data using <a href="http://www.r-project.org/">R</a> (R Core Team 2014), <a href="http://shiny.rstudio.com/">Shiny</a> (RStudio Inc. 2014) and JavaScript. With the help of this web server, users can quickly and easily access the most often used differential expression analysis tools. IDEA is highly interactive and will provide good visualization. Additionally, a Score based on robust rank aggregation (RRA) (<a href="http://www.ncbi.nlm.nih.gov/pubmed/22247279/">Kolde, Laur et al. 2012</a>) integrates the result rank lists from different tools to refine the set of differentially expressed features.</p>
 [Click here to redirect to IDEA website.](http://idea.biocuckoo.org)<br />
 
+**Screen shoot of IDEA**
+<img src="inst/IDEA/www/img/demo0-v2.png">
+
 Installation
 -------------
 To run IDEA functionally in local machine, you must make sure that all the dependencies were well installed.

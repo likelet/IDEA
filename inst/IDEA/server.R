@@ -56,17 +56,17 @@ shinyServer(function(input,output,session){
   
   #get user exprimental design
   values$design="SC"
-  values$usedtools=c("DESeq","edgeR","NOISeq","PoissnonSeq","SAMseq")
+  values$usedtools=c("DESeq","edgeR","NOISeq","PoissonSeq","SAMseq")
   observe({
     if(input$scExampleButton!=0){
       values$design="SC"
-      values$usedtools=c("DESeq","edgeR","NOISeq","PoissnonSeq","SAMseq")
+      values$usedtools=c("DESeq","edgeR","NOISeq","PoissonSeq","SAMseq")
     }
   })
   observe({
     if(input$scNewButton!=0){
       values$design="SC"
-      values$usedtools=c("DESeq","edgeR","NOISeq","PoissnonSeq","SAMseq")
+      values$usedtools=c("DESeq","edgeR","NOISeq","PoissonSeq","SAMseq")
     }
   })
   observe({
@@ -1875,7 +1875,7 @@ getPowerCurve<-reactive({
   SAMseqHeatmapPlotfunction<-reactive({
     table<-getresultPoissonSeqresultTableNew()
     normalizedData<-normalizeDataNew()
-    data<-HeatmapData(normalizedData,table,DEmethod='PoissnonSeq',Topnumber=input$SAMseqShowDeGenes)
+    data<-HeatmapData(normalizedData,table,DEmethod='PoissonSeq',Topnumber=input$SAMseqShowDeGenes)
     data
   })
   #SAMseq DE heatmap render
@@ -2033,7 +2033,7 @@ getPowerCurve<-reactive({
     
     tablelist<-list(DESeq=getDEseqResultTable(),edgeR=getedgeRresultTable())
     updateProgressBar(session,"intergretiveProgressbar", value=50,visible = TRUE, animate=TRUE)
-    #values$usedtools=c("DESeq","edgeR","NOIseq","PoissnonSeq","SAMseq")
+    #values$usedtools=c("DESeq","edgeR","NOIseq","PoissonSeq","SAMseq")
     if(values$design!="MF"){
       table=getresultNOIseqresultTableNew()
       tablelist[["NOISeq"]]<-table
@@ -2041,7 +2041,7 @@ getPowerCurve<-reactive({
     }
     if(values$design=="SC"){
       table2=getresultPoissonSeqresultTableNew()
-      tablelist[["PoissnonSeq"]]<-table2
+      tablelist[["PoissonSeq"]]<-table2
       updateProgressBar(session,"intergretiveProgressbar", value=80,visible = TRUE, animate=TRUE)
       table3=getSAMseqresultTableNew()
       updateProgressBar(session,"intergretiveProgressbar", value=90,visible = TRUE, animate=TRUE)

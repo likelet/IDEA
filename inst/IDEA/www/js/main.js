@@ -186,7 +186,7 @@ $(document).ready(function () {
 //startAnalysis()
 function startAnalysis() {
   
-  if((workmode==1)&&(($("#file1_progress label").text()!="Upload complete")||($("#designfile_progress label").text()!="Upload complete"))){
+  if((workmode==1)&&(($("#file1_progress .progress-bar").text()!="Upload complete")||($("#designfile_progress .progress-bar").text()!="Upload complete"))){
     // alert(workmode)
     //alert("Please Input readscount or design file first! Or you can click example button to run demo.");
     showDialogStartanalysis();

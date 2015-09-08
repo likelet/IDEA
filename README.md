@@ -95,7 +95,7 @@ Alternately, if you have installed dependencies manually, you can then install I
 ```R
 if (!require("devtools"))
   install.packages("devtools")
-devtools::install_github("likelet/IDEA",dependencies = FALSE))
+devtools::install_github("likelet/IDEA",dependencies = FALSE)
 ```
 or download it from git then install package with install command<br/>
 ```R

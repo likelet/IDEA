@@ -9,8 +9,8 @@ IDEA
 
 Installation IDEA locally
 -------------
-    Web server is easily accessed and can finish analysis with small dataset(less than 5M). However, Limited to the server resouces, the web page offen stucked when multible user operated. To solve this, We thus released an R package that packed the whole application for users to run analysis locally without any resouce conflict.
-_Before install the IDEA package, please read this markdown file carefully;_
+Web server is easily accessed and can finish analysis with small dataset(less than 5M). However, Limited to the server resouces, the web page offen stucked when multible user operated. To solve this, We thus released an R package that packed the whole application for users to run analysis locally without any resouce conflict.<br/>
+_Before install the IDEA package, please read this markdown file carefully;_<br/>
 First, to run IDEA functionally in local machine, you must make sure that all the dependencies were well installed.
 To check the dependencies, one can simply type 
 ```R
@@ -83,19 +83,23 @@ for(i in 1:length(bcTgt)){
 devtools::install_github("shiny-incubator", "rstudio")
 devtools::install_github( "ebailey78/shinyBS")
 ```
-To install the latest development builds directly from GitHub, run this:(For some reason, we did not release the current version on CRAN or BIOCONDUCTOR site):
+Second, to install the latest development build directly from GitHub, run this:(For some reason, we did not release the current version on CRAN or BIOCONDUCTOR site):
 
 ```R
 if (!require("devtools"))
   install.packages("devtools")
 devtools::install_github("likelet/IDEA")
 ```
-The above command can automaticly install the several dependencies which allows users skippin some installation steps; However, the shinyBS package would be latest version which will result in incompatible with IDEA. User can remove it and reinstall the right version to avoid this;
+The above command can automaticly install the several dependencies which allows users skipping some installation steps; However, the shinyBS package would be latest version which will result in incompatible with IDEA. User can remove it and reinstall the right version to avoid this;
 Alternately, if you have installed dependencies manually, you can then install IDEA pakcage alone with following command :
 ```R
 if (!require("devtools"))
   install.packages("devtools")
 devtools::install_github("likelet/IDEA",dependencies = FALSE))
+```
+or download it from git then install package with install command<br/>
+```R
+install.packages("path_to_IDEA.tar.gz/.zip", repos = NULL, type="source")
 ```
 
 Run Instruction

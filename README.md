@@ -104,9 +104,9 @@ Clone repository into local path and run as a Shiny App <br/>
 example:  <br/>
 Clone repository into local directory '/Document/IDEA' (so that ui.R locates as '/Document/IDEA/ui.R') <br/>
 then run in R under work directory of '/Document' : <br/>
-      ```R
-      runApp("IDEA")
-		```
+```R
+runApp("IDEA")
+```
 <br/>
 Also, after install IDEA pakcages with no error print,  users can simply input<br/>
 ```R

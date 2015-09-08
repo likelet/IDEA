@@ -159,7 +159,7 @@ Please feel free contact us. <br/>
 
 ### Copyright
 Copyright © 2015. The CUCKOO Workgroup. All Rights Reserved<br/>
-For more useful tools/applications, please go to [biocuckoo.org]<http://www.biocuckoo.org>
+For more useful tools/applications, please go to [biocuckoo.org](http://www.biocuckoo.org)
 
 ### Citation 
 If you using any one of IDEA intergrated R packages in your publications, please cite the related packages by<br/>```citations(packagesname)```;<br/>

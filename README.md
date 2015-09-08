@@ -102,7 +102,7 @@ or download it from git then install package with install command<br/>
 install.packages("path_to_IDEA.tar.gz/.zip", repos = NULL, type="source")
 ```
 
-Run Instruction
+Run information
 -------------
 **For computer with GUI**<br/>
 Clone repository into local path and run as a Shiny App <br/>
@@ -146,7 +146,9 @@ During the analysis procedure,  you may encounter the following question due to 
 ***1. Several packages can not be installed with errors returned, how to fix this?***
 <dt>Answer<dt/>: Yes, the R pakcages installation is indeed painful in some situation. Mostly you can restart your computer or change the network environment to go thought it easily; If problem still exist, please try to installing packages locally  or contacting authors for help;<br/>
 ***2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button***:<br/>
-<dt>Answer<dt/>: This error is mainly caused by Rstudio version; you can fixed it by upgrading your RStudio to the latest version.
+<dt>Answer<dt/>: This error is mainly caused by Rstudio version; you can fixed it by upgrading your RStudio to the latest version.<br/>
+***3. "Error: pandoc version 1.12.3 or higher is required and was not found." while clicks the download report button***:<br/>
+<dt>Answer<dt/>: If you see this message that means you upgraded your Rstudio version, the problem is still exist. This means you need a pandoc to render Rmd file into html report. You can install it from [https://github.com/jgm/pandoc/releases/tag/1.15.0.6]<https://github.com/jgm/pandoc/releases/tag/1.15.0.6> as YiHui suggested. Then restart your Rstudio.
 
 ### Designers:
 Jian Ren, renjian.sysu@gmail.com<br/>

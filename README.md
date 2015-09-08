@@ -89,8 +89,8 @@ if (!require("devtools"))
   install.packages("devtools")
 devtools::install_github("likelet/IDEA")
 ```
-The above command can automaticly install the several dependencies which allows user skipping some installation steps; However, the shinyBS package would be latest version which would be incompatible. user can remove it and reinstall the right version;
-If you have installed dependencies mannually, you can install IDEA pakcage alone with following command :
+The above command can automaticly install the several dependencies which allows users skippin some installation steps; However, the shinyBS package would be latest version which will result in incompatible with IDEA. User can remove it and reinstall the right version to avoid this;
+Alternately, if you have installed dependencies manually, you can then install IDEA pakcage alone with following command :
 ```
 if (!require("devtools"))
   install.packages("devtools")
@@ -99,13 +99,24 @@ devtools::install_github("likelet/IDEA",dependencies = FALSE))
 
 Run Instruction
 -------------
-To run, clone repository into local path and run as a Shiny App <br/>
+For computer with GUI
+Clone repository into local path and run as a Shiny App <br/>
 example:  <br/>
 Clone repository into local directory '/Document/IDEA' (so that ui.R locates as '/Document/IDEA/ui.R') <br/>
 then run in R under work directory of '/Document' : <br/>
       ```
 		runApp("IDEA")
 		```
+Also, after install IDEA pakcages with no error print,  users can simply input ```runIDEA()``` function to run application locally; Since there is only one function the packages, you can also print help massege in your R console;
+
+For server or computer withou GUI(Run IDEA on a sever)
+Install shiny-server first and finish the configurations step refers to [http://rstudio.github.io/shiny-server/latest/](http://rstudio.github.io/shiny-server/latest/)<br\>
+Clone this package and install the dependencies mentioned above in your R environment; 
+Copy _IDEA_ folder under _inst_ dir into /srv/shiny-sever/ (or orther app location you configured in shiny-sever)
+Configure the server network/firewall options like open the shiny port(3838 default), internal ip access (refers to shiny site);
+
+Input the server ip address with port number and enjoy your IDEA analysis trip.
+
 Environment
 -------------
 R version 3.1.1
@@ -116,7 +127,7 @@ ggplot2, reshape, plyr, scale, RColorBrewer and other packages needed in plottin
 Documentation
 -------------
 First stable version released.
-To view user guide, please visit [http://idea.biocuckoo.org](http://idea.biocuckoo.org) and refers to **GUIDE** section
+To view user guide, please visit [http://idea.biocuckoo.org](http://idea.biocuckoo.org) and refers to **HELP** section
 Developer Information
 -------------
 FAQ

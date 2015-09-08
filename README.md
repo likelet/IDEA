@@ -18,7 +18,7 @@ library("Packages for check")
 To date, the current version(IDEA 1.0) works well based on the following versions of dependencies<br/>
     shiny (>= 0.12.2),<br/>
     DESeq2 (>= 1.6.2),<br/>
-    shinyBS (<= 0.25),<br/>
+    __shinyBS (<= 0.25),<br/>__
     shinysky (>= 0.1.2),<br/>
     edgeR (>= 3.2.4),<br/>
     NOISeq (>= 2.8.0),<br/>
@@ -31,9 +31,9 @@ To date, the current version(IDEA 1.0) works well based on the following version
     RobustRankAggreg (>= 1.1)<br/>
 <br/>
 
-User should notice that , the latest **shinyBS**  is incompatible with IDEA; you should install the former version (0.25) before IDEA was imported. This is because current shinyBS removed the ```
-progressBar
-``` function used in IDEA. To install the compatible shinyBS, you can type
+__User should notice that , the latest **shinyBS**  is incompatible with IDEA; you should install the former version (0.25) before IDEA was imported. This is because current shinyBS removed the__ ```
+progressBar()
+``` __function used in IDEA. To install the compatible shinyBS, you can type__
 ```R
 devtools::install_github( "ebailey78/shinyBS")
 ```
@@ -137,11 +137,11 @@ Developer Information
 -------------
 FAQ
 -------------
-During the analysis procedure,  you may encounter the following question due to software or enviroment bugs; We summarized those questions and give some solution for bug fixing:
+During the analysis procedure,  you may encounter the following question due to software or enviroment bugs; We summarized those questions and give some solution for bug fixing:<br/>
 ***1. Several packages can not be installed with errors returned, how to fix this?***
-Answer: Yes, the R pakcages installation is indeed painful in some situation. Mostly you can restart your computer or change the network environment to go thought it easily; If problem still exist, please try to installing packages locally  or contacting authors for help;
+<dt>Answer<dt/>: Yes, the R pakcages installation is indeed painful in some situation. Mostly you can restart your computer or change the network environment to go thought it easily; If problem still exist, please try to installing packages locally  or contacting authors for help;<br/>
 ***2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button***:<br/>
-Answer: This error is mainly caused by Rstudio version; you can fixed it by upgrading your RStudio to the latest version.
+<dt>Answer<dt/>: This error is mainly caused by Rstudio version; you can fixed it by upgrading your RStudio to the latest version.
 
 ### Designers:
 Jian Ren, renjian.sysu@gmail.com<br/>

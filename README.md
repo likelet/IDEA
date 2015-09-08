@@ -31,6 +31,51 @@ progressBar
 ```
 devtools::install_github( "ebailey78/shinyBS")
 ```
+We also list the command to install the related packages:
+```
+cDep <- c("abind")
+#dependencies from BIOCONDUCTOR
+bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges")
+#target from CRAN
+cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram","RobustRankAggreg","shiny","rmarkdown")
+#target from BIOCONDUCTOR
+bcTgt <- c("edgeR", "DESeq2")
+
+
+
+###INSTALLED PACKAGES
+#get installed list
+inst <- packageStatus()$inst
+
+#check and install DEPENDENCIES from CRAN
+for(i in 1:length(cDep)){
+  tag = which(inst$Package == cDep[i])
+  if(length(tag)){
+    remove.packages(cDep[i])
+  }
+  install.packages(cDep[i])
+}
+#check and install DEPENDENCIES from BIOCONDUCTOR
+source("http://bioconductor.org/biocLite.R")
+for(i in 1:length(bcDep)){
+  tag = which(inst$Package == bcDep[i])
+  if(length(tag))
+    remove.packages(bcDep[i])
+  biocLite(bcDep[i])
+}
+
+#check and install TARGET packages
+for(i in 1:length(cTgt)){
+  install.packages(cTgt[i])
+}
+for(i in 1:length(bcTgt)){
+
+  biocLite(bcTgt[i])
+}
+
+devtools::install_github("shiny-incubator", "rstudio")
+devtools::install_github( "ebailey78/shinyBS")
+```
 To install the latest development builds directly from GitHub, run this:(For some reason, we did not release the current version on CRAN or BIOCONDUCTOR site):
 
 ```

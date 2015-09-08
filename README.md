@@ -7,7 +7,7 @@ IDEA
 **Screen shoot of IDEA**
 <img src="inst/IDEA/www/img/demo0-v2.png">
 
-Installation IDEA locally
+Instal IDEA locally
 -------------
 Web server is very easy to access and can finish analysis while small dataset(less than 5M) were submitted. However, Limited to remote server resouces, the web page usually stucked when multible user operated or with bigger dataset. To solve this, We thus released an R package that packed the whole application for users to run analysis in R environment locally .<br/>
 _Before install the IDEA package, please read this markdown file carefully;_<br/>

@@ -99,7 +99,7 @@ devtools::install_github("likelet/IDEA",dependencies = FALSE))
 
 Run Instruction
 -------------
-For computer with GUI
+**For computer with GUI**<br/>
 Clone repository into local path and run as a Shiny App <br/>
 example:  <br/>
 Clone repository into local directory '/Document/IDEA' (so that ui.R locates as '/Document/IDEA/ui.R') <br/>
@@ -109,19 +109,19 @@ then run in R under work directory of '/Document' : <br/>
 		```
 Also, after install IDEA pakcages with no error print,  users can simply input ```runIDEA()``` function to run application locally; Since there is only one function the packages, you can also print help massege in your R console;
 
-For server or computer withou GUI(Run IDEA on a sever)
+**For server or computer without GUI(Run IDEA on a sever)**<br/>
 Install shiny-server first and finish the configurations step refers to [http://rstudio.github.io/shiny-server/latest/](http://rstudio.github.io/shiny-server/latest/)<br\>
-Clone this package and install the dependencies mentioned above in your R environment; 
-Copy _IDEA_ folder under _inst_ dir into /srv/shiny-sever/ (or orther app location you configured in shiny-sever)
-Configure the server network/firewall options like open the shiny port(3838 default), internal ip access (refers to shiny site);
+Clone this package and install the dependencies mentioned above in your R environment; <br/>
+Copy _IDEA_ folder under _inst_ dir into /srv/shiny-sever/ (or orther app location you configured in shiny-sever)<br/>
+Configure the server network/firewall options like open the shiny port(3838 default), internal ip access (refers to shiny site);<br/>
 
-Input the server ip address with port number and enjoy your IDEA analysis trip.
+Input the server ip address with port number and enjoy your IDEA analysis trip :).<br/>
 
-Environment
+Developing Environment
 -------------
-R version 3.1.1
+R version 3.1.2
 Packages:
-Shiny (0.10.2), ShinySky(0.1.2), shinyIncubator (3.2.4) and their dependencies <br/>
+Shiny (0.12.2), ShinySky(0.1.2), shinyIncubator (3.2.4),shinyBS(0.25) and their dependencies <br/>
 DESeq2 (1.6.2), edgeR (3.2.4), SAMseq (2.0), PoissonSeq (1.1.2), NOISeq (2.8.0) and their dependencies <br/>
 ggplot2, reshape, plyr, scale, RColorBrewer and other packages needed in plotting
 Documentation

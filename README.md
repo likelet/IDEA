@@ -7,9 +7,11 @@ IDEA
 **Screen shoot of IDEA**
 <img src="inst/IDEA/www/img/demo0-v2.png">
 
-Installation
+Installation IDEA locally
 -------------
-To run IDEA functionally in local machine, you must make sure that all the dependencies were well installed.
+    Web server is easily accessed and can finish analysis with small dataset(less than 5M). However, Limited to the server resouces, the web page offen stucked when multible user operated. To solve this, We thus released an R package that packed the whole application for users to run analysis locally without any resouce conflict.
+_Before install the IDEA package, please read this markdown file carefully;_
+First, to run IDEA functionally in local machine, you must make sure that all the dependencies were well installed.
 To check the dependencies, one can simply type 
 ```R
 library("Packages for check")

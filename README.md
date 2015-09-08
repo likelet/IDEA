@@ -138,8 +138,9 @@ Developer Information
 FAQ
 -------------
 During the analysis procedure,  you may encounter the following question due to software or enviroment bugs; We summarized those questions and give some solution for bug fixing:
-
-1. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button:
+***1. Several packages can not be installed with errors returned, how to fix this?***
+Answer: Yes, the R pakcages installation is indeed painful in some situation. Mostly you can restart your computer or change the network environment to go thought it easily; If problem still exist, please try to installing packages locally  or contacting authors for help;
+***2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button***:<br/>
 Answer: This error is mainly caused by Rstudio version; you can fixed it by upgrading your RStudio to the latest version.
 
 ### Designers:

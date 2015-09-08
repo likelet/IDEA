@@ -38,7 +38,7 @@ progressBar
 devtools::install_github( "ebailey78/shinyBS")
 ```
 We also list the command to install the related packages:
-```
+```R
 cDep <- c("abind")
 #dependencies from BIOCONDUCTOR
 bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges")

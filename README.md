@@ -83,6 +83,13 @@ if (!require("devtools"))
   install.packages("devtools")
 devtools::install_github("likelet/IDEA")
 ```
+The above command can automaticly install the several dependencies which allows user skipping some installation steps; However, the shinyBS package would be latest version which would be incompatible. user can remove it and reinstall the right version;
+If you have installed dependencies mannually, you can install IDEA pakcage alone with following command :
+```
+if (!require("devtools"))
+  install.packages("devtools")
+devtools::install_github("likelet/IDEA",dependencies = FALSE))
+```
 
 Run Instruction
 -------------

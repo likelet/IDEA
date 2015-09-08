@@ -106,8 +106,11 @@ Clone repository into local directory '/Document/IDEA' (so that ui.R locates as 
 then run in R under work directory of '/Document' : <br/>
       ```
 		runApp("IDEA")
-		```
-Also, after install IDEA pakcages with no error print,  users can simply input ```runIDEA()``` function to run application locally; Since there is only one function the packages, you can also print help massege in your R console;
+		```<br/>
+Also, after install IDEA pakcages with no error print,  users can simply input<br/>
+```runIDEA()
+``` <br/>
+function to run application locally; Since there is only one function the packages, you can also print help massege in your R console;
 
 **For server or computer without GUI(Run IDEA on a sever)**<br/>
 Install shiny-server first and finish the configurations step refers to [http://rstudio.github.io/shiny-server/latest/](http://rstudio.github.io/shiny-server/latest/)<br/>

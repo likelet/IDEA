@@ -21,4 +21,4 @@ Imports:
     RobustRankAggreg (>= 1.1)
 URL: http:\\idea.biocuckoo.org 
 Description: Identification of differential expression genes Interactively
-License: MIT
+License: GNU

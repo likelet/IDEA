@@ -110,6 +110,7 @@ ggplot2, reshape, plyr, scale, RColorBrewer and other packages needed in plottin
 Documentation
 -------------
 First stable version released.
+To view user guide, please visit [http://idea.biocuckoo.org](http://idea.biocuckoo.org) and refers to **GUIDE** section
 Developer Information
 -------------
 FAQ

@@ -18,9 +18,7 @@ library("Packages for check")
 To date, the current version(IDEA 1.0) works well based on the following versions of dependencies<br/>
     shiny (>= 0.12.2),<br/>
     DESeq2 (>= 1.6.2),<br/>
-    ```html
-     <font color="red">shinyBS (<= 0.25),</font> <br/>
-     ```
+    shinyBS (<= 0.25),<br/>
     shinysky (>= 0.1.2),<br/>
     edgeR (>= 3.2.4),<br/>
     NOISeq (>= 2.8.0),<br/>

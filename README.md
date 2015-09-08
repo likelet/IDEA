@@ -105,11 +105,12 @@ example:  <br/>
 Clone repository into local directory '/Document/IDEA' (so that ui.R locates as '/Document/IDEA/ui.R') <br/>
 then run in R under work directory of '/Document' : <br/>
       ```
-		runApp("IDEA")
-		```<br/>
+      runApp("IDEA")
+		```
 Also, after install IDEA pakcages with no error print,  users can simply input<br/>
-```runIDEA()
-``` <br/>
+```
+runIDEA()
+``` 
 function to run application locally; Since there is only one function the packages, you can also print help massege in your R console;
 
 **For server or computer without GUI(Run IDEA on a sever)**<br/>

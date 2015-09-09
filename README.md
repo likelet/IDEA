@@ -7,15 +7,16 @@ IDEA
 **Screen shoot of IDEA**
 <img src="inst/IDEA/www/img/demo0-v2.png">
 
-Instal IDEA locally
+Install IDEA locally
 -------------
-Web server is very easy to access and can finish analysis while small dataset(less than 5M) were submitted. However, Limited to remote server resouces, the web page usually stucked when multible user operated or with bigger dataset. To solve this, We thus released an R package that packed the whole application for users to run analysis in R environment locally .<br/>
+The online version can be easily accessed to perform analysis tasks with dataset in low thoughput. However, Limited to remote server resouces, the web page usually stucked while multible user operated parallelly or larger dataset tasks requirement. To solve this, We released an R package that packed the core analysis module for users to run analysis under the R environment locally .<br/>
 _Before install the IDEA package, please read this markdown file carefully;_<br/>
-First, to run IDEA functionally in local machine, you must make sure that all the dependencies were well installed.***（We recommanded users using [Rstudio](https://www.rstudio.com/products/rstudio/download/) as their console to make installation procedure more easily)***<br/>
-To check the dependencies, one can simply type 
+First, to run IDEA functionally in a local machine, you must make sure that all the dependencies were well installed.***（We recommanded users using [Rstudio](https://www.rstudio.com/products/rstudio/download/) as their R console to make a better installing exprience)***<br/>
+To check the dependencies installed correctly, this command can help users to check the status of each installation<br/>
 ```R
 library("Packages for check")
 ```
+
 To date, the current version(IDEA 1.0) works well based on the following versions of dependencies<br/>
     shiny (>= 0.12.2),<br/>
     DESeq2 (>= 1.6.2),<br/>
@@ -32,7 +33,7 @@ To date, the current version(IDEA 1.0) works well based on the following version
     RobustRankAggreg (>= 1.1)<br/>
 <br/>
 
-__User should notice that , the latest **shinyBS**  is incompatible with IDEA; you should install the former version (0.25) before IDEA was imported. This is because current shinyBS removed the__ ```
+__User should notice that , the latest **shinyBS**  is incompatible with IDEA at present ; Only the exact shingBS  version (0.25) keep the IDEA work smoothly . This is because current shinyBS removed the__ ```
 progressBar()
 ``` __function used in IDEA. To install the compatible shinyBS, you can type__
 ```R

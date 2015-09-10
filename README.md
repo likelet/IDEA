@@ -143,9 +143,9 @@ Developer Information
 -------------
 FAQ
 -------------
-During the analysis procedure,  you may encounter the following question due to software or enviroment bugs; We summarized those questions and give some solution for bug fixing:<br/>
-***1. Several packages can not be installed with errors returned, how to fix this?***
-__Answer__: Yes, the R pakcages installation is indeed painful in some situation. Mostly you can restart your computer or change the network environment to go thought it easily; If problem still exist, please try to installing packages locally  or contacting authors for help;<br/>
+During the analysis procedure,  you might encounter the following problems due to software or environment ; We summarized those questions and give some solutions for bug fixing:<br/>
+***1. Several packages can not be installed with errors returned, how to fix this?***<br/>
+__Answer__: Yes, the R pakcages' installation is indeed painful. Mostly you can restart your computer or change the network environment to go thought it easily; If problem still exist, please try to installing packages locally  or contacting authors for help;<br/>
 ***2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button***:<br/>
 __Answer__: This error is mainly caused by Rstudio version; you can fixed it by upgrading your RStudio to the latest version.<br/>
 ***3. "Error: pandoc version 1.12.3 or higher is required and was not found." while clicks the download report button***:<br/>

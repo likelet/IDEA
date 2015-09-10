@@ -7,15 +7,16 @@ IDEA
 **Screen shoot of IDEA**
 <img src="inst/IDEA/www/img/demo0-v2.png">
 
-Instal IDEA locally
+Install IDEA locally
 -------------
-Web server is very easy to access and can finish analysis while small dataset(less than 5M) were submitted. However, Limited to remote server resouces, the web page usually stucked when multible user operated or with bigger dataset. To solve this, We thus released an R package that packed the whole application for users to run analysis in R environment locally .<br/>
+The online version can be easily accessed to perform analysis tasks with dataset in low thoughput. However, Limited to remote server resouces, the web page usually stucked while multible user operated parallelly or larger dataset tasks requirement. To solve this, We released an R package that packed the core analysis module for users to run analysis under the R environment locally .<br/>
 _Before install the IDEA package, please read this markdown file carefully;_<br/>
-First, to run IDEA functionally in local machine, you must make sure that all the dependencies were well installed.***（We recommanded users using [Rstudio](https://www.rstudio.com/products/rstudio/download/) as their console to make installation procedure more easily)***<br/>
-To check the dependencies, one can simply type 
+First, to run IDEA functionally in a local machine, you must make sure that all the dependencies were well installed.***（We recommanded users using [Rstudio](https://www.rstudio.com/products/rstudio/download/) as their R console to make a better installing exprience)***<br/>
+To check the dependencies installed correctly, this command can help users to check the status of each installation<br/>
 ```R
 library("Packages for check")
 ```
+
 To date, the current version(IDEA 1.0) works well based on the following versions of dependencies<br/>
     shiny (>= 0.12.2),<br/>
     DESeq2 (>= 1.6.2),<br/>
@@ -30,9 +31,10 @@ To date, the current version(IDEA 1.0) works well based on the following version
     VennDiagram (>= 1.6.5),<br/>
     rmarkdown (>= 0.2.53),<br/>
     RobustRankAggreg (>= 1.1)<br/>
+    gplots (>= 2.13.0)<br/>
 <br/>
 
-__User should notice that , the latest **shinyBS**  is incompatible with IDEA; you should install the former version (0.25) before IDEA was imported. This is because current shinyBS removed the__ ```
+__User should notice that , the latest **shinyBS**  is incompatible with IDEA at present ; Only the exact shingBS  version (0.25) keep the IDEA work smoothly . This is because current shinyBS removed the__ ```
 progressBar()
 ``` __function used in IDEA. To install the compatible shinyBS, you can type__
 ```R
@@ -42,11 +44,11 @@ We also list the command to install the related packages:
 ```R
 cDep <- c("abind")
 #dependencies from BIOCONDUCTOR
-bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges")
+bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges","impute")
 #target from CRAN
 cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram","RobustRankAggreg","shiny","rmarkdown")
 #target from BIOCONDUCTOR
-bcTgt <- c("edgeR", "DESeq2")
+bcTgt <- c("edgeR", "DESeq2","NOISeq")
 
 
 
@@ -142,11 +144,11 @@ Developer Information
 -------------
 FAQ
 -------------
-During the analysis procedure,  you may encounter the following question due to software or enviroment bugs; We summarized those questions and give some solution for bug fixing:<br/>
-***1. Several packages can not be installed with errors returned, how to fix this?***
-__Answer__: Yes, the R pakcages installation is indeed painful in some situation. Mostly you can restart your computer or change the network environment to go thought it easily; If problem still exist, please try to installing packages locally  or contacting authors for help;<br/>
+During the analysis procedure,  you might encounter the following problems due to software or environment ; We summarized those questions and give some solutions for bug fixing:<br/>
+***1. Several packages can not be installed with errors returned, how to fix this?***<br/>
+__Answer__: Yes, the R pakcages' installation is indeed painful. Mostly you can restart your computer or change the network environment to go thought it easily; If problem still exist, please try to installing packages locally  or contacting authors for help;<br/>
 ***2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button***:<br/>
-__Answer__: This error is mainly caused by Rstudio version; you can fixed it by upgrading your RStudio to the latest version.<br/>
+__Answer__: This error is mainly caused by Rstudio version; you can fix it by upgrading your RStudio to the latest version.<br/>
 ***3. "Error: pandoc version 1.12.3 or higher is required and was not found." while clicks the download report button***:<br/>
 __Answer__: If you see this message that means you upgraded your Rstudio version, the problem is still exist. This means you need a pandoc to render Rmd file into html report. You can install it from [https://github.com/jgm/pandoc/releases/tag/1.15.0.6](https://github.com/jgm/pandoc/releases/tag/1.15.0.6) as YiHui suggested. Then restart your Rstudio.
 

@@ -43,11 +43,11 @@ We also list the command to install the related packages:
 ```R
 cDep <- c("abind")
 #dependencies from BIOCONDUCTOR
-bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges")
+bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges","impute")
 #target from CRAN
 cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram","RobustRankAggreg","shiny","rmarkdown")
 #target from BIOCONDUCTOR
-bcTgt <- c("edgeR", "DESeq2")
+bcTgt <- c("edgeR", "DESeq2","NOISeq")
 
 
 

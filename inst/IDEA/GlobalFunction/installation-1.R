@@ -20,6 +20,7 @@ library(devtools)
 # sudo yum -y install libxml2 libxml2-devel
 # sudo yum install openssl-devel
 # sudo yum install readline-devel
+#yum install readline
 ###############################
 
 ###PACKAGE NAMES (DEPENDENCIES + TARGET)
@@ -30,14 +31,14 @@ biocLite("DESeq2")
 
 
 
-cDep <- c("abind", "stats4","RobustRankAggreg","shiny","rmarkdown")
+cDep <- c("abind")
 #dependencies from BIOCONDUCTOR
 
 bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges")
 #target from CRAN
-# cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram")
+cTgt <- c("gplots","PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram","RobustRankAggreg","shiny","rmarkdown")
 #target from BIOCONDUCTOR
-bcTgt <- c("edgeR", "DESeq2")
+bcTgt <- c("edgeR", "DESeq2","NOISeq")
 
 
 

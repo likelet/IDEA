@@ -31,6 +31,7 @@ To date, the current version(IDEA 1.0) works well based on the following version
     VennDiagram (>= 1.6.5),<br/>
     rmarkdown (>= 0.2.53),<br/>
     RobustRankAggreg (>= 1.1)<br/>
+    gplots (>= 2.13.0)<br/>
 <br/>
 
 __User should notice that , the latest **shinyBS**  is incompatible with IDEA at present ; Only the exact shingBS  version (0.25) keep the IDEA work smoothly . This is because current shinyBS removed the__ ```

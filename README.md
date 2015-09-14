@@ -151,7 +151,9 @@ __Answer__: Yes, the R pakcages' installation is indeed painful. Mostly you can 
 ***2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button***:<br/>
 __Answer__: This error is mainly caused by Rstudio version; you can fix it by upgrading your RStudio to the latest version.<br/>
 ***3. "Error: pandoc version 1.12.3 or higher is required and was not found." while clicks the download report button***:<br/>
-__Answer__: If you see this message that means you upgraded your Rstudio version, the problem is still exist. This means you need a pandoc to render Rmd file into html report. You can install it from [https://github.com/jgm/pandoc/releases/tag/1.15.0.6](https://github.com/jgm/pandoc/releases/tag/1.15.0.6) as YiHui suggested. Then restart your Rstudio.
+__Answer__: If you see this message that means you upgraded your Rstudio version, the problem is still exist. This means you need a pandoc to render Rmd file into html report. You can install it from [https://github.com/jgm/pandoc/releases/tag/1.15.0.6](https://github.com/jgm/pandoc/releases/tag/1.15.0.6) as YiHui suggested. Then restart your Rstudio.<br/>
+***3. "My data is more than 10M which reaches the max data set limit in the IDEA, how can I perform analysis for this data ?"***:<br/>
+__Answer__: Well, we encourage users modifying source code to achieve their goals. To make big data analysis available, user can edit "server.R" file under the IDEA folder in the R_HOME library. There is a line "options(shiny.maxRequestSize=10*1024^2) # max file size is 10Mb" in the source code. You can set the number and save  to make bigger data analysis available.   
 
 ### Designers:
 Jian Ren, renjian.sysu@gmail.com<br/>

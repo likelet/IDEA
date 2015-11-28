@@ -49,7 +49,7 @@ cDep <- c("abind")
 #dependencies from BIOCONDUCTOR
 bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges","impute")
 #target from CRAN
-cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram","RobustRankAggreg","shiny","rmarkdown")
+cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram","RobustRankAggreg","shiny","rmarkdown","gplots")
 #target from BIOCONDUCTOR
 bcTgt <- c("edgeR", "DESeq2","NOISeq")
 

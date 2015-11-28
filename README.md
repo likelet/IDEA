@@ -41,7 +41,7 @@ __User should notice that , the latest **shinyBS**  is incompatible with IDEA at
 progressBar()
 ``` __function used in IDEA. To install the compatible shinyBS, you can type__
 ```R
-devtools::install_github( "ebailey78/shinyBS")
+devtools::install_github( "likelet/shinyBS")
 ```
 We also list the command to install the related packages:
 ```R
@@ -86,7 +86,7 @@ for(i in 1:length(bcTgt)){
 }
 
 devtools::install_github("shiny-incubator", "rstudio")
-devtools::install_github( "ebailey78/shinyBS")
+devtools::install_github( "likelet/shinyBS")
 devtools::install_github("AnalytixWare/ShinySky")
 ```
 Second, to install the latest development build directly from GitHub, run this:(For some reason, we did not release the current version on CRAN or BIOCONDUCTOR site):

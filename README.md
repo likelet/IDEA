@@ -87,6 +87,7 @@ for(i in 1:length(bcTgt)){
 
 devtools::install_github("shiny-incubator", "rstudio")
 devtools::install_github( "ebailey78/shinyBS")
+devtools::install_github("AnalytixWare/ShinySky")
 ```
 Second, to install the latest development build directly from GitHub, run this:(For some reason, we did not release the current version on CRAN or BIOCONDUCTOR site):
 

@@ -158,7 +158,7 @@ __Answer__: If you see this message that means you upgraded your Rstudio version
 ***4. "My data is more than 10M which reaches the max data set limit in the IDEA, how can I perform analysis for this data ?"***:<br/>
 __Answer__: Well, we encourage users modifying source code to achieve their goals. To make big data analysis available, user can edit "server.R" file under the IDEA folder in the R_HOME library. There is a line "options(shiny.maxRequestSize=10*1024^2) # max file size is 10Mb" in the source code. You can reset the number and save it to make bigger data analysis available.<br/>
 ***5 "I got error messages on install "Cario" in R environment(linux), how to fix it ?"***:<br/>
-__Answer__: To install Cario in R , your system  should already have some library file like cairo-dev, X11 installed, after that, reinstall Cario in you R env.<br/>
+__Answer__: To install Cairo in R , your system  should already have some library file like cairo-devel, libXt-devel installed, after that, reinstall Cairo in you R env.<br/>
 
 ### Designers:
 Jian Ren, renjian.sysu@gmail.com<br/>

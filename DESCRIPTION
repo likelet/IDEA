@@ -18,9 +18,9 @@ Imports:
     FactoMineR (>= 1.27),
     VennDiagram (>= 1.6.5),
     rmarkdown (>= 0.2.53),
-    RobustRankAggreg (>= 1.1)
-    gplots (>= 2.13.0)
-    shinyIncubator (>= 0.2.1)
+    RobustRankAggreg (>= 1.1),
+    gplots (>= 2.13.0),
+    shinyIncubator (>= 0.2.1),
     pheatmap (>= 0.7.7)
 URL: http:\\idea.biocuckoo.org 
 Description: Identification of differential expression genes Interactively

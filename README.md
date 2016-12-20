@@ -34,6 +34,7 @@ To date, the current version(IDEA 1.0) works well based on the following version
     rmarkdown (>= 0.2.53),<br/>
     RobustRankAggreg (>= 1.1)<br/>
     gplots (>= 2.13.0)<br/>
+    labeling (>=0.3)<br/>
     pheatmap (>= 0.7.7)
 <br/>
 
@@ -49,7 +50,7 @@ cDep <- c("abind")
 #dependencies from BIOCONDUCTOR
 bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges","impute")
 #target from CRAN
-cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram","RobustRankAggreg","shiny","rmarkdown","Cairo","gplots","pheatmap")
+cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram","RobustRankAggreg","shiny","rmarkdown","Cairo","gplots","pheatmap","labeling")
 #target from BIOCONDUCTOR
 bcTgt <- c("edgeR", "DESeq2","NOISeq")
 
@@ -176,7 +177,7 @@ Qi Zhao, Peng Nie <br/>
 Please feel free contact us. <br/>
 
 ### Copyright
-Copyright © 2015. The CUCKOO Workgroup. All Rights Reserved<br/>
+Copyright © 2016. The CUCKOO Workgroup. All Rights Reserved<br/>
 For more useful tools/applications, please go to [biocuckoo.org](http://www.biocuckoo.org)
 
 ### Citation 

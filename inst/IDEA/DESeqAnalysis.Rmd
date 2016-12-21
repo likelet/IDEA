@@ -14,7 +14,7 @@ For any bugs or suggestions, please contact us: Qi Zhao(zhaoqi3@mail2.sysu.edu.c
 
 ```{r global_options, include=FALSE, echo=FALSE, warning=FALSE}
 setwd(tempdir())
-load("DEseqAnalysis.RData")
+load("DESeqAnalysis.RData")
 #load("/home//nemo13/Documents/201412/rmarkdown/DEseqAnalysis.RData")
 #p1 list(experimentaldesign, paired)
 #p2 getCdsData

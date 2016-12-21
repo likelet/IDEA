@@ -2375,14 +2375,6 @@ getPowerCurve<-reactive({
     content = function(file) {
       
       paired<-getCompairSample()
-      #p1 basic information 
-      #exprimental design
-      #select paird
-      #test method
-      #MAplot FDR
-      #heatmap topgene
-      #normalized factor (data.frame)
-      
       #intererst factor
       testmethod<-input$DeseqTestmethod
       mafdr<-input$DEseqFDRthreshold

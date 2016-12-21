@@ -48,7 +48,8 @@ were selected for differential expression analysis.
 ##Differential Expression Table
 After analysis, a table containing information of all diffientially expressed genes is presented with interactive options. Implication of nouns in header is explained in Table 1.
 Note that in different packages, same noun in header can have different implication. For example, *p*-values in DESeq are obtained by Wald test, but in edgeR *p*-values are obtained by Fisher's exact test.
-
+```{r, echo=FALSE}
+htmltools::HTML('
 <div align="center">
 <table cellpadding="10" cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
         <tr>
@@ -86,6 +87,8 @@ Note that in different packages, same noun in header can have different implicat
 </table>
 Table 1: Implication of headers of Differential Expression Table in DESeq2
 </div>
+')
+```
 
 ##Variance Estimation
 The variance estimates plot is for checking the result of dispersion estimates adjustment. Specifically, in DESeq2, variance estimation is plotted by executing ```plotDispEsts()``` which is built-in in the package.

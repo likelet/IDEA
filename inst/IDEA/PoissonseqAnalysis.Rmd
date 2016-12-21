@@ -61,7 +61,10 @@ No advanced options are provided in PoissonSeq analysis module.
 ##Differential Expression Table   
 A table containing information of all differentially expressed genes is presented with interactive options. Intepretation of all headers is explained in Table 1.    
 Note that in different packages, same header can have different implication. For example, p-values in DESeq are obtained by Wald test, but in edgeR p-values are obtained by Fisher's exact test.    
-   
+ 
+ 
+```{r, echo=FALSE}
+htmltools::HTML('   
 <div align="center">
 Table 1: Interpretation of headers of differential expression table in PoissonSeq<br/>
 <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
@@ -95,7 +98,8 @@ Table 1: Interpretation of headers of differential expression table in PoissonSe
         </tr>
 </table>
 </div>   
-   
+')
+```
 ##Heat Map of Differential Expressed Genes   
 
 Heat map can graphically display the differential expression table, and each square (pixel) represents the value of a feature in a sample and colored accordingly. Here, heat map of differential expressed features is plotted via R package pheatmap. Features are arranged in columns (samples) and rows (features) as in the original data matrix. Up-regulated differential expression features are colored red in heat map, while the down-regulated colored green. Hierarchical clustering results of features and samples are shown in dendrogram on the left and upper side of heat map, respectively.    

@@ -46,6 +46,8 @@ In combination analysis, experiment design is set as standard procedure of packa
 
 In this case, experiment type was stated as **`r as.character(plist[[1]][1])`**. And condition **`r as.character(plist[[1]][[2]])[1]`** and condition **`r as.character(plist[[1]][[2]])[2]`** were selected for differential expression analysis.
    
+```{r, echo=FALSE}
+htmltools::HTML('  
 <div align="center">
 Table 1: Package availability for different experiment design types<br/>
 <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
@@ -87,7 +89,8 @@ Table 1: Package availability for different experiment design types<br/>
         </tr>
 </table>
 </div>   
-
+')
+```
 ##Normalization Method
 Since packages typically have different choices of normalization methods, to combine the results across packages, counts data inputted by user is first normalized using method chosen in Data Exploration (Table 2) before being analyzed by packages respectively.   
 In this case, normalization method is **`r as.character(plist[[1]][[3]])`**.  

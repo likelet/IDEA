@@ -60,7 +60,8 @@ if(as.character(plist[[10]]) == "uqua"){
 For normalization, four methods are provided, including the Reads per Kilobase per Million Reads (RPKM) [[6](#ref6)], the Upper Quartile (UQ) [[13](#ref13)], and the Trimmed Mean of M values (TMM) [[14](#ref14)]. User can also perform data exploration without any normalization method by choosing "None" in the drop-down menu in Normalization Method Panel. Summarized details of each normalization methods are listed in Table 1. In this report the "normalized counts" is taken as the expression unit, but inputted count data can be normalized, or not, as decided by users.   
 *Note that if user did not upload a gene length file for normalization, a default length of 1000bp/gene is used.*    
 In this case, normalization was set as `r plist[[10]]`.   
-   
+```{r, echo=FALSE}
+htmltools::HTML('     
 <div align="center">
 Table 1: Summarized details for normalization methods provided in Data Exploration module<br/>
 <table cellpadding="5" cellspacing="0" border="1" frame=hsides rules=all style="border-color: #000000">
@@ -91,7 +92,8 @@ Table 1: Summarized details for normalization methods provided in Data Explorati
         </tr>
 </table>
 </div>
-
+')
+```
 
 ##Data Exploration Plots
 ###Samples Boxplot

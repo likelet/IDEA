@@ -245,7 +245,7 @@ div(
           ),
           tags$button(
             id = "startanalysisMain1",
-            class = "btn btn-block btn-primary btn-toAnalysis",
+            class = "btn btn-block btn-primary btn-toAnalysis ",
             "> > > Start Analysis < < <",
             onmousedown = "startAnalysis()"
           ),

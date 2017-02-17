@@ -213,24 +213,9 @@ shinyServer(function(input,output,session){
       )
       data
     }
-    
-    #     switch(values$wethernew,
-    #            'example'= designexample,
-    #            'upload'= data
-    #     )
-    
-    
+
   })
-  
-  #   getseletedSamplesAndColor<-function(){
-  #     designtable<-data.frame(names=row.names(designInput()),designInput())
-  #     interest<-getinterestVarible()
-  #     paired=getCompairSample()
-  #     selectTable<-designtable[designtable[,interest]==paired,interest]
-  #     
-  #   }
-  
-  
+
   ######gene length file upload----------
   annotationdatasetInput <- reactive({ 
     
@@ -444,16 +429,7 @@ shinyServer(function(input,output,session){
     )
     
   })
-  
-  # observe({
-  #   design<-designInput()  
-  #   condition=design[,getinterestVarible()]
-  #   conditionVector=unique(condition)
-  #   updateSelect2Input("Conditionselect2Input",h5("Please select two conditions to perform comparison"),
-  #                choices=conditionVector,
-  #                selected=conditionVector[1:2])
-  #   
-  # })
+
   getCompairSample<-reactive({
     if(!is.null(input$condition1)&&!is.null(input$condition2)){
       compairsample<-c(input$condition1,input$condition2)
@@ -463,6 +439,9 @@ shinyServer(function(input,output,session){
     compairsample
     
   })
+  
+
+  
   #download example file--------------
   output$downloadExampleDesignFile<-downloadHandler(
     filename = function() {
@@ -1076,7 +1055,7 @@ shinyServer(function(input,output,session){
     dds<-getCdsData()
     con=c(getinterestVarible(),getCompairSample())
     #con=comparisonInput()
-    res<-results(dds)      
+    res<-results(dds,con)      
     return(res)
   }
   
@@ -2489,7 +2468,6 @@ getPowerCurve<-reactive({
     filename = function() {
       paste("PoissonseqAnalysisReport", Sys.time(), '.html', sep='')
     },
-    
     content = function(file) {
       paired<-getCompairSample()
       #p1 basic information 
@@ -2664,7 +2642,6 @@ getPowerCurve<-reactive({
   })
   
   #edgeR heatmap parameter function-----
-  ###################################3#####
   getedgeRHeatmapScale<-reactive({
     if(is.null(input$edgeRHeatmapScale)){
       c("row")
@@ -2699,7 +2676,7 @@ getPowerCurve<-reactive({
   })
   
   #NOISeq heatmap parameter function-----
-  ###################################3#####
+
   getNOISeqHeatmapScale<-reactive({
     if(is.null(input$NOISeqHeatmapScale)){
       c("row")
@@ -2734,7 +2711,7 @@ getPowerCurve<-reactive({
   })
   
   #PoissonSeq heatmap parameter function----
-  ###################################3#####
+
   getPoissonSeqHeatmapScale<-reactive({
     if(is.null(input$PoissonSeqHeatmapScale)){
       c("row")
@@ -2769,7 +2746,6 @@ getPowerCurve<-reactive({
   })
   
   #SAMseq heatmap parameter function----
-  ###################################3#####
   getSAMseqHeatmapScale<-reactive({
     if(is.null(input$SAMseqHeatmapScale)){
       c("row")

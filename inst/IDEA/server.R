@@ -39,7 +39,7 @@ source("GlobalFunction/RvalueTable.R")
 options(shiny.maxRequestSize=10*1024^2) # max file size is 10Mb
 
 ###############################
-#main function
+#main function----------------
 ###############################
 shinyServer(function(input,output,session){
   
@@ -128,7 +128,7 @@ shinyServer(function(input,output,session){
   })
   
   
-  #dataset read scount matrix input   
+  #dataset read scount matrix input----------------   
   datasetInput <- reactive({ 
     
     #example<-read.table("F:\\mywork\\project\\RongYKlincRNA\\GonadDE.txt",header=T,sep="\t",row.names=1)
@@ -160,7 +160,7 @@ shinyServer(function(input,output,session){
     
   })
   
-  #download example data
+  #download example data-----
   output$downloadExampleDataFile<-downloadHandler(
     filename ="Marioni data.csv"
     , 
@@ -179,7 +179,7 @@ shinyServer(function(input,output,session){
   })
   
   
-  #design input 
+  #design input ----------
   
   designInput <- reactive({ 
     
@@ -231,7 +231,7 @@ shinyServer(function(input,output,session){
   #   }
   
   
-  ######gene length file upload
+  ######gene length file upload----------
   annotationdatasetInput <- reactive({ 
     
     
@@ -262,7 +262,7 @@ shinyServer(function(input,output,session){
   
   
   ######################### 
-  # exprimental design
+  # exprimental design--------------
   #########################
   
   
@@ -304,7 +304,7 @@ shinyServer(function(input,output,session){
            )
     )
   })
-  #experimental design function
+  #experimental design function------------
   
   ###############################
   #render design
@@ -406,7 +406,7 @@ shinyServer(function(input,output,session){
   output$testplot <- renderPlot({
     hist(v$data)
   })
-  #interest variable
+  #interest variable---------------
   output$interestvariablesUI<-renderUI({ 
     if(values$design =="MF"){
       div(class="panel-body",
@@ -463,7 +463,7 @@ shinyServer(function(input,output,session){
     compairsample
     
   })
-  #download example file
+  #download example file--------------
   output$downloadExampleDesignFile<-downloadHandler(
     filename = function() {
       switch(values$design,
@@ -485,7 +485,7 @@ shinyServer(function(input,output,session){
     contentType = 'text/csv'
   )
   
-  #output design
+  #output design-----
   output$designoutput<-renderDataTable ({
     
     table<-designInput()
@@ -493,7 +493,7 @@ shinyServer(function(input,output,session){
     table
   })
   
-  #design text
+  #design text------
   output$design_text <- renderText({
     designtxt<-switch(values$design,
                       "SC"="Standard Comparison",
@@ -512,7 +512,7 @@ shinyServer(function(input,output,session){
   })
   
   #########################################################
-  #Filter and normalize data
+  #Filter and normalize data-------------
   #function From NOISeqFunction.R
   #########################################################
   normalizeDataNew<-reactive({
@@ -534,7 +534,7 @@ shinyServer(function(input,output,session){
     
     normalizedDf 
   })
-  # download normalized data
+  # download normalized data-----------
   output$DownloadnormalizedData <- downloadHandler(
     filename = function() {
       paste("NormalizedData", Sys.time(), '.csv', sep='')
@@ -570,7 +570,7 @@ shinyServer(function(input,output,session){
   
   ################################################################
   ################################################################
-  #Data exploration
+  #Data exploration-------------
   
   
   
@@ -623,7 +623,7 @@ shinyServer(function(input,output,session){
   
   
   
-  #Samples Boxplot
+  #Samples Boxplot----
   
   getSamplesBoxplot<-reactive({
     data<-normalizeDataNew()
@@ -644,7 +644,7 @@ shinyServer(function(input,output,session){
     print(p)
   },width=700,height=700)
   
-  #stackedDensity plot by select sample
+  #stackedDensity plot by select sample----
   observe({
     output$densitySampleSelectedUI<-renderUI({
       
@@ -681,7 +681,7 @@ shinyServer(function(input,output,session){
     print(p)
   },width=700,height=700)
   
-  ##ratio barplot
+  ##ratio barplot----
   getraioBarplot<-reactive({
     
     data<-normalizeDataNew()
@@ -701,7 +701,7 @@ shinyServer(function(input,output,session){
     print(p)
   },width=700,height=700)
   #*****************************************************************
-  #Principal component plot of the samples 
+  #Principal component plot of the samples ----
   getPCAplotNew<-reactive({
     a<-normalizeDataNew()
     conditionlist<-conditionInput()
@@ -720,7 +720,7 @@ shinyServer(function(input,output,session){
   
   
   #*****************************************************************
-  #heatmap of sample-to-sample distance
+  #heatmap of sample-to-sample distance----
   sampleDistanceHeatmapPlotdata<-reactive({
     data<-normalizeDataNew()
     distsRL <- dist(t(data))
@@ -773,7 +773,7 @@ shinyServer(function(input,output,session){
       input$corrlationsYsample
     }
   })
-  #correlation analysis panel
+  #correlation analysis panel----
   getCorrelatiobScatterPlot<-reactive({
     data<-normalizeDataNew()
     p<-scatterP(data, getCorrlationsXsample(), getCorrlationsYsample(), FALSE)
@@ -782,7 +782,7 @@ shinyServer(function(input,output,session){
     
     p
   })
-  #render correlation plot
+  #render correlation plot----
   output$CorrelatiobScatterPlot<-renderPlot({
     p<-getCorrelatiobScatterPlot()
     
@@ -809,7 +809,7 @@ shinyServer(function(input,output,session){
   
   
   #=============================================================
-  #search gene and plot UI
+  #search gene and plot UI-------
   #=============================================================
   #reactive genename variables
   getGeneName<-reactive({
@@ -873,7 +873,7 @@ shinyServer(function(input,output,session){
   })
   
   ###############################
-  #downlaod exploration plot
+  #downlaod exploration plot--------
   #SampleBoxplot
   output$ExploreSampleBoxplotDownload <- downloadHandler(
     filename = function() {
@@ -993,7 +993,7 @@ shinyServer(function(input,output,session){
   
   
   ################################################################
-  #DESeq analysis
+  #DESeq analysis----
   #data inialize
   getCdsData<-reactive({
     
@@ -1241,7 +1241,7 @@ shinyServer(function(input,output,session){
   
   ################################################################
   ################################################################
-  #edgeR Analysis function
+  #edgeR Analysis function-------------
   
   filtercount<-function(x){
     keep <- rowSums(cpm(x)>input$EdgeRfilternumber) >= dim(x)[2]
@@ -1565,10 +1565,9 @@ output$edgeRdespersionMethodUI<-renderUI({
   
   ################################################################
   ################################################################
-  #NOISeq Analysis function
+  #NOISeq Analysis function----
   #########
   
-  #################
   
   getNOISeqNormalizedMethod<-reactive({
     if(is.null(input$NOISeqNormalizedMethod)){
@@ -1599,12 +1598,7 @@ output$edgeRdespersionMethodUI<-renderUI({
     result<-result@results[[1]]
     result
   })
-  #   #get DE table function
-  #   getresultNOIseqresultTableNew<-reactive({
-  #     result=getNOISeqAnalysis()
-  #     result<-result@results[[1]]
-  #     result
-  #   })
+
   
   #render DE table
   output$NOIseqresultTable<-renderDataTable({
@@ -1663,7 +1657,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   
   #NOIseq download plot
   #############################################################
-  #NOIseq heatmap plot
+  #NOIseq heatmap plot----
   output$NOIseqHeatmapDownload <- downloadHandler(
     filename = function() {
       paste("NOISeqHeatmap", Sys.time(), '.png', sep='')
@@ -1697,7 +1691,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   
   ################################################################
   ################################################################
-  #PoissonSeq Analysis function
+  #PoissonSeq Analysis function----
   getPoissonSeqAnalysis<-reactive({
     updateProgressBar(session,"PoissonSeqProgressbar", value=2,visible = TRUE, animate=TRUE)
     mycounts<-round(getSelectDataframe())
@@ -1802,7 +1796,7 @@ getPowerCurve<-reactive({
   
   #PoissonSeq download plot
   #############################################################
-  #PoissonSeq heatmap plot
+  #PoissonSeq heatmap plot----
   output$PoissonSeqHeatmapDownload <- downloadHandler(
     filename = function() {
       paste("PoissonSeqHeatmap", Sys.time(), '.png', sep='')
@@ -1852,7 +1846,7 @@ getPowerCurve<-reactive({
   
   ################################################################
   ################################################################
-  #SAMseq Analysis function
+  #SAMseq Analysis function----
   getSAMseqAnalysis<-reactive({
     updateProgressBar(session,"SAMseqProgressbar", value=2,visible = TRUE, animate=TRUE)
     mycounts<-round(getSelectDataframe())
@@ -1997,15 +1991,7 @@ getPowerCurve<-reactive({
   #=======================================
   #dynamic UI option for qualityplot which including PCA/Heatmap/Correlation Plot of samples 
   #define a reactive values
-  
-  #initialize values
-  # values$lastAction="B"
-  #change the content of values according three button click-event
-  #observe({
-  #  if(input$action1!=0){
-  #    values$lastAction="A"
-  #  }
-  #})
+
   
   
   
@@ -2031,9 +2017,8 @@ getPowerCurve<-reactive({
   
   
   
-  ###################################################
-  #Comparison Panel functions
-  ###################################################
+  #Comparison Panel functions----
+
   
   
   #get DEtable list with design options
@@ -2062,58 +2047,7 @@ getPowerCurve<-reactive({
     tablelist
   })
   
-  # output$deseqtable<-renderDataTable({
-  #   list<-getDEtablelist()
-  #   #ll2<-getMutipeDElist(design=values$design,datalist=list,fdrcutoff=0.2)
-  #   data.frame(list[["deseq"]])
-  # })
-  # 
-  # output$edgertable<-renderDataTable({
-  #   data<-round(normalizeDataNew())
-  #   data.frame(row.names(data))
-  #   #   list$samseq
-  # })
-  # output$noiseqtable<-renderDataTable({
-  #   list<-getDEtablelist()
-  #   ll2<-getallDElist()
-  #   data.frame(ll2[[3]])
-  #   #   list$samseq
-  # })
-  # output$poissonseqtable<-renderDataTable({
-  #   list<-getDEtablelist()
-  #   ll2<-getallDElist()
-  #   data.frame(ll2[[4]])
-  # })
-  # 
-  # output$samseqtable<-renderDataTable({
-  #   list<-getDEtablelist()
-  #  ll2<-getallDElist()
-  # # table5=list$samseq
-  # # table5<-as.matrix(table5)
-  # # data.frame(table5[table5[,4]<0.2,1])
-  #   data.frame(ll2[["samseq"]])
-  # #   list$samseq
-  # })
-  
-  
-  # output$testdataset2<-renderDataTable({
-  #   list<-getDEtablelist()
-  #   list[[2]]
-  # })
-  # 
-  # output$testdataset3<-renderDataTable({
-  #   list<-getDEtablelist()
-  #   list[[3]]
-  # })
-  # output$testdataset4<-renderDataTable({
-  #   list<-getDEtablelist()
-  #   list[[4]]
-  # })
-  # output$testdataset5<-renderDataTable({
-  #   list<-getDEtablelist()
-  #   list[[5]]
-  # })
-  #  
+  #  ven
   getVennyPlot<-function(){
     ll<-getDEtablelist()
     inputnames=getinterPackages()
@@ -2277,7 +2211,7 @@ getPowerCurve<-reactive({
   
   
   ####################################################
-  #color panel buttons
+  #color panel buttons----------
   ####################################################
   
   values$upcolor="#d93434"  
@@ -2365,7 +2299,7 @@ getPowerCurve<-reactive({
   })
   
   ###############################################
-  #download DEanalysis report
+  #download DEanalysis report------------
   ###############################################
   output$DownloadDESeqReport <- downloadHandler(
     filename = function() {
@@ -2694,7 +2628,7 @@ getPowerCurve<-reactive({
   #heat map parameter
   #####################################################################################
   
-  #DESeq heat map parameter function
+  #DESeq heat map parameter function----------
   ########################################
   getDESeqHeatmapScale<-reactive({
     if(is.null(input$DESeqHeatmapScale)){
@@ -2729,7 +2663,7 @@ getPowerCurve<-reactive({
     }
   })
   
-  #edgeR heatmap parameter function
+  #edgeR heatmap parameter function-----
   ###################################3#####
   getedgeRHeatmapScale<-reactive({
     if(is.null(input$edgeRHeatmapScale)){
@@ -2764,7 +2698,7 @@ getPowerCurve<-reactive({
     }
   })
   
-  #NOISeq heatmap parameter function
+  #NOISeq heatmap parameter function-----
   ###################################3#####
   getNOISeqHeatmapScale<-reactive({
     if(is.null(input$NOISeqHeatmapScale)){
@@ -2799,7 +2733,7 @@ getPowerCurve<-reactive({
     }
   })
   
-  #PoissonSeq heatmap parameter function
+  #PoissonSeq heatmap parameter function----
   ###################################3#####
   getPoissonSeqHeatmapScale<-reactive({
     if(is.null(input$PoissonSeqHeatmapScale)){
@@ -2834,7 +2768,7 @@ getPowerCurve<-reactive({
     }
   })
   
-  #SAMseq heatmap parameter function
+  #SAMseq heatmap parameter function----
   ###################################3#####
   getSAMseqHeatmapScale<-reactive({
     if(is.null(input$SAMseqHeatmapScale)){
@@ -3038,10 +2972,8 @@ observe({
     temptext=getCompairSample()
     p(style="text-align:center",tags$code(temptext[1]),"VS",tags$code(temptext[2]))
   })
- #fileinput alert 
-  #   output$testDatarender<-renderDataTable({
-  #     getSelectDataframe()
-  #   })
+ 
+  
   output$testRender<-renderTable({
     getPowerCurveData()
   })

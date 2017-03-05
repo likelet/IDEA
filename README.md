@@ -177,7 +177,7 @@ Qi Zhao, Peng Nie <br/>
 Please feel free contact us. <br/>
 
 ### Copyright
-Copyright © 2016. The CUCKOO Workgroup. All Rights Reserved<br/>
+Copyright © 2014-2017. The CUCKOO Workgroup. All Rights Reserved<br/>
 For more useful tools/applications, please go to [biocuckoo.org](http://www.biocuckoo.org)
 
 ### Citation 

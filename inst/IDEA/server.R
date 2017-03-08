@@ -1124,7 +1124,8 @@ shinyServer(function(input,output,session){
   #DEseq ownload result data
   output$DEseqdownloadDEtable <- downloadHandler(
     filename = function() {
-      paste("DEseqDEresult", Sys.time(), '.csv', sep='')
+      conditionVector=as.character(unique(conditionInput()))
+      paste("DEseqDEresult", conditionVector[1],"VS",conditionVector[2],Sys.time(), '.csv', sep='')
     },
     
     content = function(file) {
@@ -1446,7 +1447,9 @@ output$edgeRdespersionMethodUI<-renderUI({
   #EdgeR ownload result data
   output$EdgeRdownloadDEtable <- downloadHandler(
     filename = function() {
-      paste("EdgeRDEresult", Sys.time(), '.csv', sep='')
+      #paste("EdgeRDEresult", Sys.time(), '.csv', sep='')
+        conditionVector=as.character(unique(conditionInput()))
+      paste("EdgeRDEresult", conditionVector[1],"VS",conditionVector[2],Sys.time(), '.csv', sep='')
     },
     
     content = function(file) {
@@ -1622,7 +1625,8 @@ output$edgeRdespersionMethodUI<-renderUI({
   #NOIseq download result table  
   output$NOIseqdownloadDEtable <- downloadHandler(
     filename = function() {
-      paste("NOISeqDEresult", Sys.time(), '.csv', sep='')
+      conditionVector=as.character(unique(conditionInput()))
+      paste("NOISeqDEresult", conditionVector[1],"VS",conditionVector[2],Sys.time(), '.csv', sep='')
     },
     
     content = function(file) {
@@ -1762,7 +1766,10 @@ getPowerCurve<-reactive({
   #PoissonSeq download result table  
   output$PoissonSeqdownloadDEtable <- downloadHandler(
     filename = function() {
-      paste("PossionseqDEresult", Sys.time(), '.csv', sep='')
+      #paste("PossionseqDEresult", Sys.time(), '.csv', sep='')
+       conditionVector=as.character(unique(conditionInput()))
+      paste("PossionseqDEresult", conditionVector[1],"VS",conditionVector[2],Sys.time(), '.csv', sep='')
+      
     },
     
     content = function(file) {
@@ -1899,7 +1906,10 @@ getPowerCurve<-reactive({
   #SAMseq download result table  
   output$SAMseqdownloadDEtable <- downloadHandler(
     filename = function() {
-      paste("SAMseqDEresult", Sys.time(), '.csv', sep='')
+      #paste("SAMseqDEresult", Sys.time(), '.csv', sep='')
+      conditionVector=as.character(unique(conditionInput()))
+      paste("SAMseqDEresult", conditionVector[1],"VS",conditionVector[2],Sys.time(), '.csv', sep='')
+      
     },
     
     content = function(file) {
@@ -2135,7 +2145,10 @@ getPowerCurve<-reactive({
   #download GeneWeightTable
   output$compairdownloadDEtable<-downloadHandler(
     filename =function() {
-      paste("GeneWeightTable", Sys.time(), '.csv', sep='')
+      #paste("GeneWeightTable", Sys.time(), '.csv', sep='')
+      conditionVector=as.character(unique(conditionInput()))
+      paste("GeneWeightTable", conditionVector[1],"VS",conditionVector[2],Sys.time(), '.csv', sep='')
+      
     }
     , 
     content = function(file) {

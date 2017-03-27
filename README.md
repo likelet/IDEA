@@ -136,11 +136,13 @@ Input the server ip address with port number and enjoy your IDEA analysis trip :
 
 Developing Environment
 -------------
+
 R version 3.1.2
 Packages:
 Shiny (0.12.2), ShinySky(0.1.2), shinyIncubator (3.2.4),shinyBS(0.25) and their dependencies <br/>
 DESeq2 (1.6.2), edgeR (3.2.4), SAMseq (2.0), PoissonSeq (1.1.2), NOISeq (2.8.0) and their dependencies <br/>
-ggplot2, reshape, plyr, scale, RColorBrewer and other packages needed in plotting
+ggplot2, reshape, plyr, scale, RColorBrewer and other packages needed in plotting.
+
 Documentation
 -------------
 First stable version released.

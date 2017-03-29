@@ -981,7 +981,9 @@ shinyServer(function(input,output,session){
     designtable=designInput()
     updateProgressBar(session,"DESeqProgressbar", value=5,visible = TRUE, animate=TRUE)
     if(values$design=='SC'||values$design=='WR'){
-      colData<-DataFrame(condition=factor(conditionInput()))
+      condition=factor(conditionInput())
+      colData<-DataFrame(condition)
+      # print(colData)
       dds<-DESeqDataSetFromMatrix(countTable,colData,formula(~condition)) 
     }else if(values$design=='MF'){
       colData<-designtable      
@@ -1053,7 +1055,8 @@ shinyServer(function(input,output,session){
   #DEseq call DE with NB test
   DEseqGetNBDEdata<-function(){
     dds<-getCdsData()
-    con=c(getinterestVarible(),getCompairSample())
+    con=c("condition",getCompairSample())
+    print(con)
     #con=comparisonInput()
     res<-results(dds,con)      
     return(res)

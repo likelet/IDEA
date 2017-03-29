@@ -162,3 +162,19 @@ print(plist[[6]])
 Figure 5  FDR Distribution Plot
 </div>
 #References
+##### <a name="ref1"></a>1.  R Core Team, *R: A language and environment for statistical computing*, 2014, R Foundation for Statistical Computing: Vienna, Austria.
+##### <a name="ref2"></a>2.	Wickham, H., *ggplot2: elegant graphics for data analysis*, 2009, Springer New York.
+##### <a name="ref3"></a>3.	Kolde, R., pheatmap: Pretty Heatmaps, 2013.
+##### <a name="ref4"></a>4.	JJ Allaire, J.M., Yihui Xie, Hadley Wickham, Joe Cheng and Jeff Allen, *rmarkdown: Dynamic Documents for R*, 2014.
+##### <a name="ref5"></a>5.	Nagalakshmi, U., et al., *The transcriptional landscape of the yeast genome defined by RNA sequencing.* Science, 2008. **320**(5881): p. 1344-9.
+##### <a name="ref6"></a>6.	Mortazavi, A., et al., *Mapping and quantifying mammalian transcriptomes by RNA-Seq.* Nat Methods, 2008. **5**(7): p. 621-8.
+##### <a name="ref7"></a>7.	Morrissy, A.S., et al., *Next-generation tag sequencing for cancer gene expression profiling.* Genome Res, 2009. **19**(10): p. 1825-35.
+##### <a name="ref8"></a>8.	Anders, S. and W. Huber, *Differential expression analysis for sequence count data.* Genome biol, 2010. **11**(10): p. R106.
+##### <a name="ref9"></a>9.	Robertson, G., et al., *Genome-wide profiles of STAT1 DNA association using chromatin immunoprecipitation and massively parallel sequencing.* Nat Methods, 2007. **4**(8): p. 651-7.
+##### <a name="ref10"></a>10.	Marioni, J.C., et al., *RNA-seq: an assessment of technical reproducibility and comparison with gene expression arrays.* Genome Res, 2008. **18**(9): p. 1509-17.
+##### <a name="ref11"></a>11.	Robinson, M.D., D.J. McCarthy, and G.K. Smyth, *edgeR: a Bioconductor package for differential expression analysis of digital gene expression data.* Bioinformatics, 2010. **26**(1): p. 139-40.
+##### <a name="ref12"></a>12.	Li, J., et al., *Normalization, testing, and false discovery rate estimation for RNA-sequencing data.* Biostatistics, 2011: p. kxr031.
+##### <a name="ref13"></a>13.	Bullard, J.H., et al., *Evaluation of statistical methods for normalization and differential expression in mRNA-Seq experiments.* BMC Bioinformatics, 2010. **11**: p. 94.
+##### <a name="ref14"></a>14.	Robinson, M.D. and A. Oshlack, *A scaling normalization method for differential expression analysis of RNA-seq data.* Genome Biol, 2010. **11**(3): p. R25.
+##### <a name="ref15"></a>15.	Francois Husson, J.J., Sebastien Le and Jeremy Mazet, *FactoMineR: Multivariate Exploratory Data Analysis and Data Mining with R*, 2014.
+##### <a name="ref16"></a>16.	Fu, X., et al., *Estimating accuracy of RNA-Seq and microarrays with proteomics. BMC Genomics*, 2009. **10**: p. 161.

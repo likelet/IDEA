@@ -186,7 +186,7 @@ The Venn diagram visualizes the overlapping differential expression (DE) feature
 
 <div align="center">
 ```{r results="hide", echo=FALSE, warning=FALSE}
-grid.fraw(plist[[3]])
+grid.draw(plist[[3]])
 ```
 <br/>
 Figure 2: Venn diagram of differential expression features analysis in each selected packages

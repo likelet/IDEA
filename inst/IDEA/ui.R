@@ -40,8 +40,8 @@ shinyUI(bootstrapPage(
     tags$meta(name = "viewport", content = "width=device-width, initial-scale=1"),
     tags$link(rel = "stylesheet", type = "text/css", href =
                 "css/main.css"),
-    tags$link(rel = "stylesheet", type = "text/css", href =
-                "http://fonts.useso.com/css?family=Open+Sans+Condensed:300|Titillium+Web|Dosis|Abel"),
+    # tags$link(rel = "stylesheet", type = "text/css", href =
+    #             "http://fonts.useso.com/css?family=Open+Sans+Condensed:300|Titillium+Web|Dosis|Abel"),
     tags$script(type = 'text/javascript', src = 'js/main.js'),
     tags$script(type = 'text/javascript', src = 'js/loadJsCss.js'),
     #guide js plugin

@@ -340,8 +340,7 @@ VolcanoPlot<-function(DEtable,DEmethod=c("DESeq","edgeR","NOIseq","PoissonSeq","
 HeatmapData<-function(normalizedData,DEtable,DEmethod=c("DESeq","edgeR","NOIseq","PoissonSeq","SAMseq"),Topnumber=30,
                            clustering='both', labCol=T, labRow=T, logMode=F, pseudocount=1.0, 
                            border=FALSE, heatscale=c(low='green',mid='black',high='red'), heatMidpoint=0,fullnames=T,replicates=TRUE,method='none',heatRange=3
-)
-  {
+) {
   
   #construct datamatrix
   if(DEmethod=='DESeq'){

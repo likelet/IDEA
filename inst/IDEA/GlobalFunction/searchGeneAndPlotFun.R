@@ -38,7 +38,7 @@ getSearchGenePlotFunction<-function(df,genename,conditionlist){
       df<-getsingleGeneDf(df,genename,conditionlist) 
       df<-getMeanSdDf(df) 
      
-      main<-paste("Expression comprison of feature ",genename)
+      main<-paste("Expression comparison of feature ",genename)
       
       p=ggplot(df, aes(x=Sample, y=mean,fill=Sample)) +
         geom_bar( stat="identity",width=0.5)+
@@ -47,7 +47,7 @@ getSearchGenePlotFunction<-function(df,genename,conditionlist){
         geom_point( size=3, shape=21, fill="white") + # 21 is filled circle
 
         xlab("Sample") +
-        ylab("Expression") +
+        ylab("Expression value") +
         # Use darker colors, lightness=40
         ggtitle(main) +
         theme(legend.justification=c(1,0),legend.position="top")+

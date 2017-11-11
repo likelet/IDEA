@@ -3,3 +3,5 @@ cache: packages
 r: devel
 bioc_required: true
 bioc_use_devel: true
+r_github_packages:
+  - hadley/devtools

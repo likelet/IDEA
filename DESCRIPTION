@@ -1,10 +1,12 @@
 Package: IDEA
 Type: Package
 Title: Interactive Differential Expression Analyzer
-Version: 0.99.0
-Date: 2015-09-06
-Author: Qi Zhao
-Maintainer: Qi Zhao <zhaoqi3@mail2.sysu.edu.cn>
+Version: 0.1.1
+Date: 2017-11-11
+Authors:Qi Zhao <zhaoqi@sysucc.org.cn>
+Maintainer: Qi Zhao <zhaoqi@sysucc.org.cn>
+URL: https://github.com/likelet/IDEA
+BugReports: https://github.com/likelet/IDEA/issues
 Imports:
     shiny (>= 0.12.2),
     DESeq2 (>= 1.6.2),
@@ -23,6 +25,9 @@ Imports:
     shinyIncubator (>= 0.2.1),
     labeling (>= 0.3),
     pheatmap (>= 0.7.7)
-URL: http:\\idea.biocuckoo.org 
+Remotes: 
+    rstudio/shiny-incubator,
+    likelet/shinyBS,
+    AnalytixWare/ShinySky   
 Description: Identification of differential expression genes Interactively
 License: GNU

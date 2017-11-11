@@ -126,13 +126,13 @@ runIDEA()
 ``` 
 function to run application locally; Since there is only one function in this package, you can also print help massege in your R console;
 
-**For server or computer without GUI(Run IDEA on a sever)**<br/>
-Install shiny-server first and finish the configurations step refers to [http://rstudio.github.io/shiny-server/latest/](http://rstudio.github.io/shiny-server/latest/)<br/>
-Clone this package and install the dependencies mentioned above in your R environment; <br/>
-Copy _IDEA_ folder under _inst_ dir into /srv/shiny-sever/ (or orther app location you configured in shiny-sever)<br/>
+**For server or computer without GUI (Run IDEA on a server)**<br/>
+Install shiny-server first and finish the configurations step according to [http://rstudio.github.io/shiny-server/latest/](http://rstudio.github.io/shiny-server/latest/)<br/>
+Pull the package and install dependencies into your R environment; <br/>
+Copy _IDEA_ folder under _inst_ dir into /srv/shiny-sever/ (or orther app location configured in `shiny-sever.conf` file)<br/>
 Configure the server network/firewall options like open the shiny port(3838 default), internal IP access (please refer to shiny-server configuration step);<br/>
 
-Input the server ip address with port number and enjoy your IDEA analysis trip :).<br/>
+Access the server ip address along with port number and enjoy your IDEA analysis trip :).<br/>
 
 Developing Environment
 -------------
@@ -154,15 +154,15 @@ FAQ
 -------------
 During the analysis procedure,  you might encounter the following problems due to software or environment ; We summarized those questions and give some solutions for bug fixing:<br/>
 ***1. Several packages can not be installed with errors returned, how to fix this?***<br/>
-__Answer__: Yes, the R pakcages' installation is indeed painful. Mostly you can restart your computer or change the network environment to go thought it easily; If problem still exist, please try to install packages locally  or contact authors for help;<br/>
+__Answer__: Yes, the R pakcages' installation is indeed painful. Mostly you can restart your computer or change the network environment to fix it; If the problem still exists, please try to install packages locally  or contact authors for help;<br/>
 ***2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button***:<br/>
 __Answer__: This error is mainly caused by Rstudio version; you can fix it by upgrading your RStudio to the latest version.<br/>
 ***3. "Error: pandoc version 1.12.3 or higher is required and was not found." while clicks the download report button***:<br/>
-__Answer__: If you see this message that means you upgraded your Rstudio version, the problem is still exist. This means you need a pandoc to render Rmd file into html report. You can install it from [https://github.com/jgm/pandoc/releases/tag/1.15.0.6](https://github.com/jgm/pandoc/releases/tag/1.15.0.6) as YiHui suggested. Then restart your Rstudio.<br/>
+__Answer__: If you see this message that means you upgraded your Rstudio version, the problem is still exist. You need a pandoc to render Rmd file into html report. You can optain it from [https://github.com/jgm/pandoc/releases/tag/1.15.0.6](https://github.com/jgm/pandoc/releases/tag/1.15.0.6) as YiHui suggested. After that, restart your Rstudio.<br/>
 ***4. "My data is more than 10M which reaches the max data set limit in the IDEA, how can I perform analysis for this data ?"***:<br/>
 __Answer__: Well, we encourage users modifying source code to achieve their goals. To make big data analysis available, user can edit "server.R" file under the IDEA folder in the R_HOME library. There is a line "options(shiny.maxRequestSize=10*1024^2) # max file size is 10Mb" in the source code. You can reset the number and save it to make bigger data analysis available.<br/>
 ***5. "I got error messages on install "Cario" in R environment(linux), how to fix it ?"***:<br/>
-__Answer__: To install Cairo in R , your system  should already have some library file like cairo-devel, libXt-devel installed, after that, reinstall Cairo in you R env.<br/>
+__Answer__: To install Cairo in R , your system  should already have some library file like cairo-devel, libXt-devel installed, after that, reinstall Cairo.<br/>
 
 ### Designers:
 Jian Ren, renjian.sysu@gmail.com<br/>

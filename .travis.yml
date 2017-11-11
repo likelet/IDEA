@@ -1,8 +1,10 @@
 language: r
 cache: packages
 r:
-  - bioc-release
-  - bioc-devel
+  - oldrel
+  - release
+r_packages:
+  - devtools
 bioc_required: true
 bioc_use_devel: true
 sudo: false

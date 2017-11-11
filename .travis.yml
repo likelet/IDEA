@@ -1,5 +1,5 @@
 language: r
 cache: packages
-r: bioc-devel
+r: devel
 bioc_required: true
 bioc_use_devel: true

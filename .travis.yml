@@ -8,9 +8,6 @@ r_packages:
 bioc_required: true
 bioc_use_devel: true
 sudo: false
-os:
-  - linux
-  - osx
 
 after_success:
 - Rscript -e 'library(covr); codecov()'

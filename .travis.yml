@@ -1,4 +1,5 @@
 language: r
 cache: packages
-r: release
-
+r: bioc-devel
+bioc_required: true
+bioc_use_devel: true

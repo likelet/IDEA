@@ -26,6 +26,7 @@ biocViews:
     edgeR (>= 3.2.4),
     NOISeq (>= 2.8.0),
     samr (>= 2.0)
+
 Remotes: 
     rstudio/shiny-incubator,
     likelet/shinyBS,

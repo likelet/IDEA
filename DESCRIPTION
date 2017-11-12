@@ -20,12 +20,12 @@ Imports:
     gplots (>= 2.13.0),
     shinyIncubator (>= 0.2.1),
     labeling (>= 0.3),
-    pheatmap (>= 0.7.7)
+    pheatmap (>= 0.7.7),
+    samr (>= 2.0)
 biocViews: 
     DESeq2 (>= 1.6.2),
     edgeR (>= 3.2.4),
-    NOISeq (>= 2.8.0),
-    samr (>= 2.0)
+    NOISeq (>= 2.8.0)
 Remotes: 
     rstudio/shiny-incubator,
     likelet/shinyBS,

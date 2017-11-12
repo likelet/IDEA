@@ -3,8 +3,8 @@ Type: Package
 Title: Interactive Differential Expression Analyzer
 Version: 0.1.1
 Date: 2017-11-11
-Authors:Qi Zhao <zhaoqi@sysucc.org.cn>
-Maintainer: Qi Zhao <zhaoqi@sysucc.org.cn>
+Authors@R: person("Qi", "Zhao", email = "zhaoqi@sysucc.org.cn",
+  role = c("aut", "cre"))
 URL: https://github.com/likelet/IDEA
 BugReports: https://github.com/likelet/IDEA/issues
 Imports:
@@ -21,7 +21,8 @@ Imports:
     shinyIncubator (>= 0.2.1),
     labeling (>= 0.3),
     pheatmap (>= 0.7.7),
-    samr (>= 2.0)
+    impute,
+    samr 
 biocViews: 
     DESeq2 (>= 1.6.2),
     edgeR (>= 3.2.4),
@@ -33,3 +34,4 @@ Remotes:
     AnalytixWare/ShinySky 
 Description: Identification of differential expression genes Interactively
 License: GNU
+RoxygenNote: 6.0.1

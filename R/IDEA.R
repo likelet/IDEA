@@ -3,6 +3,7 @@
 #' \code{runIDEA} run IDEA locally
 #' @author Qi Zhao
 #' @seealso \code{IDEA} \link{http:\\\\idea.biocuckoo.org}
+#' @export
 runIDEA<-function(){
   shiny::runApp(system.file("IDEA", package = "IDEA"))
 }

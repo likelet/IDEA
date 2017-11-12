@@ -26,10 +26,9 @@ biocViews:
     edgeR (>= 3.2.4),
     NOISeq (>= 2.8.0),
     samr (>= 2.0)
-
 Remotes: 
     rstudio/shiny-incubator,
     likelet/shinyBS,
-    AnalytixWare/ShinySky   
+    AnalytixWare/ShinySky 
 Description: Identification of differential expression genes Interactively
 License: GNU

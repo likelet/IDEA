@@ -4,8 +4,11 @@ sudo: fasle
 bioc_required: true
 bioc_use_devel: true
 
+<<<<<<< HEAD
 r_github_packages: hadley/devtools
 
+=======
+>>>>>>> 0a10abea100b27503c2691ef12e51a96a77ab77b
 r_packages:
   - covr
 

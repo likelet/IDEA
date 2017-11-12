@@ -25,7 +25,8 @@ Imports:
 biocViews: 
     DESeq2 (>= 1.6.2),
     edgeR (>= 3.2.4),
-    NOISeq (>= 2.8.0)
+    NOISeq (>= 2.8.0),
+    impute
 Remotes: 
     rstudio/shiny-incubator,
     likelet/shinyBS,

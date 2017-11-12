@@ -1,8 +1,13 @@
 language: r
 cache: packages
-sudo: required
+sudo: fasle
 bioc_required: true
 bioc_use_devel: true
 
+r_github_packages: hadley/devtools
+
+r_packages:
+  - covr
+
 after_success:
-- Rscript -e 'covr::codecov()'
+  - Rscript -e 'library(covr); codecov()'

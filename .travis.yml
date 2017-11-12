@@ -1,13 +1,8 @@
 language: r
 cache: packages
-r:
-  - oldrel
-  - release
-r_packages:
-  - devtools
+sudo: required
 bioc_required: true
 bioc_use_devel: true
-sudo: false
 
 after_success:
-- Rscript -e 'library(covr); codecov()'
+- Rscript -e 'covr::codecov()'

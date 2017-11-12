@@ -1,11 +1,7 @@
 language: r
 cache: packages
-sudo: fasle
-bioc_required: true
-bioc_use_devel: true
 
-r_github_packages:
-  - hadley/devtools
+r: bioc-release
 
 r_packages:
   - covr

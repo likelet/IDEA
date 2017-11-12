@@ -132,7 +132,7 @@ shinyServer(function(input,output,session){
   datasetInput <- reactive({ 
     
     #example<-read.table("F:\\mywork\\project\\RongYKlincRNA\\GonadDE.txt",header=T,sep="\t",row.names=1)
-    example<-read.table("data/Marioni data.csv",header=T,sep=",",row.names=1)
+    example<-read.table("data/MarioniData.csv",header=T,sep=",",row.names=1)
     #example<-read.table("/srv/shiny-server/countTable2DEonline/test.txt",header=T,sep="\t",row.names=1)
     inFile <- input$file1
     if (!is.null(inFile)){
@@ -162,10 +162,10 @@ shinyServer(function(input,output,session){
   
   #download example data-----
   output$downloadExampleDataFile<-downloadHandler(
-    filename ="Marioni data.csv"
+    filename ="MarioniData.csv"
     , 
     content = function(file) {
-      data<-read.table("data/Marioni data.csv",header=T,sep=",")
+      data<-read.table("data/MarioniData.csv",header=T,sep=",")
       write.csv(data,file,row.names=FALSE,quote=FALSE)
       
     },

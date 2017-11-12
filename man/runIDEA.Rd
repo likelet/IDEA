@@ -10,7 +10,7 @@ runIDEA()
 \code{runIDEA} run IDEA locally
 }
 \seealso{
-\code{IDEA} \link{http:\\\\idea.biocuckoo.org}
+\code{IDEA} \link{https://github.com/likelet/IDEA}
 }
 \author{
 Qi Zhao

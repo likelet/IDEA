@@ -9,9 +9,6 @@ runIDEA()
 \description{
 \code{runIDEA} run IDEA locally
 }
-\seealso{
-\code{IDEA} \link{https://github.com/likelet/IDEA}
-}
 \author{
 Qi Zhao
 }

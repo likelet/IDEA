@@ -300,7 +300,7 @@ shinyServer(function(input,output,session){
            "upload"=tagList( 
              
              div(class="panel-body",
-                 h4("Upload a matrix of read counts (file size < 10M)",DiaoTips(3,"A csv matrix file is prefered, or you can parse your file with options below")), 
+                 h4("Upload a matrix of read counts (file size < 10M)",DiaoTips(3,"A csv matrix file is prefered, or you can parse your file with options below.To note, plz check rownames of your matrix, duplicated rownames were not allowed")), 
                  
                  fileInput('file1', 'CSV and Text Document format are supported',
                            accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),

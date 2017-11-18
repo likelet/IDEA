@@ -14,14 +14,16 @@ To address the above issues, here we introduce the Interactive Differential Expr
 Install IDEA locally
 -------------
 The online version can be easily accessed to perform analysis tasks with dataset in low thoughput. However, Limited to remote server resouces, the web page usually stucked while multible user operated parallelly or larger dataset tasks requirement. To solve this, We released an R package that packed the core analysis module for users to run analysis under the R environment locally .<br/>
-_Before install the IDEA package, please read this markdown file carefully;_<br/>
-First, to run IDEA functionally in a local machine, you must make sure that all the dependencies were well installed.***（We recommanded users using [Rstudio](https://www.rstudio.com/products/rstudio/download/) as their R console to make a better installing exprience)***<br/>
-To check the dependencies installed correctly, this command can help users to check the status of each installation<br/>
+>Before install the IDEA package, please read this markdown file carefully;_<br/>
 ```R
-library("Packages for check")
+if (!require("devtools"))
+  install.packages("devtools")
+devtools::install_github("likelet/IDEA")
 ```
 
-To date, the current version(IDEA 1.0) works well based on the following versions of dependencies<br/>
+First, to run IDEA functionally in a local machine, you must make sure that all the dependencies were well installed.***（We recommanded users using [Rstudio](https://www.rstudio.com/products/rstudio/download/) as their R console to make a better installing exprience)***<br/>
+
+Current version(IDEA 1.0) works well on the basis of the following versions of dependencies properly installed, which  can also be found in the `DESCRIPTION` file<br/>
     shiny (>= 0.12.2),<br/>
     DESeq2 (>= 1.6.2),<br/>
     __shinyBS (<= 0.25),<br/>__
@@ -46,7 +48,7 @@ progressBar()
 ```R
 devtools::install_github( "likelet/shinyBS")
 ```
-We also list the command to install the related packages:
+Here list the command to install the related packages manually if devtools failed in installation:
 ```R
 cDep <- c("abind")
 #dependencies from BIOCONDUCTOR
@@ -100,15 +102,7 @@ if (!require("devtools"))
 devtools::install_github("likelet/IDEA")
 ```
 The above command can automaticly install the several dependencies which allows users skipping some installation steps; However, the shinyBS package would be latest version which will result in incompatible with IDEA. User can remove it and reinstall the right version to avoid this;
-Alternately, if you have installed dependencies manually, you can then install IDEA pakcage alone with following command :
-```R
-if (!require("devtools"))
-  install.packages("devtools")
-devtools::install_github("likelet/IDEA",dependencies = FALSE)
-```
-or download it from git then install package with install command<br/>
-```R
-install.packages("path_to_IDEA.tar.gz/.zip", repos = NULL, type="source")
+
 ```
 
 Run information

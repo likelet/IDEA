@@ -6,7 +6,6 @@ IDEA
 To address the above issues, here we introduce the Interactive Differential Expression Analyzer (IDEA), a Shiny-based web application dedicated to the identification of differential expression genes in an interactive way. IDEA was built as a user-friendly and highly interactive utility using the <a href="http://shiny.rstudio.com/">Shiny</a> (RStudio Inc. 2014)  package in R. Currently, five relevant R packages are integrated into IDEA. IDEA is capable of visualizing the results with plenty of charts and tables, as well as providing great ease of interaction during the course of the analysis.<br/>
 <p/>
 
-[Click here to redirect to IDEA website.](http://idea.biocuckoo.org)<br />
 
 **Screen shoot of IDEA**
 <img src="inst/IDEA/www/img/demo0-v2.png">
@@ -143,22 +142,22 @@ Documentation
 -------------
 
 First stable version released.
-To view user guide, please visit [http://idea.biocuckoo.org](http://targetgene.com:3838/IDEA/) and refers to **HELP** section
+To view user guide, please visit **HELP** page when package installed.
 Developer Information
 -------------
 FAQ
 -------------
 During the analysis procedure,  you might encounter the following problems due to software or environment ; We summarized those questions and give some solutions for bug fixing:<br/>
-***1. Several packages can not be installed with errors returned, how to fix this?***<br/>
-__Answer__: Yes, the R pakcages' installation is indeed painful. Mostly you can restart your computer or change the network environment to fix it; If the problem still exists, please try to install packages locally  or contact authors for help;<br/>
-***2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button***:<br/>
-__Answer__: This error is mainly caused by Rstudio version; you can fix it by upgrading your RStudio to the latest version.<br/>
-***3. "Error: pandoc version 1.12.3 or higher is required and was not found." while clicks the download report button***:<br/>
-__Answer__: If you see this message that means you upgraded your Rstudio version, the problem is still exist. You need a pandoc to render Rmd file into html report. You can optain it from [https://github.com/jgm/pandoc/releases/tag/1.15.0.6](https://github.com/jgm/pandoc/releases/tag/1.15.0.6) as YiHui suggested. After that, restart your Rstudio.<br/>
-***4. "My data is more than 10M which reaches the max data set limit in the IDEA, how can I perform analysis for this data ?"***:<br/>
-__Answer__: Well, we encourage users modifying source code to achieve their goals. To make big data analysis available, user can edit "server.R" file under the IDEA folder in the R_HOME library. There is a line "options(shiny.maxRequestSize=10*1024^2) # max file size is 10Mb" in the source code. You can reset the number and save it to make bigger data analysis available.<br/>
-***5. "I got error messages on install "Cario" in R environment(linux), how to fix it ?"***:<br/>
-__Answer__: To install Cairo in R , your system  should already have some library file like cairo-devel, libXt-devel installed, after that, reinstall Cairo.<br/>
+* 1. Several packages can not be installed with errors returned, how to fix this?***<br/>
+>  Yes, the R pakcages' installation is indeed painful. Mostly you can restart your computer or change the network environment to fix it; If the problem still exists, please try to install packages locally  or contact authors for help;<br/>
+* 2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button***:<br/>
+>  This error is mainly caused by Rstudio version; you can fix it by upgrading your RStudio to the latest version.<br/>
+* 3. "Error: pandoc version 1.12.3 or higher is required and was not found." while clicks the download report button***:<br/>
+>  If you see this message that means you upgraded your Rstudio version, the problem is still exist. You need a pandoc to render Rmd file into html report. You can optain it from [https://github.com/jgm/pandoc/releases/tag/1.15.0.6](https://github.com/jgm/pandoc/releases/tag/1.15.0.6) as YiHui suggested. After that, restart your Rstudio.<br/>
+* 4. "My data is more than 10M which reaches the max data set limit in the IDEA, how can I perform analysis for this data ?"***:<br/>
+>  Well, we encourage users modifying source code to achieve their goals. To make big data analysis available, user can edit "server.R" file under the IDEA folder in the R_HOME library. There is a line "options(shiny.maxRequestSize=10*1024^2) # max file size is 10Mb" in the source code. You can reset the number and save it to make bigger data analysis available.<br/>
+* 5. "I got error messages on install "Cario" in R environment(linux), how to fix it ?"***:<br/>
+>  To install Cairo in R , your system  should already have some library file like cairo-devel, libXt-devel installed, after that, reinstall Cairo.<br/>
 
 ### Designers:
 Jian Ren, renjian.sysu@gmail.com<br/>
@@ -166,11 +165,11 @@ Qi Zhao, zhaoqi3@mail2.sysu.edu.cn<br/>
 
 ### Credit:
 This software were developed by our coding team :
-Qi Zhao, zhaoqi3@mail2.sysu.edu.cn <br/>, Sun Yat-sen university cancer center
-Peng Nie, niepeng@mail2.sysu.edu.cn <br/>, Sun Yat-sen university 
-Rucheng Diao, diaorch@mail2.sysu.edu.cn <br/>, University of Michigan
-Lichen Sun, sunlch@mail2.sysu.edu.cn <br/>, Yale University
-Yi Shi, shiy26@mail2.sysu.edu.cn, Shanghai Institutes for Biological Sciences
+* Qi Zhao, zhaoqi3@mail2.sysu.edu.cn <br/>, Sun Yat-sen university cancer center
+* Peng Nie, niepeng@mail2.sysu.edu.cn <br/>, Sun Yat-sen university 
+* Rucheng Diao, diaorch@mail2.sysu.edu.cn <br/>, University of Michigan
+* Lichen Sun, sunlch@mail2.sysu.edu.cn <br/>, Yale University
+* Yi Shi, shiy26@mail2.sysu.edu.cn, Shanghai Institutes for Biological Sciences
 
 ### Maintainer:
 Qi Zhao, Peng Nie <br/>
@@ -178,7 +177,7 @@ Please feel free contact us. <br/>
 
 ### Copyright
 Copyright © 2014-2017. The CUCKOO Workgroup. All Rights Reserved<br/>
-For more useful tools/applications, please go to [biocuckoo.org](http://www.biocuckoo.org)
+For more useful tools/applications, please go to [biocuckoo.org](http://www.renlab.org)
 
 ### Citation 
 If you used any one of IDEA intergrated R packages in your publications, please cite the related packages by<br/>```citations(packagesname)```;<br/>

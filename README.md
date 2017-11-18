@@ -170,7 +170,7 @@ Qi Zhao, zhaoqi3@mail2.sysu.edu.cn <br/>, Sun Yat-sen university cancer center
 Peng Nie, niepeng@mail2.sysu.edu.cn <br/>, Sun Yat-sen university 
 Rucheng Diao, diaorch@mail2.sysu.edu.cn <br/>, University of Michigan
 Lichen Sun, sunlch@mail2.sysu.edu.cn <br/>, Yale University
-Yi Shi, shiy26@mail2.sysu.edu.cn.
+Yi Shi, shiy26@mail2.sysu.edu.cn, Shanghai Institutes for Biological Sciences
 
 ### Maintainer:
 Qi Zhao, Peng Nie <br/>

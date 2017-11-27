@@ -148,16 +148,16 @@ Developer Information
 FAQ
 -------------
 During the analysis procedure,  you might encounter the following problems due to software or environment ; We summarized those questions and give some solutions for bug fixing:<br/>
-* 1. Several packages can not be installed with errors returned, how to fix this?***<br/>
->  Yes, the R pakcages' installation is indeed painful. Mostly you can restart your computer or change the network environment to fix it; If the problem still exists, please try to install packages locally  or contact authors for help;<br/>
-* 2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button***:<br/>
+* 1. Several packages can not be installed with errors returned, how to fix this?
+>  Yes, the R pakcages' installation is indeed painful. Mostly you can restart your computer or change the network environment to fix it; If the problem still exists, please try to install packages locally  or contact authors for help;
+* 2. "Error : unrecognized fields specified in html_dependency: attachment" while clicks the download report button
 >  This error is mainly caused by Rstudio version; you can fix it by upgrading your RStudio to the latest version.<br/>
-* 3. "Error: pandoc version 1.12.3 or higher is required and was not found." while clicks the download report button***:<br/>
->  If you see this message that means you upgraded your Rstudio version, the problem is still exist. You need a pandoc to render Rmd file into html report. You can optain it from [https://github.com/jgm/pandoc/releases/tag/1.15.0.6](https://github.com/jgm/pandoc/releases/tag/1.15.0.6) as YiHui suggested. After that, restart your Rstudio.<br/>
-* 4. "My data is more than 10M which reaches the max data set limit in the IDEA, how can I perform analysis for this data ?"***:<br/>
->  Well, we encourage users modifying source code to achieve their goals. To make big data analysis available, user can edit "server.R" file under the IDEA folder in the R_HOME library. There is a line "options(shiny.maxRequestSize=10*1024^2) # max file size is 10Mb" in the source code. You can reset the number and save it to make bigger data analysis available.<br/>
-* 5. "I got error messages on install "Cario" in R environment(linux), how to fix it ?"***:<br/>
->  To install Cairo in R , your system  should already have some library file like cairo-devel, libXt-devel installed, after that, reinstall Cairo.<br/>
+* 3. "Error: pandoc version 1.12.3 or higher is required and was not found." while clicks the download report button
+>  If you see this message that means you upgraded your Rstudio version, the problem is still exist. You need a pandoc to render Rmd file into html report. You can optain it from [https://github.com/jgm/pandoc/releases/tag/1.15.0.6](https://github.com/jgm/pandoc/releases/tag/1.15.0.6) as YiHui suggested. After that, restart your Rstudio
+* 4. "My data is more than 10M which reaches the max data set limit in the IDEA, how can I perform analysis for this data ?"
+>  Well, we encourage users modifying source code to achieve their goals. To make big data analysis available, user can edit "server.R" file under the IDEA folder in the R_HOME library. There is a line "options(shiny.maxRequestSize=10*1024^2) # max file size is 10Mb" in the source code. You can reset the number and save it to make bigger data analysis available
+* 5. "I got error messages on install "Cario" in R environment(linux), how to fix it ?"
+>  To install Cairo in R , your system  should already have some library file like cairo-devel, libXt-devel installed, after that, reinstall Cairo.
 
 ### Designers:
 Jian Ren, renjian.sysu@gmail.com<br/>

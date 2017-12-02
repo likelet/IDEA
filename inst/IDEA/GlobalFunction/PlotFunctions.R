@@ -19,11 +19,23 @@ samplePlotboxP <- function(tb){
   melttb <- melt(tb)
   #rename column
   colnames(melttb) <- c("Samples", "Expression")
+  #define colors 
+  color.length <- uniq(melttb$Samples)
+  color.list<-c()
+  if(color.length==2){
+    color.list=brewer.pal(2,"Greens")[1:2]
+  }else if(color.length>11){
+    templist=brewer.pal(11,"Spectral")
+    n=round(color.length/11+0.5)
+    color.list=rep(templist,n)[1:color.length]
+  }else{
+    color.list=brewer.pal(11,"Spectral")
+  }
   
   #plotting + color
   bp <- ggplot(data = melttb, aes(x=Samples, y=Expression)) + 
     geom_boxplot(aes(fill=Samples)) + 
-    scale_fill_brewer("Samples", palette = "Spectral")
+    scale_fill_manual(values=color.list)
   #labels and background
   bp <- bp + scale_y_log10() + 
     plotDefaultTheme
@@ -166,7 +178,8 @@ scatterP <- function(tb, xcol, ycol, isFitted = TRUE, scLabelx = 1, scLabely = 4
 MAplot<-function(data,DEmethod=c("DESeq","edgeR","NOIseq","PoissonSeq","SAMseq"),pcutoff=0.05,ylim=4,myq=0.8){
   if(DEmethod=="DESeq"){
     df<-data.frame(mean=data$baseMean,log2fc=data$log2FoldChange)
-    df$isde<-as.factor(data$padj < pcutoff)
+    df$isde<-ifelse(data$padj <= pcutoff,"DEgenes","Non-DE")
+    df$isde=factor(df$isde,levels = c("Non-DE","DEgenes"))
     ylab=expression(log[2] ~ fold ~ change)
     g <- ggplot(data=df, aes(x=mean, y=log2fc, colour=isde)) +
       geom_point(alpha=0.9, size=1.75) +
@@ -186,7 +199,8 @@ MAplot<-function(data,DEmethod=c("DESeq","edgeR","NOIseq","PoissonSeq","SAMseq")
   } else if (DEmethod=="edgeR"){
     
     df<-data.frame(mean=data$logCPM,log2fc=data$logFC)
-    df$isde<-as.factor(data$FDR < pcutoff)
+    df$isde<-ifelse(data$FDR <= pcutoff,"DEgenes","Non-DE")
+    df$isde=factor(df$isde,levels = c("Non-DE","DEgenes"))
     g <- ggplot(data=df, aes(x=mean, y=log2fc, colour=isde)) +
       geom_point(alpha=0.9, size=1.75) +
       theme_bw()+

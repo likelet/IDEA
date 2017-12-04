@@ -9,7 +9,7 @@ To address the above issues, here we introduce the Interactive Differential Expr
 
 [Click me to redirected into web server](http://targetgene.com:3838/IDEA/)
 **Screen shoot of IDEA**
-<img src="inst/IDEA/www/img/demo0-v2.png">
+<img src="media/IDEA.gif">
 
 Install IDEA locally
 -------------

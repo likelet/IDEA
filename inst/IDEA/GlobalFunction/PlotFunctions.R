@@ -20,7 +20,7 @@ samplePlotboxP <- function(tb){
   #rename column
   colnames(melttb) <- c("Samples", "Expression")
   #define colors 
-  color.length <- uniq(melttb$Samples)
+  color.length <- length(unique(melttb$Samples))
   color.list<-c()
   if(color.length==2){
     color.list=brewer.pal(2,"Greens")[1:2]

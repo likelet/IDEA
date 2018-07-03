@@ -7,7 +7,7 @@ An R package version of interactive differential expression analyzer
 To address the above issues, here we introduce the Interactive Differential Expression Analyzer (IDEA), a Shiny-based web application dedicated to the identification of differential expression genes in an interactive way. IDEA was built as a user-friendly and highly interactive utility using the <a href="http://shiny.rstudio.com/">Shiny</a> (RStudio Inc. 2014)  package in R. Currently, five relevant R packages are integrated into IDEA. IDEA is capable of visualizing the results with plenty of charts and tables, as well as providing great ease of interaction during the course of the analysis.<br/>
 <p/>
 
-[Click me to redirected into web server](http://idea.renlab.org/. 
+[Click me to redirected into web server](http://idea.renlab.org/).   
 
 **Screen shoot of IDEA**
 <img src="media/IDEA.gif">

@@ -191,6 +191,7 @@ shinyServer(function(input,output,session){
                         "WR"="data/experimentaldataWR.csv"
     )
     designexample<-read.table(examplepath,header=T,sep=",",row.names=1)
+    colnames(designexample)[1] <- "condition"
     #example<-read.table("/srv/shiny-server/countTable2DEonline/test.txt",header=T,sep="\t",row.names=1)
     inFile <- input$designfile
     
@@ -198,6 +199,7 @@ shinyServer(function(input,output,session){
       
       tryCatch({
         data<-read.table(inFile$datapath, header=T,sep=",",row.names=1)     
+        colnames(data)[1] <- "condition"
         
       },error = function(ex) {
         data=NULL
@@ -402,10 +404,8 @@ shinyServer(function(input,output,session){
   getinterestVarible<-reactive({
     
     variableVector<-names(designInput())
-    if(is.null(input$InterestVariableInput)||values$design!="MF"){
+    if(is.null(input$InterestVariableInput)){
       interestVarible=variableVector[1]
-    }else{
-      interestVarible=input$InterestVariableInput
     }
     interestVarible
   })

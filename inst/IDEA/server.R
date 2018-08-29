@@ -143,20 +143,18 @@ shinyServer(function(input,output,session){
         data=NULL
       })
     }
-    
+    df <- NULL 
     if(values$wethernew=="example"){
-      example
+      df <- example
     }else{
       validate(
         need(!is.null(input$file1), "Please upload a data set")
       )
-      data
+      df <- data
     }
-    #     switch(values$wethernew,
-    #            'example'= example,
-    #            'upload'= data
-    #     )  
-    
+    #remove gene with 0 count across samples 
+    df<-df[rowSums(df)>0,]
+   df
     
   })
   
@@ -1865,9 +1863,9 @@ getPowerCurve<-reactive({
   
   #SAMseq DE heatmap
   SAMseqHeatmapPlotfunction<-reactive({
-    table<-getresultPoissonSeqresultTableNew()
+    table<-getSAMseqresultTableNew()
     normalizedData<-normalizeDataNew()
-    data<-HeatmapData(normalizedData,table,DEmethod='PoissonSeq',Topnumber=input$SAMseqShowDeGenes)
+    data<-HeatmapData(normalizedData,table,DEmethod='SAMseq',Topnumber=input$SAMseqShowDeGenes)
     data
   })
   #SAMseq DE heatmap render
@@ -1917,7 +1915,7 @@ getPowerCurve<-reactive({
     
     content = function(file) {
       #Cairo(file=file, width = 600, height = 600,type = "png", units = "px", pointsize = 12, bg = "white", res = NA)
-      res<-getresultPoissonSeqresultTableNew()
+      res<-getSAMseqresultTableNew()
       write.csv(res,file=file)
     },
     contentType = 'text/csv'

@@ -24,6 +24,7 @@ getPossionTestResult<-function(data,condition,ispaired=FALSE){
   file.remove("PossionPow.txt")
   LL<-paralist()
   dat<-poissonData(data,condition,ispaired)
+  data<-data[complete.cases(data),]
   result<-PS.Main(dat,LL)
   return(result)
 }

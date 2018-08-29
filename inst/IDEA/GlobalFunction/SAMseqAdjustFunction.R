@@ -19,20 +19,15 @@ library(samr)
 
 getsamfit<-function(data,conditionlist,myresp.type="Two class unpaired",mynperms = 100, mynresamp = 20, myfdr = 0.20){
   y=as.numeric(factor(conditionlist,labels = c(1:length(unique(conditionlist)))))
-  samfit <- SAMseq(data.matrix(data), y, resp.type =myresp.type,fdr.output=myfdr,geneid=row.names(data),genenames=row.names(data),nresamp = mynresamp,)
+  samfit <- SAMseq(data.matrix(data), y, resp.type =myresp.type,fdr.output=myfdr,geneid=row.names(data),genenames=row.names(data),nresamp = mynresamp)
 }
-getSamResultTable<-function(data,conditionlist,resp.type="Two class unpaired",myfdr=1){
-  #data must be rounded
-  #y must be a numberic vector
-  samfit <- getsamfit(data,conditionlist,myresp.type=resp.type,fdr=myfdr) 
-  result<-data.frame(samfit$siggenes.table$genes.up)
-  result2<-data.frame(samfit$siggenes.table$genes.lo)
-  
-  return(rbind(result,result2))
-}
+# getSamResultTable<-function(data,conditionlist,resp.type="Two class unpaired",myfdr=1){
+#   #data must be rounded
+#   #y must be a numberic vector
+#   samfit <- getsamfit(data,conditionlist,myresp.type=resp.type,fdr=myfdr) 
+#   result<-data.frame(samfit$siggenes.table$genes.up)
+#   result2<-data.frame(samfit$siggenes.table$genes.lo)
+#   
+#   return(rbind(result,result2))
+# }
 
-samfitplot<-function(data,conditionlist,resp.type,myfdr=0.05){
-  samfit <- getsamfit(data,conditionlist,myresp.type=resp.type,fdr=myfdr)
-  plot(samfit)
-
-}

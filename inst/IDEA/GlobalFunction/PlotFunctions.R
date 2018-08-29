@@ -367,7 +367,7 @@ HeatmapData<-function(normalizedData,DEtable,DEmethod=c("DESeq","edgeR","NOIseq"
   }else if(DEmethod=='NOIseq'){
     DEtable<-DEtable[order(DEtable[,"prob"],decreasing = TRUE),]
   }else if(DEmethod=='SAMseq'){
-    DEtable<-DEtable[order(DEtable[,5]),]
+    DEtable<-DEtable[order(DEtable[,4]),]
   }
   DElist<-rownames(DEtable)
   if(length(DElist)>=Topnumber){

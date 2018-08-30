@@ -57,6 +57,7 @@ shinyServer(function(input,output,session){
   #get user exprimental design
   values$design="SC"
   values$usedtools=c("DESeq","edgeR","NOISeq","PoissonSeq","SAMseq")
+  
   observe({
     if(input$scExampleButton!=0){
       values$design="SC"
@@ -1678,19 +1679,19 @@ output$edgeRdespersionMethodUI<-renderUI({
   #PoissonSeq Analysis function----
   getPoissonSeqAnalysis<-reactive({
     updateProgressBar(session,"PoissonSeqProgressbar", value=2,visible = TRUE, animate=TRUE)
-    mycounts<-round(getSelectDataframe())
+    mycounts <- round(getSelectDataframe())
     updateProgressBar(session,"PoissonSeqProgressbar", value=10,visible = TRUE, animate=TRUE)
     #     condition=getSelectCondition()
-    finalcondition<-getSelectCondition()
-    result<-getPossionTestResult(mycounts,finalcondition)
+    finalcondition<- getSelectCondition()
+    result <- getPossionTestResult(mycounts,finalcondition)
     updateProgressBar(session,"PoissonSeqProgressbar", value=90,visible = TRUE, animate=TRUE)
     result
   })
   
   getresultPoissonSeqresultTableNew<-reactive({
-    result=getPoissonSeqAnalysis()
+    result <- getPoissonSeqAnalysis()
     #     result[,5]<-p.adjust(result[,4], input$PoissonSeqFDRmethod)
-    names(result)<-c("id","FeatureID","tt","P.value","FDR","LogFC")
+    colnames(result)<-c("id","FeatureID","tt","P.value","FDR","LogFC")
     result
   })
   
@@ -2013,27 +2014,61 @@ getPowerCurve<-reactive({
   
   #get DEtable list with design options
   getDEtablelist<-reactive({
-    updateProgressBar(session,"intergretiveProgressbar", value=10,visible = TRUE, animate=TRUE)
     
-    tablelist<-list(DESeq=getDEseqResultTable(),edgeR=getedgeRresultTable())
+    detable <- tryCatch(getDEseqResultTable(),
+             warning = function(w) {print("deseq warinings"); getDEseqResultTable()},
+             error = function(e) {print("deseq errors");NULL})
+    edgetable <- tryCatch(getedgeRresultTable(),
+                        warning = function(w) {print("edger warinings"); getedgeRresultTable()},
+                        error = function(e) {print("edger errors");NULL})
+    
+    updateProgressBar(session,"intergretiveProgressbar", value=10,visible = TRUE, animate=TRUE)
+    tablelist<-list()
+    if(!is.null(detable)){
+      tablelist[["DESeq"]]<-detable
+    }
+    if(!is.null(edgetable)){
+      tablelist[["edgeR"]]<-edgetable
+    }
+    # tablelist<-list(DESeq=getDEseqResultTable(),edgeR=getedgeRresultTable())
     updateProgressBar(session,"intergretiveProgressbar", value=50,visible = TRUE, animate=TRUE)
     #values$usedtools=c("DESeq","edgeR","NOIseq","PoissonSeq","SAMseq")
     if(values$design!="MF"){
-      table=getresultNOIseqresultTableNew()
-      tablelist[["NOISeq"]]<-table
+      NOIseqtable <- tryCatch(getresultNOIseqresultTableNew(),
+                            warning = function(w) {print("noiseq warinings"); getresultNOIseqresultTableNew()},
+                            error = function(e) {print("noiseq errors");NULL})
+      if(!is.null(NOIseqtable)){
+        tablelist[["NOISeq"]]<-NOIseqtable
+      }
+      # table=getresultNOIseqresultTableNew()
+      # tablelist[["NOISeq"]]<-table
       updateProgressBar(session,"intergretiveProgressbar", value=70,visible = TRUE, animate=TRUE)
     }
     if(values$design=="SC"){
-      table2=getresultPoissonSeqresultTableNew()
-      tablelist[["PoissonSeq"]]<-table2
-      updateProgressBar(session,"intergretiveProgressbar", value=80,visible = TRUE, animate=TRUE)
-      table3=getSAMseqresultTableNew()
-      updateProgressBar(session,"intergretiveProgressbar", value=90,visible = TRUE, animate=TRUE)
       
-      tablelist[["SAMseq"]]<-table3
+      PoissonSeqtable <- tryCatch(getresultPoissonSeqresultTableNew(),
+                              warning = function(w) {print("possionseq warinings"); getresultPoissonSeqresultTableNew()},
+                              error = function(e) {print("possionseq errors");NULL})
+      if(!is.null(PoissonSeqtable)){
+        tablelist[["PoissonSeq"]]<-PoissonSeqtable
+      }
+      # table2=getresultPoissonSeqresultTableNew()
+      # tablelist[["PoissonSeq"]]<-table2
+      updateProgressBar(session,"intergretiveProgressbar", value=80,visible = TRUE, animate=TRUE)
+      samseqtable <- tryCatch(getSAMseqresultTableNew(),
+                                  warning = function(w) {print("samseq warinings"); getSAMseqresultTableNew()},
+                                  error = function(e) {print("samseq errors");NULL})
+      if(!is.null(samseqtable)){
+        tablelist[["SAMseq"]]<-samseqtable
+      }
+      
+      updateProgressBar(session,"intergretiveProgressbar", value=90,visible = TRUE, animate=TRUE)
+      # table3=getSAMseqresultTableNew()
+      # tablelist[["SAMseq"]]<-table3
       
     }
-    names(tablelist)=values$usedtools
+    print(paste("DEtable list size ",length(tablelist)))
+    # names(tablelist)=values$usedtools
     tablelist
   })
   
@@ -2042,7 +2077,7 @@ getPowerCurve<-reactive({
     ll<-getDEtablelist()
     inputnames=getinterPackages()
     input$runSelectedAnalysisbutton
-    ll2<-getMutipeDElist(design=values$design,datalist=ll,fdrcutoff=0.2)
+    ll2<-getMutipeDElist(datalist=ll,fdrcutoff=0.2)
     
     ll2<-isolate(ll2[getinterPackages()])
     p<-VennPlot(ll2,getinterPackages())
@@ -2062,9 +2097,11 @@ getPowerCurve<-reactive({
   
   getallDElist<-reactive({
     ll<-getDEtablelist()
-    ll2<-getMutipeDElist(values$design,datalist=ll,fdrcutoff=0.2)
+    ll2<-getMutipeDElist(datalist=ll,fdrcutoff=0.2)
     ll2
   })
+  
+  
   getComparisonBarPlot<-function(){
     
     DElist<-getallDElist()

@@ -7,31 +7,33 @@ library(VennDiagram)
 
 source("GlobalFunction/PlotTheme.R")
 
-getMutipeDElist<-function(design,datalist,fdrcutoff,prbNOISEQ=0.2){  
+getMutipeDElist<-function(datalist,fdrcutoff,prbNOISEQ=0.2){  
+  
 
-  table1=datalist[["DESeq"]]
-  #table=table[with(table, order(table[,6])), ]
-  DESeqlist=row.names(table1[table1[,6]<=fdrcutoff,])
-  table2=datalist[["edgeR"]]
-  EdgeRlist=row.names(table2[table2[,"FDR"]<=fdrcutoff,])
-  tablelist<-list(DESeq=DESeqlist,edgeR=EdgeRlist)
-  if(design!="MF"){
-    table3=datalist[["NOISeq"]]
-    if(design=="SC"){
-      NOISeqlist=row.names(table3[1-table3[,"prob"]<=fdrcutoff,])
-    }else{
-      NOISeqlist=row.names(table3[1-table3[,"prob"]<=prbNOISEQ,])
-    }
-    tablelist[["NOISeq"]]<-NOISeqlist
+  tablelist<-list()
+  table1 <- datalist[["DESeq"]]
+  if(!is.null(table1)){
+    tablelist[["DESeq"]]<- row.names(table1[table1[,6]<=fdrcutoff,])
   }
-  if(design=="SC"){
-    table4=datalist[["PoissonSeq"]]
-    PoissonSeqlist=table4[table4[,5]<=fdrcutoff,2]
-    tablelist[["PoissonSeq"]]<-PoissonSeqlist
-    table5=datalist$SAMseq
-    table5<-as.matrix(table5)
-    SAMseqlist=table5[table5[,4]<=fdrcutoff,1]
-    tablelist[["SAMseq"]]<-SAMseqlist
+
+  table2 <- datalist[["edgeR"]]
+  if(!is.null(table2)){
+    tablelist[["edgeR"]]<-row.names(table2[table2[,"FDR"]<=fdrcutoff,])
+  }
+  
+  table3 <- datalist[["NOISeq"]]
+  if(!is.null(table3)){
+  tablelist[["NOISeq"]]<-row.names(table3[1-table3[,"prob"]<=prbNOISEQ,])
+  }
+  
+  table4 <- datalist[["PoissonSeq"]]
+  if(!is.null(table4)){
+  tablelist[["PoissonSeq"]]<-table4[table4[,5]<=fdrcutoff,2]
+  }
+  
+  table5<-as.matrix(datalist[["SAMseq"]])
+  if(!is.null(table5)){
+  tablelist[["SAMseq"]]<-table5[table5[,4]<=fdrcutoff,1]
   }
   return (tablelist)
 }

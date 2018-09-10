@@ -898,7 +898,8 @@ div(
               bsPopover(
                 id = "DESeqanalysisDiv3",
                 title = "Tips",
-                content = "A MA-Plot can give a quick overview of the differential expression result. The log2–transformed fold change is plotted on the y-axis and the average count is on the x-axis. The false discovery rate (FDR) threshold can be interactively changed, and the features are colored red if the adjusted p-value is less than the FDR, while other genes are colored black.",
+                content = "A MA-Plot can give a quick overview of the differential expression result. 
+                The log2–transformed fold change is plotted on the y-axis and the average count is on the x-axis. The false discovery rate (FDR) threshold can be interactively changed, and the features are colored red if the adjusted p-value is less than the FDR, while other genes are colored black.",
                 placement = "right",
                 trigger = "hover"
               ),
@@ -1267,7 +1268,7 @@ div(
               bsPopover(
                 id = "edgeRanalysisDiv4",
                 title = "Tips",
-                content = "A MA-Plot can give a quick overview of the distribution of data. The log2–transformed fold change is plotted on the y-axis and the average count (normalized by size factors) is on the x-axis. The genes with adjusted p-value less than the FDR are colored red, while other genes are colored black.",
+                content = "A MA-Plot can give a quick overview of the distribution of data. <br/><strong style=\"color: green;\" >FDR cutoff is fixed at 0.05</strong> .The log2–transformed fold change is plotted on the y-axis and the average count (normalized by size factors) is on the x-axis. The genes with adjusted p-value less than the FDR are colored red, while other genes are colored black.",
                 placement = "right",
                 trigger = "hover"
               ),
@@ -1466,7 +1467,7 @@ div(
           selectInput(
             "EdgeRPplotFDRthresshold",
             "FDR threshold",
-            c(0.01, 0.05, 0.1, 0.2),
+            c(0.01, 0.05),
             selected = 0.05
           ),
           

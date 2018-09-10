@@ -154,7 +154,8 @@ shinyServer(function(input,output,session){
       df <- data
     }
     #remove gene with 0 count across samples 
-    df<-df[rowSums(df)>0,]
+    keep <- rowSums(df > 0) >= round(ncol(df)) #a Count>0 in at least 3 samples
+    df <- df[keep,]
    df
     
   })
@@ -217,7 +218,7 @@ shinyServer(function(input,output,session){
 
   })
 
-  ######gene length file upload----------
+  #gene length file upload----------
   annotationdatasetInput <- reactive({ 
     
     
@@ -247,9 +248,9 @@ shinyServer(function(input,output,session){
   }
   
   
-  ######################### 
+
   # exprimental design--------------
-  #########################
+
   
   
   #condition input 
@@ -303,8 +304,11 @@ shinyServer(function(input,output,session){
              div(class="panel-body",
                  h4("Upload a matrix of read counts (file size < 10M)",DiaoTips(3,"A csv matrix file is prefered, or you can parse your file with options below.To note, plz check rownames of your matrix, duplicated rownames were not allowed")), 
                  
-                 fileInput('file1', 'CSV and Text Document format are supported',
-                           accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),
+                 
+                  fileInput('file1', 'CSV and Text Document format are supported',
+                      accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),
+                   
+                 
                  div(class="panel-upload panel panel-default",
                      div(class="panel-heading",style="text-align: center","Header"
                      ),
@@ -365,9 +369,9 @@ shinyServer(function(input,output,session){
                      tags$button(class="btn btn-info","View uploaded data",onmousedown="isUpload(1)")
 #                      DiaoTips(4,"view your data after file is uploaded completely.")
                  ),
-                 div(style="display:inline-block",
-                     div(class="alert alert-info","Please check your data after file is uploaded completely.")
-                 )
+div(style="display:inline-block",
+    div(class="alert alert-info","Genes expressed less than half of samples were filtered for the analysis.")
+)
              
              )
            ),
@@ -973,7 +977,7 @@ shinyServer(function(input,output,session){
   ################################################################
   #DESeq analysis----
   #data inialize
-  getCdsData<-reactive({
+  getDdsData<-reactive({
     
     data<-datasetInput()
     countTable<-round(data)
@@ -1002,7 +1006,7 @@ shinyServer(function(input,output,session){
   
   DESeqGetnormalizeFactor<-reactive({
     data<-datasetInput()
-    dds<-getCdsData()
+    dds<-getDdsData()
     dds<-estimateSizeFactors(dds)
     a<-data.frame(sizeFactors(dds))
     colnames(a)<-c("sizeFactors")
@@ -1036,28 +1040,29 @@ shinyServer(function(input,output,session){
   
   #normalize data print
   output$normcdsdatashow<-renderTable({ 
-    cds<-getCdsData()
+    cds<-getDdsData()
     head(counts(cds,normalized=TRUE),n=input$normgeneobsNum)
   })
   #DESeq dispersionplot
   getDESeqDispEst<-function(){
-    dds<-getCdsData()
+    dds<-getDdsData()
     p=plotDispEsts(dds)
     return(p)
   }
   #dispersion render plot    
   output$DEseqDispersionsPlot<-renderPlot({
-    dds<-getCdsData()
+    dds<-getDdsData()
     plotDispEsts(dds)
   },width=700,height=700)
   
   #DEseq call DE with NB test
   DEseqGetNBDEdata<-function(){
-    dds<-getCdsData()
+    dds<-getDdsData()
     con=c("condition",getCompairSample())
     print(con)
     #con=comparisonInput()
-    res<-results(dds,con)      
+    res<-results(dds,con)  
+    res$padj <- ifelse(is.na(res$padj), 1, res$padj)
     return(res)
   }
   
@@ -1067,7 +1072,7 @@ shinyServer(function(input,output,session){
   #DEseq MAplot
   getDEseqMAplot<-reactive({
     table<-getDEseqResultTable()
-    p<-MAplot(table,DEmethod="DESeq",pcutoff=input$DEseqFDRthreshold,ylim=4,myq=0.8)
+    p<-MAplot(table,DEmethod="DESeq",pcutoff=input$DEseqFDRthreshold,ylim=4)
     p
   })
   
@@ -1150,7 +1155,7 @@ shinyServer(function(input,output,session){
       #png(file, width=6*myppi, height=6*myppi, res=myppi)
       png(file, type="cairo",units="in",width=8,height=8,pointsize=5.2,res=myppi)
       
-      dds<-getCdsData()
+      dds<-getDdsData()
       plotDispEsts(dds)
       dev.off()
     },
@@ -1332,8 +1337,9 @@ output$edgeRdespersionMethodUI<-renderUI({
   #edgeR MAplot
   getEdgeRMAplot<-reactive({
     table<-getedgeRresultTable()
-    p<-MAplot(table,DEmethod="edgeR",pcutoff=input$EdgeRPplotFDRthresshold,ylim=4,myq=0.8)
-    p
+    # p<-MAplot(table,DEmethod="edgeR",pcutoff=input$EdgeRPplotFDRthresshold,ylim=4)
+    p<-MAplot(table,DEmethod="edgeR",ylim=4)
+    return(p)
   })
   
   #edgeR Render MAplot
@@ -2357,7 +2363,7 @@ getPowerCurve<-reactive({
       }
       #p2 variance estimation des data plot by  plotDispEsts(p2)
       
-      p2=getCdsData()
+      p2=getDdsData()
       
       #p3 MAplot
       p3=getDEseqMAplot()
@@ -2368,7 +2374,7 @@ getPowerCurve<-reactive({
       #p6 pvalue distribution
       
       p6=DESeqPvalueDistributionplot()
-      
+       
       
       
       plist<-list(p1,p2,p3,p4,p5,p6)
@@ -2832,9 +2838,11 @@ getPowerCurve<-reactive({
   
   
   
-  
+#############################
+# help functions ----
+#####################
   addTooltip(session,"mfNewButton", "Only 3 max  factor number supported by IDEA ", trigger="hover", placement="right")
-  
+ 
   observe({
     temptext=getCompairSample()
     if(!is.null(temptext)&&temptext[1]!=temptext[2]){

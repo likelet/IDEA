@@ -175,52 +175,29 @@ scatterP <- function(tb, xcol, ycol, isFitted = TRUE, scLabelx = 1, scLabely = 4
 
 #MAplot for DE result with each method
 #by ZQ
-MAplot<-function(data,DEmethod=c("DESeq","edgeR","NOIseq","PoissonSeq","SAMseq"),pcutoff=0.05,ylim=4,myq=0.8){
+MAplot<-function(data,DEmethod=c("DESeq","edgeR"),pcutoff=0.05,ylim=4){
   if(DEmethod=="DESeq"){
     df<-data.frame(mean=data$baseMean,log2fc=data$log2FoldChange)
-    df$isde<-ifelse(data$padj <= pcutoff,"DEgenes","Non-DE")
-    df$isde=factor(df$isde,levels = c("Non-DE","DEgenes"))
-    ylab=expression(log[2] ~ fold ~ change)
-    g <- ggplot(data=df, aes(x=mean, y=log2fc, colour=isde)) +
-      geom_point(alpha=0.9, size=1.75) +
-      theme_bw()+
-      theme(legend.position="none")+
-      scale_x_log10()+
-      scale_y_continuous(limits = c(-ylim, ylim))+
-      xlab("Mean of normalized counts") + ylab("Log2 Fold Change")+
-      #theme(axis.title.y = element_text(size = rel(1),angle = 90, face="bold"))+
-      #theme(axis.title.x = element_text(size = rel(1),angle = 00, face="bold"))+
-      plotDefaultTheme+
-      geom_abline(intercept=0,slope=0,color="grey",size=1)+
-      scale_colour_manual(values=c("blue", "red"))
-    
-    return(g)
-    #Blue is padjust <=0.05
-  } else if (DEmethod=="edgeR"){
-    
-    df<-data.frame(mean=data$logCPM,log2fc=data$logFC)
-    df$isde<-ifelse(data$FDR <= pcutoff,"DEgenes","Non-DE")
-    df$isde=factor(df$isde,levels = c("Non-DE","DEgenes"))
-    g <- ggplot(data=df, aes(x=mean, y=log2fc, colour=isde)) +
-      geom_point(alpha=0.9, size=1.75) +
-      theme_bw()+
-      theme(legend.position="none")+
-      scale_x_log10()+
-      scale_y_continuous(limits = c(-ylim, ylim))+
-      xlab("Mean of normalized counts") + ylab("LogFC")+
-      #theme(axis.title.y = element_text(size = rel(1),angle = 90, face="bold"))+
-      #theme(axis.title.x = element_text(size = rel(1),angle = 00, face="bold"))+
-      plotDefaultTheme+
-      geom_abline(intercept=0,slope=0,color="grey",size=1)+
-      scale_colour_manual(values=c("blue", "red"))
-    return(g)
-    #x is Average Log CPM
-    #Blue is pvalue <=0.05
-  }else if (DEmethod=="NOIseq"){
-    #data is noiseq object
-    p<-DE.plot(mynoiseq, q = myq, graphic = "MD")
-    return(p)
+    df$isde<-ifelse(data$padj <= pcutoff,"DEgenes","NonDE")
+    df$isde=factor(df$isde,levels = c("NonDE","DEgenes"))
+  } else{
+    df<-data.frame(mean=data$logCPM,log2fc=data$logFC,FDR=data$FDR)
+    df$isde<-ifelse(df$FDR <= pcutoff,"DEgenes","NonDE")
+    df$isde=factor(df$isde,levels = c("NonDE","DEgenes"))
   }
+  
+  g <- ggplot(data=df, aes(x=mean, y=log2fc, colour=isde)) +
+    geom_point(alpha=0.9, size=1.5) +
+    theme_bw()+
+    theme(legend.position="none")+
+    # scale_x_log10()+
+    # scale_y_continuous(limits = c(-ylim, ylim))+
+    xlab("Mean of normalized counts") + ylab("LogFC")+
+    plotDefaultTheme+
+    geom_abline(intercept=0,slope=0,color="grey",size=1)+
+    scale_colour_manual(values=c("#1465AC", "#B31B21"))
+  
+  return(g)
 }
 
 #Pvalue distribution

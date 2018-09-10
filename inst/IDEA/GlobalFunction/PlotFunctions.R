@@ -190,7 +190,7 @@ MAplot<-function(data,DEmethod=c("DESeq","edgeR"),pcutoff=0.05,ylim=4){
     geom_point(alpha=0.9, size=1.5) +
     theme_bw()+
     theme(legend.position="none")+
-    # scale_x_log10()+
+    scale_x_log10()+
     # scale_y_continuous(limits = c(-ylim, ylim))+
     xlab("Mean of normalized counts") + ylab("LogFC")+
     plotDefaultTheme+

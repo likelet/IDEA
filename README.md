@@ -25,13 +25,14 @@ The online version can be easily accessed to perform analysis tasks with dataset
     devtools::install_github("likelet/IDEA")
     ```
 
-__User should notice that , the latest **shinyBS**  is incompatible with IDEA at present ; Only the exact shingBS  version (0.25) keep the IDEA work smoothly . This is because current shinyBS removed the__ ```
-progressBar()
-``` __function used in IDEA. To install the compatible shinyBS, you can type__
-```R
-devtools::install_github( "likelet/shinyBS")
-```
-Here list the command to install the related packages manually if devtools failed in installation:
+__User should notice that , the latest **shinyBS**  is incompatible with IDEA at present ; Only the exact shingBS  version (0.25) keep the IDEA work smoothly . This is because current shinyBS removed the__ `progressBar()`__function used in IDEA. To install the compatible shinyBS, you can type__  
+
+      ```R
+        devtools::install_github( "likelet/shinyBS")
+      ```  
+      
+Here list the command to install the related packages manually if devtools failed in installation:  
+
       ```R
       cDep <- c("abind")
       #dependencies from BIOCONDUCTOR
@@ -89,7 +90,8 @@ The above command can automaticly install the several dependencies which allows 
 
 ### Run information. 
 
-**For computer with GUI**<br/>
+**For computer with GUI**  
+
 Clone repository into local path and run as a Shiny App <br/>
 example:
 Clone repository into local directory '/Document/IDEA' (so that ui.R locates as '/Document/IDEA/ui.R') <br/>
@@ -106,7 +108,8 @@ Also, after install IDEA pakcages with no error print,  users can simply input.
       ``` 
 function to run application locally; Since there is only one function in this package, you can also print help massege in your R console;
 
-**For server or computer without GUI (Run IDEA on a server)**. 
+**For server or computer without GUI (Run IDEA on a server)**.   
+
 Install shiny-server first and finish the configurations step according to [http://rstudio.github.io/shiny-server/latest/](http://rstudio.github.io/shiny-server/latest/)<br/>
 Pull the package and install dependencies into your R environment; <br/>
 Copy _IDEA_ folder under _inst_ dir into /srv/shiny-sever/ (or orther app location configured in `shiny-sever.conf` file)<br/>

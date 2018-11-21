@@ -1,3 +1,4 @@
+![IDEA-logo](/inst/IDEA/www/img/main-logo.png)
 ## IDEA  
 
 [![TravisCI Build Status](https://travis-ci.org/likelet/IDEA.svg?branch=master)](https://travis-ci.org/likelet/IDEA)

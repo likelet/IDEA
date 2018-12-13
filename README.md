@@ -1,4 +1,17 @@
 ![IDEA-logo](/inst/IDEA/www/img/main-logo.png)
+
+- [IDEA](#idea)
+  * [Install IDEA locally.](#install-idea-locally)
+  * [Run information.](#run-information)
+  * [Developing Environment.](#developing-environment)
+  * [Documentation.](#documentation)
+  * [FAQ.](#faq)
+- [Designers](#designers)
+- [Credit](#credit)
+- [Maintainer](#maintainer)
+- [Copyright.](#copyright)
+- [Citation](#citation)
+
 ## IDEA  
 
 [![TravisCI Build Status](https://travis-ci.org/likelet/IDEA.svg?branch=master)](https://travis-ci.org/likelet/IDEA)
@@ -150,14 +163,14 @@ During the analysis procedure,  you might encounter the following problems due t
 * 5. "I got error messages on install "Cario" in R environment(linux), how to fix it ?"
 >  To install Cairo in R , your system  should already have some library file like cairo-devel, libXt-devel installed, after that, reinstall Cairo.
 
-## Designers:
+## Designers
 
 Jian Ren, renjian.sysu@gmail.com. 
 
 Qi Zhao, zhaoqi3@mail2.sysu.edu.cn. 
 
 
-## Credit:  
+## Credit  
 
 This software were developed by:
 * [Qi Zhao](zhaoqi@sysucc.org.cn) , Sun Yat-sen university cancer center
@@ -166,7 +179,7 @@ This software were developed by:
 * [Lichen Sun](sunlch@mail2.sysu.edu.cn), Yale University
 * [Yi Shi](shiy26@mail2.sysu.edu.cn), Shanghai Institutes for Biological Sciences
 
-## Maintainer:  
+## Maintainer  
 Qi Zhao <br/>
 Please feel free contact us. <br/>
 

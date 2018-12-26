@@ -1,7 +1,24 @@
+![IDEA-logo](/inst/IDEA/www/img/main-logo.png)
+
+
 ## IDEA  
 
 [![TravisCI Build Status](https://travis-ci.org/likelet/IDEA.svg?branch=master)](https://travis-ci.org/likelet/IDEA)
 [![codebeat badge](https://codebeat.co/badges/c297ab97-01dc-471f-9927-960152caf6d3)](https://codebeat.co/projects/github-com-likelet-idea-master)  
+
+## Table of content   
+
+- [IDEA](#idea)
+  * [Install IDEA locally.](#install-idea-locally)
+  * [Run information.](#run-information)
+  * [Developing Environment.](#developing-environment)
+  * [Documentation.](#documentation)
+  * [FAQ.](#faq)
+- [Designers](#designers)
+- [Credit](#credit)
+- [Maintainer](#maintainer)
+- [Copyright.](#copyright)
+- [Citation](#citation)
 
 An R package version of interactive differential expression analyzer 
 <p>    High-throughput sequencing technology is rapidly becoming the standard method for measuring gene expression at the transcriptional level. One of the main goals of such work is to identify differentially expressed genes under two or more conditions. A number of computational tools , such as <a href="http://bioconductor.org/packages/release/bioc/html/DESeq.html/">DESeq</a> (<a href="http://www.ncbi.nlm.nih.gov/pubmed/20979621/">Anders and Huber 2010</a>) (updated as <a href="http://bioconductor.org/packages/release/bioc/html/DESeq2.html/">DESeq2</a> (<a href="http://www.ncbi.nlm.nih.gov/pubmed/25516281/">Love, Huber et al. 2014</a>)), <a href="http://bioconductor.org/packages/release/bioc/html/edgeR.html/">edgeR</a> (<a href="http://www.ncbi.nlm.nih.gov/pubmed/19910308/">Robinson, McCarthy et al. 2010</a>, <a href="http://www.ncbi.nlm.nih.gov/pubmed/24753412/">Zhou, Lindsay et al. 2014</a>), <a href="http://www.bioconductor.org/packages/release/bioc/html/NOISeq.html/">NOISeq</a> (<a href="http://www.ncbi.nlm.nih.gov/pubmed/21903743/">Tarazona, García-Alcalde et al. 2011</a>), <a href="http://cran.r-project.org/web/packages/PoissonSeq/index.html/">PoissonSeq</a> (<a href="http://www.ncbi.nlm.nih.gov/pubmed/22003245/">Li, Witten et al. 2011</a>), and <a href="http://www.inside-r.org/packages/cran/samr/docs/SAMseq/">SAMseq (samr)</a> (<a href="http://www.ncbi.nlm.nih.gov/pubmed/22127579/">Li and Tibshirani 2013</a>) and Cuffdiff (Trapnell, et al., 2013) have been developed for the analysis of differential gene expression from patterns in RNA-seq data. Most of these tools are implemented in R language, which is commonly used for the analysis of high-dimensional expression data. However, a fairly high level of programing skill is required when applying these R tools to screen out differentially expressed genes, greatly hindering the application of these tools since many biology researchers have little programing experience. Beyond this problem, due to a lack of an interactive interface in these tools, it is inconvenient to adjust the analytical parameters, even for advanced users. Moreover, since different packages generate inconsistent results, an interactive platform that combines these tools together is necessary for obtaining more solid analysis results.<br/>
@@ -19,20 +36,21 @@ The online version can be easily accessed to perform analysis tasks with dataset
 
 >Before install the IDEA package, please read this markdown file carefully;  
 
-    ```R
+```R
     if (!require("devtools"))
       install.packages("devtools")
     devtools::install_github("likelet/IDEA")
-    ```
-
-__User should notice that , the latest **shinyBS**  is incompatible with IDEA at present ; Only the exact shingBS  version (0.25) keep the IDEA work smoothly . This is because current shinyBS removed the__ ```
-progressBar()
-``` __function used in IDEA. To install the compatible shinyBS, you can type__
-```R
-devtools::install_github( "likelet/shinyBS")
 ```
-Here list the command to install the related packages manually if devtools failed in installation:
-      ```R
+
+__User should notice that , the latest **shinyBS**  is incompatible with IDEA at present ; Only the exact shingBS  version (0.25) keep the IDEA work smoothly . This is because current shinyBS removed the__ `progressBar()`__function used in IDEA. To install the compatible shinyBS, you can type__  
+
+```R
+        devtools::install_github( "likelet/shinyBS")
+```  
+      
+Here list the command to install the related packages manually if devtools failed in installation:  
+
+```R
       cDep <- c("abind")
       #dependencies from BIOCONDUCTOR
       bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges","impute")
@@ -76,37 +94,39 @@ Here list the command to install the related packages manually if devtools faile
       devtools::install_github("shiny-incubator", "rstudio")
       devtools::install_github( "likelet/shinyBS")
       devtools::install_github("AnalytixWare/ShinySky")
-      ```
+```
 Second, to install the latest development build directly from GitHub, run this:(For some reason, we did not release the current version on CRAN or BIOCONDUCTOR site):
 
-    ```R
+```R
     if (!require("devtools"))
       install.packages("devtools")
     devtools::install_github("likelet/IDEA")
-    ```
+```
 The above command can automaticly install the several dependencies which allows users skipping some installation steps; However, the shinyBS package would be latest version which will result in incompatible with IDEA. User can remove it and reinstall the right version to avoid this;
 
 
 ### Run information. 
 
-**For computer with GUI**<br/>
+**For computer with GUI**  
+
 Clone repository into local path and run as a Shiny App <br/>
 example:
 Clone repository into local directory '/Document/IDEA' (so that ui.R locates as '/Document/IDEA/ui.R') <br/>
 then run in R under work directory of '/Document' :  
 
-      ```R
+```R
       runApp("IDEA")
-      ```
+```
 
 Also, after install IDEA pakcages with no error print,  users can simply input. 
 
-      ```R
+```R
       runIDEA()
-      ``` 
+``` 
 function to run application locally; Since there is only one function in this package, you can also print help massege in your R console;
 
-**For server or computer without GUI (Run IDEA on a server)**. 
+**For server or computer without GUI (Run IDEA on a server)**.   
+
 Install shiny-server first and finish the configurations step according to [http://rstudio.github.io/shiny-server/latest/](http://rstudio.github.io/shiny-server/latest/)<br/>
 Pull the package and install dependencies into your R environment; <br/>
 Copy _IDEA_ folder under _inst_ dir into /srv/shiny-sever/ (or orther app location configured in `shiny-sever.conf` file)<br/>
@@ -146,14 +166,14 @@ During the analysis procedure,  you might encounter the following problems due t
 * 5. "I got error messages on install "Cario" in R environment(linux), how to fix it ?"
 >  To install Cairo in R , your system  should already have some library file like cairo-devel, libXt-devel installed, after that, reinstall Cairo.
 
-## Designers:
+## Designers
 
 Jian Ren, renjian.sysu@gmail.com. 
 
 Qi Zhao, zhaoqi3@mail2.sysu.edu.cn. 
 
 
-## Credit:  
+## Credit  
 
 This software were developed by:
 * [Qi Zhao](zhaoqi@sysucc.org.cn) , Sun Yat-sen university cancer center
@@ -162,8 +182,8 @@ This software were developed by:
 * [Lichen Sun](sunlch@mail2.sysu.edu.cn), Yale University
 * [Yi Shi](shiy26@mail2.sysu.edu.cn), Shanghai Institutes for Biological Sciences
 
-## Maintainer:  
-Qi Zhao, Peng Nie <br/>
+## Maintainer  
+Qi Zhao <br/>
 Please feel free contact us. <br/>
 
 ## Copyright. 
@@ -177,5 +197,4 @@ Qi Zhao, Yubin Xie, Peng Nie, Rucheng Diao, Licheng Sun, Zhixiang Zuo, Jian Ren
 bioRxiv 360461; doi: https://doi.org/10.1101/360461
 
 If you used any one of IDEA intergrated R packages in your publications, please cite the related packages by<br/>```citations(packagesname)```;<br/>
-Also, if you adopted intergrated analysis module, report page as well as other fancy plots generated by IDEA, please cite the IDEA in the same way;   
-The publication of IDEA is in preparation, we will release the citation info as soon as possible.
+In addition, if you adopted intergrated analysis module, report page and other fancy plots generated by IDEA, please cite the IDEA in the same way.     

@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  // loadhtml(".header-main","index.html",".header-main");
-  // loadhtml("#side-nav","index.html","#side-nav");
   loadhtml("#frame","IDEA/../dom/frame.html","#frame");
   loadhtml("#s1","IDEA/../dom/s1.html","#s1");
   loadhtml("#step0","IDEA/../dom/s2-intro.html","#step0");

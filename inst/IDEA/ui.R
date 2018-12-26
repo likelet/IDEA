@@ -14,39 +14,23 @@
 library(shiny)
 library(shinysky)
 library(shinyBS)
+library(shinyWidgets)
 source("GlobalFunction/extraWedget.R")
 
-#difined a text area input
-inputTextarea <- function(inputId, value = "", nrows, ncols) {
-  tagList(
-    singleton(tags$head(tags$script(src = "textarea.js"))),
-    tags$textarea(
-      id = inputId,
-      class = "inputtextarea",
-      rows = nrows,
-      cols = ncols,
-      as.character(value)
-    )
-  )
-}
+
 
 shinyUI(bootstrapPage(
-  theme = "css/bootstrap.min.css",
   tags$head(
-    # tags$script(src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"),
+
     tags$meta(charset = "utf-8"),
     tags$meta('http-equiv' = "X-UA-Compatible", content =
                 "IE=edge"),
     tags$meta(name = "viewport", content = "width=device-width, initial-scale=1"),
     tags$link(rel = "stylesheet", type = "text/css", href =
                 "css/main.css"),
-    # tags$link(rel = "stylesheet", type = "text/css", href =
-    #             "http://fonts.useso.com/css?family=Open+Sans+Condensed:300|Titillium+Web|Dosis|Abel"),
     tags$script(type = 'text/javascript', src = 'js/main.js'),
     tags$script(type = 'text/javascript', src = 'js/loadJsCss.js'),
     #guide js plugin
-    tags$link(href = "css/bootstrap.min.css", rel =
-                "stylesheet"),
     tags$link(href = "css/extra.css", rel = "stylesheet"),
     #image popup
     tags$script(type = 'text/javascript', src = 'js/lightcase.js'),
@@ -62,27 +46,29 @@ shinyUI(bootstrapPage(
       setTimeout(function() {
       if ($('html').hasClass('shiny-busy')) {
       $('div.zbusy').show()
+
       }
       }, 0)
       } else {
       $('div.zbusy').hide()
       }
       },100)"
-)
+    )
+
   ),
-div(id = "frame"),
+
 #insert html by js code ),
 #main panel
+div(id = "frame"),
 div(
+  
   class = "mainpanel",
   
   newbusyIndicator(),
   
   div(id = "s1",
       class = "block"),
-  # tags$script("loadhtml('#s1','index.html','#s1')")),
-  div(
-    id = "s2",
+  div(id = "s2",
     class = "none",
     div(
       class = "wrapper--noscroll-panel",
@@ -115,7 +101,7 @@ div(
                   ),
                   bsTooltip(
                     "scExampleButton",
-                    "Check out example data-set",
+                    "Start an example analysis",
                     trigger = "hover",
                     placement = "bottom"
                   ),
@@ -171,10 +157,7 @@ div(
                     type = "button",
                     class = "btn btn-default action-button button-new",
                     "New"
-                  )
-                  
-                  #tips1                                                                  ,
-                  ,
+                  ),
                   bsTooltip(
                     "mfNewButton",
                     "3 factors at most",
@@ -222,12 +205,10 @@ div(
           )
         )
       ),
-      div(
-        class = "uploadsteps",
+      div(class = "uploadsteps",
         # newLoadingIndicator(),
         div(class = "step0 block",
-            id =
-              "step0"),
+            id ="step0"),
         # tags$script("loadhtml('#step0','IDEA/../dom/expDsgn.html','#step0')")),
         div(
           class = "none",
@@ -241,17 +222,15 @@ div(
               onmousedown = "toStep(0)"
             ),
             div(class = "title-hd-option-upload", "Upload Data")
-            # tags$button(type="button",class="next-nav-upload btn btn-lg glyphicon glyphicon-chevron-right",id="btn--next1-nav-upload",onmousedown="startAnalysis()","")
           ),
           tags$button(
             id = "startanalysisMain1",
-            class = "btn btn-block btn-primary btn-toAnalysis ",
+            class = "btn btn-block btn-primary btn-toAnalysis action-button ",
             "> > > Start Analysis < < <",
             onmousedown = "startAnalysis()"
           ),
           div(class = "panel panel-default upload-upload",
               uiOutput("DataInputswitchUI")),
-          
           
           div(
             class = "panel panel-default",
@@ -315,49 +294,6 @@ div(
           br()
           
           
-        ),
-        
-        div(
-          class = "none",
-          id = "step2",
-          div(
-            class = "hd-option-upload",
-            tags$button(
-              type = "button",
-              class = "back-nav-upload glyphicon glyphicon-chevron-left btn btn-lg",
-              id = "btn--back2-nav-upload",
-              onmousedown = "toStep(1)"
-            ),
-            div(class = "title-hd-option-upload", "Experimental Design")
-          ),
-          h4(textOutput("design_text")),
-          dataTableOutput("designoutput")
-        ),
-        div(
-          class = "none",
-          id = "step3",
-          div(
-            class = "hd-option-upload",
-            tags$button(
-              type = "button",
-              class = "back-nav-upload glyphicon glyphicon-chevron-left btn btn-lg",
-              id = "btn--back3-nav-upload",
-              onmousedown = "toStep(1)"
-            ),
-            div(class = "title-hd-option-upload", "Readscount Matrix (Partly)")
-          ),
-          div(class = "scroll-x",
-              div(
-                class = "panel-data panel panel-default",
-                
-                div(
-                  class = "panel-body",
-                  div(class = "alert alert-success", "The first 6 rows of count matrix are shown here. ")
-                  ,
-                  dataTableOutput("rowdatashow")
-                  
-                )
-              ))
         )
       )
     )
@@ -371,21 +307,11 @@ div(
       class = "wrapper--scroll-panel-data",
       div(
         class = "content-report-data",
-        # div(class="header-page-s3"),
         div(class = "hd-data"),
-        # tags$script("loadhtml('.hd-data','index.html','.hd-data')")),
         div(
           class = "option-analysis ",
-          
-          
-          #actionButton("action1", label = "Heatmap of the count table"),
           div(class = "header-option-analysis", "Advanced Option"),
           uiOutput("comparisonSampleTextRenderUI1"),
-          #                                           textOutput("testRender"),
-          # tags$button(type="button",id="action2",class="btn action-button",label = "Heatmap of the sample distance",""),
-          # tags$button(type="button",id="action3",class="btn action-button",label = "PCA analysis of samples",""),
-          
-          # h3("Data Normalization"),
           selectInput(
             "normalizedMethod",
             "Normalized Method:",
@@ -425,33 +351,12 @@ div(
           )
           
         ),
-        
-        # div(class="option-analysis",
-        #     div(class="header-option-analysis","Option")
-        # ),
-        
-        #
-        # uiOutput("qualityplotUI"),
-        # dataTableOutput("NormalizedDataRender"),
-        # h3("Data distribution"),
-        # h4("Data Normalization"),
-        #     selectInput("normalizedMethod", "Data normalized method:",
-        #                 choices=c("RPKM" = "rpkm",
-        #                           "Upper Quartile " = "uqua",
-        #                           "Trimmed Mean of M" = "tmm",
-        #                           "None" = "none"),selected="uqua"),
         div(
           class = "boxplot-data fig-data  figure-analysis",
           id = "datafig0",
           h4("Calculation is in progress, please wait for a while..."),
-          bsProgressBar(
-            "exploretionPrograssbar",
-            value = 0,
-            visible = TRUE,
-            color = "success",
-            striped = TRUE,
-            animate = TRUE
-          )
+          
+          progressBar(id = "exploretionPrograssbar", value = 0, status = "success", striped = TRUE)
           
         ),
         
@@ -461,22 +366,11 @@ div(
           h3(
             class = "page-header",
             "Samples Boxplot",
-            NiePrettyDownloadButton("ExploreSampleBoxplotDownload", addclass =
-                                      "bt-downloadImg", "")
-            #                                              tags$a(tags$a(class="glyphicon glyphicon-cog bt-config bt-downloadImg"))
+            NiePrettyDownloadButton("ExploreSampleBoxplotDownload", addclass ="bt-downloadImg", "")
           ),
-          #                                           #tags$a(class="glyphicon glyphicon-search icon--fullView"),
+          bsTooltip("ExploreSampleBoxplotDownload","Click to download image",trigger = "hover",placement = "bottom" ),
+          plotOutput("SamplesBoxplot", height = "100%"),
           
-          
-          #tags$a(tags$a(class="glyphicon glyphicon-cog bt-config bt-downloadImg")),
-          bsTooltip(
-            "ExploreSampleBoxplotDownload",
-            "Click to download image",
-            trigger = "hover",
-            placement = "bottom"
-          ),
-          plotOutput("SamplesBoxplot", height =
-                       "100%"),
           bsPopover(
             id = "datafig1",
             title = "Tips",
@@ -498,7 +392,6 @@ div(
                      "glyphicon glyphicon-cog bt-config bt-downloadImg")
           ),
           br(),
-          # h4("The distribution Plot of expression levels for Selected samples"),
           absoluteP2(
             class = "absoluteSelf",
             div(
@@ -521,7 +414,6 @@ div(
             draggable = TRUE,
             cursor = "default"
           ),
-          #                                           #tags$a(class="glyphicon glyphicon-search icon--fullView"),
           bsTooltip(
             "densityPlotInteractiveOptions",
             "Click to set Interactive Options for plots",
@@ -548,7 +440,6 @@ div(
             "Ratio Bar Plot",
             NiePrettyDownloadButton("ExploreRatioBarPlotDownload", addclass =
                                       "bt-downloadImg", "")
-            #                                              tags$a(tags$a(class="glyphicon glyphicon-cog bt-config bt-downloadImg"))
           ),
           br(),
           plotOutput("RaioBarplotdPlot", height =
@@ -561,7 +452,6 @@ div(
             trigger = "hover"
           )
         ),
-        #
         div(
           class = "heatmap-data fig-data  figure-analysis",
           id = "datafig4",
@@ -576,10 +466,6 @@ div(
             )
           ),
           br(),
-          #                                           #tags$a(class="glyphicon glyphicon-search icon--fullView"),
-          
-          
-          #tags$button(type="button",onmousedown="popview()","GO"),
           absoluteP2(
             div(
               class = "absoluteSelf",
@@ -616,9 +502,6 @@ div(
                   actionButton("cbt17", " "),
                   actionButton("cbt18", " ")
                 )
-                
-                
-                
               )
             ),
             top = 150,
@@ -653,11 +536,6 @@ div(
             )
           ),
           br(),
-          
-          #                                           #tags$a(class="glyphicon glyphicon-search icon--fullView"),
-          
-          
-          #absolute panel
           absoluteP2(
             div(
               class = "absoluteSelf",
@@ -682,8 +560,7 @@ div(
             trigger = "hover",
             placement = "right"
           ),
-          plotOutput("plotPCAtwoD", height =
-                       "100%"),
+          plotOutput("plotPCAtwoD", height ="100%"),
           #tips
           bsPopover(
             id = "datafig5",
@@ -753,8 +630,6 @@ div(
             )
           ),
           br(),
-          
-          #plotOutput("SamplesBoxplot",width=800,height=800),
           absoluteP2(
             class = "absoluteSelf",
             div(
@@ -775,7 +650,6 @@ div(
             draggable = TRUE,
             cursor = "default"
           ),
-          #tags$a(class="glyphicon glyphicon-search icon--fullView"),
           plotOutput("SearchGenePlot", height =
                        "100%"),
           bsPopover(
@@ -786,13 +660,9 @@ div(
             trigger = "hover"
           )
           
-          #   div(class="option-data",
-          #     div(class="header-option-analysis","Option")
-          # )
         ),
         br(),
         br()
-        
       )
     )
   ),
@@ -850,7 +720,6 @@ div(
               id = "DESeqanalysisDiv1",
               
               h3(class = "page-header", "Differential Expression Feature Analysis Result Table"),
-              #tags$a(class="glyphicon glyphicon-search icon--fullView"),
               dataTableOutput("DEseqTable")
               
             ),
@@ -883,10 +752,8 @@ div(
                                           "bt-downloadImg", "")
               ),
               div(class = "img-fig-analysis",
-                  #tags$a(class="glyphicon glyphicon-search icon--fullView"),
-                  
-                  plotOutput("DEseqDispersionsPlot", height =
-                               "100%")),
+                  plotOutput("DEseqDispersionsPlot", height = "100%")
+              ),
               div(class = "dicr-fig-analysis")
             )
           ),
@@ -947,8 +814,6 @@ div(
                            "100%")
             )
           ),
-          #Normalization(Decreased)
-          
           tags$li(
             div(
               class = "figure-analysis table--normalizedSizeFactor-analysis",
@@ -956,7 +821,7 @@ div(
               tableOutput("normalizeFactor")
             )
           ),
-          #                                               DEseq volcano plot
+          #    DEseq volcano plot
           tags$li(
             div(
               class = "genequery-data fig-data figure-analysis",
@@ -977,8 +842,6 @@ div(
                   tags$a(class = "glyphicon glyphicon-cog bt-config bt-downloadImg")
                 )
               ),
-              #tags$a(class="glyphicon glyphicon-search icon--fullView"),
-              
               absoluteP2(
                 class = "absoluteSelf",
                 div(
@@ -1031,8 +894,6 @@ div(
                   tags$a(class = "glyphicon glyphicon-cog bt-config bt-downloadImg")
                 )
               ),
-              ##tags$a(class="glyphicon glyphicon-search icon--fullView"),
-              
               absoluteP2(
                 class = "absoluteSelf",
                 div(
@@ -1097,20 +958,8 @@ div(
               h3(
                 class = "page-header",
                 "FDR Distribution Plot",
-                NiePrettyDownloadButton("DESeqPvalueDistributionplotDownload", addclass =
-                                          "bt-downloadImg", "")
-                #                                                         tags$a(tags$a(class="glyphicon glyphicon-cog bt-config bt-downloadImg"))
+                NiePrettyDownloadButton("DESeqPvalueDistributionplotDownload", addclass ="bt-downloadImg", "")
               ),
-              #tags$a(class="glyphicon glyphicon-search icon--fullView"),
-              #                                                      absoluteP2(class="absoluteSelf", div(
-              #                                                        h3(class="popover-title-2","Interactive Option",
-              #                                                           tags$i(class="glyphicon glyphicon-remove-circle bt-closeAbsolute bt-config")),
-              #                                                        div(class="popover-content2",
-              #
-              #
-              #
-              #                                                        )
-              #                                                      ),top=150,right=20,width=300,draggable=TRUE,cursor="default"),
               plotOutput("DESeqPvalueDistributionplotRender", height =
                            "100%")
               
@@ -1255,7 +1104,6 @@ div(
                 NiePrettyDownloadButton("EdgeRdispersionDownload", addclass =
                                           "bt-downloadImg", "")
               ),
-              #tags$a(class="glyphicon glyphicon-search icon--fullView"),
               div(class = "dicr-fig-analysis"),
               uiOutput("edgeRDispPlotui")
               
@@ -1278,8 +1126,6 @@ div(
                 NiePrettyDownloadButton("EdgeRMAplotDownload", addclass =
                                           "bt-downloadImg", "")
               ),
-              #tags$a(class="glyphicon glyphicon-search icon--fullView"),
-              
               div(class = "dicr-fig-analysis"),
               plotOutput("EdgeRMAplot", height =
                            "100%")
@@ -1355,9 +1201,6 @@ div(
                   tags$a(class = "glyphicon glyphicon-cog bt-config bt-downloadImg")
                 )
               ),
-              
-              #tags$a(class="glyphicon glyphicon-search icon--fullView"),
-              
               absoluteP2(
                 class = "absoluteSelf",
                 div(
@@ -1474,12 +1317,6 @@ div(
           uiOutput("edgeRbcvUI"),
           #######################################################don't know why,but this line makes shiny run
           ###################################################################################################
-          #                                           checkboxInput("EdgeRShowNormResult", "Show Normalized data",FALSE),
-          #                                           checkboxInput("EdgeRShowDisPlot", "Show Dispersion Plot", FALSE),
-          #bsTooltip("EdgeRPvalueDistriThreshod", "Change FDR cutoff for differentially expressed genes", trigger="hover", placement="left"),
-          
-          
-          # downloadLink('EdgeRdownloadDEtable', 'Download .csv file'),
           NiePrettyDownloadButton("EdgeRdownloadDEtable", addclass =
                                     "btn btn-primary btn-block", "Download .csv file"),
           bsTooltip(
@@ -1632,18 +1469,8 @@ div(
                 ),
                 NiePrettyDownloadButton("NOIseqPvalueDistributionplotDownload", addclass =
                                           "bt-downloadImg", "")
-                #                                                                  tags$a(tags$a(class="glyphicon glyphicon-cog bt-config bt-downloadImg")
-                #                                                                         )
               ),
-              #                                                               absoluteP2(class="absoluteSelf", div(
-              #                                                                 h3(class="popover-title-2","Interactive Option",
-              #                                                                    tags$i(class="glyphicon glyphicon-remove-circle bt-closeAbsolute bt-config")),
-              #                                                                 div(class="popover-content2",
-              #
-              #
-              #
-              #                                                                 )
-              #                                                               ),top=150,right=20,width=300,draggable=TRUE,cursor="default"),
+          
               plotOutput("NOIseqPvalueDistriplotRender", height =
                            "100%")
               
@@ -1711,9 +1538,6 @@ div(
             trigger = "hover",
             placement = "bottom"
           )
-          
-          #selectInput("NOIseqPvalueDistriThreshod","Threshod",
-          #           choices=c(0,0.01,0.05,0.1),selected=0.01)
         )
       ),
       ##############
@@ -1773,9 +1597,6 @@ div(
                 NiePrettyDownloadButton("PoissonSeqHeatmapDownload", addclass =
                                           "bt-downloadImg", "")
               ),
-              #tags$a(class="glyphicon glyphicon-search icon--fullView"),
-              
-              
               div(),
               absoluteP2(
                 class = "absoluteSelf",
@@ -1870,19 +1691,9 @@ div(
               h3(
                 class = "page-header",
                 "FDR Distribution",
-                NiePrettyDownloadButton("PoissonSeqPvalueDistributionplotDownload", addclass =
-                                          "bt-downloadImg", "")
-                #                                                    tags$a(tags$a(class="glyphicon glyphicon-cog bt-config bt-downloadImg"))
+                NiePrettyDownloadButton("PoissonSeqPvalueDistributionplotDownload", addclass ="bt-downloadImg", "")
               ),
-              #                                                 absoluteP2(class="absoluteSelf", div(
-              #                                                   h3(class="popover-title-2","Interactive Option",
-              #                                                      tags$i(class="glyphicon glyphicon-remove-circle bt-closeAbsolute bt-config")),
-              #                                                   div(class="popover-content2",
-              #
-              #
-              #
-              #                                                   )
-              #                                                 ),top=150,right=20,width=300,draggable=TRUE,cursor="default"),
+             
               conditionalPanel(
                 condition = "poiactiveButton != 0",
                 plotOutput("PoissonSeqPvalueDistributionplotRender", height =
@@ -2291,15 +2102,31 @@ div(
       
     )
   ),
-  div(id = "s6",
-      class = "none"),
+  div(id = "s6",class = "none"),
   div(id = "s7", class = "none"),
   div(id = "s8", class = "none"),
   div(id = "dialog-confirmData"),
   div(id = "dialog-confirmSave"),
   div(id = "dialog-confirmMatrix"),
   div(id = "dialog-confirmDesign"),
-  div(id = "dialog-confirmStartanalysis")
+  div(id = "dialog-confirmStartanalysis"),
+  #model process data explore 
+  tags$div(
+    id = "my-modal",
+    class="modal fade", tabindex="-1", `data-backdrop`="static", `data-keyboard`="false",
+    tags$div(
+      class="modal-dialog",
+      tags$div(
+        class = "modal-content",
+        tags$div(class="modal-header", tags$h4(class="modal-title", "Calculation in progress")),
+        tags$div(
+          class="modal-body",
+          shinyWidgets::progressBar(id = "exploretionPrograssbar", value = 0, status = "success",display_pct = TRUE)
+        ),
+        tags$div(class="modal-footer", tags$button(type="button", class="btn btn-default", `data-dismiss`="modal", "Dismiss"))
+      )
+    )
+  )
 )
 
 ))

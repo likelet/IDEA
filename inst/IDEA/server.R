@@ -14,11 +14,10 @@ library(shinyIncubator)
 library(PoissonSeq)
 library(samr)
 library(pheatmap)
-#library(rCharts)
 library(NOISeq)
 library(VennDiagram)
 library(rmarkdown)
-# library(Cairo)
+library(shinyWidgets)
 
 #source function
 source("GlobalFunction/CastCufflinksOutput.R")
@@ -50,8 +49,6 @@ shinyServer(function(input,output,session){
     input$scNewButton
     input$wrNewButton
     input$mfNewButton
-#     session$sendCustomMessage(type = "resetFileInputHandler", "file1") 
-#     session$sendCustomMessage(type = "resetFileInputHandler", "designfile")   
   })
   
   #get user exprimental design
@@ -250,9 +247,6 @@ shinyServer(function(input,output,session){
   
 
   # exprimental design--------------
-
-  
-  
   #condition input 
   conditionInput<-reactive({
     design<-designInput()  
@@ -275,7 +269,7 @@ shinyServer(function(input,output,session){
                  h4("Upload a matrix of experimental design",DiaoTips(2,"Comma-separated file with header information is required ")),
                  fileInput('designfile', 'Only CSV format is supported',
                            accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),
-                 tags$button(class="btn btn-info","View uploaded data",onmousedown="isUpload(2)"),
+                 tags$button(id="showDesignMatrixButton", class="btn btn-info action-button","View Example data"),
                  div(style="display:inline-block",
                      div(class="alert alert-info","The first column of design matrix must be as same as your count matrix headers")
                  )
@@ -285,17 +279,35 @@ shinyServer(function(input,output,session){
              div(class="panel-body",
                  h4("Matrix of experimental design (example)",DiaoTips(2,"Comma-separated file with header information is required ")),
                  NiePrettyDownloadButton("downloadExampleDesignFile",addclass="btn-warning","Download design matrix file"),
-                 tags$button(class="btn btn-info","View Example data",onmousedown="toStep(2)")
+                 tags$button(id="showDesignMatrixButton", class="btn btn-info action-button","View Example data")
                 
              )
            )
     )
   })
-  #experimental design function------------
-  
+  observeEvent(input$showDesignMatrixButton, {
+    showModal(modalDialog(
+      # div(class = "title-hd-option-upload", "Readscount Matrix (Partly)"),
+      div(
+        class = "panel-data panel panel-default",
+        div(
+          class = "panel-body",
+          h4(textOutput("design_text")),
+          dataTableOutput("designoutput")
+        )
+      ),
+      easyClose = TRUE,
+      size = "l",
+      footer = NULL
+    ))
+  })
   ###############################
   #render design
   ################################
+ 
+  output$testplot <- renderPlot({
+    hist(v$data)
+  })
   #render example or new UI
   output$DataInputswitchUI<-renderUI({
     switch(values$wethernew,
@@ -369,33 +381,43 @@ shinyServer(function(input,output,session){
                      tags$button(class="btn btn-info","View uploaded data",onmousedown="isUpload(1)")
 #                      DiaoTips(4,"view your data after file is uploaded completely.")
                  ),
-div(style="display:inline-block",
-    div(class="alert alert-info","Genes expressed less than half of samples were filtered for the analysis.")
-)
-             
+                 div(style="display:inline-block",
+                     div(class="alert alert-info","Genes expressed less than half of samples were filtered for the analysis.")
+                 )
+                             
              )
            ),
            "example"=tagList( 
              div(class="panel-body",
                  h4("Matrix of read counts (example)"),
                  NiePrettyDownloadButton("downloadExampleDataFile",addclass="btn-warning","Dowload example matrix of read counts"),
-                 tags$button(class="btn btn-info","View Example data",onmousedown="toStep(3)"),
+                 tags$button(id="showExampleMatrixButton",class="btn btn-info action-button","View Example data"),
                  div(style="display:inline-block",
-
                      div(class="alert alert-success","The example matrix have  2000 rows(genes) and 10 column(samples).")
                  )
              )
            )
     )
   })
+  observeEvent(input$showExampleMatrixButton, {
+    showModal(modalDialog(
+      # div(class = "title-hd-option-upload", "Readscount Matrix (Partly)"),
+      div(
+        class = "panel-data panel panel-default",
+        div(
+          class = "panel-body",
+          div(class = "alert alert-success", "The first 6 rows of count matrix are shown here. "),
+          dataTableOutput("rowdatashow")
+        )
+      ),
+      easyClose = TRUE,
+      size = "l",
+      footer = NULL
+    ))
+  })
   
-  v <- reactiveValues(data = NULL)
-  observeEvent(input$test, {
-    v$data <- runif(100)
-  })
-  output$testplot <- renderPlot({
-    hist(v$data)
-  })
+ 
+  
   #interest variable---------------
   output$interestvariablesUI<-renderUI({ 
     if(values$design =="MF"){
@@ -442,8 +464,6 @@ div(style="display:inline-block",
     compairsample
     
   })
-  
-
   
   #download example file--------------
   output$downloadExampleDesignFile<-downloadHandler(
@@ -498,7 +518,7 @@ div(style="display:inline-block",
   #function From NOISeqFunction.R
   #########################################################
   normalizeDataNew<-reactive({
-    updateProgressBar(session,"exploretionPrograssbar", value=2,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"exploretionPrograssbar", value=2)
     data<-datasetInput()
     if(input$normalizedMethod=='rpkm'){
       if(annotationdatasetInput()!='A'){
@@ -512,7 +532,7 @@ div(style="display:inline-block",
     }else {
       normalizedDf<-normalizeData(data,method=input$normalizedMethod,k=0,lc=0)
     }
-    updateProgressBar(session,"exploretionPrograssbar", value=12.5,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"exploretionPrograssbar", value=12.5)
     
     normalizedDf 
   })
@@ -545,24 +565,23 @@ div(style="display:inline-block",
     selectCondition<-designexample[seletsamples,]
     selectCondition
   })
-  # output$NormalizedDataRender<-renderDataTable({
-  #   NormalizedData()
-  # })
+
   
   
+ 
   ################################################################
+  #DATA EXPLORATION-------------
   ################################################################
-  #Data exploration-------------
   
-  
-  
-  
+  observeEvent(input$startanalysisMain1, {
+    shinyWidgets::updateProgressBar(session = session, id = "exploretionPrograssbar", value = 0) # reinitialize to 0 if you run the calculation several times
+    session$sendCustomMessage(type = 'launch-modal', "my-modal") # launch the modal
+  })
   # download pdf
   output$DownloaddataExplorlationReport <- downloadHandler(
     filename = function() {
       paste("dataExplorlationReport", Sys.time(), '.html', sep='')
     },
-    
     content = function(file) {
       p1=getSamplesBoxplot()
       print(p1)
@@ -605,7 +624,7 @@ div(style="display:inline-block",
   
   
   
-  #Samples Boxplot----
+  #Samples Boxplot
   
   getSamplesBoxplot<-reactive({
     data<-normalizeDataNew()
@@ -618,7 +637,8 @@ div(style="display:inline-block",
     p
   })
   output$SamplesBoxplot<-renderPlot({ 
-    updateProgressBar(session,"exploretionPrograssbar", value=25,visible = TRUE, animate=TRUE)
+    # updateProgressBar(session,"exploretionPrograssbar", value=25,visible = TRUE, animate=TRUE)
+    updateProgressBar(session = session, id = "exploretionPrograssbar", value = 25)
     #     updateProgressBar(session,"datafig1plotbar", value=20,visible = TRUE, animate=TRUE)
     #     updateProgressBar(session,"datafig1plotbar", value=50,visible = TRUE, animate=TRUE)
     p=getSamplesBoxplot()
@@ -626,17 +646,14 @@ div(style="display:inline-block",
     print(p)
   },width=700,height=700)
   
-  #stackedDensity plot by select sample----
+  #stackedDensity plot by select sample
   observe({
     output$densitySampleSelectedUI<-renderUI({
-      
       data<-datasetInput()
-      
       namelist<-names(data)
       select2Input("densitySampleSelectInput", strong("Please select samples to plot"), choices=namelist, selected = namelist[1:2])
     })
   })
-  
   getdensitySampleSelectedPlot<-reactive({
     
     data<-normalizeDataNew()
@@ -657,7 +674,7 @@ div(style="display:inline-block",
     p
   })
   output$densitySampleSelectedPlot<-renderPlot({
-    updateProgressBar(session,"exploretionPrograssbar", value=37.5,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"exploretionPrograssbar", value=37.5)
     p<-getdensitySampleSelectedPlot()
     #       updateProgressBar(session,"exploretionPrograssbar", value=62.5,visible = TRUE, animate=TRUE)
     print(p)
@@ -665,25 +682,17 @@ div(style="display:inline-block",
   
   ##ratio barplot----
   getraioBarplot<-reactive({
-    
     data<-normalizeDataNew()
-    
     p<-stackedBarP(data)
-    
-    #     values$explorationProgressbar=values$explorationProgressbar+12.5
-    #     updateProgressBar(session,"exploretionPrograssbar", value=values$explorationProgressbar,visible = TRUE, animate=TRUE)
-    
     p
   })
-  
   output$RaioBarplotdPlot<-renderPlot({
-    updateProgressBar(session,"exploretionPrograssbar", value=50,visible = TRUE, animate=TRUE)
     p<-getraioBarplot()
-    #       updateProgressBar(session,"exploretionPrograssbar", value=75,visible = TRUE, animate=TRUE) 
     print(p)
   },width=700,height=700)
+  
   #*****************************************************************
-  #Principal component plot of the samples ----
+  #Principal component plot of the samples 
   getPCAplotNew<-reactive({
     a<-normalizeDataNew()
     conditionlist<-conditionInput()
@@ -694,15 +703,12 @@ div(style="display:inline-block",
     p
   })
   output$plotPCAtwoD <- renderPlot({
-    updateProgressBar(session,"exploretionPrograssbar", value=72.5,visible = TRUE, animate=TRUE)
     p=getPCAplotNew()
-    
     print(p)
   },width=700,height=700) 
   
-  
   #*****************************************************************
-  #heatmap of sample-to-sample distance----
+  #heatmap of sample-to-sample distance
   sampleDistanceHeatmapPlotdata<-reactive({
     data<-normalizeDataNew()
     distsRL <- dist(t(data))
@@ -721,12 +727,14 @@ div(style="display:inline-block",
   })
   #render plot
   output$S2Sdistanceheatmap<-renderPlot({
-    updateProgressBar(session,"exploretionPrograssbar", value=80,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"exploretionPrograssbar", value=80)
     sampleDistanceHeatmapPlot()
     
     
   },width=700,height=700)
   
+  #*****************************************************************
+  # correlation plot
   #dynamic corrlation select UI
   observe({
     output$correlationplotUI<-renderUI({
@@ -755,7 +763,7 @@ div(style="display:inline-block",
       input$corrlationsYsample
     }
   })
-  #correlation analysis panel----
+  #correlation analysis panel
   getCorrelatiobScatterPlot<-reactive({
     data<-normalizeDataNew()
     p<-scatterP(data, getCorrlationsXsample(), getCorrlationsYsample(), FALSE)
@@ -764,11 +772,11 @@ div(style="display:inline-block",
     
     p
   })
-  #render correlation plot----
+  #render correlation plot
   output$CorrelatiobScatterPlot<-renderPlot({
     p<-getCorrelatiobScatterPlot()
     
-    updateProgressBar(session,"exploretionPrograssbar", value=100,visible = FALSE, animate=TRUE)
+    updateProgressBar(session,"exploretionPrograssbar", value=100)
     print(p)
   },width=700,height=700)
   #get R
@@ -787,12 +795,8 @@ div(style="display:inline-block",
     
   })
   
-  
-  
-  
-  #=============================================================
-  #search gene and plot UI-------
-  #=============================================================
+  #*****************************************************************
+  #search gene and plot UI
   #reactive genename variables
   getGeneName<-reactive({
     if(is.null(input$geneInputSelection)){
@@ -836,12 +840,9 @@ div(style="display:inline-block",
   #render Output plot
   output$SearchGenePlot<-renderPlot({
     p=getSearchGenePlot()
-    updateProgressBar(session,"exploretionPrograssbar", value=95,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"exploretionPrograssbar", value=95)
     print(p)
   },width=700,height=700)
-  
-  
-  
   #dynamic searchGeneSelectUI based on data frame
   observe({
     output$searchGeneyplotUI<-renderUI({
@@ -854,7 +855,7 @@ div(style="display:inline-block",
     
   })
   
-  ###############################
+  #*****************************************************************
   #downlaod exploration plot--------
   #SampleBoxplot
   output$ExploreSampleBoxplotDownload <- downloadHandler(
@@ -893,7 +894,6 @@ div(style="display:inline-block",
     filename = function() {
       paste("RatioBarPlot", Sys.time(), '.png', sep='')
     },
-    
     content = function(file) {
       #Cairo(file=file, width = 600, height = 600,type = "png", units = "px", pointsize = 12, bg = "white", res = NA)
       myppi <- 300
@@ -909,7 +909,6 @@ div(style="display:inline-block",
     filename = function() {
       paste("sampleDistanceHeatmap", Sys.time(), '.png', sep='')
     },
-    
     content = function(file) {
       #Cairo(file=file, width = 600, height = 600,type = "png", units = "px", pointsize = 12, bg = "white", res = NA)
       myppi <- 300
@@ -928,7 +927,6 @@ div(style="display:inline-block",
     filename = function() {
       paste("PCAplot", Sys.time(), '.png', sep='')
     },
-    
     content = function(file) {
       #Cairo(file=file, width = 600, height = 600,type = "png", units = "px", pointsize = 12, bg = "white", res = NA)
       myppi <- 300
@@ -944,7 +942,6 @@ div(style="display:inline-block",
     filename = function() {
       paste("CorrelationScatterplot", Sys.time(), '.png', sep='')
     },
-    
     content = function(file) {
       #Cairo(file=file, width = 600, height = 600,type = "png", units = "px", pointsize = 12, bg = "white", res = NA)
       myppi <- 300
@@ -960,7 +957,6 @@ div(style="display:inline-block",
     filename = function() {
       paste("FeatureQueryplot", Sys.time(), '.png', sep='')
     },
-    
     content = function(file) {
       #Cairo(file=file, width = 600, height = 600,type = "png", units = "px", pointsize = 12, bg = "white", res = NA)
       myppi <- 300
@@ -976,9 +972,9 @@ div(style="display:inline-block",
   
   ################################################################
   #DESeq analysis----
+  ################################################################
   #data inialize
   getDdsData<-reactive({
-    
     data<-datasetInput()
     countTable<-round(data)
     designtable=designInput()
@@ -1015,12 +1011,8 @@ div(style="display:inline-block",
   })
   #normalize factor print
   output$normalizeFactor<-renderTable({ 
-    
     DESeqGetnormalizeFactor()
-    
   })
-  
-  
   
   # DEseq result table
   getDEseqResultTable<-reactive({
@@ -1066,9 +1058,6 @@ div(style="display:inline-block",
     return(res)
   }
   
-  
-  
-  
   #DEseq MAplot
   getDEseqMAplot<-reactive({
     table<-getDEseqResultTable()
@@ -1082,8 +1071,6 @@ div(style="display:inline-block",
     updateProgressBar(session,"DESeqProgressbar", value=20,visible = TRUE, animate=TRUE)
     print(p)    
   },width=700,height=700)
-  
-  
   
   #DESeq DE heatmap
   DESeqHeatmapPlotfunction<-reactive({
@@ -1142,8 +1129,8 @@ div(style="display:inline-block",
     },
     contentType = 'text/csv'
   )
-  #DESeq download plot
-  #############################################################
+  
+  #DESeq download plot----
   #DESeqdespersion plot
   output$DESeqDisperplotDownload <- downloadHandler(
     filename = function() {
@@ -1229,7 +1216,6 @@ div(style="display:inline-block",
   ################################################################
   ################################################################
   #edgeR Analysis function-------------
-  
   filtercount<-function(x){
     keep <- rowSums(cpm(x)>input$EdgeRfilternumber) >= dim(x)[2]
     x<-x[keep,]
@@ -1246,7 +1232,6 @@ div(style="display:inline-block",
     updateProgressBar(session,"EdgeRProgressbar", value=5,visible = TRUE, animate=TRUE)
     y
   })
-  
   getedgeRestimated<-reactive({
     y=getedgeRnormalized()
     if(values$design=="MF"||getDespersionMethod()=="glm"){
@@ -1264,15 +1249,15 @@ div(style="display:inline-block",
     y
   })
 
-#get despersion module method 
-getDespersionMethod<-reactive({
-  if(is.null(input$edgeRapproaches)){
-    "classic"
-  }else{
-    input$edgeRapproaches
-  }
-  
-})
+  #get despersion module method 
+  getDespersionMethod<-reactive({
+    if(is.null(input$edgeRapproaches)){
+      "classic"
+    }else{
+      input$edgeRapproaches
+    }
+    
+  })
   #get manualyBcv
   getmanualybcv<-reactive({
     if(!is.null(input$Manuallybcv)){

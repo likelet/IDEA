@@ -17,8 +17,7 @@ $(document).ready(function () {
 })
 
 $(document).ready(function () {
-  // loadhtml(".header-main","index.html",".header-main");
-  // loadhtml("#side-nav","index.html","#side-nav");
+  
   loadhtml("#step0","IDEA/../dom/s2-intro.html","#step0");
   loadhtml(".hd-data","IDEA/../dom/s3-header.html",".hd-data");
   loadhtml("#s4-nav","IDEA/../dom/s4-nav.html",".nav--method-analysis");
@@ -28,15 +27,11 @@ $(document).ready(function () {
   loadhtml("#s4-poissonseq","IDEA/../dom/s4-poissonseq.html","#methodIntro4");
   loadhtml("#s4-samseq","IDEA/../dom/s4-samseq.html","#methodIntro5");
   loadhtml("#s4-combine","IDEA/../dom/s4-combine.html","#methodIntro6");
-  // loadhtml("#s6","IDEA/../dom/s6.html","#s6");
-  // loadhtml("#s7","IDEA/../dom/s7.html","#s7");
-  // loadhtml("#s8","IDEA/../dom/s8.html","#s8");
 });
 
 function loadhtml(to,page,from){
   $(to).load(''+page+' '+from+'', function (responseTxt, statusTxt, xhr) {
     if (statusTxt == "success")
-         // alert("'+from+'加载成功！");
       if (statusTxt == "error")
       alert("Error: " + xhr.status + ": " + xhr.statusText);
   });

@@ -64,28 +64,6 @@ absoluteP2<-function (..., top = NULL, left = NULL, right = NULL, bottom = NULL,
 }
 
 
-# ZlableProgressbar<-function(textInput="",inputID, myvalue = 0, myvisible = TRUE, mycolor="success", mystriped = TRUE, myanimate = TRUE){
-#   if(myvisible){
-#     tagList(div(textInput),
-#             bsProgressBar(inputID, value = myvalue, visible = TRUE, color=mycolor,striped = mystriped, animate = myanimate)
-#             
-#     )
-#   }else{
-#     tagList(div(class="hidden",textInput),
-#             bsProgressBar(inputID, value = myvalue, visible = FALSE, color=mycolor,striped = mystriped, animate = myanimate)
-#             
-#     )
-#   }
-#  
-# }
-# newLoadingIndicator<-function(){
-#   tagList(
-#     div(class="zbusy",style="position:absulute;",
-#         p("Page loading......, almost there......."),
-#         tags$img(src="shinysky/busyIndicator/ajaxloaderq.gif")
-#     )
-#   )
-# }
 newbusyIndicator<-function(){
   tagList(
     div(class="zbusy",

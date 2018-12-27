@@ -642,19 +642,7 @@ div(
         tags$ul(
           class = "content-report-anlysis",
           
-          div(
-            class = "fig-data  figure-analysis",
-            
-            h4("Calculation is in progress, please wait for a while..."),
-            bsProgressBar(
-              "DESeqProgressbar",
-              value = 1,
-              visible = FALSE,
-              color = "success",
-              striped = TRUE,
-              animate = TRUE
-            )
-          ),
+          
           # DEseq DEtable
           tags$li(
             div(
@@ -983,19 +971,6 @@ div(
         h2(class = "title-report-anlysis", "EdgeR Analysis Report"),
         tags$ul(
           class = "content-report-anlysis",
-          div(
-            class = "fig-data  figure-analysis",
-            
-            h4("Calculation is in progress, please wait for a while..."),
-            bsProgressBar(
-              "EdgeRProgressbar",
-              value = 1,
-              visible = FALSE,
-              color = "success",
-              striped = TRUE,
-              animate = TRUE
-            )
-          ),
           tags$li(
             div(
               class = "fig-data  figure-analysis",
@@ -1290,19 +1265,7 @@ div(
         tags$ul(
           class = "content-report-anlysis",
           
-          div(
-            class = "fig-data  figure-analysis",
-            
-            h4("Calculation is in progress, please wait for a while..."),
-            bsProgressBar(
-              "NOIseqProgressbar",
-              value = 1,
-              visible = FALSE,
-              color = "success",
-              striped = TRUE,
-              animate = TRUE
-            )
-          ),
+        
           tags$li(
             div(
               class = "fig-data  figure-analysis",
@@ -1494,19 +1457,7 @@ div(
         tags$ul(
           class = "content-report-anlysis",
           
-          div(
-            class = "fig-data  figure-analysis",
-            
-            h4("Calculation is in progress, please wait for a while..."),
-            bsProgressBar(
-              "PoissonSeqProgressbar",
-              value = 1,
-              visible = FALSE,
-              color = "success",
-              striped = TRUE,
-              animate = TRUE
-            )
-          ),
+         
           tags$li(
             div(
               class = "fig-data  figure-analysis",
@@ -1693,19 +1644,7 @@ div(
         tags$ul(
           class = "content-report-anlysis",
           
-          div(
-            class = "fig-data  figure-analysis",
-            
-            h4("Calculation is in progress, please wait for a while..."),
-            bsProgressBar(
-              "SAMseqProgressbar",
-              value = 1,
-              visible = FALSE,
-              color = "success",
-              striped = TRUE,
-              animate = TRUE
-            )
-          ),
+          
           tags$li(
             div(
               class = "fig-data  figure-analysis",
@@ -1920,18 +1859,7 @@ div(
         #for active condition panel
         NiePrettyActionButton("combinebtn", addclass =
                                 "activeZHAO", "test"),
-        div(
-          class = "fig-data  figure-analysis",
-          h4("Calculation is in progress, please wait for a while..."),
-          bsProgressBar(
-            "intergretiveProgressbar",
-            value = 1,
-            visible = FALSE,
-            color = "success",
-            striped = TRUE,
-            animate = TRUE
-          )
-        ),
+       
         
         div(
           class = "fig-data  figure-analysis",

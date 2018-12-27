@@ -582,15 +582,15 @@ shinyServer(function(input,output,session){
     #filteredData<-filteredData(data,conditionlist,mymethod=1)
     p<-samplePlotboxP(data)
     #     values$explorationProgressbar=values$explorationProgressbar+12.5
-    #     updateProgressBar(session,"exploretionPrograssbar", value=values$explorationProgressbar,visible = TRUE, animate=TRUE)
+    #     updateProgressBar(session,"exploretionPrograssbar", value=values$explorationProgressbar)
     
     p
   })
   output$SamplesBoxplot<-renderPlot({ 
-    # updateProgressBar(session,"exploretionPrograssbar", value=25,visible = TRUE, animate=TRUE)
+    # updateProgressBar(session,"exploretionPrograssbar", value=25)
     updateProgressBar(session = session, id = "exploretionPrograssbar", value = 25)
-    #     updateProgressBar(session,"datafig1plotbar", value=20,visible = TRUE, animate=TRUE)
-    #     updateProgressBar(session,"datafig1plotbar", value=50,visible = TRUE, animate=TRUE)
+    #     updateProgressBar(session,"datafig1plotbar", value=20)
+    #     updateProgressBar(session,"datafig1plotbar", value=50)
     p=getSamplesBoxplot()
     
     print(p)
@@ -626,7 +626,7 @@ shinyServer(function(input,output,session){
   output$densitySampleSelectedPlot<-renderPlot({
     updateProgressBar(session,"exploretionPrograssbar", value=37.5)
     p<-getdensitySampleSelectedPlot()
-    #       updateProgressBar(session,"exploretionPrograssbar", value=62.5,visible = TRUE, animate=TRUE)
+    #       updateProgressBar(session,"exploretionPrograssbar", value=62.5)
     print(p)
   },width=700,height=700)
   
@@ -648,7 +648,7 @@ shinyServer(function(input,output,session){
     conditionlist<-conditionInput()
     p=getPCAplot(a,conditionlist,input$showPCAtext)
     #     values$explorationProgressbar=values$explorationProgressbar+12.5
-    #     updateProgressBar(session,"exploretionPrograssbar", value=37.5,visible = TRUE, animate=TRUE)
+    #     updateProgressBar(session,"exploretionPrograssbar", value=37.5)
     
     p
   })
@@ -718,7 +718,7 @@ shinyServer(function(input,output,session){
     data<-normalizeDataNew()
     p<-scatterP(data, getCorrlationsXsample(), getCorrlationsYsample(), FALSE)
     #     values$explorationProgressbar=values$explorationProgressbar+12.5
-    #     updateProgressBar(session,"exploretionPrograssbar", value=values$explorationProgressbar,visible = TRUE, animate=TRUE)
+    #     updateProgressBar(session,"exploretionPrograssbar", value=values$explorationProgressbar)
     
     p
   })
@@ -928,7 +928,7 @@ shinyServer(function(input,output,session){
     data<-datasetInput()
     countTable<-round(data)
     designtable=designInput()
-    updateProgressBar(session,"DESeqProgressbar", value=5,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"DESeqProgressbar", value=5)
     if(values$design=='SC'||values$design=='WR'){
       condition=factor(conditionInput())
       colData<-DataFrame(condition)
@@ -940,13 +940,13 @@ shinyServer(function(input,output,session){
       myformular<-as.formula(paste("~",paste(names,collapse="+")))
       dds<-DESeqDataSetFromMatrix(countTable,colData,formula(myformular))
     }
-    updateProgressBar(session,"DESeqProgressbar", value=8,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"DESeqProgressbar", value=8)
     if(input$DeseqTestmethod=="LRT"){
       dds <- DESeq(dds,test=input$DeseqTestmethod,reduced= ~ 1)
     }else{
       dds <- DESeq(dds)
     }
-    updateProgressBar(session,"DESeqProgressbar", value=10,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"DESeqProgressbar", value=10)
     dds
   })
   
@@ -975,7 +975,7 @@ shinyServer(function(input,output,session){
   output$DEseqTable<-renderDataTable({
     
     table<-getDEseqResultTable()
-    updateProgressBar(session,"DESeqProgressbar", value=12,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"DESeqProgressbar", value=12)
     cbind(FeatureID = row.names(table), table)
     
   })
@@ -1018,7 +1018,7 @@ shinyServer(function(input,output,session){
   #DEseq Render MAplot
   output$DEseqMAplot<-renderPlot({
     p=getDEseqMAplot()
-    updateProgressBar(session,"DESeqProgressbar", value=20,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"DESeqProgressbar", value=20)
     print(p)    
   },width=700,height=700)
   
@@ -1032,7 +1032,7 @@ shinyServer(function(input,output,session){
   #DESeq DE heatmap render
   output$DESeqheatmapRender<-renderPlot({
     data<-DESeqHeatmapPlotfunction()
-    updateProgressBar(session,"DESeqProgressbar", value=40,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"DESeqProgressbar", value=40)
     pheatmap(data, color=greenred(75),border_color=NA,cluster_rows=getDESeqHeatmapCluster()[1],cluster_cols= getDESeqHeatmapCluster()[2],scale=getDESeqHeatmapScale(),legend=getDESeqHeatmapShowCK())
   },width=800,height=800)
   #DEseq volcanoPlot
@@ -1044,7 +1044,7 @@ shinyServer(function(input,output,session){
   #DEseq volcanoPlot render
   output$DESeqVolcanoPlotRender<-renderPlot({
     g<-DEseqVolcanoPlot()
-    updateProgressBar(session,"DESeqProgressbar", value=60,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"DESeqProgressbar", value=60)
     print(g)
   },width=700,height=700)
   
@@ -1057,9 +1057,7 @@ shinyServer(function(input,output,session){
   
   #DEseq p distribution plot render
   output$DESeqPvalueDistributionplotRender<-renderPlot({
-    updateProgressBar(session,"DESeqProgressbar", value=90,visible = TRUE, animate=TRUE)
     g<-DESeqPvalueDistributionplot()
-    updateProgressBar(session,"DESeqProgressbar", value=100,visible = FALSE, animate=TRUE)
     print(g)
   },width=700,height=700)
   
@@ -1173,13 +1171,13 @@ shinyServer(function(input,output,session){
     
   }
   getedgeRnormalized<-reactive({
-    updateProgressBar(session,"EdgeRProgressbar", value=2,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"EdgeRProgressbar", value=2)
     countTable<-round(datasetInput())
     countTable<-filtercount(countTable)
     group<-factor(conditionInput())
     y <- DGEList(counts=countTable, group=group)
     y <- calcNormFactors(y,method=input$EdgeRnormalizedMethod)
-    updateProgressBar(session,"EdgeRProgressbar", value=5,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"EdgeRProgressbar", value=5)
     y
   })
   getedgeRestimated<-reactive({
@@ -1280,7 +1278,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   #edgeR Render MAplot
   output$EdgeRMAplot<-renderPlot({
     p=getEdgeRMAplot()
-    updateProgressBar(session,"EdgeRProgressbar", value=100,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"EdgeRProgressbar", value=100)
     print(p)    
   },height=700,width=700)
   
@@ -1327,7 +1325,7 @@ output$edgeRdespersionMethodUI<-renderUI({
        et <- glmLRT(fit)
       et<-topTags(et,n=length(rownames(et$table)))
     }
-    updateProgressBar(session,"EdgeRProgressbar", value=20,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"EdgeRProgressbar", value=20)
     return (et)
   }
   
@@ -1356,7 +1354,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   output$EdgeRheatmapRender<-renderPlot({
     data=EdgeRHeatmapPlotfunction()
     pheatmap(data, color=greenred(75),border_color=NA,cluster_rows=getedgeRHeatmapCluster()[1],cluster_cols= getedgeRHeatmapCluster()[2],scale=getedgeRHeatmapScale(),legend=getedgeRHeatmapShowCK())
-    updateProgressBar(session,"EdgeRProgressbar", value=50,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"EdgeRProgressbar", value=50)
   },height=800,width=800)
   #EdgeR volcanoPlot
   EdgeRVolcanoPlot<-reactive({
@@ -1366,7 +1364,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   #EdgeR volcanoPlot render
   output$EdgeRVolcanoPlotRender<-renderPlot({
     g<-EdgeRVolcanoPlot()
-    updateProgressBar(session,"EdgeRProgressbar", value=60,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"EdgeRProgressbar", value=60)
     print(g)
   },height=700,width=700)
   
@@ -1380,9 +1378,9 @@ output$edgeRdespersionMethodUI<-renderUI({
   
   #EdgeR p distribution plot render
   output$EdgeRPvalueDistributionplotRender<-renderPlot({
-    updateProgressBar(session,"EdgeRProgressbar", value=90,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"EdgeRProgressbar", value=90)
     g<-EdgeRPvalueDistributionplot()
-    updateProgressBar(session,"EdgeRProgressbar", value=100,visible = FALSE, animate=TRUE)
+    updateProgressBar(session,"EdgeRProgressbar", value=100)
     print(g)
   },width=700,height=700)
   
@@ -1503,9 +1501,9 @@ output$edgeRdespersionMethodUI<-renderUI({
   })
   
   getresultNOIseqresultTableNew<-reactive({
-    updateProgressBar(session,"NOIseqProgressbar", value=2,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"NOIseqProgressbar", value=2)
     mycounts<-round(datasetInput())
-    updateProgressBar(session,"NOIseqProgressbar", value=10,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"NOIseqProgressbar", value=10)
     condition=designInput()
     #NOIdata input object
     if(annotationdatasetInput()=="A"){
@@ -1519,7 +1517,7 @@ output$edgeRdespersionMethodUI<-renderUI({
                       'WR'="no"
     )
     result<-getresultNOIseqresult(mydata,myfactor=names(condition)[1],mycondition=rev(getCompairSample()),mynorm=getNOISeqNormalizedMethod(),myfilter=0,myreplicates=replicate)
-    updateProgressBar(session,"NOIseqProgressbar", value=40,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"NOIseqProgressbar", value=40)
     result<-result@results[[1]]
     result
   })
@@ -1543,7 +1541,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   output$NOIseqheatmapRender<-renderPlot({
     data=NOIseqHeatmapPlotfunction()
     pheatmap(data, color=greenred(75),border_color=NA,cluster_rows=getNOISeqHeatmapCluster()[1],cluster_cols= getNOISeqHeatmapCluster()[2],scale=getNOISeqHeatmapScale(),legend=getNOISeqHeatmapShowCK())
-    updateProgressBar(session,"NOIseqProgressbar", value=50,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"NOIseqProgressbar", value=50)
   },height=800,width=800)
   
   
@@ -1562,7 +1560,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   #NOIseq p distribution plot render
   output$NOIseqPvalueDistriplotRender<-renderPlot({
     p<-NOIseqPvalueDistributionplot()
-    updateProgressBar(session,"NOIseqProgressbar", value=100,visible = FALSE, animate=TRUE)
+    updateProgressBar(session,"NOIseqProgressbar", value=100)
     print(p)
   },width=700,height=700)
   #NOIseq download result table  
@@ -1619,13 +1617,13 @@ output$edgeRdespersionMethodUI<-renderUI({
   ################################################################
   #PoissonSeq Analysis function----
   getPoissonSeqAnalysis<-reactive({
-    updateProgressBar(session,"PoissonSeqProgressbar", value=2,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"PoissonSeqProgressbar", value=2)
     mycounts <- round(getSelectDataframe())
-    updateProgressBar(session,"PoissonSeqProgressbar", value=10,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"PoissonSeqProgressbar", value=10)
     #     condition=getSelectCondition()
     finalcondition<- getSelectCondition()
     result <- getPossionTestResult(mycounts,finalcondition)
-    updateProgressBar(session,"PoissonSeqProgressbar", value=90,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"PoissonSeqProgressbar", value=90)
     result
   })
   
@@ -1654,7 +1652,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   output$PoissonSeqheatmapRender<-renderPlot({
     data=PoissonSeqHeatmapPlotfunction()
     pheatmap(data, color=greenred(75),border_color=NA,cluster_rows=getPoissonSeqHeatmapCluster()[1],cluster_cols= getPoissonSeqHeatmapCluster()[2],scale=getPoissonSeqHeatmapScale(),legend=getPoissonSeqHeatmapShowCK())
-    updateProgressBar(session,"PoissonSeqProgressbar", value=50,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"PoissonSeqProgressbar", value=50)
   },height=800,width=800)
   
   
@@ -1663,7 +1661,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   PoissonSeqPvalueDistributionplot<-reactive({
     table=getresultPoissonSeqresultTableNew()
     g<-getPValueDistributionPlot(table,DEmethod="PoissonSeq",threshold=as.numeric(input$PoissonSeqPplotFDRthresshold))
-    updateProgressBar(session,"PoissonSeqProgressbar", value=95,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"PoissonSeqProgressbar", value=95)
     g
   })
   
@@ -1701,7 +1699,7 @@ getPowerCurve<-reactive({
   output$PoissonSeqPowerCurve<-renderPlot({
     input$poiactiveButton
     p<-getPowerCurve()
-    updateProgressBar(session,"PoissonSeqProgressbar", value=100,visible = FALSE, animate=TRUE)
+    updateProgressBar(session,"PoissonSeqProgressbar", value=100)
     print(p)
   },width=700,height=700)
   
@@ -1777,14 +1775,14 @@ getPowerCurve<-reactive({
   ################################################################
   #SAMseq Analysis function----
   getSAMseqAnalysis<-reactive({
-    updateProgressBar(session,"SAMseqProgressbar", value=2,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"SAMseqProgressbar", value=2)
     mycounts<-round(getSelectDataframe())
-    updateProgressBar(session,"SAMseqProgressbar", value=10,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"SAMseqProgressbar", value=10)
     
     #     condition=getSelectCondition()
     finalcondition<-getSelectCondition()
     samfit<-getsamfit(mycounts,finalcondition,mynresamp = input$SAMseqnresamp, myfdr = input$SAMseqfdrCut)
-    updateProgressBar(session,"SAMseqProgressbar", value=80,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"SAMseqProgressbar", value=80)
     samfit
   })
   #SAMseq get DE table
@@ -1815,7 +1813,7 @@ getPowerCurve<-reactive({
     data=SAMseqHeatmapPlotfunction()
     pheatmap(data, color=greenred(75),border_color=NA,cluster_rows=getSAMseqHeatmapCluster()[1],cluster_cols= getSAMseqHeatmapCluster()[2],scale=getSAMseqHeatmapScale(),legend=getSAMseqHeatmapShowCK())
     
-    updateProgressBar(session,"SAMseqProgressbar", value=8,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"SAMseqProgressbar", value=8)
   },height=800,width=800)
   
   
@@ -1823,7 +1821,7 @@ getPowerCurve<-reactive({
   SAMseqPvalueDistributionplot<-function(){
     table=getSAMseqresultTableNew()
     g<-getPValueDistributionPlot(table,DEmethod="SAMseq",threshold=as.numeric(input$SAMseqPplotFDRthresshold))
-    updateProgressBar(session,"SAMseqProgressbar", value=90,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"SAMseqProgressbar", value=90)
     return(g)
   }
   
@@ -1842,7 +1840,7 @@ getPowerCurve<-reactive({
   #SAMfitplot
   output$SAMseqfitPlot<-renderPlot({
     samfit<-getSAMseqAnalysis()
-    updateProgressBar(session,"SAMseqProgressbar", value=100,visible = FALSE, animate=TRUE)
+    updateProgressBar(session,"SAMseqProgressbar", value=100)
     plot(samfit)
   },height=700,width=700)
   
@@ -1963,7 +1961,7 @@ getPowerCurve<-reactive({
                         warning = function(w) {print("edger warinings"); getedgeRresultTable()},
                         error = function(e) {print("edger errors");NULL})
     
-    updateProgressBar(session,"intergretiveProgressbar", value=10,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"intergretiveProgressbar", value=10)
     tablelist<-list()
     if(!is.null(detable)){
       tablelist[["DESeq"]]<-detable
@@ -1972,7 +1970,7 @@ getPowerCurve<-reactive({
       tablelist[["edgeR"]]<-edgetable
     }
     # tablelist<-list(DESeq=getDEseqResultTable(),edgeR=getedgeRresultTable())
-    updateProgressBar(session,"intergretiveProgressbar", value=50,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"intergretiveProgressbar", value=50)
     #values$usedtools=c("DESeq","edgeR","NOIseq","PoissonSeq","SAMseq")
     if(values$design!="MF"){
       NOIseqtable <- tryCatch(getresultNOIseqresultTableNew(),
@@ -1983,7 +1981,7 @@ getPowerCurve<-reactive({
       }
       # table=getresultNOIseqresultTableNew()
       # tablelist[["NOISeq"]]<-table
-      updateProgressBar(session,"intergretiveProgressbar", value=70,visible = TRUE, animate=TRUE)
+      updateProgressBar(session,"intergretiveProgressbar", value=70)
     }
     if(values$design=="SC"){
       
@@ -1995,7 +1993,7 @@ getPowerCurve<-reactive({
       }
       # table2=getresultPoissonSeqresultTableNew()
       # tablelist[["PoissonSeq"]]<-table2
-      updateProgressBar(session,"intergretiveProgressbar", value=80,visible = TRUE, animate=TRUE)
+      updateProgressBar(session,"intergretiveProgressbar", value=80)
       samseqtable <- tryCatch(getSAMseqresultTableNew(),
                                   warning = function(w) {print("samseq warinings"); getSAMseqresultTableNew()},
                                   error = function(e) {print("samseq errors");NULL})
@@ -2003,7 +2001,7 @@ getPowerCurve<-reactive({
         tablelist[["SAMseq"]]<-samseqtable
       }
       
-      updateProgressBar(session,"intergretiveProgressbar", value=90,visible = TRUE, animate=TRUE)
+      updateProgressBar(session,"intergretiveProgressbar", value=90)
       # table3=getSAMseqresultTableNew()
       # tablelist[["SAMseq"]]<-table3
       
@@ -2029,9 +2027,9 @@ getPowerCurve<-reactive({
   
   output$VennyPlotRender<-renderPlot({
     #     input$runSelectedAnalysisbutton
-    updateProgressBar(session,"intergretiveProgressbar", value=95,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"intergretiveProgressbar", value=95)
     p<-getVennyPlot()
-    updateProgressBar(session,"intergretiveProgressbar", value=100,visible = FALSE, animate=TRUE)
+    updateProgressBar(session,"intergretiveProgressbar", value=100)
     grid.draw(p)
     
   },width=700,height=700)
@@ -2053,9 +2051,9 @@ getPowerCurve<-reactive({
   
   output$ComparisonBarPlotRender<-renderPlot({
     #     input$runSelectedAnalysisbutton
-    updateProgressBar(session,"intergretiveProgressbar", value=91,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"intergretiveProgressbar", value=91)
     p<-getComparisonBarPlot()
-    updateProgressBar(session,"intergretiveProgressbar", value=93,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"intergretiveProgressbar", value=93)
     print(p)
     
   },width=700,height=700)
@@ -2140,10 +2138,10 @@ getPowerCurve<-reactive({
   
   
   output$getRecommandedTableRender<-renderDataTable({
-    updateProgressBar(session,"intergretiveProgressbar", value=98,visible = TRUE, animate=TRUE)
+    updateProgressBar(session,"intergretiveProgressbar", value=98)
     input$overlapsubmitButton
     table<-getRecommandedTable()
-    updateProgressBar(session,"intergretiveProgressbar", value=100,visible = FALSE, animate=TRUE)
+    updateProgressBar(session,"intergretiveProgressbar", value=100)
     table
     
   },escape = FALSE)

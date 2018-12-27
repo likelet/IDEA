@@ -45,87 +45,45 @@ shinyServer(function(input,output,session){
   tempdir <- tempfile()
   dir.create(tempdir)
   values<-reactiveValues()
-  observe({
-    input$scNewButton
-    input$wrNewButton
-    input$mfNewButton
-  })
-  
   #get user exprimental design
   values$design="SC"
   values$usedtools=c("DESeq","edgeR","NOISeq","PoissonSeq","SAMseq")
-  
-  observe({
-    if(input$scExampleButton!=0){
-      values$design="SC"
-      values$usedtools=c("DESeq","edgeR","NOISeq","PoissonSeq","SAMseq")
-    }
-  })
-  observe({
-    if(input$scNewButton!=0){
-      values$design="SC"
-      values$usedtools=c("DESeq","edgeR","NOISeq","PoissonSeq","SAMseq")
-    }
-  })
-  observe({
-    if(input$mfExampleButton!=0){
-      values$design="MF"
-      values$usedtools=c("DESeq","edgeR")
-    }
-  })
-  observe({
-    if(input$mfNewButton!=0){
-      values$design="MF"
-      values$usedtools=c("DESeq","edgeR")
-    }
-  })
-  observe({
-    if(input$wrExampleButton!=0){
-      values$design="WR"
-      values$usedtools=c("DESeq","edgeR","NOISeq")
-    }
-  })
-  observe({
-    if(input$wrNewButton!=0){
-      values$design="WR"
-      values$usedtools=c("DESeq","edgeR","NOISeq")
-    }
-  })
-  #weather new button is clicked
   values$wethernew="example"
   
-  observe({
-    if(input$scNewButton!=0){
-      values$wethernew="upload"
-    }
-  })
-  observe({
-    if(input$mfNewButton!=0){
-      values$wethernew="upload"
-    }
-  })
-  observe({
-    if(input$wrNewButton!=0){
-      values$wethernew="upload"
-    }
-  })
-  observe({
-    if(input$scExampleButton!=0){
+  observeEvent(input$scExampleButton,{
+      values$design="SC"
+      values$usedtools=c("DESeq","edgeR","NOISeq","PoissonSeq","SAMseq")
       values$wethernew="example"
-    }
   })
-  observe({
-    if(input$mfExampleButton!=0){
-      values$wethernew="example"
-    }
+  observeEvent(input$scNewButtonFake,{
+      values$design="SC"
+      values$usedtools=c("DESeq","edgeR","NOISeq","PoissonSeq","SAMseq")
+      values$wethernew="upload"
   })
-  observe({
-    if(input$wrExampleButton!=0){
+  observeEvent(input$mfExampleButton,{
+      values$design="MF"
+      values$usedtools=c("DESeq","edgeR")
       values$wethernew="example"
-    }
+      
+  })
+  observeEvent(input$mfNewButtonFake,{
+    values$design="MF"
+    values$usedtools=c("DESeq","edgeR")
+    values$wethernew="upload"
+  })
+  observeEvent(input$wrExampleButton,{
+    values$design="WR"
+    values$usedtools=c("DESeq","edgeR","NOISeq")
+    values$wethernew="example"
+  })
+  observeEvent(input$wrNewButtonFake,{
+    values$design="WR"
+    values$usedtools=c("DESeq","edgeR","NOISeq")
+    values$wethernew="upload"
   })
   
-  
+
+
   #dataset read scount matrix input----------------   
   datasetInput <- reactive({ 
     
@@ -176,12 +134,9 @@ shinyServer(function(input,output,session){
   })
   
   
-  #design input ----------
   
+  #design input ----------
   designInput <- reactive({ 
-    
-    #example<-read.table("F:\\mywork\\project\\RongYKlincRNA\\GonadDE.txt",header=T,sep="\t",row.names=1)
-    
     examplepath<-switch(values$design,
                         "SC"="data/experimentaldataSC.csv",
                         "MF"="data/experimentaldataMF.csv",
@@ -189,11 +144,8 @@ shinyServer(function(input,output,session){
     )
     designexample<-read.table(examplepath,header=T,sep=",",row.names=1)
     colnames(designexample)[1] <- "condition"
-    #example<-read.table("/srv/shiny-server/countTable2DEonline/test.txt",header=T,sep="\t",row.names=1)
     inFile <- input$designfile
-    
     if (!is.null(inFile)){
-      
       tryCatch({
         data<-read.table(inFile$datapath, header=T,sep=",",row.names=1)     
         colnames(data)[1] <- "condition"
@@ -202,8 +154,6 @@ shinyServer(function(input,output,session){
         data=NULL
       })   
     }  
-    
-    
     if(values$wethernew=="example"){
       designexample
     }else{
@@ -246,7 +196,7 @@ shinyServer(function(input,output,session){
   
   
 
-  # exprimental design--------------
+  #exprimental design--------------
   #condition input 
   conditionInput<-reactive({
     design<-designInput()  
@@ -256,9 +206,9 @@ shinyServer(function(input,output,session){
   })
   
   #test output
-  # output$testoutput<-renderText({
-  #   paste(getinterestVarible(),conditionInput())
-  # })
+  output$testoutput<-renderText({
+    values$wethernew
+  })
   
   
   
@@ -279,8 +229,8 @@ shinyServer(function(input,output,session){
              div(class="panel-body",
                  h4("Matrix of experimental design (example)",DiaoTips(2,"Comma-separated file with header information is required ")),
                  NiePrettyDownloadButton("downloadExampleDesignFile",addclass="btn-warning","Download design matrix file"),
-                 tags$button(id="showDesignMatrixButton", class="btn btn-info action-button","View Example data")
-                
+                 tags$button(id="showDesignMatrixButton", class="btn btn-info action-button","View Example data"),
+                 textOutput("testoutput")
              )
            )
     )

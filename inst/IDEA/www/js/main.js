@@ -20,17 +20,17 @@ function aa(s_id) {
         $("#link-mian-nav6").removeClass('actived');
         $("#link-mian-nav7").removeClass('actived');
         $("#link-mian-nav8").removeClass('actived');
-      };
-      if(s_id ==6 && ($("#s6>div").length==0)) {
+      }
+      if(s_id ==6 && ($("#s6>div").length===0)) {
         loadhtml("#s6","IDEA/../dom/s6.html","#s6");
-      };
-      if(s_id ==7 && ($("#s7>div").length==0)) {
+      }
+      if(s_id ==7 && ($("#s7>div").length===0)) {
         loadhtml("#s7","IDEA/../dom/s7.html","#s7");
-      };
-      if(s_id ==8 && ($("#s8>div").length==0)) {
+      }
+      if(s_id ==8 && ($("#s8>div").length===0)) {
         loadhtml("#s8","IDEA/../dom/s8.html","#s8");
         // loadhtml("#s8","IDEA/../dom/modal.html","#model-new");
-      };
+      }
 
     } else {
       $("div[id=s" + i + "]").hide(); //内容不显示
@@ -42,18 +42,11 @@ function aa(s_id) {
 
 // switch between steps in s1
 function toStep(step_id) {
-  // if($("#file1_progress label").text()!="Upload complete"&&(step_id>1)&&(workmode==1)){
-  //   // alert(workmode)
-  //   alert("Please Input readscount file first! Or you can click example button to run demo.");
-  //  }
-  // else{
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 2; i++) {
       if (i == step_id) {
              document.getElementById("step" + i).className = "block"; //内容的样式
-        //$("div[id=step" + i + "]").show();
         $("#refreshbutton").click();
       } else {
-        //$("div[id=step" + i + "]").hide();
              document.getElementById("step" + i).className = "none"; //内容不显示
       // }
     }
@@ -67,12 +60,9 @@ function toMethod(method_id) {
     if (i == method_id) {
       $("#refreshbutton").click();
       $("#refreshbutton2").click();
-      // document.getElementById("method"+i).className = 'block';
       $("div[id=method" + i + "]").show();
     } else {
-      // document.getElementById("method"+i).hide();
       $("div[id=method" + i + "]").hide();
-      // alert("method"+i);
     }
   }
 }
@@ -129,39 +119,14 @@ function navhide2() {
 
 
 $(document).ready(function () {
-  // $("div.fig-data").find("img").css({
-  //   "width": "500px"
-  // });
-  //  alert('hello')
-  //  $('#example6').attr("data-rel", "lightcase");
-  //  $('#example6').attr("href", "img/pic.gif");
   $('#example5').attr("data-rel", "lightcase");
   $('#example5').attr("href", "img/pic.gif");
-  // $(".fig-data").find("img").attr("data-rel","lightcase");
-  // $(".fig-data").find("img").attr("href","img/pic.gif");
-  // $(".fig-data").find("img").css({
-  //   "width":"500px"
-  // });
-  // $('#example6').lightcase();
-  //  $('a[data-rel^=lightcase]').lightcase();
+  
   $(".icon--fullView").hover(function () {
     $(this).lightcase();
-
-    //  alert($(".figure-analysis").find("img").attr("src"));
-    //    alert('hello')
-    //    $(this).parents(".figure-analysis").find("a").attr("data-rel", "lightcase");
     $(this).parents(".figure-analysis").find("a").attr("href", $(this).parents(".figure-analysis").find(".shiny-plot-output").find("img").attr("src"));
-    //    alert($(this).parents(".figure-analysis").find("a").attr("class"));
-    //  $(".figure-analysis").find("a").attr("data-rel", "lightcase");
-    //  $(".figure-analysis").find("a").attr("href", $(".figure-analysis").find("img").attr("src"));
-
-    //  $(this).parents(".figure-analysis").find("a").attr("data-rel", "lightcase");
-    //  $(this).parents("figure-analysis") find("a").attr("href", $(this).parents("figure-analysis").find("img").attr("src"));
-    //    $('a[data-rel^=lightcase]').lightcase();
   });
-  //  $(".icon--fullView").click(function () {
-  //    $('a[data-rel^=lightcase]').lightcase();
-  //  });
+ 
 });
 
 var status=0;
@@ -169,7 +134,7 @@ $(document).ready(function () {
   $('a[data-rel^=lightcase]').lightcase();
 })
 
-var workmode=0
+var workmode=0;
 $(document).ready(function () {
   $(".button-new").click(function() {
     workmode=1;
@@ -179,7 +144,6 @@ $(document).ready(function () {
   $(".button-example").click(function() {
     workmode=0;
     toStep(1);
-    // alert(workmode)
   });
 })
 
@@ -293,7 +257,7 @@ $(document).ready(function () {
   $("#scNewButton").hide();
   $("#mfNewButton").hide();
   $("#wrNewButton").hide();
-  $("#scNewButton-fake").click(function(){
+  $("#scNewButtonFake").click(function(){
     if(status==1){
     $("#dialog-confirmSave").html('<p>Current analysis results will be discarded, do you want to save them before starting a new analysis task?</p>');
     $("#dialog-confirmSave").dialog({
@@ -324,7 +288,7 @@ $(document).ready(function () {
       $("#scNewButton").click();
     }
   })
-  $("#mfNewButton-fake").click(function(){
+  $("#mfNewButtonFake").click(function(){
     
     
     if(status==1){
@@ -375,7 +339,7 @@ $(document).ready(function () {
       $("#mfNewButton").click();
     }
   })
-  $("#wrNewButton-fake").click(function(){
+  $("#wrNewButtonFake").click(function(){
     if(status==1){
       $("#dialog-confirmSave").html('<p>Current analysis results will be discarded, do you want to save them before starting a new analysis task?</p> ');
     $("#dialog-confirmSave").dialog({
@@ -409,22 +373,6 @@ $(document).ready(function () {
 
 })
 
-
-// function expand()
-// {
-//   if($("#file1_progress label").text()=="Upload complete"){
-//     // alert("hello")
-//     $(".panel-data").show();
-//     $(".panel-format").show();
-//   };
-//   if($("#designfile_progress label").text()=="Upload complete"){
-//     $(".panel-design").show()
-//   }
-// } 
-
-// $(document).ready(function(){
-//   window.setInterval(expand, 3000);
-// })
 
 $(document).ready(function () {
   //$(".absoluteSelf").toggle();
@@ -493,10 +441,4 @@ function wsug(e, str){
     }
 }
 
-// $(document).ready(function () {
-//   //$(".absoluteSelf").toggle();
-//   $(".figure-analysis img").css(
-//   {
-//     "width":"60%"
-//   })
-// })
+

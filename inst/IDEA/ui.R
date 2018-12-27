@@ -79,67 +79,45 @@ div(
           h5(class = "title--small-home", "New analysis job"),
           h3(class = "title--big--home", "Select Experiment Type")
         ),
-        tags$ul(
-          class = "lis-experiment",
-          tags$li(
-            class = "item-experiment btn-default",
-            id = "item1",
-            div(
-              class = "bolck-experiment",
+        tags$ul(class = "lis-experiment",
+          tags$li( class = "item-experiment btn-default",id = "item1",
+            div(class = "bolck-experiment",
               div(class = "icon-experiment bg-standard"),
               div(
                 class = "wrapper--text-block-experiment",
-                div(class =
-                      "title-experiment", "Standard Comparison"),
-                div(
-                  class = "button-experiment",
+                div(class ="title-experiment", "Standard Comparison"),
+                div(class = "button-experiment",
                   tags$button(
                     id = "scExampleButton",
                     type = "button",
                     class = "btn btn-primary action-button button-example",
                     "Example"
                   ),
-                  bsTooltip(
-                    "scExampleButton",
-                    "Start an example analysis",
-                    trigger = "hover",
-                    placement = "bottom"
-                  ),
-                  tags$button(
-                    id = "scNewButton-fake",
-                    type = "button",
-                    class = "btn btn-default button-new",
-                    "New"
-                  ),
+                  bsTooltip("scExampleButton","Start an example analysis", trigger = "hover",placement = "bottom"),
                   tags$button(
                     id = "scNewButton",
                     type = "button",
                     class = "btn btn-default action-button button-new",
                     "New"
                   ),
-                  bsTooltip(
-                    "scNewButton",
-                    "Upload your data",
-                    trigger = "hover",
-                    placement = "bottom"
-                  )
-                  
+                  tags$button(
+                    id = "scNewButtonFake",
+                    type = "button",
+                    class = "btn btn-default action-button button-new",
+                    "New"
+                  ),
+                  bsTooltip("scNewButton","Upload your data",trigger = "hover",placement = "bottom")
                 )
               )
             )
           ),
-          tags$li(
-            class = "item-experiment btn-default",
-            id = "item2",
-            div(
-              class = "bolck-experiment",
+          tags$li(class = "item-experiment btn-default",id = "item2",
+            div(class = "bolck-experiment",
               div(class = "icon-experiment bg--multi-factor"),
-              div(
-                class = "wrapper--text-block-experiment",
-                div(class =
-                      "title-experiment", "Multi-factor Design"),
-                div(
-                  class = "button-experiment",
+              div( class = "wrapper--text-block-experiment",
+                div(class ="title-experiment", "Multi-factor Design"),
+                div(class = "button-experiment",
+                    
                   tags$button(
                     id = "mfExampleButton",
                     type = "button",
@@ -147,9 +125,9 @@ div(
                     "Example"
                   ),
                   tags$button(
-                    id = "mfNewButton-fake",
+                    id = "mfNewButtonFake",
                     type = "button",
-                    class = "btn btn-default button-new",
+                    class = "btn btn-default action-button button-new",
                     "New"
                   ),
                   tags$button(
@@ -158,29 +136,18 @@ div(
                     class = "btn btn-default action-button button-new",
                     "New"
                   ),
-                  bsTooltip(
-                    "mfNewButton",
-                    "3 factors at most",
-                    trigger = "hover",
-                    placement = "right"
-                  )
+                  bsTooltip("mfNewButton", "3 factors at most",trigger = "hover",placement = "right")
                   
                 )
               )
             )
           ),
-          tags$li(
-            class = "item-experiment btn-default",
-            id = "item3",
-            div(
-              class = "bolck-experiment",
+          tags$li(class = "item-experiment btn-default", id = "item3",
+            div(class = "bolck-experiment",
               div(class = "icon-experiment bg-nonreplicate"),
-              div(
-                class = "wrapper--text-block-experiment",
-                div(class =
-                      "title-experiment", "Without Replicates"),
-                div(
-                  class = "button-experiment",
+              div(class = "wrapper--text-block-experiment",
+                div(class ="title-experiment", "Without Replicates"),
+                div( class = "button-experiment",
                   tags$button(
                     id = "wrExampleButton",
                     type = "button",
@@ -188,9 +155,9 @@ div(
                     "Example"
                   ),
                   tags$button(
-                    id = "wrNewButton-fake",
+                    id = "wrNewButtonFake",
                     type = "button",
-                    class = "btn btn-default button-new",
+                    class = "btn btn-default action-button  button-new",
                     "New"
                   ),
                   tags$button(
@@ -206,93 +173,68 @@ div(
         )
       ),
       div(class = "uploadsteps",
-        # newLoadingIndicator(),
-        div(class = "step0 block",
-            id ="step0"),
-        # tags$script("loadhtml('#step0','IDEA/../dom/expDsgn.html','#step0')")),
-        div(
-          class = "none",
-          id = "step1",
-          div(
-            class = "hd-option-upload",
-            tags$button(
-              type = "button",
-              class = "back-nav-upload glyphicon glyphicon-chevron-left btn btn-lg",
-              id = "btn--back1-nav-upload",
-              onmousedown = "toStep(0)"
+        div(class = "step0 block",id ="step0"),
+        div(class = "none",id = "step1",
+            div(class = "hd-option-upload",
+            tags$button(type = "button",
+                        class = "back-nav-upload glyphicon glyphicon-chevron-left btn btn-lg",
+                        id = "btn--back1-nav-upload",
+                        onmousedown = "toStep(0)"
             ),
             div(class = "title-hd-option-upload", "Upload Data")
-          ),
-          tags$button(
-            id = "startanalysisMain1",
-            class = "btn btn-block btn-primary btn-toAnalysis action-button ",
-            "> > > Start Analysis < < <",
-            onmousedown = "startAnalysis()"
-          ),
-          div(class = "panel panel-default upload-upload",
-              uiOutput("DataInputswitchUI")),
-          
-          div(
-            class = "panel panel-default",
-            
-            uiOutput("designSwitchUI"),
-            uiOutput("interestvariablesUI")
-          ),
-          div(class = "panel panel-default",
-              div(
-                class = "panel-body",
-                h4(
-                  "Set Comparing Groups",
-                  DiaoTips(5, "Available only after DESIGN MATRIX file is properly provided ")
-                ),
-                uiOutput("ConditionSelectionUI")
-                
-              )),
-          div(
-            class = "panel panel-default advanced-upload",
-            div(
-              class = "panel-heading",
-              id = "headingOne1",
-              h2(
-                class = "panel-title",
-                style = "text-align: center",
-                tags$a("Advanced"),
-                DiaoTips(6, "Click to set upload options for length file")
+            ),
+            tags$button(id = "startanalysisMain1",
+                        class = "btn btn-block btn-primary btn-toAnalysis action-button ",
+                        "> > > Start Analysis < < <",
+                        onmousedown = "startAnalysis()"
+            ),
+            div(class = "panel panel-default upload-upload",
+                uiOutput("DataInputswitchUI")
+            ),
+            div(class = "panel panel-default",
+                uiOutput("designSwitchUI"),
+                uiOutput("interestvariablesUI")
+            ),
+            div(class = "panel panel-default",
+                div(class = "panel-body",
+                  h4(
+                    "Set Comparing Groups",
+                    DiaoTips(5, "Available only after DESIGN MATRIX file is properly provided ")
+                  ),
+                  uiOutput("ConditionSelectionUI")
+                )
+            ),
+            div(class = "panel panel-default advanced-upload",
+              div(class = "panel-heading",id = "headingOne1",
+                h2(
+                  class = "panel-title",
+                  style = "text-align: center",
+                  tags$a("Advanced"),
+                  DiaoTips(6, "Click to set upload options for length file")
+                )
+              ),
+              div(id = "collapseOne1",class = "none",
+                div(class = "panel-body",style = "display:inline-block",
+                  h4("Upload Feature Length File (Optional)",
+                    DiaoTips(7, "Upload feature length file in .csv format")
+                  ),
+                  fileInput(
+                    'lengthfile',
+                    'Only CSV format is supported',
+                    accept =
+                      c('text/csv', 'text/comma-separated-values,text/plain', '.csv')
+                  ),
+                  div(class = "alert alert-info","A feature length file can be uploaded to calculate RPKM of each feature, and should have the same number of as in count matrix. ")
+                ) 
               )
             ),
-            div(
-              id = "collapseOne1",
-              class = "none",
-              div(
-                class = "panel-body",
-                style = "display:inline-block",
-                h4(
-                  "Upload Feature Length File (Optional)",
-                  DiaoTips(7, "Upload feature length file in .csv format")
-                ),
-                fileInput(
-                  'lengthfile',
-                  'Only CSV format is supported',
-                  accept =
-                    c('text/csv', 'text/comma-separated-values,text/plain', '.csv')
-                ),
-                div(
-                  class = "alert alert-info",
-                  "A feature length file can be uploaded to calculate RPKM of each feature, and should have the same number of as in count matrix. "
-                )
-              )
-              
-              
-            )
-          ),
-          tags$button(
-            id = "startanalysisMain2",
-            class = "btn btn-block btn-primary btn-toAnalysis",
-            "> > > Start Analysis < < <",
-            onmousedown = "startAnalysis()"
-          ),
-          br()
-          
+            tags$button(
+              id = "startanalysisMain2",
+              class = "btn btn-block btn-primary btn-toAnalysis",
+              "> > > Start Analysis < < <",
+              onmousedown = "startAnalysis()"
+            ),
+            br()
           
         )
       )

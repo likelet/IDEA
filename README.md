@@ -5,6 +5,8 @@
 
 [![TravisCI Build Status](https://travis-ci.org/likelet/IDEA.svg?branch=master)](https://travis-ci.org/likelet/IDEA)
 [![codebeat badge](https://codebeat.co/badges/c297ab97-01dc-471f-9927-960152caf6d3)](https://codebeat.co/projects/github-com-likelet-idea-master)  
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/likelet/idea.svg?style=flat)](https://github.com/likelet/idea/issues)
+[![GitHub download](https://img.shields.io/github/downloads/likelet/IDEA/v0.1.1/total.svg?style=social)](https://github.com/likelet/IDEA/releases/tag/v0.1.1)
 
 ## Table of content   
 

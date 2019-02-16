@@ -672,7 +672,9 @@ shinyServer(function(input,output,session){
   sampleDistanceHeatmapPlot<-reactive({
     library(pheatmap)
     heatmapdata=sampleDistanceHeatmapPlotdata()
-    pheatmap(heatmapdata$data, trace="none",color=heatmapdata$color,border_color="white",margin=c(13, 13),key=heatmapdata$iskey,display_numbers = TRUE,number_format ="%.1e")
+    # print(dim(heatmapdata$data))
+    #pheatmap(heatmapdata$data)
+     pheatmap(heatmapdata$data, trace="none",color=heatmapdata$color,border_color="white",margin=c(13, 13),key=heatmapdata$iskey,display_numbers = TRUE,number_format ="%.1e")
     
   })
   #render plot

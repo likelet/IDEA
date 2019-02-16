@@ -468,7 +468,10 @@ shinyServer(function(input,output,session){
   #function From NOISeqFunction.R
   #########################################################
   normalizeDataNew<-reactive({
-    updateProgressBar(session,"exploretionPrograssbar", value=2)
+    progress <- shiny::Progress$new()
+    progress$set(message = "Data normalization ", value = 0)
+    on.exit(progress$close())
+    
     data<-datasetInput()
     if(input$normalizedMethod=='rpkm'){
       if(annotationdatasetInput()!='A'){
@@ -482,7 +485,7 @@ shinyServer(function(input,output,session){
     }else {
       normalizedDf<-normalizeData(data,method=input$normalizedMethod,k=0,lc=0)
     }
-    updateProgressBar(session,"exploretionPrograssbar", value=12.5)
+    progress$inc(100, detail = "")
     
     normalizedDf 
   })
@@ -587,11 +590,18 @@ shinyServer(function(input,output,session){
     p
   })
   output$SamplesBoxplot<-renderPlot({ 
-    # updateProgressBar(session,"exploretionPrograssbar", value=25)
-    updateProgressBar(session = session, id = "exploretionPrograssbar", value = 25)
-    #     updateProgressBar(session,"datafig1plotbar", value=20)
-    #     updateProgressBar(session,"datafig1plotbar", value=50)
+    progress <- shiny::Progress$new()
+    progress$set(message = "Computing data for ", value = 0)
+    on.exit(progress$close())
+    
+    
     p=getSamplesBoxplot()
+    # Create a callback function to update progress.
+    # Each time this is called:
+    # - If `value` is NULL, it will move the progress bar 1/5 of the remaining
+    #   distance. If non-NULL, it will set the progress to that value.
+    # - It also accepts optional detail text.
+    progress$inc(100, detail = "Boxplot ")
     
     print(p)
   },width=700,height=700)
@@ -624,9 +634,14 @@ shinyServer(function(input,output,session){
     p
   })
   output$densitySampleSelectedPlot<-renderPlot({
-    updateProgressBar(session,"exploretionPrograssbar", value=37.5)
+    progress <- shiny::Progress$new()
+    progress$set(message = "Computing data for ", value = 0)
+    on.exit(progress$close())
+    
     p<-getdensitySampleSelectedPlot()
-    #       updateProgressBar(session,"exploretionPrograssbar", value=62.5)
+    
+    progress$inc(100, detail = "Density plot ")
+   
     print(p)
   },width=700,height=700)
   
@@ -637,7 +652,13 @@ shinyServer(function(input,output,session){
     p
   })
   output$RaioBarplotdPlot<-renderPlot({
+    progress <- shiny::Progress$new()
+    progress$set(message = "Computing data for ", value = 0)
+    on.exit(progress$close())
+    
     p<-getraioBarplot()
+    
+    progress$inc(100, detail = "Ration Barplot")
     print(p)
   },width=700,height=700)
   
@@ -653,7 +674,13 @@ shinyServer(function(input,output,session){
     p
   })
   output$plotPCAtwoD <- renderPlot({
+    progress <- shiny::Progress$new()
+    progress$set(message = "Computing data for ", value = 0)
+    on.exit(progress$close())
+    
     p=getPCAplotNew()
+    
+    progress$inc(100, detail = "PCA analysis")
     print(p)
   },width=700,height=700) 
   
@@ -679,8 +706,13 @@ shinyServer(function(input,output,session){
   })
   #render plot
   output$S2Sdistanceheatmap<-renderPlot({
-    updateProgressBar(session,"exploretionPrograssbar", value=80)
+    progress <- shiny::Progress$new()
+    progress$set(message = "Computing data for ", value = 0)
+    on.exit(progress$close())
+    
     sampleDistanceHeatmapPlot()
+    
+    progress$inc(100, detail = "Heatmap")
     
     
   },width=700,height=700)
@@ -717,10 +749,15 @@ shinyServer(function(input,output,session){
   })
   #correlation analysis panel
   getCorrelatiobScatterPlot<-reactive({
+    progress <- shiny::Progress$new()
+    progress$set(message = "Computing data for ", value = 0)
+    on.exit(progress$close())
+    
     data<-normalizeDataNew()
+    progress$inc(50, detail = "correlation analysis")
     p<-scatterP(data, getCorrlationsXsample(), getCorrlationsYsample(), FALSE)
-    #     values$explorationProgressbar=values$explorationProgressbar+12.5
-    #     updateProgressBar(session,"exploretionPrograssbar", value=values$explorationProgressbar)
+    
+    progress$inc(100, detail = "correlation analysis")
     
     p
   })

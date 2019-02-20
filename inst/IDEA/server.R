@@ -2606,9 +2606,6 @@ getPowerCurve<-reactive({
   
   
   
-  #heat map parameter
-  #####################################################################################
-  
   #DESeq heat map parameter function----------
   ########################################
   getDESeqHeatmapScale<-reactive({

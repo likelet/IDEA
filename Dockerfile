@@ -20,7 +20,6 @@ RUN wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.92
     && rm -f shiny-server-1.5.9.923-amd64.deb
 
 # IDEA part:
-RUN R -e "devtools::install_github('likelet/shinyBS')"
 RUN R -e "devtools::install_github('likelet/IDEA')"
 
 # shiny server application & configuration

@@ -60,14 +60,12 @@ shinyUI(bootstrapPage(
 #insert html by js code ),
 #main panel
 div(id = "frame"),
-div(
-  
-  class = "mainpanel",
-  
+div(class = "mainpanel",
   newbusyIndicator(),
-  
+  # S1 page ----
   div(id = "s1",
       class = "block"),
+  # S2 page ----
   div(id = "s2",
     class = "none",
     div(
@@ -241,7 +239,7 @@ div(
     )
   ),
   
-  #part three
+  # S3 page ----
   div(
     id = "s3",
     class = "none",
@@ -291,14 +289,6 @@ div(
             trigger = "hover",
             placement = "bottom"
           )
-          
-        ),
-        div(
-          class = "boxplot-data fig-data  figure-analysis",
-          id = "datafig0",
-          h4("Calculation is in progress, please wait for a while..."),
-          
-          progressBar(id = "exploretionPrograssbar", value = 0, status = "success", striped = TRUE)
           
         ),
         
@@ -548,8 +538,7 @@ div(
             draggable = TRUE,
             cursor = "default"
           ),
-          plotOutput("CorrelatiobScatterPlot", height =
-                       "100%"),
+          plotOutput("CorrelatiobScatterPlot", height = "100%"),
           bsPopover(
             id = "datafig6",
             title = "Tips",
@@ -608,7 +597,7 @@ div(
       )
     )
   ),
-  #fourth part
+  # S4 page ----
   div(
     id = "s4",
     class = "none",
@@ -632,26 +621,26 @@ div(
         )
       )
       ,
-      ##############
+
       #DEseq
-      ##############
+
       div(
         class = "DEseq report-analysis none",
         id = "method1",
         h2(class = "title-report-anlysis", "DESeq Analysis Report"),
         tags$ul(
           class = "content-report-anlysis",
-          
-          
+
+
           # DEseq DEtable
           tags$li(
             div(
               class = "genequery-data fig-data figure-analysis",
               id = "DESeqanalysisDiv1",
-              
+
               h3(class = "page-header", "Differential Expression Feature Analysis Result Table"),
               dataTableOutput("DEseqTable")
-              
+
             ),
             bsPopover(
               id = "DESeqanalysisDiv1",
@@ -669,9 +658,7 @@ div(
               bsPopover(
                 id = "DESeqanalysisDiv2",
                 title = "Tips",
-                content = p(
-                  "The variance estimation plot is used to visualize the result of dispersion estimates adjustment. Empirical feature-wise (gene-wise) estimates are in black, the fitted estimates are in red, and the final estimates used for testing are in blue, with dispersion as y-axis and mean of normalized counts as x-axis. The outliers of feature-wise (gene-wise) estimates are marked with blue-encircled black dots. The points lying on the bottom indicates they have a dispersion of practically zero or exactly zero."
-                ),
+                content = "The variance estimation plot is used to visualize the result of dispersion estimates adjustment. Empirical feature-wise (gene-wise) estimates are in black, the fitted estimates are in red, and the final estimates used for testing are in blue, with dispersion as y-axis and mean of normalized counts as x-axis. The outliers of feature-wise (gene-wise) estimates are marked with blue-encircled black dots. The points lying on the bottom indicates they have a dispersion of practically zero or exactly zero.",
                 placement = "right",
                 trigger = "hover"
               ),
@@ -695,8 +682,7 @@ div(
               bsPopover(
                 id = "DESeqanalysisDiv3",
                 title = "Tips",
-                content = "A MA-Plot can give a quick overview of the differential expression result. 
-                The log2–transformed fold change is plotted on the y-axis and the average count is on the x-axis. The false discovery rate (FDR) threshold can be interactively changed, and the features are colored red if the adjusted p-value is less than the FDR, while other genes are colored black.",
+                content = "A MA-Plot can give a quick overview of the differential expression result.The log2–transformed fold change is plotted on the y-axis and the average count is on the x-axis. The false discovery rate (FDR) threshold can be interactively changed, and the features are colored red if the adjusted p-value is less than the FDR, while other genes are colored black.",
                 placement = "right",
                 trigger = "hover"
               ),
@@ -720,7 +706,7 @@ div(
                   ),
                   div(
                     class = "popover-content2",
-                    
+
                     numericInput(
                       "DEseqFDRthreshold",
                       "FDR threshold",
@@ -729,7 +715,7 @@ div(
                       max = 1,
                       step = 0.01
                     )
-                    
+
                   )
                 ),
                 top = 150,
@@ -738,8 +724,8 @@ div(
                 draggable = TRUE,
                 cursor = "default"
               ),
-              
-              
+
+
               plotOutput("DEseqMAplot", height =
                            "100%")
             )
@@ -871,7 +857,7 @@ div(
               ),
               plotOutput("DESeqheatmapRender", height =
                            "100%")
-              
+
             )
           ),
           tags$li(
@@ -892,7 +878,7 @@ div(
               ),
               plotOutput("DESeqPvalueDistributionplotRender", height =
                            "100%")
-              
+
             )
           ),
           tags$br()
@@ -939,7 +925,7 @@ div(
               placement = "top"
             )
           ),
-          
+
           # downloadLink('DEseqdownloadDEtable', 'Download .csv file'),
           NiePrettyDownloadButton("DEseqdownloadDEtable", addclass =
                                     "button-donwnload-s btn btn-primary btn-block", "Download .csv file"),
@@ -957,14 +943,12 @@ div(
             trigger = "hover",
             placement = "bottom"
           )
-          
+
         )
-        
+
       )
       ,
-      ##############
       #edgeR
-      ##############
       div(
         class = "edgeR report-analysis none",
         id = "method2",
@@ -983,7 +967,7 @@ div(
                 trigger = "hover"
               ),
               h3(class = "page-header", "Differential Expression Feature Table"),
-              
+
               div(class = "dicr-fig-analysis"),
               dataTableOutput("edgeRresultTable")
             )
@@ -1023,7 +1007,7 @@ div(
               ),
               div(class = "dicr-fig-analysis"),
               uiOutput("edgeRDispPlotui")
-              
+
             )
           ),
           tags$li(
@@ -1048,7 +1032,7 @@ div(
                            "100%")
             )
           ),
-          
+
           tags$li(
             div(
               class = "fig-data  figure-analysis",
@@ -1091,13 +1075,13 @@ div(
                 draggable = TRUE,
                 cursor = "default"
               ),
-              
+
               plotOutput("EdgeRVolcanoPlotRender", height =
                            "100%")
-              
+
             )
           ),
-          
+
           tags$li(
             div(
               class = "fig-data  figure-analysis",
@@ -1165,7 +1149,7 @@ div(
               ),
               plotOutput("EdgeRheatmapRender", height =
                            "100%")
-              
+
             )
           ),
           tags$li(
@@ -1187,7 +1171,7 @@ div(
               ),
               plotOutput("EdgeRPvalueDistributionplotRender", height =
                            "100%")
-              
+
             )
           ),
           tags$br()
@@ -1222,7 +1206,7 @@ div(
               trigger = "hover",
               placement = "top"
             )
-            
+
           ),
           selectInput(
             "EdgeRPplotFDRthresshold",
@@ -1230,10 +1214,9 @@ div(
             c(0.01, 0.05),
             selected = 0.05
           ),
-          
+
           uiOutput("edgeRbcvUI"),
-          #######################################################don't know why,but this line makes shiny run
-          ###################################################################################################
+          #don't know why,but this line makes shiny run
           NiePrettyDownloadButton("EdgeRdownloadDEtable", addclass =
                                     "btn btn-primary btn-block", "Download .csv file"),
           bsTooltip(
@@ -1244,7 +1227,7 @@ div(
           ),
           NiePrettyDownloadButton("DownloadEdgeRReport", addclass =
                                     "button-donwnload btn-block", "Download Report"),
-          
+
           bsTooltip(
             "DownloadEdgeRReport",
             "Click to download edgeR Analysis Report in HTML",
@@ -1254,9 +1237,7 @@ div(
         )
       )
       ,
-      ##############
       #NOISeq
-      ##############
       div(
         class = "NOIseq report-analysis",
         id = "method3",
@@ -1264,8 +1245,8 @@ div(
         #                                       NiePrettyActionButton("noiactiveButton",addclass="activeZHAO","test"),
         tags$ul(
           class = "content-report-anlysis",
-          
-        
+
+
           tags$li(
             div(
               class = "fig-data  figure-analysis",
@@ -1348,15 +1329,15 @@ div(
               ),
               plotOutput("NOIseqheatmapRender", height =
                            "100%")
-              
-              
+
+
             )
           ),
           tags$li(
             div(
               class = "fig-data  figure-analysis",
               id = "NOISeqanalysisDiv3",
-              
+
               bsPopover(
                 id = "NOISeqanalysisDiv3",
                 title = "Tips",
@@ -1375,10 +1356,10 @@ div(
                 NiePrettyDownloadButton("NOIseqPvalueDistributionplotDownload", addclass =
                                           "bt-downloadImg", "")
               ),
-          
+
               plotOutput("NOIseqPvalueDistriplotRender", height =
                            "100%")
-              
+
             )
           ),
           tags$br()
@@ -1393,6 +1374,7 @@ div(
             choices =
               c(
                 "RPKM" = "rpkm",
+                "TPM" = "tpm",
                 "Upper Quartile " = "uqua",
                 "Trimmed Mean of M" = "tmm",
                 "None" = "n"
@@ -1413,7 +1395,7 @@ div(
             selected =
               0.95
           ),
-          
+
           div(
             class = "alert alert-warning",
             h4("Note"),
@@ -1425,7 +1407,7 @@ div(
             ),
             " In NOISeq, probability is not equivalent to pvalue, or 1-pvalue."
           ),
-          
+
           NiePrettyDownloadButton("NOIseqdownloadDEtable", addclass =
                                     "btn btn-primary btn-block", "Download .csv file"),
           bsTooltip(
@@ -1434,7 +1416,7 @@ div(
             trigger = "hover",
             placement = "top"
           ),
-          
+
           NiePrettyDownloadButton("DownloadNOIseqReport", addclass =
                                     "button-donwnload btn-block", "Download Report"),
           bsTooltip(
@@ -1445,9 +1427,7 @@ div(
           )
         )
       ),
-      ##############
       #PoissonSeq
-      ##############
       div(
         class = "PoissonSeq report-analysis none",
         id = "method4",
@@ -1456,8 +1436,8 @@ div(
                                 "activeZHAO", "test"),
         tags$ul(
           class = "content-report-anlysis",
-          
-         
+
+
           tags$li(
             div(
               class = "fig-data  figure-analysis",
@@ -1503,7 +1483,7 @@ div(
                     placement = "right",
                     trigger = "hover"
                   ),
-                  
+
                   div(
                     class = "popover-content2",
                     numericInput("PoissonSeqShowDeGenes", "Number of features to plot:", 30),
@@ -1542,7 +1522,7 @@ div(
               ),
               plotOutput("PoissonSeqheatmapRender", height =
                            "100%")
-              
+
             )
           ),
           tags$li(
@@ -1565,7 +1545,7 @@ div(
                   tags$a(class = "glyphicon glyphicon-cog bt-config bt-downloadImg")
                 )
               ),
-              
+
               plotOutput("PoissonSeqPowerCurve", height =
                            "100%")
             )
@@ -1586,20 +1566,20 @@ div(
                 "FDR Distribution",
                 NiePrettyDownloadButton("PoissonSeqPvalueDistributionplotDownload", addclass ="bt-downloadImg", "")
               ),
-             
+
               conditionalPanel(
                 condition = "poiactiveButton != 0",
                 plotOutput("PoissonSeqPvalueDistributionplotRender", height =
                              "100%")
               )
-              
+
             )
           ),
           tags$br()
         ),
         div(
           class = "option-analysis",
-          
+
           div(class = "header-option-analysis", "Advanced Option"),
           uiOutput("comparisonSampleTextRenderUI5"),
           selectInput(
@@ -1608,10 +1588,6 @@ div(
             c(0.01, 0.05, 0.1, 0.2),
             selected = 0.05
           ),
-          
-          #                                           selectInput("PoissonSeqFDRmethod", "Multi Correctoin Method", choices=c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr", "none"), selected = "none", multiple = FALSE,
-          #                                                       selectize = TRUE, width = NULL),
-          # downloadLink('PoissonSeqdownloadDEtable', 'Download .csv file'),
           NiePrettyDownloadButton("PoissonSeqdownloadDEtable", addclass =
                                     "btn btn-primary btn-block", "Download .csv file"),
           bsTooltip(
@@ -1620,7 +1596,7 @@ div(
             trigger = "hover",
             placement = "top"
           ),
-          
+
           NiePrettyDownloadButton("DownloadPoissonSeqReport", addclass =
                                     "button-donwnload btn-block", "Download Report"),
           bsTooltip(
@@ -1629,12 +1605,10 @@ div(
             trigger = "hover",
             placement = "bottom"
           )
-          
+
         )
       ),
-      ##########
       #SAMseq
-      #########
       div(
         class = "SAMseq report-analysis none",
         id = "method5",
@@ -1643,8 +1617,8 @@ div(
                                 "activeZHAO", "test"),
         tags$ul(
           class = "content-report-anlysis",
-          
-          
+
+
           tags$li(
             div(
               class = "fig-data  figure-analysis",
@@ -1729,7 +1703,7 @@ div(
               ),
               plotOutput("SAMseqheatmapRender", height =
                            "100%")
-              
+
             )
           ),
           tags$li(
@@ -1750,7 +1724,7 @@ div(
                 NiePrettyDownloadButton("SAMseqFitplotDownload", addclass =
                                           "bt-downloadImg", "")
               ),
-              
+
               plotOutput("SAMseqfitPlot", height =
                            "100%")
             )
@@ -1779,13 +1753,13 @@ div(
             )
           ),
           tags$br()
-          
+
         ),
         div(
           class = "option-analysis",
           div(class = "header-option-analysis", "Advanced Option"),
           uiOutput("comparisonSampleTextRenderUI6"),
-          
+
           selectInput(
             "SAMseqnresamp",
             "Number of resampling procedures used to construct test statistic.",
@@ -1801,7 +1775,7 @@ div(
             trigger = "hover",
             placement = "bottom"
           ),
-          
+
           selectInput(
             "SAMseqfdrCut",
             "False Discovery Rate cutoff for output in significant feature table.",
@@ -1823,7 +1797,6 @@ div(
             c(0.01, 0.05, 0.1, 0.2),
             selected = 0.05
           ),
-          # downloadButton('SAMseqdownloadDEtable', 'Download .csv file'),
           NiePrettyDownloadButton("SAMseqdownloadDEtable", addclass =
                                     "btn btn-primary btn-block", "Download .csv file"),
           bsTooltip(
@@ -1832,7 +1805,7 @@ div(
             trigger = "hover",
             placement = "top"
           ),
-          
+
           NiePrettyDownloadButton("DownloadSAMseqReport", addclass =
                                     "button-donwnload btn-block", "Download Report"),
           bsTooltip(
@@ -1841,13 +1814,14 @@ div(
             trigger = "hover",
             placement = "bottom"
           )
-          
+
         )
-        
+
       )
     )
-    
+
   ),
+  # S5 page ----
   div(
     id = "s5",
     class = "none",
@@ -1972,31 +1946,16 @@ div(
       
     )
   ),
-  div(id = "s6",class = "none"),
-  div(id = "s7", class = "none"),
-  div(id = "s8", class = "none"),
+# # S6 and others----
+#   div(id = "s6",class = "none"),
+#   div(id = "s7", class = "none"),
+#   div(id = "s8", class = "none"),
+# S6 and others----
   div(id = "dialog-confirmData"),
   div(id = "dialog-confirmSave"),
   div(id = "dialog-confirmMatrix"),
   div(id = "dialog-confirmDesign"),
-  div(id = "dialog-confirmStartanalysis"),
-  #model process data explore 
-  tags$div(
-    id = "my-modal",
-    class="modal fade", tabindex="-1", `data-backdrop`="static", `data-keyboard`="false",
-    tags$div(
-      class="modal-dialog",
-      tags$div(
-        class = "modal-content",
-        tags$div(class="modal-header", tags$h4(class="modal-title", "Calculation in progress")),
-        tags$div(
-          class="modal-body",
-          shinyWidgets::progressBar(id = "exploretionPrograssbar", value = 0, status = "success",display_pct = TRUE)
-        ),
-        tags$div(class="modal-footer", tags$button(type="button", class="btn btn-default", `data-dismiss`="modal", "Dismiss"))
-      )
-    )
-  )
+  div(id = "dialog-confirmStartanalysis")
 )
 
 ))

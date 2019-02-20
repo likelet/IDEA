@@ -400,7 +400,7 @@ shinyServer(function(input,output,session){
             selectInput("condition2", "Condition 2",
                         choices=conditionVector,selected=conditionVector[2])),
         div(style="display:inline-block",
-            bsAlert(inputId = "conditionSelectedAlert"))
+            bsAlert("conditionSelectedAlert"))
     )
     
   })
@@ -526,10 +526,6 @@ shinyServer(function(input,output,session){
   #DATA EXPLORATION-------------
   ################################################################
   
-  observeEvent(input$startanalysisMain1, {
-    shinyWidgets::updateProgressBar(session = session, id = "exploretionPrograssbar", value = 0) # reinitialize to 0 if you run the calculation several times
-    session$sendCustomMessage(type = 'launch-modal', "my-modal") # launch the modal
-  })
   # download pdf
   output$DownloaddataExplorlationReport <- downloadHandler(
     filename = function() {
@@ -967,7 +963,6 @@ shinyServer(function(input,output,session){
     data<-datasetInput()
     countTable<-round(data)
     designtable=designInput()
-    updateProgressBar(session,"DESeqProgressbar", value=5)
     if(values$design=='SC'||values$design=='WR'){
       condition=factor(conditionInput())
       colData<-DataFrame(condition)
@@ -979,13 +974,11 @@ shinyServer(function(input,output,session){
       myformular<-as.formula(paste("~",paste(names,collapse="+")))
       dds<-DESeqDataSetFromMatrix(countTable,colData,formula(myformular))
     }
-    updateProgressBar(session,"DESeqProgressbar", value=8)
     if(input$DeseqTestmethod=="LRT"){
       dds <- DESeq(dds,test=input$DeseqTestmethod,reduced= ~ 1)
     }else{
       dds <- DESeq(dds)
     }
-    updateProgressBar(session,"DESeqProgressbar", value=10)
     dds
   })
   
@@ -1014,7 +1007,6 @@ shinyServer(function(input,output,session){
   output$DEseqTable<-renderDataTable({
     
     table<-getDEseqResultTable()
-    updateProgressBar(session,"DESeqProgressbar", value=12)
     cbind(FeatureID = row.names(table), table)
     
   })
@@ -1057,7 +1049,6 @@ shinyServer(function(input,output,session){
   #DEseq Render MAplot
   output$DEseqMAplot<-renderPlot({
     p=getDEseqMAplot()
-    updateProgressBar(session,"DESeqProgressbar", value=20)
     print(p)    
   },width=700,height=700)
   
@@ -1071,7 +1062,6 @@ shinyServer(function(input,output,session){
   #DESeq DE heatmap render
   output$DESeqheatmapRender<-renderPlot({
     data<-DESeqHeatmapPlotfunction()
-    updateProgressBar(session,"DESeqProgressbar", value=40)
     pheatmap(data, color=greenred(75),border_color=NA,cluster_rows=getDESeqHeatmapCluster()[1],cluster_cols= getDESeqHeatmapCluster()[2],scale=getDESeqHeatmapScale(),legend=getDESeqHeatmapShowCK())
   },width=800,height=800)
   #DEseq volcanoPlot
@@ -1083,7 +1073,6 @@ shinyServer(function(input,output,session){
   #DEseq volcanoPlot render
   output$DESeqVolcanoPlotRender<-renderPlot({
     g<-DEseqVolcanoPlot()
-    updateProgressBar(session,"DESeqProgressbar", value=60)
     print(g)
   },width=700,height=700)
   
@@ -1210,13 +1199,11 @@ shinyServer(function(input,output,session){
     
   }
   getedgeRnormalized<-reactive({
-    updateProgressBar(session,"EdgeRProgressbar", value=2)
     countTable<-round(datasetInput())
     countTable<-filtercount(countTable)
     group<-factor(conditionInput())
     y <- DGEList(counts=countTable, group=group)
     y <- calcNormFactors(y,method=input$EdgeRnormalizedMethod)
-    updateProgressBar(session,"EdgeRProgressbar", value=5)
     y
   })
   getedgeRestimated<-reactive({
@@ -1317,7 +1304,6 @@ output$edgeRdespersionMethodUI<-renderUI({
   #edgeR Render MAplot
   output$EdgeRMAplot<-renderPlot({
     p=getEdgeRMAplot()
-    updateProgressBar(session,"EdgeRProgressbar", value=100)
     print(p)    
   },height=700,width=700)
   
@@ -1364,7 +1350,6 @@ output$edgeRdespersionMethodUI<-renderUI({
        et <- glmLRT(fit)
       et<-topTags(et,n=length(rownames(et$table)))
     }
-    updateProgressBar(session,"EdgeRProgressbar", value=20)
     return (et)
   }
   
@@ -1393,7 +1378,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   output$EdgeRheatmapRender<-renderPlot({
     data=EdgeRHeatmapPlotfunction()
     pheatmap(data, color=greenred(75),border_color=NA,cluster_rows=getedgeRHeatmapCluster()[1],cluster_cols= getedgeRHeatmapCluster()[2],scale=getedgeRHeatmapScale(),legend=getedgeRHeatmapShowCK())
-    updateProgressBar(session,"EdgeRProgressbar", value=50)
+  
   },height=800,width=800)
   #EdgeR volcanoPlot
   EdgeRVolcanoPlot<-reactive({
@@ -1403,7 +1388,6 @@ output$edgeRdespersionMethodUI<-renderUI({
   #EdgeR volcanoPlot render
   output$EdgeRVolcanoPlotRender<-renderPlot({
     g<-EdgeRVolcanoPlot()
-    updateProgressBar(session,"EdgeRProgressbar", value=60)
     print(g)
   },height=700,width=700)
   
@@ -1417,9 +1401,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   
   #EdgeR p distribution plot render
   output$EdgeRPvalueDistributionplotRender<-renderPlot({
-    updateProgressBar(session,"EdgeRProgressbar", value=90)
     g<-EdgeRPvalueDistributionplot()
-    updateProgressBar(session,"EdgeRProgressbar", value=100)
     print(g)
   },width=700,height=700)
   
@@ -1540,9 +1522,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   })
   
   getresultNOIseqresultTableNew<-reactive({
-    updateProgressBar(session,"NOIseqProgressbar", value=2)
     mycounts<-round(datasetInput())
-    updateProgressBar(session,"NOIseqProgressbar", value=10)
     condition=designInput()
     #NOIdata input object
     if(annotationdatasetInput()=="A"){
@@ -1556,7 +1536,7 @@ output$edgeRdespersionMethodUI<-renderUI({
                       'WR'="no"
     )
     result<-getresultNOIseqresult(mydata,myfactor=names(condition)[1],mycondition=rev(getCompairSample()),mynorm=getNOISeqNormalizedMethod(),myfilter=0,myreplicates=replicate)
-    updateProgressBar(session,"NOIseqProgressbar", value=40)
+   
     result<-result@results[[1]]
     result
   })
@@ -1580,7 +1560,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   output$NOIseqheatmapRender<-renderPlot({
     data=NOIseqHeatmapPlotfunction()
     pheatmap(data, color=greenred(75),border_color=NA,cluster_rows=getNOISeqHeatmapCluster()[1],cluster_cols= getNOISeqHeatmapCluster()[2],scale=getNOISeqHeatmapScale(),legend=getNOISeqHeatmapShowCK())
-    updateProgressBar(session,"NOIseqProgressbar", value=50)
+  
   },height=800,width=800)
   
   
@@ -1599,7 +1579,6 @@ output$edgeRdespersionMethodUI<-renderUI({
   #NOIseq p distribution plot render
   output$NOIseqPvalueDistriplotRender<-renderPlot({
     p<-NOIseqPvalueDistributionplot()
-    updateProgressBar(session,"NOIseqProgressbar", value=100)
     print(p)
   },width=700,height=700)
   #NOIseq download result table  
@@ -1656,13 +1635,10 @@ output$edgeRdespersionMethodUI<-renderUI({
   ################################################################
   #PoissonSeq Analysis function----
   getPoissonSeqAnalysis<-reactive({
-    updateProgressBar(session,"PoissonSeqProgressbar", value=2)
     mycounts <- round(getSelectDataframe())
-    updateProgressBar(session,"PoissonSeqProgressbar", value=10)
     #     condition=getSelectCondition()
     finalcondition<- getSelectCondition()
     result <- getPossionTestResult(mycounts,finalcondition)
-    updateProgressBar(session,"PoissonSeqProgressbar", value=90)
     result
   })
   
@@ -1691,7 +1667,7 @@ output$edgeRdespersionMethodUI<-renderUI({
   output$PoissonSeqheatmapRender<-renderPlot({
     data=PoissonSeqHeatmapPlotfunction()
     pheatmap(data, color=greenred(75),border_color=NA,cluster_rows=getPoissonSeqHeatmapCluster()[1],cluster_cols= getPoissonSeqHeatmapCluster()[2],scale=getPoissonSeqHeatmapScale(),legend=getPoissonSeqHeatmapShowCK())
-    updateProgressBar(session,"PoissonSeqProgressbar", value=50)
+
   },height=800,width=800)
   
   
@@ -1700,7 +1676,6 @@ output$edgeRdespersionMethodUI<-renderUI({
   PoissonSeqPvalueDistributionplot<-reactive({
     table=getresultPoissonSeqresultTableNew()
     g<-getPValueDistributionPlot(table,DEmethod="PoissonSeq",threshold=as.numeric(input$PoissonSeqPplotFDRthresshold))
-    updateProgressBar(session,"PoissonSeqProgressbar", value=95)
     g
   })
   
@@ -1738,7 +1713,6 @@ getPowerCurve<-reactive({
   output$PoissonSeqPowerCurve<-renderPlot({
     input$poiactiveButton
     p<-getPowerCurve()
-    updateProgressBar(session,"PoissonSeqProgressbar", value=100)
     print(p)
   },width=700,height=700)
   
@@ -2819,28 +2793,26 @@ getPowerCurve<-reactive({
     temptext=getCompairSample()
     if(!is.null(temptext)&&temptext[1]!=temptext[2]){
       values$pairedText<-paste("Perform comparison between conditions: <strong style=\"color:green\">",temptext[1],"</strong> VS <strong style=\"color:green\">",temptext[2],"</strong>")
-      createAlert(session, inputId = "conditionSelectedAlert",
-                  message = values$pairedText,
-                  type = "success",
+      createAlert(session, "conditionSelectedAlert",
+                  content = values$pairedText,
+                  style = "success",
                   dismiss = FALSE,
-                  block = FALSE,
                   append = FALSE
       )
     }else{
       values$pairedText<-paste("Invalid condition seleted <strong style=\"color:red\">",temptext[1],"</strong> VS <strong style=\"color:red\">",temptext[2],"</strong> !")
-      createAlert(session, inputId = "conditionSelectedAlert",
-                  message = values$pairedText,
-                  type = "danger",
+      createAlert(session,  "conditionSelectedAlert",
+                  content = values$pairedText,
+                  style = "danger",
                   dismiss = FALSE,
-                  block = FALSE,
                   append = FALSE
       )
     }
-    
-    #no
+
+
   })
-  #alert options
-  #normalized method 
+#   #alert options
+#   #normalized method 
   observe({
     if(input$normalizedMethod=="rpkm"){
       values$normalizedText="Divide feature count by the total number of reads in each library or mapped reads and fearture length(default 1000) "
@@ -2855,17 +2827,16 @@ getPowerCurve<-reactive({
       values$normalizedText="Raw count"
       values$normalizedTittle="Raw Data:"
     }
-    
-    createAlert(session, inputId = "normalizedMethodAlert",
-                message = values$normalizedText,
+
+    createAlert(session, "normalizedMethodAlert",
+                content= values$normalizedText,
                 title = values$normalizedTittle,
-                type = "info",
+                style = "info",
                 dismiss = TRUE,
-                block = FALSE,
                 append = FALSE
     )
   })
-  #edgeR normalized method 
+#   #edgeR normalized method 
   observe({
     if(input$EdgeRnormalizedMethod=="RLE"){
       values$EdgeRnormalizedText="Divide feature count by the total number of reads in each library or mapped reads and fearture length(default 1000) "
@@ -2880,18 +2851,17 @@ getPowerCurve<-reactive({
       values$EdgeRnormalizedText="Raw count"
       values$EdgeRnormalizedTittle="Raw Data:"
     }
-    
-    createAlert(session, inputId = "EdgeRnormalizedMethodAlert",
-                message = values$EdgeRnormalizedText,
+
+    createAlert(session, "EdgeRnormalizedMethodAlert",
+                content = values$EdgeRnormalizedText,
                 title = values$EdgeRnormalizedTittle,
-                type = "info",
+                style = "info",
                 dismiss = TRUE,
-                block = FALSE,
                 append = FALSE
     )
   })
-  
-  #NOISeq normalized method 
+#   
+#   #NOISeq normalized method 
   observe({
     if(input$NOISeqNormalizedMethod=="rpkm"){
       values$NOISeqNormalizedText="Divide feature count by the total number of reads in each library or mapped reads and fearture length(default 1000) "
@@ -2906,20 +2876,18 @@ getPowerCurve<-reactive({
       values$NOISeqNormalizedText="Raw count"
       values$NOISeqNormalizedTittle="Raw Data:"
     }
-    
-    createAlert(session, inputId = "NOISeqNormalizedMethodAlert",
-                message = values$NOISeqNormalizedText,
+
+    createAlert(session,"NOISeqNormalizedMethodAlert",
+                content = values$NOISeqNormalizedText,
                 title = values$NOISeqNormalizedTittle,
-                type = "info",
-                dismiss = TRUE,
-                block = FALSE,
-                append = FALSE
+                style  = "info",
+                dismiss = TRUE
     )
   })
-  
-
-#combine rank method
-observe({
+#   
+# 
+#   #combine rank method
+  observe({
   if(input$rankAggMethod=="RRA"){
     values$NrankAggText="Robust Rank Aggregation method introduced by Kolde et al "
     values$rankAggTittle="Robust Rank Aggregation(recommanded)"
@@ -2939,14 +2907,12 @@ observe({
     values$NrankAggText="A Pvalue integretion method employed by Stuart et al "
     values$rankAggTittle="Stuart"
   }
-  
-  createAlert(session, inputId = "NrankAggMethodAlert",
-              message = values$NrankAggText,
+
+  createAlert(session,"NrankAggMethodAlert",
+              content = values$NrankAggText,
               title = values$rankAggTittle,
-              type = "info",
-              dismiss = TRUE,
-              block = FALSE,
-              append = FALSE
+              style = "info",
+              dismiss = TRUE
   )
 })
 

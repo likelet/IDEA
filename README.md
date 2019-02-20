@@ -136,6 +136,10 @@ Configure the server network/firewall options like open the shiny port(3838 defa
 
 Access the server's ip address along with port number and enjoy your IDEA analysis trip :).<br/>
 
+** RUN `IDEA` with Docker
+
+
+
 ### Developing Environment.  
 
       R version 3.1.2. 
@@ -183,6 +187,7 @@ This software were developed by:
 * [Rucheng Diao](diaorch@mail2.sysu.edu.cn), University of Michigan
 * [Lichen Sun](sunlch@mail2.sysu.edu.cn), Yale University
 * [Yi Shi](shiy26@mail2.sysu.edu.cn), Shanghai Institutes for Biological Sciences
+* [Chengwei Wang](),Sun Yat-sen university 
 
 ## Maintainer  
 Qi Zhao <br/>

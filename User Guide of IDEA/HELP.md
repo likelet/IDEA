@@ -465,6 +465,6 @@ The interpretation of some columns is shown in the table.
 
 As other modules, the report of "Combination" is also available for download. The .csv format result is the result of the "Feature Weight Table".
 
-<div align=center>![](http://renlab.org:3838/IDEA/pic/3-15.png)</div>
+![](http://renlab.org:3838/IDEA/pic/3-15.png)
 
 <div align=center>Figure 3-15 Download Panel</div>

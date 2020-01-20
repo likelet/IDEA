@@ -36,19 +36,6 @@ To address the above issues, here we introduce the Interactive Differential Expr
 
 The online version can be easily accessed to perform analysis tasks with dataset in low thoughput. However, Limited to remote server resouces, the web page usually stucked while multible user operated parallelly or larger dataset tasks requirement. To solve this, We released an R package that packed the core analysis module for users to run analysis under the R environment locally .  
 
->Before install the IDEA package, please read this markdown file carefully;  
-
-```R
-    if (!require("devtools"))
-      install.packages("devtools")
-    devtools::install_github("likelet/IDEA")
-```
-
-__User should notice that , the latest **shinyBS**  is incompatible with IDEA at present ; Only the exact shingBS  version (0.25) keep the IDEA work smoothly . This is because current shinyBS removed the__ `progressBar()`__function used in IDEA. To install the compatible shinyBS, you can type__  
-
-```R
-        devtools::install_github( "likelet/shinyBS")
-```  
       
 Here list the command to install the related packages manually if devtools failed in installation:  
 
@@ -57,7 +44,7 @@ Here list the command to install the related packages manually if devtools faile
       #dependencies from BIOCONDUCTOR
       bcDep <- c("Biobase", "BiocGenerics", "S4Vectors", "IRanges", "GenomeInfoDb", "GenomicRanges","impute")
       #target from CRAN
-      cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram","RobustRankAggreg","shiny","rmarkdown","Cairo","gplots","pheatmap","labeling")
+      cTgt <- c("PoissonSeq","FactoMineR","samr","ggplot2","VennDiagram","RobustRankAggreg","shiny","rmarkdown","Cairo","gplots","pheatmap","labeling","shinyBS")
       #target from BIOCONDUCTOR
       bcTgt <- c("edgeR", "DESeq2","NOISeq")
 
@@ -94,7 +81,6 @@ Here list the command to install the related packages manually if devtools faile
       }
 
       devtools::install_github("shiny-incubator", "rstudio")
-      devtools::install_github( "likelet/shinyBS")
       devtools::install_github("AnalytixWare/ShinySky")
 ```
 Second, to install the latest development build directly from GitHub, run this:(For some reason, we did not release the current version on CRAN or BIOCONDUCTOR site):
@@ -176,7 +162,7 @@ During the analysis procedure,  you might encounter the following problems due t
 
 Jian Ren, renjian.sysu@gmail.com. 
 
-Qi Zhao, zhaoqi3@mail2.sysu.edu.cn. 
+Qi Zhao, zhaoqi@sysucc.org.cn.
 
 
 ## Credit  
@@ -194,7 +180,7 @@ Qi Zhao <br/>
 Please feel free contact us. <br/>
 
 ## Copyright. 
-Copyright © 2014-2018. RenLab from SYSUCC. All Rights Reserved<br/>
+Copyright © 2014-2020. RenLab from SYSUCC. All Rights Reserved<br/>
 For more useful tools/applications, please go to [renbal.org](http://www.renlab.org)
 
 ## Citation 

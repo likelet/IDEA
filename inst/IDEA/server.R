@@ -205,11 +205,6 @@ shinyServer(function(input,output,session){
     
   })
   
-  #test output
-  output$testoutput<-renderText({
-    values$wethernew
-  })
-  
   
   
   output$designSwitchUI<-renderUI({
@@ -229,8 +224,7 @@ shinyServer(function(input,output,session){
              div(class="panel-body",
                  h4("Matrix of experimental design (example)",DiaoTips(2,"Comma-separated file with header information is required ")),
                  NiePrettyDownloadButton("downloadExampleDesignFile",addclass="btn-warning","Download design matrix file"),
-                 tags$button(id="showDesignMatrixButton", class="btn btn-info action-button","View Example data"),
-                 textOutput("testoutput")
+                 tags$button(id="showDesignMatrixButton", class="btn btn-info action-button","View Example data")
              )
            )
     )
@@ -381,6 +375,8 @@ shinyServer(function(input,output,session){
     variableVector<-names(designInput())
     if(is.null(input$InterestVariableInput)){
       interestVarible=variableVector[1]
+    }else{
+      interestVarible=input$InterestVariableInput
     }
     interestVarible
   })
@@ -468,10 +464,7 @@ shinyServer(function(input,output,session){
   #function From NOISeqFunction.R
   #########################################################
   normalizeDataNew<-reactive({
-    progress <- shiny::Progress$new()
-    progress$set(message = "Data normalization ", value = 0)
-    on.exit(progress$close())
-    
+    # updateProgressBar(session = session, id = "exploretionPrograssbar", value =2)
     data<-datasetInput()
     if(input$normalizedMethod=='rpkm'){
       if(annotationdatasetInput()!='A'){
@@ -485,7 +478,7 @@ shinyServer(function(input,output,session){
     }else {
       normalizedDf<-normalizeData(data,method=input$normalizedMethod,k=0,lc=0)
     }
-    progress$inc(100, detail = "")
+    # updateProgressBar(session = session, id = "exploretionPrograssbar", value =50)
     
     normalizedDf 
   })
@@ -578,27 +571,12 @@ shinyServer(function(input,output,session){
   getSamplesBoxplot<-reactive({
     data<-normalizeDataNew()
     conditionlist<-conditionInput()
-    #filteredData<-filteredData(data,conditionlist,mymethod=1)
     p<-samplePlotboxP(data)
-    #     values$explorationProgressbar=values$explorationProgressbar+12.5
-    #     updateProgressBar(session,"exploretionPrograssbar", value=values$explorationProgressbar)
-    
     p
   })
   output$SamplesBoxplot<-renderPlot({ 
-    progress <- shiny::Progress$new()
-    progress$set(message = "Computing data for ", value = 0)
-    on.exit(progress$close())
-    
     
     p=getSamplesBoxplot()
-    # Create a callback function to update progress.
-    # Each time this is called:
-    # - If `value` is NULL, it will move the progress bar 1/5 of the remaining
-    #   distance. If non-NULL, it will set the progress to that value.
-    # - It also accepts optional detail text.
-    progress$inc(100, detail = "Boxplot ")
-    
     print(p)
   },width=700,height=700)
   
@@ -630,13 +608,9 @@ shinyServer(function(input,output,session){
     p
   })
   output$densitySampleSelectedPlot<-renderPlot({
-    progress <- shiny::Progress$new()
-    progress$set(message = "Computing data for ", value = 0)
-    on.exit(progress$close())
+  
     
     p<-getdensitySampleSelectedPlot()
-    
-    progress$inc(100, detail = "Density plot ")
    
     print(p)
   },width=700,height=700)
@@ -648,13 +622,9 @@ shinyServer(function(input,output,session){
     p
   })
   output$RaioBarplotdPlot<-renderPlot({
-    progress <- shiny::Progress$new()
-    progress$set(message = "Computing data for ", value = 0)
-    on.exit(progress$close())
-    
+
     p<-getraioBarplot()
     
-    progress$inc(100, detail = "Ration Barplot")
     print(p)
   },width=700,height=700)
   
@@ -670,13 +640,9 @@ shinyServer(function(input,output,session){
     p
   })
   output$plotPCAtwoD <- renderPlot({
-    progress <- shiny::Progress$new()
-    progress$set(message = "Computing data for ", value = 0)
-    on.exit(progress$close())
-    
+
     p=getPCAplotNew()
     
-    progress$inc(100, detail = "PCA analysis")
     print(p)
   },width=700,height=700) 
   
@@ -702,14 +668,9 @@ shinyServer(function(input,output,session){
   })
   #render plot
   output$S2Sdistanceheatmap<-renderPlot({
-    progress <- shiny::Progress$new()
-    progress$set(message = "Computing data for ", value = 0)
-    on.exit(progress$close())
+
     
     sampleDistanceHeatmapPlot()
-    
-    progress$inc(100, detail = "Heatmap")
-    
     
   },width=700,height=700)
   
@@ -745,15 +706,11 @@ shinyServer(function(input,output,session){
   })
   #correlation analysis panel
   getCorrelatiobScatterPlot<-reactive({
-    progress <- shiny::Progress$new()
-    progress$set(message = "Computing data for ", value = 0)
-    on.exit(progress$close())
-    
+
     data<-normalizeDataNew()
-    progress$inc(50, detail = "correlation analysis")
+    # progress$inc(50, detail = "correlation analysis")
     p<-scatterP(data, getCorrlationsXsample(), getCorrlationsYsample(), FALSE)
-    
-    progress$inc(100, detail = "correlation analysis")
+
     
     p
   })
@@ -825,7 +782,7 @@ shinyServer(function(input,output,session){
   #render Output plot
   output$SearchGenePlot<-renderPlot({
     p=getSearchGenePlot()
-    updateProgressBar(session,"exploretionPrograssbar", value=95)
+    # updateProgressBar(session,"exploretionPrograssbar", value=95)
     print(p)
   },width=700,height=700)
   #dynamic searchGeneSelectUI based on data frame
@@ -979,6 +936,7 @@ shinyServer(function(input,output,session){
     }else{
       dds <- DESeq(dds)
     }
+    
     dds
   })
   
@@ -1193,8 +1151,11 @@ shinyServer(function(input,output,session){
   ################################################################
   #edgeR Analysis function-------------
   filtercount<-function(x){
+    withProgress(message = 'EdgeR',
+                 detail = 'This may take a while...', value = 40, {
     keep <- rowSums(cpm(x)>input$EdgeRfilternumber) >= dim(x)[2]
     x<-x[keep,]
+                 })
     return(x)
     
   }
@@ -1274,7 +1235,10 @@ output$edgeRdespersionMethodUI<-renderUI({
  
   #show normalized factor
   output$edgeRNormalizedFactor<-renderTable({
+    withProgress(message = 'EdgeR',
+                detail = 'This may take a while...', value = 40, {
     d<-getedgeRnormalized()
+                })
     d$samples
   })
   #edgeR Disperplot
@@ -1788,14 +1752,14 @@ getPowerCurve<-reactive({
   ################################################################
   #SAMseq Analysis function----
   getSAMseqAnalysis<-reactive({
-    updateProgressBar(session,"SAMseqProgressbar", value=2)
+    # updateProgressBar(session,"SAMseqProgressbar", value=2)
     mycounts<-round(getSelectDataframe())
-    updateProgressBar(session,"SAMseqProgressbar", value=10)
+    # updateProgressBar(session,"SAMseqProgressbar", value=10)
     
     #     condition=getSelectCondition()
     finalcondition<-getSelectCondition()
     samfit<-getsamfit(mycounts,finalcondition,mynresamp = input$SAMseqnresamp, myfdr = input$SAMseqfdrCut)
-    updateProgressBar(session,"SAMseqProgressbar", value=80)
+    # updateProgressBar(session,"SAMseqProgressbar", value=80)
     samfit
   })
   #SAMseq get DE table
@@ -1826,7 +1790,7 @@ getPowerCurve<-reactive({
     data=SAMseqHeatmapPlotfunction()
     pheatmap(data, color=greenred(75),border_color=NA,cluster_rows=getSAMseqHeatmapCluster()[1],cluster_cols= getSAMseqHeatmapCluster()[2],scale=getSAMseqHeatmapScale(),legend=getSAMseqHeatmapShowCK())
     
-    updateProgressBar(session,"SAMseqProgressbar", value=8)
+    # updateProgressBar(session,"SAMseqProgressbar", value=8)
   },height=800,width=800)
   
   
@@ -1834,7 +1798,7 @@ getPowerCurve<-reactive({
   SAMseqPvalueDistributionplot<-function(){
     table=getSAMseqresultTableNew()
     g<-getPValueDistributionPlot(table,DEmethod="SAMseq",threshold=as.numeric(input$SAMseqPplotFDRthresshold))
-    updateProgressBar(session,"SAMseqProgressbar", value=90)
+    # updateProgressBar(session,"SAMseqProgressbar", value=90)
     return(g)
   }
   
@@ -1853,7 +1817,7 @@ getPowerCurve<-reactive({
   #SAMfitplot
   output$SAMseqfitPlot<-renderPlot({
     samfit<-getSAMseqAnalysis()
-    updateProgressBar(session,"SAMseqProgressbar", value=100)
+    # updateProgressBar(session,"SAMseqProgressbar", value=100)
     plot(samfit)
   },height=700,width=700)
   
@@ -1974,7 +1938,7 @@ getPowerCurve<-reactive({
                         warning = function(w) {print("edger warinings"); getedgeRresultTable()},
                         error = function(e) {print("edger errors");NULL})
     
-    updateProgressBar(session,"intergretiveProgressbar", value=10)
+    # updateProgressBar(session,"intergretiveProgressbar", value=10)
     tablelist<-list()
     if(!is.null(detable)){
       tablelist[["DESeq"]]<-detable
@@ -1983,7 +1947,7 @@ getPowerCurve<-reactive({
       tablelist[["edgeR"]]<-edgetable
     }
     # tablelist<-list(DESeq=getDEseqResultTable(),edgeR=getedgeRresultTable())
-    updateProgressBar(session,"intergretiveProgressbar", value=50)
+    # updateProgressBar(session,"intergretiveProgressbar", value=50)
     #values$usedtools=c("DESeq","edgeR","NOIseq","PoissonSeq","SAMseq")
     if(values$design!="MF"){
       NOIseqtable <- tryCatch(getresultNOIseqresultTableNew(),
@@ -1994,7 +1958,7 @@ getPowerCurve<-reactive({
       }
       # table=getresultNOIseqresultTableNew()
       # tablelist[["NOISeq"]]<-table
-      updateProgressBar(session,"intergretiveProgressbar", value=70)
+      # updateProgressBar(session,"intergretiveProgressbar", value=70)
     }
     if(values$design=="SC"){
       
@@ -2006,7 +1970,7 @@ getPowerCurve<-reactive({
       }
       # table2=getresultPoissonSeqresultTableNew()
       # tablelist[["PoissonSeq"]]<-table2
-      updateProgressBar(session,"intergretiveProgressbar", value=80)
+      # updateProgressBar(session,"intergretiveProgressbar", value=80)
       samseqtable <- tryCatch(getSAMseqresultTableNew(),
                                   warning = function(w) {print("samseq warinings"); getSAMseqresultTableNew()},
                                   error = function(e) {print("samseq errors");NULL})
@@ -2014,7 +1978,7 @@ getPowerCurve<-reactive({
         tablelist[["SAMseq"]]<-samseqtable
       }
       
-      updateProgressBar(session,"intergretiveProgressbar", value=90)
+      # updateProgressBar(session,"intergretiveProgressbar", value=90)
       # table3=getSAMseqresultTableNew()
       # tablelist[["SAMseq"]]<-table3
       
@@ -2040,9 +2004,9 @@ getPowerCurve<-reactive({
   
   output$VennyPlotRender<-renderPlot({
     #     input$runSelectedAnalysisbutton
-    updateProgressBar(session,"intergretiveProgressbar", value=95)
+    # updateProgressBar(session,"intergretiveProgressbar", value=95)
     p<-getVennyPlot()
-    updateProgressBar(session,"intergretiveProgressbar", value=100)
+    # updateProgressBar(session,"intergretiveProgressbar", value=100)
     grid.draw(p)
     
   },width=700,height=700)
@@ -2064,9 +2028,9 @@ getPowerCurve<-reactive({
   
   output$ComparisonBarPlotRender<-renderPlot({
     #     input$runSelectedAnalysisbutton
-    updateProgressBar(session,"intergretiveProgressbar", value=91)
+    # updateProgressBar(session,"intergretiveProgressbar", value=91)
     p<-getComparisonBarPlot()
-    updateProgressBar(session,"intergretiveProgressbar", value=93)
+    # updateProgressBar(session,"intergretiveProgressbar", value=93)
     print(p)
     
   },width=700,height=700)
@@ -2151,10 +2115,10 @@ getPowerCurve<-reactive({
   
   
   output$getRecommandedTableRender<-renderDataTable({
-    updateProgressBar(session,"intergretiveProgressbar", value=98)
+    # updateProgressBar(session,"intergretiveProgressbar", value=98)
     input$overlapsubmitButton
     table<-getRecommandedTable()
-    updateProgressBar(session,"intergretiveProgressbar", value=100)
+    # updateProgressBar(session,"intergretiveProgressbar", value=100)
     table
     
   },escape = FALSE)

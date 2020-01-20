@@ -291,7 +291,12 @@ div(class = "mainpanel",
           )
           
         ),
-        
+        # div(
+        #   class = "boxplot-data fig-data  figure-analysis",
+        #   id = "datafig0",
+        #   h4("Calculation is in progress, please wait for a while..."),
+        #   progressBar(id = "exploretionPrograssbar", value = 0, status = "success", striped = TRUE)
+        # ),
         div(
           class = "boxplot-data fig-data  figure-analysis",
           id = "datafig1",
@@ -904,7 +909,7 @@ div(class = "mainpanel",
               'data-dismiss' = "alert",
               "×"
             ),
-            "In DESeq2 version (1.6.2), ",
+            "In DESeq2 version (1.14.1), ",
             code("Wald"),
             " significance test is adopted by default, with ",
             code("likelihood ration test (LRT)"),

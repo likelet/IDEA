@@ -191,7 +191,7 @@ Qi Zhao <br/>
 Please feel free contact us. <br/>
 
 ## Copyright. 
-Copyright © 2014-2018. RenLab from SYSUCC. All Rights Reserved<br/>
+Copyright © 2014-2020. RenLab from SYSUCC. All Rights Reserved<br/>
 For more useful tools/applications, please go to [renbal.org](http://www.renlab.org)
 
 ## Citation 

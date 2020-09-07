@@ -134,6 +134,10 @@ Configure the server network/firewall options like open the shiny port(3838 defa
 
 Access the server's ip address along with port number and enjoy your IDEA analysis trip :).<br/>
 
+### Install IDEA with Docker(Recommended) 
+
+We also provide a fast deploy version allowing users install IDEA server version with Docker.  Plz refer to this step by step [tutorial](https://github.com/likelet/IDEA/blob/master/Docker.md).
+
 ### Developing Environment.  
 
       R version 3.1.2. 
